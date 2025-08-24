@@ -1,0 +1,413 @@
+/* ===== SANORIA.PK - Advanced Animations ===== */
+
+/* Shimmer Effect for Luxury Feel */
+@keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        rgba(212, 175, 55, 0) 0%,
+        rgba(212, 175, 55, 0.3) 50%,
+        rgba(212, 175, 55, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+}
+
+/* Glow Effect */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+    }
+}
+
+.glow-effect {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Rotate Animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotate 10s linear infinite;
+}
+
+/* Slide In Animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+}
+
+.slide-in-bottom {
+    animation: slideInBottom 0.6s ease-out forwards;
+}
+
+/* Zoom In Animation */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.zoom-in {
+    animation: zoomIn 0.5s ease-out forwards;
+}
+
+/* Fade In Variations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Shake Animation for Attention */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Flip Animation */
+@keyframes flip {
+    from {
+        transform: perspective(400px) rotateY(0);
+    }
+    to {
+        transform: perspective(400px) rotateY(360deg);
+    }
+}
+
+.flip {
+    animation: flip 1s ease-in-out;
+}
+
+/* Bounce In Animation */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Text Gradient Animation */
+@keyframes textGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #D4AF37, #E91E63, #D4AF37);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGradient 3s ease infinite;
+}
+
+/* Loading Spinner */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(212, 175, 55, 0.2);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Progress Bar Animation */
+@keyframes progress {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.progress-animation {
+    animation: progress 2s ease-out forwards;
+}
+
+/* Ripple Effect */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s ease-out;
+}
+
+/* Skeleton Loading Animation */
+@keyframes skeleton {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+.skeleton {
+    background-color: #eee;
+    background-image: linear-gradient(
+        90deg,
+        #eee,
+        #f5f5f5,
+        #eee
+    );
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    animation: skeleton 1.2s ease-in-out infinite;
+}
+
+/* Parallax Scroll Effect Classes */
+.parallax-slow {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.parallax-medium {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.parallax-fast {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Stagger Animation for Lists */
+.stagger-animation > * {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* Hover Effects */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hover-grow {
+    transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+    transform: scale(1.05);
+}
+
+.hover-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.hover-shine:hover::before {
+    left: 100%;
+}
+
+/* Special Effects for Premium Feel */
+.luxury-border {
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(45deg, #D4AF37, #E91E63) border-box;
+}
+
+.gold-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.gold-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(212, 175, 55, 0.3) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    animation: shimmer 3s infinite;
+}

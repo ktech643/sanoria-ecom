@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sanoria.pk - Premium Beauty & Skincare Products. Discover luxury skincare tailored for your skin type. Free shipping, easy returns, and exclusive offers.">
+    <meta name="keywords" content="skincare, beauty products, luxury cosmetics, Pakistan, Sanoria">
+    <meta name="author" content="Sanoria.pk">
+    <title>Sanoria.pk - Premium Beauty & Skincare</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Luxurious Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Discount Banner -->
+    <div class="discount-banner">
+        <div class="container">
+            <div class="discount-content">
+                <i class="fas fa-gift"></i>
+                <span>LIMITED TIME OFFER: Get 20% OFF on all products + FREE Gift with orders above Rs. 2000!</span>
+                <button class="btn-close-banner" onclick="closeBanner()">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.svg" alt="Sanoria" class="logo">
+            </a>
+            
+            <div class="navbar-icons d-flex align-items-center">
+                <!-- Search Icon -->
+                <a href="#" class="nav-icon" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                <!-- Notification Icon -->
+                <div class="nav-icon notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                
+                <!-- User Account -->
+                <a href="#" class="nav-icon" id="userAccount">
+                    <i class="fas fa-user"></i>
+                </a>
+                
+                <!-- Cart -->
+                <a href="#" class="nav-icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                
+                <!-- Hamburger Menu -->
+                <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sideMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="side-menu-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#skintype">Shop by Skin Type</a></li>
+                <li><a href="#new-arrivals">New Arrivals</a></li>
+                <li><a href="#promotions">Promotions</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="side-menu-footer">
+                <a href="#" class="btn btn-outline-primary w-100 mb-2">
+                    <i class="fas fa-qrcode"></i> Scan QR Code
+                </a>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="hero-bg" style="background-image: url('images/hero-bg-1.jpg')"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title animate-fade-up">Discover Your <span>Perfect Glow</span></h1>
+                    <p class="hero-subtitle animate-fade-up-delay">Premium skincare tailored for your unique beauty</p>
+                    <a href="#shop" class="btn btn-primary btn-lg animate-fade-up-delay-2">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-truck"></i>
+                        <h5>Free Shipping</h5>
+                        <p>On orders above Rs. 1500</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-undo"></i>
+                        <h5>14-Day Returns</h5>
+                        <p>Easy return policy</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-gift"></i>
+                        <h5>Free Samples</h5>
+                        <p>With every order</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-shield-alt"></i>
+                        <h5>Secure Payment</h5>
+                        <p>100% secure transactions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop by Skin Type -->
+    <section class="skin-type-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Shop by Skin Type</h2>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="skin-type-card" data-skin="dry">
+                        <div class="skin-icon">
+                            <i class="fas fa-tint-slash"></i>
+                        </div>
+                        <h4>Dry Skin</h4>
+                        <p>Hydrating solutions</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="skin-type-card" data-skin="oily">
+                        <div class="skin-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h4>Oily Skin</h4>
+                        <p>Oil control products</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="skin-type-card" data-skin="sensitive">
+                        <div class="skin-icon">
+                            <i class="fas fa-feather"></i>
+                        </div>
+                        <h4>Sensitive Skin</h4>
+                        <p>Gentle care essentials</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="skin-type-card" data-skin="combination">
+                        <div class="skin-icon">
+                            <i class="fas fa-adjust"></i>
+                        </div>
+                        <h4>Combination</h4>
+                        <p>Balanced skincare</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals-section py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">New Arrivals</h2>
+            <div class="row" id="newArrivalsContainer">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Most Viewed Products -->
+    <section class="most-viewed-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Most Viewed</h2>
+            <div class="row" id="mostViewedContainer">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Latest from Our Blog</h2>
+            <div class="row" id="blogContainer">
+                <!-- Blog posts will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Get exclusive offers and skincare tips delivered to your inbox</p>
+                </div>
+                <div class="col-md-6">
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <img src="images/logo.svg" alt="Sanoria" class="footer-logo mb-3">
+                    <p>Your trusted partner in luxury skincare. Discover products tailored for your unique beauty.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Customer Care</h5>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns Policy</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Payment Partners</h5>
+                    <div class="payment-icons">
+                        <img src="images/jazzcash.png" alt="JazzCash">
+                        <img src="images/easypaisa.png" alt="EasyPaisa">
+                        <img src="images/cod.png" alt="Cash on Delivery">
+                    </div>
+                    <h5 class="mt-3">Shipping Partners</h5>
+                    <div class="shipping-icons">
+                        <img src="images/leopard.png" alt="Leopard">
+                        <img src="images/tcs.png" alt="TCS">
+                        <img src="images/pkdex.png" alt="PkDex">
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search Products</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="search" class="form-control form-control-lg" placeholder="Search for products...">
+                    <div class="search-results mt-3">
+                        <!-- Search results will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <button class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h5>Sanoria Assistant</h5>
+                <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <p>Hello! How can I help you today?</p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message..." id="chatInput">
+                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/qrscanner.js"></script>
+</body>
+</html>
