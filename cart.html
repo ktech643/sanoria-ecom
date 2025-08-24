@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Review your selected beauty products and proceed to checkout at Sanoria.pk. Secure payment and fast delivery.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner bg-gradient-primary text-white py-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0 text-center text-md-start">
+                        <i class="fas fa-gift me-2"></i>
+                        <strong>FREE SHIPPING</strong> on orders over Rs. 2000 | Free samples with every order
+                    </p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <span class="me-3"><i class="fas fa-phone me-1"></i>+92 300 1234567</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand me-auto" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                    <span class="brand-text">Sanoria.pk</span>
+                </a>
+
+                <!-- Header Actions -->
+                <div class="header-actions d-flex align-items-center">
+                    <!-- Back to Shopping -->
+                    <a href="index.html" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                    </a>
+
+                    <!-- User Account -->
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                            <span class="d-none d-md-inline ms-1">Account</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-in-alt me-2"></i>Login</a></li>
+                            <li><a class="dropdown-item" href="register.html"><i class="fas fa-user-plus me-2"></i>Register</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Wishlist -->
+                    <a href="wishlist.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">2</span>
+                        <span class="d-none d-md-inline ms-1">Wishlist</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav bg-light py-3">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Shopping Cart</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="cart-main py-5">
+        <div class="container">
+            <!-- Cart Header -->
+            <div class="cart-header text-center mb-5">
+                <h1 class="page-title">Shopping Cart</h1>
+                <p class="page-subtitle">Review your selected items and proceed to checkout</p>
+            </div>
+
+            <!-- Cart Content -->
+            <div class="row g-4">
+                <!-- Cart Items -->
+                <div class="col-lg-8">
+                    <div class="cart-items-section">
+                        <!-- Empty Cart Message (hidden by default) -->
+                        <div class="empty-cart text-center py-5 d-none" id="emptyCart">
+                            <div class="empty-cart-icon mb-4">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="empty-cart-title">Your cart is empty</h3>
+                            <p class="empty-cart-subtitle">Looks like you haven't added any items to your cart yet.</p>
+                            <a href="index.html" class="btn btn-primary btn-lg">Start Shopping</a>
+                        </div>
+
+                        <!-- Cart Items List -->
+                        <div class="cart-items" id="cartItems">
+                            <div class="cart-item" data-product-id="1">
+                                <div class="item-image">
+                                    <img src="images/products/product-1.jpg" alt="Hydrating Facial Serum" class="img-fluid">
+                                </div>
+                                <div class="item-details">
+                                    <h5 class="item-name">Hydrating Facial Serum</h5>
+                                    <p class="item-description">Deeply hydrating serum with hyaluronic acid for plump, moisturized skin.</p>
+                                    <div class="item-meta">
+                                        <span class="item-sku">SKU: HFS-001</span>
+                                        <span class="item-stock text-success">In Stock</span>
+                                    </div>
+                                </div>
+                                <div class="item-quantity">
+                                    <label class="form-label">Quantity</label>
+                                    <div class="quantity-controls">
+                                        <button class="btn btn-outline-secondary btn-sm quantity-decrease" type="button">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input type="number" class="form-control quantity-input" value="2" min="1" max="10">
+                                        <button class="btn btn-outline-secondary btn-sm quantity-increase" type="button">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="item-price">
+                                    <div class="price-current">Rs. 1,299</div>
+                                    <div class="price-original text-muted text-decoration-line-through">Rs. 1,599</div>
+                                </div>
+                                <div class="item-total">
+                                    <div class="total-price">Rs. 2,598</div>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="btn btn-outline-danger btn-sm remove-item" title="Remove from cart">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm move-to-wishlist" title="Move to wishlist">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="cart-item" data-product-id="2">
+                                <div class="item-image">
+                                    <img src="images/products/product-2.jpg" alt="Vitamin C Brightening Serum" class="img-fluid">
+                                </div>
+                                <div class="item-details">
+                                    <h5 class="item-name">Vitamin C Brightening Serum</h5>
+                                    <p class="item-description">Brightening serum with 20% Vitamin C for radiant, even-toned skin.</p>
+                                    <div class="item-meta">
+                                        <span class="item-sku">SKU: VCS-002</span>
+                                        <span class="item-stock text-success">In Stock</span>
+                                    </div>
+                                </div>
+                                <div class="item-quantity">
+                                    <label class="form-label">Quantity</label>
+                                    <div class="quantity-controls">
+                                        <button class="btn btn-outline-secondary btn-sm quantity-decrease" type="button">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input type="number" class="form-control quantity-input" value="1" min="1" max="10">
+                                        <button class="btn btn-outline-secondary btn-sm quantity-increase" type="button">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="item-price">
+                                    <div class="price-current">Rs. 1,299</div>
+                                    <div class="price-original text-muted text-decoration-line-through">Rs. 1,599</div>
+                                </div>
+                                <div class="item-total">
+                                    <div class="total-price">Rs. 1,299</div>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="btn btn-outline-danger btn-sm remove-item" title="Remove from cart">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm move-to-wishlist" title="Move to wishlist">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Continue Shopping -->
+                        <div class="continue-shopping mt-4">
+                            <a href="index.html" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="col-lg-4">
+                    <div class="cart-summary">
+                        <div class="summary-card">
+                            <div class="summary-header">
+                                <h4 class="summary-title">Order Summary</h4>
+                            </div>
+                            
+                            <div class="summary-body">
+                                <!-- Promo Code -->
+                                <div class="promo-section mb-4">
+                                    <label class="form-label">Promo Code</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="promoCode" placeholder="Enter promo code">
+                                        <button class="btn btn-outline-primary" type="button" id="applyPromo">Apply</button>
+                                    </div>
+                                    <div class="promo-message mt-2"></div>
+                                </div>
+
+                                <!-- Order Details -->
+                                <div class="order-details">
+                                    <div class="detail-row">
+                                        <span>Subtotal (3 items)</span>
+                                        <span class="subtotal">Rs. 3,897</span>
+                                    </div>
+                                    <div class="detail-row discount-row d-none">
+                                        <span>Discount</span>
+                                        <span class="discount text-success">-Rs. 0</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span>Shipping</span>
+                                        <span class="shipping">FREE</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span>Tax</span>
+                                        <span class="tax">Rs. 0</span>
+                                    </div>
+                                    <hr>
+                                    <div class="detail-row total-row">
+                                        <span class="total-label">Total</span>
+                                        <span class="total-amount">Rs. 3,897</span>
+                                    </div>
+                                </div>
+
+                                <!-- Free Shipping Progress -->
+                                <div class="shipping-progress mt-4">
+                                    <div class="shipping-message text-success">
+                                        <i class="fas fa-check-circle me-2"></i>
+                                        You qualify for FREE shipping!
+                                    </div>
+                                    <div class="progress mt-2">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Checkout Button -->
+                                <div class="checkout-section mt-4">
+                                    <button class="btn btn-primary btn-lg w-100 checkout-btn">
+                                        <i class="fas fa-lock me-2"></i>Secure Checkout
+                                    </button>
+                                    <div class="payment-methods mt-3">
+                                        <p class="payment-title">We Accept:</p>
+                                        <div class="payment-icons">
+                                            <img src="images/jazzcash.png" alt="JazzCash" class="payment-icon">
+                                            <img src="images/easypaisa.png" alt="EasyPaisa" class="payment-icon">
+                                            <img src="images/cod.png" alt="Cash on Delivery" class="payment-icon">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Security Badge -->
+                                <div class="security-badge text-center mt-4">
+                                    <i class="fas fa-shield-alt text-success me-2"></i>
+                                    <span class="security-text">Secure & encrypted checkout</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Benefits Card -->
+                        <div class="benefits-card mt-4">
+                            <h6 class="benefits-title">Your Benefits</h6>
+                            <div class="benefit-item">
+                                <i class="fas fa-shipping-fast text-primary"></i>
+                                <span>Free shipping on orders over Rs. 2000</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-gift text-primary"></i>
+                                <span>Free samples with your order</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-undo text-primary"></i>
+                                <span>14-day easy return policy</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-headset text-primary"></i>
+                                <span>24/7 customer support</span>
+                            </div>
+                        </div>
+
+                        <!-- Recommended Products -->
+                        <div class="recommended-products mt-4">
+                            <h6 class="recommended-title">You might also like</h6>
+                            <div class="recommended-item">
+                                <img src="images/products/product-3.jpg" alt="Recommended Product" class="recommended-image">
+                                <div class="recommended-details">
+                                    <h6 class="recommended-name">Gentle Cleansing Foam</h6>
+                                    <div class="recommended-price">Rs. 749</div>
+                                    <button class="btn btn-outline-primary btn-sm">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">
+                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                            <span class="footer-brand-text">Sanoria.pk</span>
+                        </div>
+                        <p class="footer-description">Your trusted partner for premium beauty and skincare products.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                            <li><a href="shipping.html">Shipping Info</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=skincare">Skincare</a></li>
+                            <li><a href="category.html?cat=makeup">Makeup</a></li>
+                            <li><a href="category.html?cat=haircare">Hair Care</a></li>
+                            <li><a href="category.html?cat=fragrance">Fragrance</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Contact Info</h6>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</p>
+                            <p><i class="fas fa-phone me-2"></i>+92 300 1234567</p>
+                            <p><i class="fas fa-envelope me-2"></i>info@sanoria.pk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="text-center">
+                <p class="copyright-text mb-0">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

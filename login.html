@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Login to your Sanoria.pk account to access your orders, wishlist, and exclusive offers.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+    <!-- Header -->
+    <header class="auth-header">
+        <div class="container">
+            <div class="row align-items-center py-3">
+                <div class="col-6">
+                    <a href="index.html" class="brand-link">
+                        <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                        <span class="brand-text">Sanoria.pk</span>
+                    </a>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="index.html" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="auth-main">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-7">
+                    <div class="auth-card">
+                        <div class="auth-header-content text-center mb-4">
+                            <h1 class="auth-title">Welcome Back</h1>
+                            <p class="auth-subtitle">Sign in to your account to continue shopping</p>
+                        </div>
+
+                        <!-- Login Form -->
+                        <form id="loginForm" class="auth-form">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                    <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email">
+                                </div>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                    <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="mb-3 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe" name="remember">
+                                    <label class="form-check-label" for="rememberMe">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <a href="forgot-password.html" class="forgot-password-link">
+                                    Forgot Password?
+                                </a>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 mb-3">
+                                <span class="btn-text">Sign In</span>
+                                <span class="btn-loading d-none">
+                                    <i class="fas fa-spinner fa-spin me-2"></i>Signing In...
+                                </span>
+                            </button>
+
+                            <div class="text-center">
+                                <p class="mb-0">Don't have an account? 
+                                    <a href="register.html" class="auth-link">Create Account</a>
+                                </p>
+                            </div>
+                        </form>
+
+                        <!-- Social Login -->
+                        <div class="social-login mt-4">
+                            <div class="divider">
+                                <span>or continue with</span>
+                            </div>
+                            
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button class="btn btn-outline-secondary w-100 social-btn" type="button">
+                                        <i class="fab fa-google me-2"></i>Google
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-secondary w-100 social-btn" type="button">
+                                        <i class="fab fa-facebook-f me-2"></i>Facebook
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Access for Demo -->
+                        <div class="demo-access mt-4 p-3 bg-light rounded">
+                            <h6 class="mb-2">Quick Demo Access:</h6>
+                            <p class="mb-2 small">
+                                <strong>Customer:</strong> customer@sanoria.pk / password123<br>
+                                <strong>Admin:</strong> abcd@gmail.com / 11223344
+                            </p>
+                            <button type="button" class="btn btn-sm btn-outline-primary me-2" onclick="fillDemoCredentials('customer')">
+                                Fill Customer
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-warning" onclick="fillDemoCredentials('admin')">
+                                Fill Admin
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="auth-features mt-4">
+                        <div class="row g-3">
+                            <div class="col-4 text-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <p class="feature-text">Secure Login</p>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <p class="feature-text">Save Wishlist</p>
+                            </div>
+                            <div class="col-4 text-center">
+                                <div class="feature-icon">
+                                    <i class="fas fa-history"></i>
+                                </div>
+                                <p class="feature-text">Order History</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="auth-footer text-center py-4">
+        <div class="container">
+            <p class="mb-2">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/auth.js"></script>
+</body>
+</html>
