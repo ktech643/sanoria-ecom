@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Sanoria.pk</title>
+	<meta name="description" content="Sanoria.pk - Elegant luxury skincare and beauty." />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/css/styles.css" />
+	{% block extra_head %}{% endblock %}
+</head>
+<body class="bg-light">
+	<header class="container py-3 d-flex justify-content-between align-items-center">
+		<a href="/" class="navbar-brand fw-bold fs-3" style="font-family:'Playfair Display', serif;">Sanoria.pk</a>
+		<div class="d-flex align-items-center gap-3">
+			<a href="/notifications" class="position-relative text-dark">
+				<span class="bi bi-bell fs-4"></span>
+				<span class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill">1</span>
+			</a>
+			<button class="btn btn-outline-dark d-flex align-items-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</div>
+	</header>
+
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasNavLabel">Menu</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<ul class="list-unstyled">
+				<li><a href="/" class="text-decoration-none d-block py-2">Home</a></li>
+				<li><a href="/shop" class="text-decoration-none d-block py-2">Shop</a></li>
+				<li><a href="/blog" class="text-decoration-none d-block py-2">Blog</a></li>
+				<li><a href="/accounts/login/" class="text-decoration-none d-block py-2">Login</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<main>
+		{% block content %}{% endblock %}
+	</main>
+
+	<!-- Simple Chatbot Entry -->
+	<div id="chatbot" class="position-fixed" style="right:20px; bottom:20px; z-index:1050;">
+		<button class="btn btn-dark rounded-circle p-3" data-bs-toggle="modal" data-bs-target="#chatModal">💬</button>
+	</div>
+	<div class="modal fade" id="chatModal" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-end modal-sm">
+			<div class="modal-content">
+				<div class="modal-header"><h5 class="modal-title">Chat with us</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body">
+					<div class="mb-2 small text-muted">We typically reply in a minute.</div>
+					<input class="form-control" placeholder="Type your message..." />
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary">Send</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+	{% block extra_js %}{% endblock %}
+</body>
+</html>
+
