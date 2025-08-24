@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanoria.pk - Premium Beauty & Cosmetics</title>
+    <meta name="description" content="Discover luxury beauty products at Sanoria.pk. Premium cosmetics, skincare, and beauty essentials with fast delivery across Pakistan.">
+    <meta name="keywords" content="beauty, cosmetics, skincare, makeup, Pakistan, online shopping, luxury beauty">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/logo.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top luxury-nav">
+        <div class="container">
+            <!-- AI Generated Logo -->
+            <a class="navbar-brand logo-container" href="index.html">
+                <div class="ai-logo logo-sparkle"></div>
+                <span class="logo-text">Sanoria<span class="accent">.pk</span></span>
+            </a>
+
+            <!-- Hamburger Menu Button -->
+            <button class="navbar-toggler hamburger-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Products</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#skincare">Skincare</a></li>
+                            <li><a class="dropdown-item" href="#makeup">Makeup</a></li>
+                            <li><a class="dropdown-item" href="#fragrance">Fragrance</a></li>
+                            <li><a class="dropdown-item" href="#hair-care">Hair Care</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#skin-type">Shop by Skin Type</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                
+                <!-- Right Side Icons -->
+                <div class="navbar-nav ms-auto d-flex align-items-center">
+                    <a href="#search" class="nav-link search-icon"><i class="fas fa-search"></i></a>
+                    <a href="#notifications" class="nav-link notification-icon position-relative">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </a>
+                    <a href="#wishlist" class="nav-link wishlist-icon position-relative">
+                        <i class="fas fa-heart"></i>
+                        <span class="wishlist-count">2</span>
+                    </a>
+                    <a href="#cart" class="nav-link cart-icon position-relative">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count">1</span>
+                    </a>
+                    <a href="#account" class="nav-link user-icon"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Discount Banner -->
+    <div class="discount-banner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <i class="fas fa-gift me-2"></i>
+                    <strong>SPECIAL OFFER:</strong> Get 25% OFF on all orders above Rs. 2000 + FREE GIFTS!
+                </div>
+                <div class="col-md-4 text-end">
+                    <button class="btn btn-outline-light btn-sm">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Discover Your <span class="text-accent">Beauty</span></h1>
+                        <p class="hero-subtitle">Premium cosmetics and skincare products delivered to your door. Experience luxury at its finest.</p>
+                        <div class="hero-buttons">
+                            <a href="#products" class="btn btn-primary btn-lg me-3">Shop Now</a>
+                            <a href="#about" class="btn btn-outline-light btn-lg">Learn More</a>
+                        </div>
+                        <div class="hero-features mt-4">
+                            <div class="feature-item">
+                                <i class="fas fa-shipping-fast"></i>
+                                <span>Free Shipping</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-undo"></i>
+                                <span>14-Day Returns</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-gift"></i>
+                                <span>Free Samples</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <img src="images/hero-products.jpg" alt="Beauty Products" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="featured-categories py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Shop by Category</h2>
+                    <p class="section-subtitle">Discover our curated collection of premium beauty products</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/skincare-category.jpg" alt="Skincare" class="img-fluid">
+                        </div>
+                        <div class="category-content">
+                            <h4>Skincare</h4>
+                            <p>Nourish your skin with premium products</p>
+                            <a href="#skincare" class="btn btn-outline-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/makeup-category.jpg" alt="Makeup" class="img-fluid">
+                        </div>
+                        <div class="category-content">
+                            <h4>Makeup</h4>
+                            <p>Express yourself with vibrant colors</p>
+                            <a href="#makeup" class="btn btn-outline-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/fragrance-category.jpg" alt="Fragrance" class="img-fluid">
+                        </div>
+                        <div class="category-content">
+                            <h4>Fragrance</h4>
+                            <p>Captivating scents for every occasion</p>
+                            <a href="#fragrance" class="btn btn-outline-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="images/haircare-category.jpg" alt="Hair Care" class="img-fluid">
+                        </div>
+                        <div class="category-content">
+                            <h4>Hair Care</h4>
+                            <p>Healthy, beautiful hair solutions</p>
+                            <a href="#hair-care" class="btn btn-outline-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Featured Products</h2>
+                    <p class="section-subtitle">Our most popular and trending items</p>
+                </div>
+            </div>
+            <div class="row g-4" id="featured-products-container">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skin Type Section -->
+    <section id="skin-type" class="skin-type-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Shop by Skin Type</h2>
+                    <p class="section-subtitle">Find products perfectly suited for your skin</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="skin-type-card">
+                        <i class="fas fa-sun skin-type-icon"></i>
+                        <h4>Oily Skin</h4>
+                        <p>Oil-control and mattifying products for a shine-free complexion</p>
+                        <a href="#oily-skin" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skin-type-card">
+                        <i class="fas fa-tint skin-type-icon"></i>
+                        <h4>Dry Skin</h4>
+                        <p>Hydrating and moisturizing products for soft, supple skin</p>
+                        <a href="#dry-skin" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skin-type-card">
+                        <i class="fas fa-balance-scale skin-type-icon"></i>
+                        <h4>Combination Skin</h4>
+                        <p>Balanced products for mixed skin concerns</p>
+                        <a href="#combination-skin" class="btn btn-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                                    <div class="footer-brand">
+                    <div class="footer-logo-container">
+                        <div class="footer-ai-logo"></div>
+                        <h4 class="footer-logo-text">Sanoria<span class="accent">.pk</span></h4>
+                    </div>
+                    <p>Your trusted partner for premium beauty and cosmetics in Pakistan. Experience luxury at affordable prices.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="#skincare">Skincare</a></li>
+                        <li><a href="#makeup">Makeup</a></li>
+                        <li><a href="#fragrance">Fragrance</a></li>
+                        <li><a href="#hair-care">Hair Care</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Customer Care</h5>
+                    <ul class="footer-links">
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Payment Partners</h5>
+                    <div class="payment-icons">
+                        <img src="images/jazzcash-logo.png" alt="JazzCash" class="payment-icon">
+                        <img src="images/easypaisa-logo.png" alt="EasyPaisa" class="payment-icon">
+                        <img src="images/bank-icon.png" alt="Bank Transfer" class="payment-icon">
+                    </div>
+                    <h6 class="mt-3">Shipping Partners</h6>
+                    <div class="shipping-icons">
+                        <img src="images/leopard-logo.png" alt="Leopard" class="shipping-icon">
+                        <img src="images/tcs-logo.png" alt="TCS" class="shipping-icon">
+                        <img src="images/pkdex-logo.png" alt="PkDex" class="shipping-icon">
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Sanoria.pk. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="#privacy" class="text-light me-3">Privacy Policy</a>
+                    <a href="#terms" class="text-light">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-widget">
+        <div class="chatbot-button" onclick="toggleChatbot()">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <h6>Chat with Sanoria</h6>
+                <button onclick="toggleChatbot()" class="chatbot-close">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    <p>Hello! How can I help you today?</p>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your message...">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Code Scanner Modal -->
+    <div class="modal fade" id="qrScannerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Scan QR Code for Offers</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="qr-reader" style="width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- QR Code Scanner -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

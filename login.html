@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top luxury-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                <span class="brand-text">Sanoria<span class="brand-accent">.pk</span></span>
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-link">← Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-md-6 col-lg-5">
+                    <div class="auth-card">
+                        <div class="text-center mb-4">
+                            <h2 class="auth-title">Welcome Back</h2>
+                            <p class="text-muted">Sign in to your Sanoria account</p>
+                        </div>
+
+                        <!-- Login Form -->
+                        <form id="login-form" class="auth-form">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+                                        <i class="fas fa-eye" id="password-toggle"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember">
+                                    <label class="form-check-label" for="remember">Remember me</label>
+                                </div>
+                                <a href="#forgot-password" class="auth-link">Forgot Password?</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 mb-3">
+                                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                            </button>
+
+                            <!-- Phone Verification Option -->
+                            <div class="text-center mb-3">
+                                <span class="text-muted">Or sign in with</span>
+                            </div>
+
+                            <button type="button" class="btn btn-outline-primary w-100 mb-3" onclick="showPhoneLogin()">
+                                <i class="fas fa-mobile-alt me-2"></i>Phone Number
+                            </button>
+
+                            <div class="text-center">
+                                <span class="text-muted">Don't have an account? </span>
+                                <a href="register.html" class="auth-link">Sign Up</a>
+                            </div>
+                        </form>
+
+                        <!-- Phone Login Form (Hidden) -->
+                        <form id="phone-login-form" class="auth-form" style="display: none;">
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">+92</span>
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="300 1234567" required>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary w-100 mb-3" onclick="sendVerificationCode()">
+                                <i class="fas fa-sms me-2"></i>Send Verification Code
+                            </button>
+
+                            <div class="verification-section" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="verification-code" class="form-label">Verification Code</label>
+                                    <input type="text" class="form-control text-center" id="verification-code" 
+                                           maxlength="6" placeholder="000000">
+                                </div>
+                                <button type="submit" class="btn btn-success w-100 mb-3">
+                                    <i class="fas fa-check me-2"></i>Verify & Login
+                                </button>
+                            </div>
+
+                            <button type="button" class="btn btn-outline-secondary w-100" onclick="showEmailLogin()">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Email Login
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Authentication JavaScript
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation for demo
+            if (email && password) {
+                localStorage.setItem('user_logged_in', 'true');
+                localStorage.setItem('user_email', email);
+                alert('Login successful! Redirecting to homepage...');
+                window.location.href = 'index.html';
+            }
+        });
+
+        document.getElementById('phone-login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const code = document.getElementById('verification-code').value;
+            
+            if (code && code.length === 6) {
+                localStorage.setItem('user_logged_in', 'true');
+                localStorage.setItem('user_phone', document.getElementById('phone').value);
+                alert('Phone verification successful! Redirecting to homepage...');
+                window.location.href = 'index.html';
+            } else {
+                alert('Please enter a valid 6-digit verification code.');
+            }
+        });
+
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.getElementById('password-toggle');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.className = 'fas fa-eye-slash';
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.className = 'fas fa-eye';
+            }
+        }
+
+        function showPhoneLogin() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('phone-login-form').style.display = 'block';
+        }
+
+        function showEmailLogin() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('phone-login-form').style.display = 'none';
+        }
+
+        function sendVerificationCode() {
+            const phone = document.getElementById('phone').value;
+            if (phone && phone.length >= 10) {
+                // Simulate sending SMS
+                const code = Math.floor(100000 + Math.random() * 900000);
+                console.log('Verification code sent:', code);
+                alert(`Verification code sent to +92${phone}. For demo purposes, use: ${code}`);
+                document.querySelector('.verification-section').style.display = 'block';
+                
+                // Auto-fill for demo
+                setTimeout(() => {
+                    document.getElementById('verification-code').value = code;
+                }, 1000);
+            } else {
+                alert('Please enter a valid phone number.');
+            }
+        }
+    </script>
+
+    <style>
+        .auth-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+
+        .auth-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--luxury-black);
+            margin-bottom: 10px;
+        }
+
+        .auth-form .input-group-text {
+            background: var(--luxury-gray);
+            border: 1px solid #ddd;
+            color: var(--text-dark);
+        }
+
+        .auth-form .form-control {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .auth-form .form-control:focus {
+            border-color: var(--luxury-gold);
+            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+        }
+
+        .auth-link {
+            color: var(--luxury-gold);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-link:hover {
+            color: var(--luxury-black);
+            text-decoration: underline;
+        }
+
+        .verification-section {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        #verification-code {
+            font-size: 1.5rem;
+            letter-spacing: 0.5rem;
+            font-weight: 600;
+        }
+    </style>
+</body>
+</html>

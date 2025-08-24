@@ -1,0 +1,112 @@
+# ==========================================================================
+#   Sanoria.pk - Apache Configuration
+# ==========================================================================
+
+# Enable URL Rewriting
+RewriteEngine On
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https:;"
+</IfModule>
+
+# Enable Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Pretty URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Product URLs
+RewriteRule ^product/([a-zA-Z0-9-]+)/?$ product.php?slug=$1 [QSA,L]
+
+# Category URLs
+RewriteRule ^category/([a-zA-Z0-9-]+)/?$ category.php?slug=$1 [QSA,L]
+
+# Page URLs
+RewriteRule ^about/?$ about.html [L]
+RewriteRule ^contact/?$ contact.html [L]
+RewriteRule ^blog/?$ blog.html [L]
+RewriteRule ^cart/?$ cart.html [L]
+RewriteRule ^checkout/?$ checkout.html [L]
+RewriteRule ^account/?$ account.html [L]
+
+# API Routes
+RewriteRule ^api/products/?$ api/products.php [QSA,L]
+RewriteRule ^api/cart/?$ api/cart.php [QSA,L]
+RewriteRule ^api/orders/?$ api/orders.php [QSA,L]
+RewriteRule ^api/auth/?$ api/auth.php [QSA,L]
+
+# Admin protection
+<Files "admin/*">
+    AuthType Basic
+    AuthName "Admin Area"
+    Require valid-user
+</Files>
+
+# Protect sensitive files
+<Files "config/*">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files "*.sql">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files ".env">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Prevent access to version control
+<Files ".git/*">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Error Pages
+ErrorDocument 404 /error404.html
+ErrorDocument 500 /error500.html
+
+# MIME Types
+AddType image/webp .webp
+AddType font/woff2 .woff2
+
+# Force HTTPS (uncomment when SSL is configured)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove trailing slashes
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [R=301,L]

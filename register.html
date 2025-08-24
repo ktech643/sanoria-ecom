@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top luxury-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                <span class="brand-text">Sanoria<span class="brand-accent">.pk</span></span>
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-link">← Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-md-8 col-lg-6">
+                    <div class="auth-card">
+                        <div class="text-center mb-4">
+                            <h2 class="auth-title">Create Account</h2>
+                            <p class="text-muted">Join Sanoria family for exclusive beauty experiences</p>
+                        </div>
+
+                        <!-- Register Form -->
+                        <form id="register-form" class="auth-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="first-name" class="form-label">First Name</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                            <input type="text" class="form-control" id="first-name" name="first_name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="last-name" class="form-label">Last Name</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                            <input type="text" class="form-control" id="last-name" name="last_name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">+92</span>
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="300 1234567" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                            <input type="password" class="form-control" id="password" name="password" required>
+                                        </div>
+                                        <div class="password-strength mt-1">
+                                            <div class="strength-bar"></div>
+                                            <small class="strength-text">Password strength</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="confirm-password" class="form-label">Confirm Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                            <input type="password" class="form-control" id="confirm-password" name="confirm_password" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="skin-type" class="form-label">Skin Type (Optional)</label>
+                                <select class="form-select" id="skin-type" name="skin_type">
+                                    <option value="">Select your skin type</option>
+                                    <option value="oily">Oily</option>
+                                    <option value="dry">Dry</option>
+                                    <option value="combination">Combination</option>
+                                    <option value="sensitive">Sensitive</option>
+                                    <option value="normal">Normal</option>
+                                </select>
+                                <small class="text-muted">This helps us recommend suitable products for you</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" checked>
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to our newsletter for beauty tips and exclusive offers
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        I agree to the <a href="#terms" class="auth-link">Terms & Conditions</a> and 
+                                        <a href="#privacy" class="auth-link">Privacy Policy</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 mb-3">
+                                <i class="fas fa-user-plus me-2"></i>Create Account
+                            </button>
+
+                            <div class="text-center">
+                                <span class="text-muted">Already have an account? </span>
+                                <a href="login.html" class="auth-link">Sign In</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phone Verification Modal -->
+    <div class="modal fade" id="verificationModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Phone Verification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-mobile-alt text-primary" style="font-size: 3rem;"></i>
+                    </div>
+                    <h6>Verification Code Sent</h6>
+                    <p class="text-muted">We've sent a 6-digit verification code to your phone number</p>
+                    
+                    <div class="verification-input mb-3">
+                        <input type="text" class="form-control text-center" id="modal-verification-code" 
+                               maxlength="6" placeholder="000000" style="font-size: 1.5rem; letter-spacing: 0.5rem;">
+                    </div>
+                    
+                    <button class="btn btn-primary w-100" onclick="verifyPhone()">
+                        <i class="fas fa-check me-2"></i>Verify Phone
+                    </button>
+                    
+                    <div class="mt-3">
+                        <small class="text-muted">Didn't receive the code? </small>
+                        <button class="btn btn-link btn-sm p-0" onclick="resendCode()">Resend</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Registration JavaScript
+        let generatedCode = null;
+
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirm_password');
+            
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Validate password strength
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long!');
+                return;
+            }
+            
+            // Check terms acceptance
+            if (!document.getElementById('terms').checked) {
+                alert('Please accept the Terms & Conditions to continue.');
+                return;
+            }
+            
+            // Send verification code
+            sendPhoneVerification();
+        });
+
+        function sendPhoneVerification() {
+            const phone = document.getElementById('phone').value;
+            
+            if (phone && phone.length >= 10) {
+                // Generate verification code
+                generatedCode = Math.floor(100000 + Math.random() * 900000);
+                console.log('Verification code:', generatedCode);
+                
+                // Show verification modal
+                const modal = new bootstrap.Modal(document.getElementById('verificationModal'));
+                modal.show();
+                
+                // Auto-fill for demo purposes
+                setTimeout(() => {
+                    document.getElementById('modal-verification-code').value = generatedCode;
+                }, 2000);
+                
+                alert(`Verification code sent to +92${phone}. For demo: ${generatedCode}`);
+            } else {
+                alert('Please enter a valid phone number.');
+            }
+        }
+
+        function verifyPhone() {
+            const enteredCode = document.getElementById('modal-verification-code').value;
+            
+            if (enteredCode == generatedCode) {
+                // Close modal
+                bootstrap.Modal.getInstance(document.getElementById('verificationModal')).hide();
+                
+                // Store user data
+                const formData = new FormData(document.getElementById('register-form'));
+                localStorage.setItem('user_registered', 'true');
+                localStorage.setItem('user_email', formData.get('email'));
+                localStorage.setItem('user_phone', formData.get('phone'));
+                localStorage.setItem('user_name', `${formData.get('first_name')} ${formData.get('last_name')}`);
+                localStorage.setItem('user_skin_type', formData.get('skin_type'));
+                
+                alert('Account created successfully! Welcome to Sanoria family!');
+                window.location.href = 'login.html';
+            } else {
+                alert('Invalid verification code. Please try again.');
+            }
+        }
+
+        function resendCode() {
+            sendPhoneVerification();
+        }
+
+        // Password strength checker
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthBar = document.querySelector('.strength-bar');
+            const strengthText = document.querySelector('.strength-text');
+            
+            let strength = 0;
+            let feedback = '';
+            
+            if (password.length >= 6) strength += 1;
+            if (password.match(/[a-z]/)) strength += 1;
+            if (password.match(/[A-Z]/)) strength += 1;
+            if (password.match(/[0-9]/)) strength += 1;
+            if (password.match(/[^a-zA-Z0-9]/)) strength += 1;
+            
+            switch (strength) {
+                case 0:
+                case 1:
+                    strengthBar.style.width = '20%';
+                    strengthBar.style.background = '#e74c3c';
+                    feedback = 'Weak';
+                    break;
+                case 2:
+                    strengthBar.style.width = '40%';
+                    strengthBar.style.background = '#f39c12';
+                    feedback = 'Fair';
+                    break;
+                case 3:
+                    strengthBar.style.width = '60%';
+                    strengthBar.style.background = '#f1c40f';
+                    feedback = 'Good';
+                    break;
+                case 4:
+                    strengthBar.style.width = '80%';
+                    strengthBar.style.background = '#27ae60';
+                    feedback = 'Strong';
+                    break;
+                case 5:
+                    strengthBar.style.width = '100%';
+                    strengthBar.style.background = '#2ecc71';
+                    feedback = 'Very Strong';
+                    break;
+            }
+            
+            strengthText.textContent = feedback;
+        });
+    </script>
+
+    <style>
+        .auth-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            min-height: 100vh;
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+
+        .auth-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--luxury-black);
+            margin-bottom: 10px;
+        }
+
+        .auth-form .input-group-text {
+            background: var(--luxury-gray);
+            border: 1px solid #ddd;
+            color: var(--text-dark);
+        }
+
+        .auth-form .form-control,
+        .auth-form .form-select {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .auth-form .form-control:focus,
+        .auth-form .form-select:focus {
+            border-color: var(--luxury-gold);
+            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+        }
+
+        .auth-link {
+            color: var(--luxury-gold);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-link:hover {
+            color: var(--luxury-black);
+            text-decoration: underline;
+        }
+
+        .password-strength {
+            position: relative;
+            height: 4px;
+            background: #eee;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .strength-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .strength-text {
+            font-size: 0.75rem;
+            margin-top: 2px;
+            color: #666;
+        }
+
+        .verification-input input {
+            font-weight: 600;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--luxury-gold);
+            border-color: var(--luxury-gold);
+        }
+    </style>
+</body>
+</html>

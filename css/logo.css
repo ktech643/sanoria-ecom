@@ -1,0 +1,343 @@
+/* ==========================================================================
+   Sanoria.pk AI-Generated Logo Styles
+   ========================================================================== */
+
+/* Logo Container */
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+/* AI-Generated Logo Effect */
+.ai-logo {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #d4af37, #f1c40f, #e67e22);
+    border-radius: 50%;
+    position: relative;
+    margin-right: 12px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+.ai-logo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(45deg, #fff, #f8f9fa);
+    border-radius: 50%;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.ai-logo::after {
+    content: 'S';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #d4af37;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+/* Logo Text */
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--luxury-black);
+    text-decoration: none;
+    position: relative;
+}
+
+.logo-text .accent {
+    color: #d4af37;
+    position: relative;
+}
+
+.logo-text .accent::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #d4af37, #f1c40f);
+    border-radius: 1px;
+}
+
+/* Hover Effects */
+.navbar-brand:hover .ai-logo {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.navbar-brand:hover .logo-text {
+    color: #d4af37;
+}
+
+/* Animation */
+@keyframes logoGlow {
+    0% {
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+    100% {
+        box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+    }
+}
+
+/* Responsive Logo */
+@media (max-width: 768px) {
+    .ai-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .ai-logo::before {
+        width: 27px;
+        height: 27px;
+    }
+    
+    .ai-logo::after {
+        font-size: 16px;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+}
+
+/* Footer Logo Variant */
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-ai-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #fff, #f8f9fa);
+    border-radius: 50%;
+    position: relative;
+    margin-right: 12px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.footer-ai-logo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    border-radius: 50%;
+}
+
+.footer-ai-logo::after {
+    content: 'S';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #d4af37;
+    z-index: 2;
+}
+
+.footer-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.footer-logo-text .accent {
+    color: #d4af37;
+}
+
+/* Admin Logo Variant */
+.admin-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.admin-ai-logo {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #d4af37, #f1c40f);
+    border-radius: 12px;
+    position: relative;
+    margin-right: 12px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.admin-ai-logo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #fff, #f8f9fa);
+    border-radius: 8px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.admin-ai-logo::after {
+    content: 'SA';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #d4af37;
+    letter-spacing: -1px;
+    z-index: 2;
+}
+
+.admin-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+/* Loading Animation for Logo */
+.logo-loading {
+    animation: logoSpin 2s linear infinite;
+}
+
+@keyframes logoSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Special Effects */
+.logo-sparkle {
+    position: relative;
+    overflow: visible;
+}
+
+.logo-sparkle::before {
+    content: '✨';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 12px;
+    animation: sparkle 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes sparkle {
+    0%, 100% { 
+        opacity: 0; 
+        transform: scale(0.5) rotate(0deg);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1) rotate(180deg);
+    }
+}
+
+/* Brand Colors Palette */
+.brand-colors {
+    display: none; /* Hidden color reference */
+}
+
+.brand-primary { color: #d4af37; }
+.brand-secondary { color: #2c3e50; }
+.brand-accent { color: #e74c3c; }
+.brand-success { color: #27ae60; }
+.brand-warning { color: #f39c12; }
+.brand-info { color: #3498db; }
+
+/* Typography Enhancement */
+.brand-font-primary {
+    font-family: 'Playfair Display', serif;
+}
+
+.brand-font-secondary {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Icon Font for Custom Icons */
+@font-face {
+    font-family: 'SanoriaIcons';
+    src: url('data:font/woff2;base64,') format('woff2');
+}
+
+.sanoria-icon {
+    font-family: 'SanoriaIcons', 'Font Awesome 6 Free';
+    font-weight: 900;
+}
+
+/* Luxury Gradient Backgrounds */
+.luxury-gradient-gold {
+    background: linear-gradient(135deg, #d4af37, #f1c40f, #e67e22);
+}
+
+.luxury-gradient-dark {
+    background: linear-gradient(135deg, #2c3e50, #34495e, #1a1a1a);
+}
+
+.luxury-gradient-light {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa, #ecf0f1);
+}
+
+/* Texture Overlays */
+.luxury-texture {
+    position: relative;
+}
+
+.luxury-texture::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Premium Badge */
+.premium-badge {
+    position: relative;
+    display: inline-block;
+    padding: 5px 12px;
+    background: linear-gradient(135deg, #d4af37, #f1c40f);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+.premium-badge::before {
+    content: '👑';
+    margin-right: 4px;
+}
