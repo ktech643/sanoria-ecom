@@ -1,0 +1,1 @@
+import dotenv from"dotenv";dotenv.config();export default { client: process.env.DB_CLIENT, connection: { filename: process.env.DB_CONNECTION }, useNullAsDefault: true };
