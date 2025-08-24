@@ -302,8 +302,10 @@ $(document).ready(function() {
         
         searchInputs.on('keyup', debounce(function() {
             const query = $(this).val().trim();
+            const $searchContainer = $(this).closest('.search-container');
+            
             if (query.length >= 2) {
-                performSearch(query);
+                performSearch(query, $searchContainer);
             } else {
                 hideSearchResults();
             }
@@ -325,58 +327,128 @@ $(document).ready(function() {
                 }
             }
         });
+
+        // Hide search results when clicking outside
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.search-container').length) {
+                hideSearchResults();
+            }
+        });
+
+        // Handle search result clicks
+        $(document).on('click', '.search-result-item', function(e) {
+            e.preventDefault();
+            const productId = $(this).data('product-id');
+            window.location.href = `product.html?id=${productId}`;
+        });
     }
 
-    function performSearch(query) {
+    function performSearch(query, $searchContainer) {
+        // Show loading state
+        showSearchLoading($searchContainer);
+        
         // Simulate API search (replace with real API call)
-        const results = searchProducts(query);
-        displaySearchResults(results);
+        setTimeout(() => {
+            const results = searchProducts(query);
+            displaySearchResults(results, $searchContainer, query);
+        }, 300);
     }
 
     function searchProducts(query) {
-        // Sample search results (replace with real API)
+        // Enhanced sample search results with more products
         const sampleProducts = [
-            { id: 1, name: 'Hydrating Facial Serum', price: 1299, image: 'images/product-1.jpg' },
-            { id: 2, name: 'Anti-Aging Night Cream', price: 1899, image: 'images/product-2.jpg' },
-            { id: 3, name: 'Vitamin C Moisturizer', price: 1599, image: 'images/product-3.jpg' },
-            { id: 4, name: 'Gentle Cleansing Foam', price: 899, image: 'images/product-4.jpg' }
+            { id: 1, name: 'Hydrating Facial Serum', price: 1299, category: 'Skincare', image: 'images/products/product-1.jpg' },
+            { id: 2, name: 'Vitamin C Brightening Serum', price: 1599, category: 'Skincare', image: 'images/products/product-2.jpg' },
+            { id: 3, name: 'Gentle Foaming Cleanser', price: 899, category: 'Skincare', image: 'images/products/product-3.jpg' },
+            { id: 4, name: 'Anti-Aging Night Cream', price: 1899, category: 'Skincare', image: 'images/products/product-4.jpg' },
+            { id: 5, name: 'Facial Cleansing Brush', price: 799, category: 'Beauty Tools', image: 'images/products/tool-1.jpg' },
+            { id: 6, name: 'Moisturizing Day Cream', price: 1199, category: 'Skincare', image: 'images/products/product-5.jpg' },
+            { id: 7, name: 'Retinol Night Serum', price: 2199, category: 'Skincare', image: 'images/products/product-6.jpg' },
+            { id: 8, name: 'Jade Roller Set', price: 599, category: 'Beauty Tools', image: 'images/products/tool-2.jpg' },
+            { id: 9, name: 'Hyaluronic Acid Toner', price: 1399, category: 'Skincare', image: 'images/products/product-7.jpg' },
+            { id: 10, name: 'Vitamin E Face Mask', price: 999, category: 'Skincare', image: 'images/products/product-8.jpg' },
+            { id: 11, name: 'Exfoliating Scrub', price: 699, category: 'Skincare', image: 'images/products/product-9.jpg' },
+            { id: 12, name: 'Makeup Brush Set', price: 1499, category: 'Beauty Tools', image: 'images/products/tool-3.jpg' }
         ];
 
         return sampleProducts.filter(product => 
-            product.name.toLowerCase().includes(query.toLowerCase())
+            product.name.toLowerCase().includes(query.toLowerCase()) ||
+            product.category.toLowerCase().includes(query.toLowerCase())
         );
     }
 
-    function displaySearchResults(results) {
-        const searchContainer = $('.search-container');
-        let existingResults = $('.search-results');
+    function displaySearchResults(results, $searchContainer, query) {
+        let $existingResults = $searchContainer.find('.search-results');
         
-        if (existingResults.length === 0) {
-            searchContainer.append('<div class="search-results"></div>');
-            existingResults = $('.search-results');
+        if ($existingResults.length === 0) {
+            $searchContainer.append('<div class="search-results"></div>');
+            $existingResults = $searchContainer.find('.search-results');
         }
 
         if (results.length === 0) {
-            existingResults.html('<div class="search-result-item">No products found</div>');
+            $existingResults.html(`
+                <div class="search-no-results">
+                    <i class="fas fa-search text-muted mb-2" style="font-size: 2rem;"></i>
+                    <p>No products found for "${query}"</p>
+                    <small>Try searching for something else</small>
+                </div>
+            `);
         } else {
-            const resultsHtml = results.map(product => `
+            const maxResults = 6; // Limit to 6 results
+            const displayResults = results.slice(0, maxResults);
+            
+            const resultsHtml = displayResults.map(product => `
                 <div class="search-result-item" data-product-id="${product.id}">
-                    <img src="${product.image}" alt="${product.name}">
+                    <img src="${product.image}" alt="${product.name}" onerror="this.src='images/placeholder.svg'">
                     <div class="search-result-content">
-                        <h6>${product.name}</h6>
-                        <span class="text-primary">Rs. ${product.price.toLocaleString()}</span>
+                        <h6>${highlightQuery(product.name, query)}</h6>
+                        <div class="category">${product.category}</div>
+                        <div class="price">Rs. ${product.price.toLocaleString()}</div>
                     </div>
                 </div>
             `).join('');
             
-            existingResults.html(resultsHtml);
+            let viewAllHtml = '';
+            if (results.length > maxResults) {
+                viewAllHtml = `
+                    <div class="search-view-all">
+                        <a href="search.html?q=${encodeURIComponent(query)}">
+                            View all ${results.length} results for "${query}"
+                        </a>
+                    </div>
+                `;
+            }
+            
+            $existingResults.html(resultsHtml + viewAllHtml);
         }
 
-        existingResults.show();
+        $existingResults.addClass('show');
+    }
+
+    function showSearchLoading($searchContainer) {
+        let $existingResults = $searchContainer.find('.search-results');
+        
+        if ($existingResults.length === 0) {
+            $searchContainer.append('<div class="search-results"></div>');
+            $existingResults = $searchContainer.find('.search-results');
+        }
+
+        $existingResults.html(`
+            <div class="search-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <span class="ms-2">Searching...</span>
+            </div>
+        `).addClass('show');
     }
 
     function hideSearchResults() {
-        $('.search-results').hide();
+        $('.search-results').removeClass('show').hide();
+    }
+
+    function highlightQuery(text, query) {
+        if (!query) return text;
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<strong>$1</strong>');
     }
 
     // =====================

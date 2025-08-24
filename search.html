@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Search results for beauty and skincare products at Sanoria.pk. Find your perfect products with our advanced search.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand me-auto" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                    <div class="brand-container">
+                        <span class="brand-text">Sanoria.pk</span>
+                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                    </div>
+                </a>
+
+                <div class="search-container d-none d-lg-flex mx-4 flex-grow-1">
+                    <div class="input-group search-box">
+                        <input type="text" class="form-control search-input" id="searchInput" placeholder="Search for beauty products...">
+                        <button class="btn btn-search" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="header-actions d-flex align-items-center">
+                    <a href="index.html" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                    </a>
+
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <a href="wishlist.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">2</span>
+                    </a>
+
+                    <a href="cart.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
+                    </a>
+
+                    <button class="btn btn-outline-primary hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigationMenu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navigationMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="sidebar-nav">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-2"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="category.html">
+                            <i class="fas fa-th-large me-2"></i>Shop by Categories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="skin-type.html">
+                            <i class="fas fa-spa me-2"></i>Shop by Skin Type
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new-arrivals.html">
+                            <i class="fas fa-star me-2"></i>New Arrivals
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotions.html">
+                            <i class="fas fa-percent me-2"></i>Promotions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fas fa-blog me-2"></i>Beauty Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle me-2"></i>About Us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="return-policy.html">
+                            <i class="fas fa-undo me-2"></i>Return Policy
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav bg-light py-3">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Search Results</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="search-page py-5">
+        <div class="container">
+            <!-- Search Header -->
+            <div class="search-header mb-4">
+                <h1 class="search-title">Search Results</h1>
+                <p class="search-subtitle" id="searchSubtitle">Enter a search term to find products</p>
+            </div>
+
+            <!-- Mobile Search -->
+            <div class="mobile-search d-lg-none mb-4">
+                <div class="search-container">
+                    <div class="input-group search-box">
+                        <input type="text" class="form-control search-input" placeholder="Search for beauty products...">
+                        <button class="btn btn-search" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Results -->
+            <div class="search-results-page" id="searchResultsPage">
+                <div class="row" id="searchResultsGrid">
+                    <!-- Results will be loaded here -->
+                </div>
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results text-center py-5 d-none" id="noResults">
+                <i class="fas fa-search text-muted mb-3" style="font-size: 4rem;"></i>
+                <h3>No products found</h3>
+                <p class="text-muted">Try adjusting your search terms or browse our categories</p>
+                <div class="mt-4">
+                    <a href="category.html" class="btn btn-primary me-3">Browse Categories</a>
+                    <a href="index.html" class="btn btn-outline-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">
+                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                            <div class="footer-brand-container">
+                                <span class="footer-brand-text">Sanoria.pk</span>
+                                <div class="footer-brand-tagline">The Essence Of TimeLess Glow</div>
+                            </div>
+                        </div>
+                        <p class="footer-description">Your trusted partner for premium beauty and skincare products.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=skincare">Skincare</a></li>
+                            <li><a href="category.html?cat=tools">Beauty Tools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Contact Info</h6>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</p>
+                            <p><i class="fas fa-phone me-2"></i>+92 300 1234567</p>
+                            <p><i class="fas fa-envelope me-2"></i>info@sanoria.pk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="text-center">
+                <p class="copyright-text mb-0">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Search page specific functionality
+        $(document).ready(function() {
+            // Get search query from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            
+            if (query) {
+                // Set search input value
+                $('.search-input').val(query);
+                performFullSearch(query);
+            }
+            
+            function performFullSearch(query) {
+                $('#searchSubtitle').text(`Showing results for "${query}"`);
+                
+                // Use the same search function from main.js
+                const results = searchProducts(query);
+                
+                if (results.length === 0) {
+                    $('#noResults').removeClass('d-none');
+                    $('#searchResultsPage').addClass('d-none');
+                } else {
+                    $('#noResults').addClass('d-none');
+                    $('#searchResultsPage').removeClass('d-none');
+                    displayFullSearchResults(results);
+                }
+            }
+            
+            function displayFullSearchResults(results) {
+                const resultsHtml = results.map(product => `
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="${product.image}" alt="${product.name}" class="img-fluid" onerror="this.src='images/placeholder.svg'">
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">${product.name}</h6>
+                                <div class="product-category text-muted">${product.category}</div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. ${product.price.toLocaleString()}</span>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 mt-2" onclick="addToCart(${product.id})">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                $('#searchResultsGrid').html(resultsHtml);
+            }
+            
+            // Re-use search function from main.js
+            function searchProducts(query) {
+                const sampleProducts = [
+                    { id: 1, name: 'Hydrating Facial Serum', price: 1299, category: 'Skincare', image: 'images/products/product-1.jpg' },
+                    { id: 2, name: 'Vitamin C Brightening Serum', price: 1599, category: 'Skincare', image: 'images/products/product-2.jpg' },
+                    { id: 3, name: 'Gentle Foaming Cleanser', price: 899, category: 'Skincare', image: 'images/products/product-3.jpg' },
+                    { id: 4, name: 'Anti-Aging Night Cream', price: 1899, category: 'Skincare', image: 'images/products/product-4.jpg' },
+                    { id: 5, name: 'Facial Cleansing Brush', price: 799, category: 'Beauty Tools', image: 'images/products/tool-1.jpg' },
+                    { id: 6, name: 'Moisturizing Day Cream', price: 1199, category: 'Skincare', image: 'images/products/product-5.jpg' },
+                    { id: 7, name: 'Retinol Night Serum', price: 2199, category: 'Skincare', image: 'images/products/product-6.jpg' },
+                    { id: 8, name: 'Jade Roller Set', price: 599, category: 'Beauty Tools', image: 'images/products/tool-2.jpg' },
+                    { id: 9, name: 'Hyaluronic Acid Toner', price: 1399, category: 'Skincare', image: 'images/products/product-7.jpg' },
+                    { id: 10, name: 'Vitamin E Face Mask', price: 999, category: 'Skincare', image: 'images/products/product-8.jpg' },
+                    { id: 11, name: 'Exfoliating Scrub', price: 699, category: 'Skincare', image: 'images/products/product-9.jpg' },
+                    { id: 12, name: 'Makeup Brush Set', price: 1499, category: 'Beauty Tools', image: 'images/products/tool-3.jpg' }
+                ];
+
+                return sampleProducts.filter(product => 
+                    product.name.toLowerCase().includes(query.toLowerCase()) ||
+                    product.category.toLowerCase().includes(query.toLowerCase())
+                );
+            }
+        });
+    </script>
+</body>
+</html>
