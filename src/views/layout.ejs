@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+    <title><%= title ? (title + ' · ') : '' %>Sanoria.pk</title>
+  </head>
+  <body>
+    <% include partials/header %>
+    <% include partials/discount-banner %>
+    <% include partials/flash %>
+    <main class="container py-4">
+      <%- body %>
+    </main>
+    <% include partials/footer %>
+    <% include partials/chatbot %>
+    <% include partials/notification %>
+    <script src="/public/js/main.js"></script>
+    <script src="/public/js/chatbot.js"></script>
+    <script src="/public/js/qr.js"></script>
+  </body>
+  </html>
