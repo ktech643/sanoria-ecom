@@ -75,7 +75,10 @@
                 <!-- Logo -->
                 <a class="navbar-brand me-auto" href="index.html">
                     <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
-                    <span class="brand-text">Sanoria.pk</span>
+                    <div class="brand-container">
+                        <span class="brand-text">Sanoria.pk</span>
+                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                    </div>
                 </a>
 
                 <!-- Search Bar (Desktop) -->
@@ -169,9 +172,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="category.html?cat=skincare">Skincare</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=makeup">Makeup</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=haircare">Hair Care</a></li>
-                            <li><a class="dropdown-item" href="category.html?cat=fragrance">Fragrance</a></li>
+
                             <li><a class="dropdown-item" href="category.html?cat=tools">Beauty Tools</a></li>
                         </ul>
                     </li>
@@ -488,13 +489,16 @@
                     <div class="footer-section">
                         <div class="footer-logo mb-3">
                             <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
-                            <span class="footer-brand-text">Sanoria.pk</span>
+                            <div class="footer-brand-container">
+                                <span class="footer-brand-text">Sanoria.pk</span>
+                                <div class="footer-brand-tagline">The Essence Of TimeLess Glow</div>
+                            </div>
                         </div>
                         <p class="footer-description">Your trusted partner for premium beauty and skincare products. Discover the perfect match for your skin type with our curated collection.</p>
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+
                             <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
                         </div>
                     </div>
@@ -516,10 +520,10 @@
                         <h6 class="footer-title">Categories</h6>
                         <ul class="footer-links">
                             <li><a href="category.html?cat=skincare">Skincare</a></li>
-                            <li><a href="category.html?cat=makeup">Makeup</a></li>
-                            <li><a href="category.html?cat=haircare">Hair Care</a></li>
-                            <li><a href="category.html?cat=fragrance">Fragrance</a></li>
                             <li><a href="category.html?cat=tools">Beauty Tools</a></li>
+                            <li><a href="skin-type.html">Shop by Skin Type</a></li>
+                            <li><a href="new-arrivals.html">New Arrivals</a></li>
+                            <li><a href="promotions.html">Promotions</a></li>
                         </ul>
                     </div>
                 </div>
@@ -534,9 +538,22 @@
                         <div class="payment-methods">
                             <h6 class="payment-title">We Accept</h6>
                             <div class="payment-icons">
-                                <img src="images/jazzcash.png" alt="JazzCash" class="payment-icon">
-                                <img src="images/easypaisa.png" alt="EasyPaisa" class="payment-icon">
-                                <img src="images/cod.png" alt="Cash on Delivery" class="payment-icon">
+                                <div class="payment-item">
+                                    <img src="images/jazzcash.png" alt="JazzCash" class="payment-icon">
+                                    <span>JazzCash</span>
+                                </div>
+                                <div class="payment-item">
+                                    <img src="images/easypaisa.png" alt="EasyPaisa" class="payment-icon">
+                                    <span>EasyPaisa</span>
+                                </div>
+                                <div class="payment-item">
+                                    <i class="fas fa-university payment-icon-alt"></i>
+                                    <span>Banks</span>
+                                </div>
+                                <div class="payment-item">
+                                    <img src="images/cod.png" alt="Cash on Delivery" class="payment-icon">
+                                    <span>COD</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -610,5 +627,6 @@
     
     <!-- Custom JavaScript -->
     <script src="js/main.js"></script>
+    <script src="js/link-verification.js"></script>
 </body>
 </html>
