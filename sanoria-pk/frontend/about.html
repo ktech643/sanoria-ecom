@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Sanoria.pk - Your trusted partner in luxury skincare and beauty">
+    <title>About Us - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, var(--bg-light) 0%, #FFFFFF 100%);
+            padding: 120px 0 80px;
+            margin-top: 118px;
+        }
+        
+        .about-content {
+            padding: 80px 0;
+        }
+        
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .mission-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .mission-card i {
+            font-size: 60px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .team-member-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .team-member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member h5 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .team-member .role {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .values-section {
+            background: var(--bg-light);
+            padding: 80px 0;
+        }
+        
+        .value-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 30px;
+        }
+        
+        .value-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .stats-section {
+            background: var(--gradient-primary);
+            padding: 60px 0;
+            color: white;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.svg" alt="Sanoria" class="logo">
+            </a>
+            
+            <div class="navbar-icons d-flex align-items-center">
+                <a href="#" class="nav-icon" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                <div class="nav-icon notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                
+                <a href="#" class="nav-icon" id="userAccount">
+                    <i class="fas fa-user"></i>
+                </a>
+                
+                <a href="cart.html" class="nav-icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                
+                <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sideMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="side-menu-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="shop.html?skin=all">Shop by Skin Type</a></li>
+                <li><a href="shop.html?filter=new">New Arrivals</a></li>
+                <li><a href="promotions.html">Promotions</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="side-menu-footer">
+                <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="startQRScanner()">
+                    <i class="fas fa-qrcode"></i> Scan QR Code
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="mb-4">About <span class="fancy-text">Sanoria</span></h1>
+                    <p class="lead">Your journey to radiant, healthy skin begins here. We believe in the transformative power of premium skincare, carefully curated to bring out your natural beauty.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="/images/placeholder.svg" alt="About Sanoria">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="about-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2020, Sanoria.pk emerged from a simple vision: to make luxury skincare accessible to everyone in Pakistan. What started as a small passion project has grown into a trusted name in beauty and skincare.</p>
+                    <p>We noticed a gap in the market for high-quality, authentic skincare products that cater specifically to the unique needs of Pakistani skin types and climate conditions. This inspired us to create a platform that not only offers premium products but also educates and empowers our customers to make informed skincare choices.</p>
+                    <p>Today, Sanoria.pk serves thousands of happy customers across Pakistan, helping them achieve their skincare goals with products that are carefully selected, tested, and proven to deliver results.</p>
+                </div>
+                <div class="col-lg-6 mb-5">
+                    <div class="about-image">
+                        <img src="/images/placeholder.svg" alt="Our Story">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Mission & Vision</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="mission-card">
+                        <i class="fas fa-bullseye"></i>
+                        <h4>Our Mission</h4>
+                        <p>To provide premium, authentic skincare products that enhance natural beauty while promoting healthy skin practices across Pakistan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="mission-card">
+                        <i class="fas fa-eye"></i>
+                        <h4>Our Vision</h4>
+                        <p>To become Pakistan's most trusted beauty and skincare destination, setting new standards for quality, service, and customer education.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="mission-card">
+                        <i class="fas fa-heart"></i>
+                        <h4>Our Promise</h4>
+                        <p>We promise to deliver only authentic products, provide expert guidance, and ensure a luxurious shopping experience for every customer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Products</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Brands</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number">4.9★</div>
+                        <div class="stat-label">Customer Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Core Values</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div>
+                            <h5>Quality First</h5>
+                            <p>We never compromise on quality. Every product is carefully vetted to ensure it meets our high standards.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h5>Authenticity Guaranteed</h5>
+                            <p>We source directly from authorized distributors to ensure 100% authentic products.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h5>Customer-Centric</h5>
+                            <p>Your satisfaction is our priority. We go above and beyond to exceed expectations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h5>Education & Empowerment</h5>
+                            <p>We believe in educating our customers about skincare to help them make informed choices.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div>
+                            <h5>Sustainability</h5>
+                            <p>We're committed to eco-friendly practices and supporting brands that care for our planet.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-sparkles"></i>
+                        </div>
+                        <div>
+                            <h5>Innovation</h5>
+                            <p>We continuously evolve, bringing the latest skincare innovations to Pakistan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Meet Our Team</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <div class="team-member-image">
+                            <img src="/images/placeholder.svg" alt="Team Member">
+                        </div>
+                        <h5>Sarah Ahmed</h5>
+                        <p class="role">Founder & CEO</p>
+                        <p>Passionate about bringing premium skincare to Pakistan, Sarah founded Sanoria with a vision to transform the beauty industry.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <div class="team-member-image">
+                            <img src="/images/placeholder.svg" alt="Team Member">
+                        </div>
+                        <h5>Dr. Fatima Khan</h5>
+                        <p class="role">Chief Beauty Expert</p>
+                        <p>With 15+ years in dermatology, Dr. Fatima ensures our product selection meets the highest standards of skin health.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <div class="team-member-image">
+                            <img src="/images/placeholder.svg" alt="Team Member">
+                        </div>
+                        <h5>Ali Hassan</h5>
+                        <p class="role">Head of Operations</p>
+                        <p>Ali ensures smooth operations and timely delivery, making sure every customer has a seamless shopping experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-light text-center">
+        <div class="container">
+            <h2 class="mb-4">Ready to Start Your Skincare Journey?</h2>
+            <p class="lead mb-4">Join thousands of customers who trust Sanoria for their beauty needs</p>
+            <a href="shop.html" class="btn btn-primary btn-lg">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <img src="images/logo.svg" alt="Sanoria" class="footer-logo mb-3">
+                    <p>Your trusted partner in luxury skincare.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Customer Care</h5>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns Policy</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-envelope me-2"></i> support@sanoria.pk</p>
+                    <p><i class="fas fa-phone me-2"></i> +92 300 1234567</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="search" class="form-control form-control-lg" placeholder="Search...">
+                    <div class="search-results mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/qrscanner.js"></script>
+</body>
+</html>

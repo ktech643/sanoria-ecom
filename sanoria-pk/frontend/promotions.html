@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Special offers, discounts, and promotions at Sanoria.pk">
+    <title>Promotions - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        .promotions-hero {
+            background: var(--gradient-primary);
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 118px;
+            color: white;
+        }
+        
+        .promotions-hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .promotion-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 100%;
+            position: relative;
+        }
+        
+        .promotion-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .promotion-header {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .promotion-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: var(--accent-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .discount-value {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 10px 0;
+        }
+        
+        .promotion-body {
+            padding: 30px;
+        }
+        
+        .promo-code {
+            background: var(--bg-light);
+            border: 2px dashed var(--primary-color);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .promo-code-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .copy-btn:hover {
+            background: var(--secondary-color);
+        }
+        
+        .terms-conditions {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 15px;
+        }
+        
+        .countdown-timer {
+            background: var(--accent-color);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .countdown-timer h5 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .countdown-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+            min-width: 60px;
+        }
+        
+        .countdown-box .number {
+            font-size: 24px;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .countdown-box .label {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        
+        .special-offer-section {
+            background: var(--bg-light);
+            padding: 80px 0;
+        }
+        
+        .special-offer-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .special-offer-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .special-offer-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .bundle-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .bundle-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .bundle-products {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .bundle-product-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        
+        .plus-sign {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .loyalty-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .loyalty-card {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #B8941F 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .loyalty-tiers {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        
+        .tier {
+            text-align: center;
+        }
+        
+        .tier-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.svg" alt="Sanoria" class="logo">
+            </a>
+            
+            <div class="navbar-icons d-flex align-items-center">
+                <a href="#" class="nav-icon" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                <div class="nav-icon notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                
+                <a href="#" class="nav-icon" id="userAccount">
+                    <i class="fas fa-user"></i>
+                </a>
+                
+                <a href="cart.html" class="nav-icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                
+                <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sideMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="side-menu-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="shop.html?skin=all">Shop by Skin Type</a></li>
+                <li><a href="shop.html?filter=new">New Arrivals</a></li>
+                <li><a href="promotions.html" class="active">Promotions</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="side-menu-footer">
+                <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="startQRScanner()">
+                    <i class="fas fa-qrcode"></i> Scan QR Code
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promotions Hero -->
+    <section class="promotions-hero">
+        <div class="container">
+            <h1 class="animate-fade-up">Special Offers & Promotions</h1>
+            <p class="lead animate-fade-up-delay">Save big on your favorite skincare products!</p>
+            <button class="btn btn-light btn-lg animate-fade-up-delay-2" onclick="startQRScanner()">
+                <i class="fas fa-qrcode"></i> Scan QR Code for Exclusive Deals
+            </button>
+        </div>
+    </section>
+
+    <!-- Active Promotions -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Active Promotions</h2>
+            <div class="row">
+                <!-- Promotion 1 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="promotion-card">
+                        <div class="promotion-header">
+                            <span class="promotion-badge">Limited Time</span>
+                            <h4>Summer Sale</h4>
+                            <div class="discount-value">20% OFF</div>
+                            <p>On All Sunscreens</p>
+                        </div>
+                        <div class="promotion-body">
+                            <p>Protect your skin this summer with our premium sunscreen collection.</p>
+                            <div class="promo-code">
+                                <span class="promo-code-text">SUMMER20</span>
+                                <button class="copy-btn" onclick="copyPromoCode('SUMMER20')">Copy</button>
+                            </div>
+                            <a href="shop.html" class="btn btn-primary w-100">Shop Now</a>
+                            <p class="terms-conditions">*Valid until March 31, 2024. Min purchase Rs. 1500</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Promotion 2 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="promotion-card">
+                        <div class="promotion-header" style="background: var(--gradient-primary);">
+                            <span class="promotion-badge">New Customer</span>
+                            <h4>Welcome Offer</h4>
+                            <div class="discount-value">15% OFF</div>
+                            <p>Your First Order</p>
+                        </div>
+                        <div class="promotion-body">
+                            <p>New to Sanoria? Enjoy 15% off on your first purchase!</p>
+                            <div class="promo-code">
+                                <span class="promo-code-text">WELCOME15</span>
+                                <button class="copy-btn" onclick="copyPromoCode('WELCOME15')">Copy</button>
+                            </div>
+                            <div class="countdown-timer">
+                                <h5>Offer Ends In:</h5>
+                                <div class="countdown-boxes">
+                                    <div class="countdown-box">
+                                        <span class="number">02</span>
+                                        <span class="label">Days</span>
+                                    </div>
+                                    <div class="countdown-box">
+                                        <span class="number">14</span>
+                                        <span class="label">Hours</span>
+                                    </div>
+                                    <div class="countdown-box">
+                                        <span class="number">32</span>
+                                        <span class="label">Mins</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="shop.html" class="btn btn-primary w-100 mt-3">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Promotion 3 -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="promotion-card">
+                        <div class="promotion-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <span class="promotion-badge">Free Gift</span>
+                            <h4>Gift with Purchase</h4>
+                            <div class="discount-value">FREE</div>
+                            <p>Face Mask Set</p>
+                        </div>
+                        <div class="promotion-body">
+                            <p>Get a FREE luxury face mask set with orders above Rs. 3000!</p>
+                            <div class="promo-code">
+                                <span class="promo-code-text">FREEGIFT</span>
+                                <button class="copy-btn" onclick="copyPromoCode('FREEGIFT')">Copy</button>
+                            </div>
+                            <a href="shop.html" class="btn btn-primary w-100">Shop Now</a>
+                            <p class="terms-conditions">*While stocks last. Auto-applied at checkout</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Bundle Offers -->
+    <section class="special-offer-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Special Bundle Offers</h2>
+            <div class="special-offer-card mb-5">
+                <div class="special-offer-content">
+                    <h2 class="mb-4">Buy 2 Get 1 FREE</h2>
+                    <p class="lead mb-4">On selected serums and moisturizers</p>
+                    <a href="shop.html" class="btn btn-light btn-lg">Shop Bundle Deals</a>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="bundle-card">
+                        <h5>Hydration Bundle</h5>
+                        <div class="bundle-products">
+                            <img src="/images/placeholder.svg" alt="Product 1" class="bundle-product-img">
+                            <span class="plus-sign">+</span>
+                            <img src="/images/placeholder.svg" alt="Product 2" class="bundle-product-img">
+                            <span class="plus-sign">+</span>
+                            <img src="/images/placeholder.svg" alt="Product 3" class="bundle-product-img">
+                        </div>
+                        <p class="text-muted mb-3">Save Rs. 800</p>
+                        <h4 class="text-primary">Rs. 3,999</h4>
+                        <del class="text-muted">Rs. 4,799</del>
+                        <button class="btn btn-primary w-100 mt-3">Add Bundle to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="bundle-card">
+                        <h5>Anti-Aging Bundle</h5>
+                        <div class="bundle-products">
+                            <img src="/images/placeholder.svg" alt="Product 1" class="bundle-product-img">
+                            <span class="plus-sign">+</span>
+                            <img src="/images/placeholder.svg" alt="Product 2" class="bundle-product-img">
+                            <span class="plus-sign">+</span>
+                            <img src="/images/placeholder.svg" alt="Product 3" class="bundle-product-img">
+                        </div>
+                        <p class="text-muted mb-3">Save Rs. 1,200</p>
+                        <h4 class="text-primary">Rs. 5,499</h4>
+                        <del class="text-muted">Rs. 6,699</del>
+                        <button class="btn btn-primary w-100 mt-3">Add Bundle to Cart</button>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="bundle-card">
+                        <h5>Complete Care Bundle</h5>
+                        <div class="bundle-products">
+                            <img src="/images/placeholder.svg" alt="Product 1" class="bundle-product-img">
+                            <span class="plus-sign">+</span>
+                            <img src="/images/placeholder.svg" alt="Product 2" class="bundle-product-img">
+                            <span class="plus-sign">+</span>
+                            <img src="/images/placeholder.svg" alt="Product 3" class="bundle-product-img">
+                        </div>
+                        <p class="text-muted mb-3">Save Rs. 1,500</p>
+                        <h4 class="text-primary">Rs. 6,999</h4>
+                        <del class="text-muted">Rs. 8,499</del>
+                        <button class="btn btn-primary w-100 mt-3">Add Bundle to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loyalty Program -->
+    <section class="loyalty-section">
+        <div class="container">
+            <h2 class="mb-5">Sanoria Rewards Program</h2>
+            <div class="loyalty-card">
+                <h3 class="mb-4">Join Our Loyalty Program</h3>
+                <p class="lead mb-4">Earn points with every purchase and unlock exclusive rewards!</p>
+                <div class="loyalty-tiers">
+                    <div class="tier">
+                        <div class="tier-icon">🥉</div>
+                        <h5>Bronze</h5>
+                        <p>5% Rewards</p>
+                    </div>
+                    <div class="tier">
+                        <div class="tier-icon">🥈</div>
+                        <h5>Silver</h5>
+                        <p>10% Rewards</p>
+                    </div>
+                    <div class="tier">
+                        <div class="tier-icon">🥇</div>
+                        <h5>Gold</h5>
+                        <p>15% Rewards</p>
+                    </div>
+                </div>
+                <button class="btn btn-light btn-lg mt-4">Join Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <img src="images/logo.svg" alt="Sanoria" class="footer-logo mb-3">
+                    <p>Your trusted partner in luxury skincare.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Customer Care</h5>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns Policy</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe for exclusive offers!</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="search" class="form-control form-control-lg" placeholder="Search...">
+                    <div class="search-results mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/qrscanner.js"></script>
+    <script>
+        // Copy promo code function
+        function copyPromoCode(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                showNotification(`Promo code ${code} copied!`, 'success');
+                
+                // Change button text temporarily
+                event.target.textContent = 'Copied!';
+                setTimeout(() => {
+                    event.target.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            // This is a simple example - in production, use actual end date
+            const countdownBoxes = document.querySelectorAll('.countdown-box .number');
+            // Update countdown logic here
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

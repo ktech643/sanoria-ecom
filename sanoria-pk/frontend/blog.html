@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beauty tips, skincare guides, and latest trends - Sanoria.pk Blog">
+    <title>Blog - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, var(--bg-light) 0%, #FFFFFF 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+            margin-top: 118px;
+        }
+        
+        .blog-post-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .blog-post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .blog-post-image {
+            position: relative;
+            padding-top: 60%;
+            overflow: hidden;
+        }
+        
+        .blog-post-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .blog-post-content {
+            padding: 30px;
+        }
+        
+        .blog-post-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .blog-post-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .read-more-btn {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+        
+        .read-more-btn:hover {
+            gap: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .blog-sidebar {
+            position: sticky;
+            top: 140px;
+        }
+        
+        .sidebar-widget {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .sidebar-widget h5 {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        
+        .popular-post {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .popular-post:last-child {
+            margin-bottom: 0;
+        }
+        
+        .popular-post img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .popular-post-content h6 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        
+        .popular-post-content a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .popular-post-content a:hover {
+            color: var(--primary-color);
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background: var(--bg-light);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.svg" alt="Sanoria" class="logo">
+            </a>
+            
+            <div class="navbar-icons d-flex align-items-center">
+                <a href="#" class="nav-icon" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+                <div class="nav-icon notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                
+                <a href="#" class="nav-icon" id="userAccount">
+                    <i class="fas fa-user"></i>
+                </a>
+                
+                <a href="cart.html" class="nav-icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                
+                <button class="hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="sideMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="side-menu-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="shop.html?skin=all">Shop by Skin Type</a></li>
+                <li><a href="shop.html?filter=new">New Arrivals</a></li>
+                <li><a href="promotions.html">Promotions</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="side-menu-footer">
+                <a href="#" class="btn btn-outline-primary w-100 mb-2" onclick="startQRScanner()">
+                    <i class="fas fa-qrcode"></i> Scan QR Code
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1 class="fancy-text">Beauty Blog</h1>
+            <p class="lead">Discover skincare tips, beauty trends, and expert advice</p>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Blog Posts Grid -->
+                <div class="col-lg-8">
+                    <div class="row">
+                        <!-- Blog Post 1 -->
+                        <div class="col-md-6 mb-4">
+                            <article class="blog-post-card">
+                                <div class="blog-post-image">
+                                    <img src="/images/placeholder.svg" alt="Blog Post">
+                                    <span class="blog-category">Skincare</span>
+                                </div>
+                                <div class="blog-post-content">
+                                    <h3 class="blog-post-title">10 Steps to Perfect Skin</h3>
+                                    <div class="blog-post-meta">
+                                        <span><i class="far fa-calendar"></i> March 15, 2024</span>
+                                        <span><i class="far fa-user"></i> Dr. Sarah Ahmed</span>
+                                    </div>
+                                    <p class="blog-post-excerpt">Discover the ultimate skincare routine for glowing, healthy skin. From cleansing to moisturizing, we cover everything you need...</p>
+                                    <a href="#" class="read-more-btn">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Blog Post 2 -->
+                        <div class="col-md-6 mb-4">
+                            <article class="blog-post-card">
+                                <div class="blog-post-image">
+                                    <img src="/images/placeholder.svg" alt="Blog Post">
+                                    <span class="blog-category">Tips</span>
+                                </div>
+                                <div class="blog-post-content">
+                                    <h3 class="blog-post-title">Understanding Your Skin Type</h3>
+                                    <div class="blog-post-meta">
+                                        <span><i class="far fa-calendar"></i> March 12, 2024</span>
+                                        <span><i class="far fa-user"></i> Beauty Expert</span>
+                                    </div>
+                                    <p class="blog-post-excerpt">Learn how to identify your skin type and choose the right products. Whether you have dry, oily, or combination skin...</p>
+                                    <a href="#" class="read-more-btn">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Blog Post 3 -->
+                        <div class="col-md-6 mb-4">
+                            <article class="blog-post-card">
+                                <div class="blog-post-image">
+                                    <img src="/images/placeholder.svg" alt="Blog Post">
+                                    <span class="blog-category">Natural</span>
+                                </div>
+                                <div class="blog-post-content">
+                                    <h3 class="blog-post-title">Natural Ingredients for Beauty</h3>
+                                    <div class="blog-post-meta">
+                                        <span><i class="far fa-calendar"></i> March 10, 2024</span>
+                                        <span><i class="far fa-user"></i> Wellness Coach</span>
+                                    </div>
+                                    <p class="blog-post-excerpt">Explore the power of natural ingredients in modern skincare. From turmeric to rosehip oil, discover nature's beauty secrets...</p>
+                                    <a href="#" class="read-more-btn">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Blog Post 4 -->
+                        <div class="col-md-6 mb-4">
+                            <article class="blog-post-card">
+                                <div class="blog-post-image">
+                                    <img src="/images/placeholder.svg" alt="Blog Post">
+                                    <span class="blog-category">Anti-Aging</span>
+                                </div>
+                                <div class="blog-post-content">
+                                    <h3 class="blog-post-title">The Truth About Retinol</h3>
+                                    <div class="blog-post-meta">
+                                        <span><i class="far fa-calendar"></i> March 8, 2024</span>
+                                        <span><i class="far fa-user"></i> Dermatologist</span>
+                                    </div>
+                                    <p class="blog-post-excerpt">Everything you need to know about retinol and how to use it safely. Learn about benefits, side effects, and best practices...</p>
+                                    <a href="#" class="read-more-btn">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Blog Post 5 -->
+                        <div class="col-md-6 mb-4">
+                            <article class="blog-post-card">
+                                <div class="blog-post-image">
+                                    <img src="/images/placeholder.svg" alt="Blog Post">
+                                    <span class="blog-category">Makeup</span>
+                                </div>
+                                <div class="blog-post-content">
+                                    <h3 class="blog-post-title">Summer Makeup Trends 2024</h3>
+                                    <div class="blog-post-meta">
+                                        <span><i class="far fa-calendar"></i> March 5, 2024</span>
+                                        <span><i class="far fa-user"></i> Makeup Artist</span>
+                                    </div>
+                                    <p class="blog-post-excerpt">Get ready for summer with the hottest makeup trends. From glowing skin to bold lips, discover what's trending this season...</p>
+                                    <a href="#" class="read-more-btn">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <!-- Blog Post 6 -->
+                        <div class="col-md-6 mb-4">
+                            <article class="blog-post-card">
+                                <div class="blog-post-image">
+                                    <img src="/images/placeholder.svg" alt="Blog Post">
+                                    <span class="blog-category">Wellness</span>
+                                </div>
+                                <div class="blog-post-content">
+                                    <h3 class="blog-post-title">Beauty Sleep: Myth or Reality?</h3>
+                                    <div class="blog-post-meta">
+                                        <span><i class="far fa-calendar"></i> March 1, 2024</span>
+                                        <span><i class="far fa-user"></i> Health Expert</span>
+                                    </div>
+                                    <p class="blog-post-excerpt">Discover how sleep affects your skin and overall beauty. Learn tips for better sleep and nighttime skincare routines...</p>
+                                    <a href="#" class="read-more-btn">
+                                        Read More <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <nav aria-label="Blog pagination" class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <aside class="blog-sidebar">
+                        <!-- Search Widget -->
+                        <div class="sidebar-widget">
+                            <h5>Search Blog</h5>
+                            <form>
+                                <div class="input-group">
+                                    <input type="search" class="form-control" placeholder="Search...">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Categories Widget -->
+                        <div class="sidebar-widget">
+                            <h5>Categories</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <a href="#" class="text-decoration-none text-secondary">
+                                        <i class="fas fa-angle-right me-2"></i>Skincare (24)
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-decoration-none text-secondary">
+                                        <i class="fas fa-angle-right me-2"></i>Makeup (18)
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-decoration-none text-secondary">
+                                        <i class="fas fa-angle-right me-2"></i>Anti-Aging (15)
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-decoration-none text-secondary">
+                                        <i class="fas fa-angle-right me-2"></i>Natural Beauty (12)
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="#" class="text-decoration-none text-secondary">
+                                        <i class="fas fa-angle-right me-2"></i>Wellness (10)
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Popular Posts Widget -->
+                        <div class="sidebar-widget">
+                            <h5>Popular Posts</h5>
+                            <div class="popular-post">
+                                <img src="/images/placeholder.svg" alt="Popular Post">
+                                <div class="popular-post-content">
+                                    <h6><a href="#">How to Build a Morning Skincare Routine</a></h6>
+                                    <small class="text-muted">2 days ago</small>
+                                </div>
+                            </div>
+                            <div class="popular-post">
+                                <img src="/images/placeholder.svg" alt="Popular Post">
+                                <div class="popular-post-content">
+                                    <h6><a href="#">5 Common Skincare Mistakes to Avoid</a></h6>
+                                    <small class="text-muted">5 days ago</small>
+                                </div>
+                            </div>
+                            <div class="popular-post">
+                                <img src="/images/placeholder.svg" alt="Popular Post">
+                                <div class="popular-post-content">
+                                    <h6><a href="#">The Benefits of Vitamin C for Your Skin</a></h6>
+                                    <small class="text-muted">1 week ago</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tags Widget -->
+                        <div class="sidebar-widget">
+                            <h5>Popular Tags</h5>
+                            <div class="tag-cloud">
+                                <a href="#" class="tag">Skincare</a>
+                                <a href="#" class="tag">Anti-Aging</a>
+                                <a href="#" class="tag">Natural</a>
+                                <a href="#" class="tag">Moisturizer</a>
+                                <a href="#" class="tag">Serum</a>
+                                <a href="#" class="tag">Sunscreen</a>
+                                <a href="#" class="tag">Cleanser</a>
+                                <a href="#" class="tag">Tips</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Newsletter Widget -->
+                        <div class="sidebar-widget">
+                            <h5>Newsletter</h5>
+                            <p>Subscribe to get beauty tips delivered to your inbox!</p>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your email">
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                            </form>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <img src="images/logo.svg" alt="Sanoria" class="footer-logo mb-3">
+                    <p>Your trusted partner in luxury skincare.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Customer Care</h5>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#returns">Returns Policy</a></li>
+                        <li><a href="#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-envelope me-2"></i> support@sanoria.pk</p>
+                    <p><i class="fas fa-phone me-2"></i> +92 300 1234567</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="search" class="form-control form-control-lg" placeholder="Search blog posts...">
+                    <div class="search-results mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/qrscanner.js"></script>
+</body>
+</html>

@@ -28,7 +28,7 @@ function loadNewArrivals() {
             name: "Luxury Gold Serum",
             price: 3499,
             oldPrice: 4499,
-            image: "/images/products/serum-gold.jpg",
+            image: "/images/placeholder.svg",
             badge: "NEW",
             rating: 4.8,
             reviews: 125
@@ -38,7 +38,7 @@ function loadNewArrivals() {
             name: "Rose Hydrating Mist",
             price: 1299,
             oldPrice: 1599,
-            image: "/images/products/rose-mist.jpg",
+            image: "/images/placeholder.svg",
             badge: "20% OFF",
             rating: 4.9,
             reviews: 89
@@ -47,7 +47,7 @@ function loadNewArrivals() {
             id: 3,
             name: "Vitamin C Brightening Cream",
             price: 2199,
-            image: "/images/products/vitamin-c-cream.jpg",
+            image: "/images/placeholder.svg",
             badge: "BESTSELLER",
             rating: 4.7,
             reviews: 234
@@ -56,7 +56,7 @@ function loadNewArrivals() {
             id: 4,
             name: "Retinol Night Repair",
             price: 2999,
-            image: "/images/products/retinol-night.jpg",
+            image: "/images/placeholder.svg",
             badge: "NEW",
             rating: 4.6,
             reviews: 67
@@ -81,7 +81,7 @@ function loadMostViewed() {
             name: "24K Gold Face Mask",
             price: 899,
             oldPrice: 1199,
-            image: "/images/products/gold-mask.jpg",
+            image: "/images/placeholder.svg",
             badge: "25% OFF",
             rating: 4.9,
             reviews: 456
@@ -90,7 +90,7 @@ function loadMostViewed() {
             id: 6,
             name: "Hyaluronic Acid Serum",
             price: 1799,
-            image: "/images/products/hyaluronic-serum.jpg",
+            image: "/images/placeholder.svg",
             rating: 4.8,
             reviews: 312
         },
@@ -98,7 +98,7 @@ function loadMostViewed() {
             id: 7,
             name: "Green Tea Cleanser",
             price: 999,
-            image: "/images/products/green-tea-cleanser.jpg",
+            image: "/images/placeholder.svg",
             rating: 4.7,
             reviews: 198
         },
@@ -107,7 +107,7 @@ function loadMostViewed() {
             name: "Collagen Eye Cream",
             price: 1599,
             oldPrice: 1999,
-            image: "/images/products/eye-cream.jpg",
+            image: "/images/placeholder.svg",
             badge: "LIMITED",
             rating: 4.8,
             reviews: 267
@@ -250,7 +250,12 @@ function quickView(productId) {
 }
 
 // Toggle Wishlist
-function toggleWishlist(productId) {
+window.toggleWishlist = function(productId) {
+    // Initialize wishlist if not exists
+    if (!window.wishlist) {
+        window.wishlist = JSON.parse(localStorage.getItem('sanoriaWishlist')) || [];
+    }
+    
     const index = wishlist.findIndex(id => id === productId);
     if (index > -1) {
         wishlist.splice(index, 1);
@@ -262,6 +267,13 @@ function toggleWishlist(productId) {
     
     localStorage.setItem('sanoriaWishlist', JSON.stringify(wishlist));
     updateWishlistUI();
+    
+    // Animate heart icon
+    const heartIcon = event.target.closest('.wishlist-btn');
+    if (heartIcon) {
+        heartIcon.classList.add('animate-pulse');
+        setTimeout(() => heartIcon.classList.remove('animate-pulse'), 1000);
+    }
 }
 
 // Update Wishlist UI
@@ -307,7 +319,7 @@ function loadBlogPosts() {
             id: 1,
             title: "10 Steps to Perfect Skin",
             excerpt: "Discover the ultimate skincare routine for glowing, healthy skin...",
-            image: "/images/blog/blog-1.jpg",
+            image: "/images/placeholder.svg",
             date: "March 15, 2024",
             author: "Dr. Sarah Ahmed"
         },
@@ -315,7 +327,7 @@ function loadBlogPosts() {
             id: 2,
             title: "Understanding Your Skin Type",
             excerpt: "Learn how to identify your skin type and choose the right products...",
-            image: "/images/blog/blog-2.jpg",
+            image: "/images/placeholder.svg",
             date: "March 12, 2024",
             author: "Beauty Expert"
         },
@@ -323,7 +335,7 @@ function loadBlogPosts() {
             id: 3,
             title: "Natural Ingredients for Beauty",
             excerpt: "Explore the power of natural ingredients in modern skincare...",
-            image: "/images/blog/blog-3.jpg",
+            image: "/images/placeholder.svg",
             date: "March 10, 2024",
             author: "Wellness Coach"
         }

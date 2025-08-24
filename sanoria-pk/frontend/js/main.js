@@ -289,9 +289,24 @@ function updateCartUI() {
 }
 
 // Add to Cart
-function addToCart(productId) {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+window.addToCart = function(productId) {
+    // Find product from loaded products or fetch it
+    let product = null;
+    
+    // Check if we have products loaded
+    const allProducts = window.productsData || [];
+    product = allProducts.find(p => p.id === productId);
+    
+    if (!product) {
+        // If product not found in memory, create a temporary one
+        // In production, this would fetch from API
+        product = {
+            id: productId,
+            name: `Product ${productId}`,
+            price: 1999,
+            image: '/images/placeholder.jpg'
+        };
+    }
     
     const existingItem = cart.find(item => item.id === productId);
     if (existingItem) {
@@ -303,6 +318,13 @@ function addToCart(productId) {
     localStorage.setItem('sanoriaCart', JSON.stringify(cart));
     updateCartUI();
     showNotification('Product added to cart!', 'success');
+    
+    // Update cart icon animation
+    const cartIcon = document.querySelector('.cart-icon');
+    if (cartIcon) {
+        cartIcon.classList.add('animate-bounce');
+        setTimeout(() => cartIcon.classList.remove('animate-bounce'), 1000);
+    }
 }
 
 // Show Notification
