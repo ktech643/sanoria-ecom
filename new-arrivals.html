@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover the latest beauty and skincare products at Sanoria.pk. New arrivals featuring premium brands and innovative formulations.">
+    <meta name="keywords" content="new arrivals, latest products, new beauty products, skincare, Pakistan">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner bg-gradient-primary text-white py-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0 text-center text-md-start">
+                        <i class="fas fa-gift me-2"></i>
+                        <strong>NEW ARRIVALS</strong> - Be the first to try our latest products!
+                    </p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <span class="me-3"><i class="fas fa-phone me-1"></i>+92 300 1234567</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand me-auto" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                    <div class="brand-container">
+                        <span class="brand-text">Sanoria.pk</span>
+                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                    </div>
+                </a>
+
+                <div class="header-actions d-flex align-items-center">
+                    <a href="index.html" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                    </a>
+
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <a href="wishlist.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">2</span>
+                    </a>
+
+                    <a href="cart.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
+                    </a>
+
+                    <button class="btn btn-outline-primary hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigationMenu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navigationMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="sidebar-nav">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-2"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="category.html">
+                            <i class="fas fa-th-large me-2"></i>Shop by Categories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="skin-type.html">
+                            <i class="fas fa-spa me-2"></i>Shop by Skin Type
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="new-arrivals.html">
+                            <i class="fas fa-star me-2"></i>New Arrivals
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotions.html">
+                            <i class="fas fa-percent me-2"></i>Promotions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fas fa-blog me-2"></i>Beauty Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle me-2"></i>About Us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="return-policy.html">
+                            <i class="fas fa-undo me-2"></i>Return Policy
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav bg-light py-3">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">New Arrivals</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="new-arrivals-main py-5">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header text-center mb-5">
+                <h1 class="page-title">New Arrivals</h1>
+                <p class="page-subtitle">Discover the latest additions to our premium beauty collection</p>
+                <div class="arrival-stats">
+                    <span class="stat-item">
+                        <i class="fas fa-star text-warning me-2"></i>
+                        <strong>12 New Products</strong> this month
+                    </span>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <div class="filter-options">
+                            <label class="form-label">Filter by:</label>
+                            <select class="form-select" id="categoryFilter">
+                                <option value="all">All Categories</option>
+                                <option value="skincare">Skincare</option>
+                                <option value="tools">Beauty Tools</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="sort-options text-md-end">
+                            <label class="form-label">Sort by:</label>
+                            <select class="form-select" id="sortFilter" style="width: auto; display: inline-block;">
+                                <option value="newest">Newest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name">Name A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Arrivals Banner -->
+            <div class="arrivals-banner mb-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="banner-content">
+                            <h2>Just Launched!</h2>
+                            <p>Get 20% off on all new arrivals for a limited time. Be among the first to experience our latest innovations in beauty and skincare.</p>
+                            <div class="banner-offer">
+                                <span class="offer-code">Use code: <strong>NEW20</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="banner-image text-center">
+                            <img src="images/new-arrivals-banner.jpg" alt="New Arrivals" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid">
+                <div class="row g-4" id="productsContainer">
+                    <!-- Product 1 -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 product-item" data-category="skincare" data-price="1899" data-name="Advanced Retinol Serum">
+                        <div class="product-card new-arrival">
+                            <div class="product-image">
+                                <img src="images/products/product-5.jpg" alt="Advanced Retinol Serum" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">NEW</span>
+                                    <span class="badge bg-success">20% OFF</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-outline-light btn-sm" title="Add to Wishlist">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                    <button class="btn btn-outline-light btn-sm" title="Quick View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="new-indicator">
+                                    <span>NEW</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Advanced Retinol Serum</h6>
+                                <p class="product-description">Anti-aging serum with 1% retinol for smoother, younger-looking skin</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-count">(New Product)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 1,899</span>
+                                    <span class="original-price">Rs. 2,399</span>
+                                </div>
+                                <div class="arrival-date">
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>Added 3 days ago
+                                    </small>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 product-item" data-category="skincare" data-price="1299" data-name="Peptide Eye Cream">
+                        <div class="product-card new-arrival">
+                            <div class="product-image">
+                                <img src="images/products/product-6.jpg" alt="Peptide Eye Cream" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">NEW</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-outline-light btn-sm" title="Add to Wishlist">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                    <button class="btn btn-outline-light btn-sm" title="Quick View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="new-indicator">
+                                    <span>NEW</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Peptide Eye Cream</h6>
+                                <p class="product-description">Firming eye cream with peptides to reduce fine lines and puffiness</p>
+                                <div class="product-rating">
+                                    <span class="text-muted">No reviews yet</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 1,299</span>
+                                </div>
+                                <div class="arrival-date">
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>Added 5 days ago
+                                    </small>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 product-item" data-category="tools" data-price="899" data-name="Facial Cleansing Brush">
+                        <div class="product-card new-arrival">
+                            <div class="product-image">
+                                <img src="images/products/product-7.jpg" alt="Facial Cleansing Brush" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">NEW</span>
+                                    <span class="badge bg-info">TRENDING</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-outline-light btn-sm" title="Add to Wishlist">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                    <button class="btn btn-outline-light btn-sm" title="Quick View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="new-indicator">
+                                    <span>NEW</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Facial Cleansing Brush</h6>
+                                <p class="product-description">Sonic cleansing brush for deep pore cleansing and exfoliation</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="rating-count">(12)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 899</span>
+                                </div>
+                                <div class="arrival-date">
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>Added 1 week ago
+                                    </small>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 product-item" data-category="skincare" data-price="2199" data-name="Vitamin C + E Serum">
+                        <div class="product-card new-arrival">
+                            <div class="product-image">
+                                <img src="images/products/product-8.jpg" alt="Vitamin C + E Serum" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">NEW</span>
+                                    <span class="badge bg-warning">LIMITED</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-outline-light btn-sm" title="Add to Wishlist">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                    <button class="btn btn-outline-light btn-sm" title="Quick View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="new-indicator">
+                                    <span>NEW</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Vitamin C + E Serum</h6>
+                                <p class="product-description">Antioxidant powerhouse serum for brightening and protection</p>
+                                <div class="product-rating">
+                                    <span class="text-muted">Pre-order available</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 2,199</span>
+                                </div>
+                                <div class="arrival-date">
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>Just arrived!
+                                    </small>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 mt-2">Pre-Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional products would follow the same pattern -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 product-item" data-category="skincare" data-price="1499" data-name="Hyaluronic Acid Toner">
+                        <div class="product-card new-arrival">
+                            <div class="product-image">
+                                <img src="images/products/product-9.jpg" alt="Hyaluronic Acid Toner" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">NEW</span>
+                                </div>
+                                <div class="new-indicator">
+                                    <span>NEW</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Hyaluronic Acid Toner</h6>
+                                <p class="product-description">Hydrating toner with multiple molecular weights of hyaluronic acid</p>
+                                <div class="product-rating">
+                                    <span class="text-muted">No reviews yet</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 1,499</span>
+                                </div>
+                                <div class="arrival-date">
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>Added 2 weeks ago
+                                    </small>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6 product-item" data-category="tools" data-price="599" data-name="Jade Roller Set">
+                        <div class="product-card new-arrival">
+                            <div class="product-image">
+                                <img src="images/products/product-10.jpg" alt="Jade Roller Set" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">NEW</span>
+                                </div>
+                                <div class="new-indicator">
+                                    <span>NEW</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Jade Roller Set</h6>
+                                <p class="product-description">Natural jade roller and gua sha set for facial massage</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-count">(8)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 599</span>
+                                </div>
+                                <div class="arrival-date">
+                                    <small class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>Added 1 week ago
+                                    </small>
+                                </div>
+                                <button class="btn btn-primary btn-sm w-100 mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="newsletter-section mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="newsletter-card text-center">
+                            <h4>Stay Updated with New Arrivals</h4>
+                            <p>Be the first to know about our latest products and exclusive offers</p>
+                            <div class="newsletter-form">
+                                <div class="input-group">
+                                    <input type="email" class="form-control" placeholder="Enter your email address">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-paper-plane me-2"></i>Subscribe
+                                    </button>
+                                </div>
+                            </div>
+                            <small class="text-muted mt-2 d-block">Get 10% off your first order when you subscribe!</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">
+                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                            <div class="footer-brand-container">
+                                <span class="footer-brand-text">Sanoria.pk</span>
+                                <div class="footer-brand-tagline">The Essence Of TimeLess Glow</div>
+                            </div>
+                        </div>
+                        <p class="footer-description">Your trusted partner for premium beauty and skincare products.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=skincare">Skincare</a></li>
+                            <li><a href="category.html?cat=tools">Beauty Tools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Contact Info</h6>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</p>
+                            <p><i class="fas fa-phone me-2"></i>+92 300 1234567</p>
+                            <p><i class="fas fa-envelope me-2"></i>info@sanoria.pk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="text-center">
+                <p class="copyright-text mb-0">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Filter and Sort functionality
+        $(document).ready(function() {
+            $('#categoryFilter, #sortFilter').on('change', function() {
+                filterAndSortProducts();
+            });
+            
+            function filterAndSortProducts() {
+                const category = $('#categoryFilter').val();
+                const sortBy = $('#sortFilter').val();
+                let $products = $('.product-item');
+                
+                // Filter by category
+                if (category !== 'all') {
+                    $products.hide();
+                    $products.filter(`[data-category="${category}"]`).show();
+                } else {
+                    $products.show();
+                }
+                
+                // Sort products
+                const $container = $('#productsContainer');
+                const $visibleProducts = $products.filter(':visible');
+                
+                $visibleProducts.sort(function(a, b) {
+                    switch(sortBy) {
+                        case 'price-low':
+                            return parseInt($(a).data('price')) - parseInt($(b).data('price'));
+                        case 'price-high':
+                            return parseInt($(b).data('price')) - parseInt($(a).data('price'));
+                        case 'name':
+                            return $(a).data('name').localeCompare($(b).data('name'));
+                        default:
+                            return 0;
+                    }
+                });
+                
+                $visibleProducts.appendTo($container);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop by Skin Type - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Find the perfect skincare products for your unique skin type. Personalized beauty solutions for dry, oily, combination, sensitive, and normal skin.">
+    <meta name="keywords" content="skin type, skincare, dry skin, oily skin, combination skin, sensitive skin, normal skin">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner bg-gradient-primary text-white py-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0 text-center text-md-start">
+                        <i class="fas fa-gift me-2"></i>
+                        <strong>FREE SHIPPING</strong> on orders over Rs. 2000 | Free samples with every order
+                    </p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <span class="me-3"><i class="fas fa-phone me-1"></i>+92 300 1234567</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand me-auto" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                    <div class="brand-container">
+                        <span class="brand-text">Sanoria.pk</span>
+                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                    </div>
+                </a>
+
+                <div class="header-actions d-flex align-items-center">
+                    <a href="index.html" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                    </a>
+
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <a href="wishlist.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">2</span>
+                    </a>
+
+                    <a href="cart.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
+                    </a>
+
+                    <button class="btn btn-outline-primary hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigationMenu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navigationMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="sidebar-nav">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-2"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="category.html">
+                            <i class="fas fa-th-large me-2"></i>Shop by Categories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="skin-type.html">
+                            <i class="fas fa-spa me-2"></i>Shop by Skin Type
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new-arrivals.html">
+                            <i class="fas fa-star me-2"></i>New Arrivals
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotions.html">
+                            <i class="fas fa-percent me-2"></i>Promotions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fas fa-blog me-2"></i>Beauty Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle me-2"></i>About Us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="return-policy.html">
+                            <i class="fas fa-undo me-2"></i>Return Policy
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav bg-light py-3">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Shop by Skin Type</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="skin-type-main py-5">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header text-center mb-5">
+                <h1 class="page-title">Shop by Skin Type</h1>
+                <p class="page-subtitle">Find products perfectly suited for your unique skin needs</p>
+            </div>
+
+            <!-- Skin Type Quiz Section -->
+            <div class="skin-quiz-section mb-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="quiz-card">
+                            <div class="quiz-header text-center mb-4">
+                                <h3>Not Sure About Your Skin Type?</h3>
+                                <p>Take our quick 2-minute quiz to discover your skin type and get personalized recommendations</p>
+                            </div>
+                            <div class="quiz-actions text-center">
+                                <button class="btn btn-primary btn-lg" id="startQuizBtn">
+                                    <i class="fas fa-question-circle me-2"></i>Take Skin Type Quiz
+                                </button>
+                                <p class="quiz-note mt-2">
+                                    <small class="text-muted">Based on your answers, we'll recommend the perfect products for you</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skin Types Grid -->
+            <div class="skin-types-grid">
+                <div class="row g-4">
+                    <!-- Dry Skin -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="skin-type-card" data-skin-type="dry">
+                            <div class="skin-type-image">
+                                <img src="images/dry-skin.jpg" alt="Dry Skin Care" class="img-fluid">
+                                <div class="skin-type-overlay">
+                                    <div class="skin-type-icon">
+                                        <i class="fas fa-tint"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-type-content">
+                                <h3 class="skin-type-title">Dry Skin</h3>
+                                <p class="skin-type-description">Nourishing and hydrating products for dry, flaky, or tight-feeling skin</p>
+                                <div class="skin-type-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Deep Hydration</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Barrier Repair</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Long-lasting Moisture</span>
+                                    </div>
+                                </div>
+                                <div class="skin-type-stats">
+                                    <span class="product-count">15 Products Available</span>
+                                </div>
+                                <a href="products.html?skin-type=dry" class="btn btn-primary w-100">Shop Dry Skin Products</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Oily Skin -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="skin-type-card" data-skin-type="oily">
+                            <div class="skin-type-image">
+                                <img src="images/oily-skin.jpg" alt="Oily Skin Care" class="img-fluid">
+                                <div class="skin-type-overlay">
+                                    <div class="skin-type-icon">
+                                        <i class="fas fa-oil-can"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-type-content">
+                                <h3 class="skin-type-title">Oily Skin</h3>
+                                <p class="skin-type-description">Oil-control and mattifying products for shiny, acne-prone skin</p>
+                                <div class="skin-type-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Oil Control</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Pore Minimizing</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Acne Prevention</span>
+                                    </div>
+                                </div>
+                                <div class="skin-type-stats">
+                                    <span class="product-count">18 Products Available</span>
+                                </div>
+                                <a href="products.html?skin-type=oily" class="btn btn-primary w-100">Shop Oily Skin Products</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Combination Skin -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="skin-type-card" data-skin-type="combination">
+                            <div class="skin-type-image">
+                                <img src="images/combination-skin.jpg" alt="Combination Skin Care" class="img-fluid">
+                                <div class="skin-type-overlay">
+                                    <div class="skin-type-icon">
+                                        <i class="fas fa-balance-scale"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-type-content">
+                                <h3 class="skin-type-title">Combination Skin</h3>
+                                <p class="skin-type-description">Balanced care for mixed zones - oily T-zone with normal/dry cheeks</p>
+                                <div class="skin-type-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Balanced Hydration</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Zone-Specific Care</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Gentle Formulas</span>
+                                    </div>
+                                </div>
+                                <div class="skin-type-stats">
+                                    <span class="product-count">20 Products Available</span>
+                                </div>
+                                <a href="products.html?skin-type=combination" class="btn btn-primary w-100">Shop Combination Skin Products</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sensitive Skin -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="skin-type-card" data-skin-type="sensitive">
+                            <div class="skin-type-image">
+                                <img src="images/sensitive-skin.jpg" alt="Sensitive Skin Care" class="img-fluid">
+                                <div class="skin-type-overlay">
+                                    <div class="skin-type-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skin-type-content">
+                                <h3 class="skin-type-title">Sensitive Skin</h3>
+                                <p class="skin-type-description">Gentle, hypoallergenic formulas for reactive, easily irritated skin</p>
+                                <div class="skin-type-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Fragrance-Free</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Hypoallergenic</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Dermatologist Tested</span>
+                                    </div>
+                                </div>
+                                <div class="skin-type-stats">
+                                    <span class="product-count">12 Products Available</span>
+                                </div>
+                                <a href="products.html?skin-type=sensitive" class="btn btn-primary w-100">Shop Sensitive Skin Products</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skin Care Tips Section -->
+            <div class="skincare-tips-section mt-5">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="section-title text-center mb-4">Skincare Tips by Skin Type</h3>
+                    </div>
+                </div>
+                
+                <div class="tips-container">
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-tint text-primary"></i>
+                                </div>
+                                <h6 class="tip-title">Dry Skin Tips</h6>
+                                <ul class="tip-list">
+                                    <li>Use cream-based cleansers</li>
+                                    <li>Apply moisturizer on damp skin</li>
+                                    <li>Look for hyaluronic acid</li>
+                                    <li>Avoid over-washing</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-sun text-warning"></i>
+                                </div>
+                                <h6 class="tip-title">Oily Skin Tips</h6>
+                                <ul class="tip-list">
+                                    <li>Use gel-based cleansers</li>
+                                    <li>Don't skip moisturizer</li>
+                                    <li>Look for niacinamide</li>
+                                    <li>Use oil-free products</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-balance-scale text-info"></i>
+                                </div>
+                                <h6 class="tip-title">Combination Skin Tips</h6>
+                                <ul class="tip-list">
+                                    <li>Use different products for different areas</li>
+                                    <li>Gentle cleansing is key</li>
+                                    <li>Multi-masking works well</li>
+                                    <li>Avoid harsh scrubbing</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="tip-card">
+                                <div class="tip-icon">
+                                    <i class="fas fa-heart text-danger"></i>
+                                </div>
+                                <h6 class="tip-title">Sensitive Skin Tips</h6>
+                                <ul class="tip-list">
+                                    <li>Patch test new products</li>
+                                    <li>Avoid fragrances</li>
+                                    <li>Use gentle, minimal ingredients</li>
+                                    <li>Apply sunscreen daily</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Skin Type Quiz Modal -->
+    <div class="modal fade" id="skinQuizModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Skin Type Quiz</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="quizStep1" class="quiz-step">
+                        <h6>How does your skin feel after cleansing?</h6>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="tight">
+                                <span>Tight and uncomfortable</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="greasy">
+                                <span>Greasy within an hour</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="comfortable">
+                                <span>Comfortable and clean</span>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="varies">
+                                <span>Varies by area of face</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- More quiz steps would go here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="nextQuizStep">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">
+                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                            <div class="footer-brand-container">
+                                <span class="footer-brand-text">Sanoria.pk</span>
+                                <div class="footer-brand-tagline">The Essence Of TimeLess Glow</div>
+                            </div>
+                        </div>
+                        <p class="footer-description">Your trusted partner for premium beauty and skincare products.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=skincare">Skincare</a></li>
+                            <li><a href="category.html?cat=tools">Beauty Tools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Contact Info</h6>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</p>
+                            <p><i class="fas fa-phone me-2"></i>+92 300 1234567</p>
+                            <p><i class="fas fa-envelope me-2"></i>info@sanoria.pk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="text-center">
+                <p class="copyright-text mb-0">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Skin Type Quiz functionality
+        $(document).ready(function() {
+            $('#startQuizBtn').on('click', function() {
+                $('#skinQuizModal').modal('show');
+            });
+        });
+    </script>
+</body>
+</html>

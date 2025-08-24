@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotions & Offers - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Save big on premium beauty and skincare products with our exclusive promotions and offers at Sanoria.pk. Limited time deals and discounts.">
+    <meta name="keywords" content="promotions, offers, discounts, deals, beauty products, skincare, Pakistan">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/promotions.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner bg-gradient-accent text-white py-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0 text-center text-md-start">
+                        <i class="fas fa-fire me-2"></i>
+                        <strong>FLASH SALE</strong> - Up to 50% OFF on selected items! Limited time only!
+                    </p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <span class="countdown-timer" id="flashSaleTimer">
+                        <i class="fas fa-clock me-1"></i>Ends in: <strong>12:45:30</strong>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand me-auto" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                    <div class="brand-container">
+                        <span class="brand-text">Sanoria.pk</span>
+                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                    </div>
+                </a>
+
+                <div class="header-actions d-flex align-items-center">
+                    <a href="index.html" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                    </a>
+
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <a href="wishlist.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">2</span>
+                    </a>
+
+                    <a href="cart.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
+                    </a>
+
+                    <button class="btn btn-outline-primary hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigationMenu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navigationMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="sidebar-nav">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-2"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="category.html">
+                            <i class="fas fa-th-large me-2"></i>Shop by Categories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="skin-type.html">
+                            <i class="fas fa-spa me-2"></i>Shop by Skin Type
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new-arrivals.html">
+                            <i class="fas fa-star me-2"></i>New Arrivals
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="promotions.html">
+                            <i class="fas fa-percent me-2"></i>Promotions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fas fa-blog me-2"></i>Beauty Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle me-2"></i>About Us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="return-policy.html">
+                            <i class="fas fa-undo me-2"></i>Return Policy
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav bg-light py-3">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Promotions & Offers</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="promotions-main py-5">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header text-center mb-5">
+                <h1 class="page-title">Promotions & Offers</h1>
+                <p class="page-subtitle">Save more on your favorite beauty products with our exclusive deals</p>
+            </div>
+
+            <!-- Hero Promotion Banner -->
+            <div class="hero-promotion mb-5">
+                <div class="promotion-card mega-deal">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="promo-content">
+                                <div class="promo-badge">
+                                    <span>MEGA DEAL</span>
+                                </div>
+                                <h2 class="promo-title">Buy 2 Get 1 FREE</h2>
+                                <p class="promo-description">On all skincare products. Mix and match your favorites!</p>
+                                <div class="promo-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Valid on all skincare items</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Free item is the lowest priced</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>Valid until December 31st</span>
+                                    </div>
+                                </div>
+                                <div class="promo-actions">
+                                    <a href="category.html?cat=skincare&promo=buy2get1" class="btn btn-primary btn-lg">
+                                        Shop Now
+                                    </a>
+                                    <span class="promo-code">
+                                        Code: <strong>BUY2GET1</strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="promo-visual">
+                                <img src="images/promotions/buy2get1.jpg" alt="Buy 2 Get 1 Free" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Promotions Grid -->
+            <div class="promotions-grid">
+                <h3 class="section-title mb-4">Active Promotions</h3>
+                <div class="row g-4">
+                    <!-- Free Shipping Promotion -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="promotion-card">
+                            <div class="promo-header">
+                                <div class="promo-icon">
+                                    <i class="fas fa-shipping-fast"></i>
+                                </div>
+                                <div class="promo-badge">
+                                    <span>SHIPPING</span>
+                                </div>
+                            </div>
+                            <div class="promo-content">
+                                <h4 class="promo-title">FREE Shipping</h4>
+                                <p class="promo-description">On orders over Rs. 2,000</p>
+                                <div class="promo-validity">
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    <span>Ongoing offer</span>
+                                </div>
+                                <div class="promo-actions">
+                                    <a href="category.html" class="btn btn-outline-primary">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- First Time Buyer -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="promotion-card">
+                            <div class="promo-header">
+                                <div class="promo-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="promo-badge">
+                                    <span>NEW CUSTOMER</span>
+                                </div>
+                            </div>
+                            <div class="promo-content">
+                                <h4 class="promo-title">15% OFF</h4>
+                                <p class="promo-description">For first-time buyers on any order</p>
+                                <div class="promo-validity">
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    <span>Valid for new accounts</span>
+                                </div>
+                                <div class="promo-code-display">
+                                    <span>Code: <strong>WELCOME15</strong></span>
+                                </div>
+                                <div class="promo-actions">
+                                    <a href="register.html" class="btn btn-outline-primary">Sign Up & Save</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bundle Deal -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="promotion-card">
+                            <div class="promo-header">
+                                <div class="promo-icon">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="promo-badge">
+                                    <span>BUNDLE</span>
+                                </div>
+                            </div>
+                            <div class="promo-content">
+                                <h4 class="promo-title">Bundle & Save</h4>
+                                <p class="promo-description">Get 25% off when you buy 3+ items</p>
+                                <div class="promo-validity">
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    <span>Until Dec 25th</span>
+                                </div>
+                                <div class="promo-code-display">
+                                    <span>Code: <strong>BUNDLE25</strong></span>
+                                </div>
+                                <div class="promo-actions">
+                                    <a href="category.html" class="btn btn-outline-primary">Start Shopping</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flash Sale -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="promotion-card flash-sale">
+                            <div class="promo-header">
+                                <div class="promo-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="promo-badge">
+                                    <span>FLASH SALE</span>
+                                </div>
+                            </div>
+                            <div class="promo-content">
+                                <h4 class="promo-title">50% OFF</h4>
+                                <p class="promo-description">On selected products. Limited quantities!</p>
+                                <div class="flash-timer">
+                                    <div class="timer-display">
+                                        <div class="timer-item">
+                                            <span class="timer-number">12</span>
+                                            <span class="timer-label">Hours</span>
+                                        </div>
+                                        <div class="timer-item">
+                                            <span class="timer-number">45</span>
+                                            <span class="timer-label">Mins</span>
+                                        </div>
+                                        <div class="timer-item">
+                                            <span class="timer-number">30</span>
+                                            <span class="timer-label">Secs</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="promo-actions">
+                                    <a href="#flashSaleProducts" class="btn btn-danger">Shop Flash Sale</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Loyalty Rewards -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="promotion-card">
+                            <div class="promo-header">
+                                <div class="promo-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="promo-badge">
+                                    <span>LOYALTY</span>
+                                </div>
+                            </div>
+                            <div class="promo-content">
+                                <h4 class="promo-title">Earn Points</h4>
+                                <p class="promo-description">Get 1 point for every Rs. 100 spent</p>
+                                <div class="points-info">
+                                    <div class="point-item">
+                                        <span>100 points = Rs. 50 discount</span>
+                                    </div>
+                                </div>
+                                <div class="promo-actions">
+                                    <a href="login.html" class="btn btn-outline-primary">Join Rewards</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Discount -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="promotion-card">
+                            <div class="promo-header">
+                                <div class="promo-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="promo-badge">
+                                    <span>SOCIAL</span>
+                                </div>
+                            </div>
+                            <div class="promo-content">
+                                <h4 class="promo-title">Follow & Save</h4>
+                                <p class="promo-description">Get 10% off when you follow us on Instagram</p>
+                                <div class="promo-validity">
+                                    <i class="fas fa-users me-2"></i>
+                                    <span>For social media followers</span>
+                                </div>
+                                <div class="promo-code-display">
+                                    <span>Code: <strong>FOLLOW10</strong></span>
+                                </div>
+                                <div class="promo-actions">
+                                    <a href="#" class="btn btn-outline-primary">Follow Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flash Sale Products -->
+            <div class="flash-sale-section mt-5" id="flashSaleProducts">
+                <h3 class="section-title mb-4">
+                    <i class="fas fa-bolt text-danger me-2"></i>Flash Sale Products
+                </h3>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="product-card flash-item">
+                            <div class="product-image">
+                                <img src="images/products/product-1.jpg" alt="Hydrating Serum" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">50% OFF</span>
+                                    <span class="badge bg-warning">Only 5 left!</span>
+                                </div>
+                                <div class="discount-overlay">
+                                    <span class="discount-percent">50% OFF</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Hydrating Facial Serum</h6>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-count">(127)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 649</span>
+                                    <span class="original-price">Rs. 1,299</span>
+                                </div>
+                                <div class="stock-indicator">
+                                    <div class="stock-bar">
+                                        <div class="stock-progress" style="width: 20%"></div>
+                                    </div>
+                                    <small class="text-danger">Only 5 left in stock!</small>
+                                </div>
+                                <button class="btn btn-danger btn-sm w-100 mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="product-card flash-item">
+                            <div class="product-image">
+                                <img src="images/products/product-2.jpg" alt="Vitamin C Serum" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">40% OFF</span>
+                                </div>
+                                <div class="discount-overlay">
+                                    <span class="discount-percent">40% OFF</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Vitamin C Brightening Serum</h6>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-count">(89)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 959</span>
+                                    <span class="original-price">Rs. 1,599</span>
+                                </div>
+                                <button class="btn btn-danger btn-sm w-100 mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="product-card flash-item">
+                            <div class="product-image">
+                                <img src="images/products/product-3.jpg" alt="Gentle Cleanser" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">35% OFF</span>
+                                </div>
+                                <div class="discount-overlay">
+                                    <span class="discount-percent">35% OFF</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Gentle Foaming Cleanser</h6>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <span class="rating-count">(156)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 584</span>
+                                    <span class="original-price">Rs. 899</span>
+                                </div>
+                                <button class="btn btn-danger btn-sm w-100 mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="product-card flash-item">
+                            <div class="product-image">
+                                <img src="images/products/product-4.jpg" alt="Night Cream" class="img-fluid">
+                                <div class="product-badges">
+                                    <span class="badge bg-danger">30% OFF</span>
+                                </div>
+                                <div class="discount-overlay">
+                                    <span class="discount-percent">30% OFF</span>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h6 class="product-title">Anti-Aging Night Cream</h6>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="rating-count">(203)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">Rs. 1,329</span>
+                                    <span class="original-price">Rs. 1,899</span>
+                                </div>
+                                <button class="btn btn-danger btn-sm w-100 mt-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How to Use Promocodes -->
+            <div class="promo-guide-section mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="promo-guide-card">
+                            <h4 class="text-center mb-4">How to Use Promo Codes</h4>
+                            <div class="row g-4">
+                                <div class="col-md-3 text-center">
+                                    <div class="guide-step">
+                                        <div class="step-icon">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </div>
+                                        <h6>1. Shop</h6>
+                                        <p>Add products to your cart</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="guide-step">
+                                        <div class="step-icon">
+                                            <i class="fas fa-clipboard"></i>
+                                        </div>
+                                        <h6>2. Copy Code</h6>
+                                        <p>Copy the promo code</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="guide-step">
+                                        <div class="step-icon">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                        <h6>3. Checkout</h6>
+                                        <p>Proceed to checkout</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="guide-step">
+                                        <div class="step-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <h6>4. Apply</h6>
+                                        <p>Paste code and save!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">
+                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                            <div class="footer-brand-container">
+                                <span class="footer-brand-text">Sanoria.pk</span>
+                                <div class="footer-brand-tagline">The Essence Of TimeLess Glow</div>
+                            </div>
+                        </div>
+                        <p class="footer-description">Your trusted partner for premium beauty and skincare products.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=skincare">Skincare</a></li>
+                            <li><a href="category.html?cat=tools">Beauty Tools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Contact Info</h6>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</p>
+                            <p><i class="fas fa-phone me-2"></i>+92 300 1234567</p>
+                            <p><i class="fas fa-envelope me-2"></i>info@sanoria.pk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="text-center">
+                <p class="copyright-text mb-0">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            // This would typically connect to a server to get real countdown time
+            const now = new Date().getTime();
+            const endTime = now + (12 * 60 * 60 * 1000) + (45 * 60 * 1000) + (30 * 1000); // 12:45:30 from now
+            
+            const distance = endTime - now;
+            
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            if (distance > 0) {
+                $('#flashSaleTimer strong').text(
+                    String(hours).padStart(2, '0') + ':' + 
+                    String(minutes).padStart(2, '0') + ':' + 
+                    String(seconds).padStart(2, '0')
+                );
+                
+                // Update individual timer displays
+                $('.timer-item').eq(0).find('.timer-number').text(String(hours).padStart(2, '0'));
+                $('.timer-item').eq(1).find('.timer-number').text(String(minutes).padStart(2, '0'));
+                $('.timer-item').eq(2).find('.timer-number').text(String(seconds).padStart(2, '0'));
+            }
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+    </script>
+</body>
+</html>

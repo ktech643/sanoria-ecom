@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Blog - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Discover beauty tips, skincare advice, and product reviews on Sanoria.pk beauty blog. Stay updated with the latest trends and expert guidance.">
+    <meta name="keywords" content="beauty blog, skincare tips, beauty advice, product reviews, Pakistan">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner bg-gradient-primary text-white py-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0 text-center text-md-start">
+                        <i class="fas fa-book-open me-2"></i>
+                        <strong>BEAUTY TIPS</strong> - Get expert advice and latest beauty trends
+                    </p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <span class="me-3"><i class="fas fa-phone me-1"></i>+92 300 1234567</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand me-auto" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                    <div class="brand-container">
+                        <span class="brand-text">Sanoria.pk</span>
+                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                    </div>
+                </a>
+
+                <div class="header-actions d-flex align-items-center">
+                    <a href="index.html" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                    </a>
+
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </div>
+
+                    <a href="wishlist.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">2</span>
+                    </a>
+
+                    <a href="cart.html" class="header-icon me-3 position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
+                    </a>
+
+                    <button class="btn btn-outline-primary hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigationMenu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navigationMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="sidebar-nav">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-2"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="category.html">
+                            <i class="fas fa-th-large me-2"></i>Shop by Categories
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="skin-type.html">
+                            <i class="fas fa-spa me-2"></i>Shop by Skin Type
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new-arrivals.html">
+                            <i class="fas fa-star me-2"></i>New Arrivals
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="promotions.html">
+                            <i class="fas fa-percent me-2"></i>Promotions
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog.html">
+                            <i class="fas fa-blog me-2"></i>Beauty Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle me-2"></i>About Us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="return-policy.html">
+                            <i class="fas fa-undo me-2"></i>Return Policy
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav bg-light py-3">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Beauty Blog</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="blog-main py-5">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header text-center mb-5">
+                <h1 class="page-title">Beauty Blog</h1>
+                <p class="page-subtitle">Expert tips, trends, and insights for your beauty journey</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Main Blog Content -->
+                <div class="col-lg-8">
+                    <!-- Featured Article -->
+                    <div class="featured-article mb-5">
+                        <div class="blog-card featured">
+                            <div class="blog-image">
+                                <img src="images/blog/featured-winter-skincare.jpg" alt="Winter Skincare Guide" class="img-fluid">
+                                <div class="blog-badge">
+                                    <span>Featured</span>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span class="blog-category">Skincare</span>
+                                    <span class="blog-date">December 15, 2024</span>
+                                    <span class="blog-read-time">5 min read</span>
+                                </div>
+                                <h2 class="blog-title">
+                                    <a href="blog-post.html?id=winter-skincare-guide">Complete Winter Skincare Guide: Protect Your Skin This Season</a>
+                                </h2>
+                                <p class="blog-excerpt">
+                                    Winter can be harsh on your skin. Learn how to maintain healthy, glowing skin during the cold months with our comprehensive guide featuring expert tips and product recommendations.
+                                </p>
+                                <div class="blog-author">
+                                    <div class="author-info">
+                                        <img src="images/authors/dr-sarah.jpg" alt="Dr. Sarah Ahmed" class="author-avatar">
+                                        <div class="author-details">
+                                            <span class="author-name">Dr. Sarah Ahmed</span>
+                                            <span class="author-title">Dermatologist</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="blog-post.html?id=winter-skincare-guide" class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Posts Grid -->
+                    <div class="blog-posts-grid">
+                        <div class="row g-4">
+                            <!-- Blog Post 1 -->
+                            <div class="col-md-6">
+                                <div class="blog-card">
+                                    <div class="blog-image">
+                                        <img src="images/blog/vitamin-c-benefits.jpg" alt="Vitamin C Benefits" class="img-fluid">
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <span class="blog-category">Ingredients</span>
+                                            <span class="blog-date">December 12, 2024</span>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-post.html?id=vitamin-c-benefits">The Ultimate Guide to Vitamin C in Skincare</a>
+                                        </h4>
+                                        <p class="blog-excerpt">
+                                            Discover the amazing benefits of Vitamin C for your skin and learn how to incorporate it into your daily routine effectively.
+                                        </p>
+                                        <a href="blog-post.html?id=vitamin-c-benefits" class="read-more-link">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blog Post 2 -->
+                            <div class="col-md-6">
+                                <div class="blog-card">
+                                    <div class="blog-image">
+                                        <img src="images/blog/morning-routine.jpg" alt="Morning Routine" class="img-fluid">
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <span class="blog-category">Routine</span>
+                                            <span class="blog-date">December 10, 2024</span>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-post.html?id=morning-routine">5-Step Morning Skincare Routine for Glowing Skin</a>
+                                        </h4>
+                                        <p class="blog-excerpt">
+                                            Start your day right with this simple yet effective morning skincare routine that will give you radiant, healthy-looking skin.
+                                        </p>
+                                        <a href="blog-post.html?id=morning-routine" class="read-more-link">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blog Post 3 -->
+                            <div class="col-md-6">
+                                <div class="blog-card">
+                                    <div class="blog-image">
+                                        <img src="images/blog/acne-treatment.jpg" alt="Acne Treatment" class="img-fluid">
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <span class="blog-category">Treatment</span>
+                                            <span class="blog-date">December 8, 2024</span>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-post.html?id=acne-treatment">How to Treat Acne: A Dermatologist's Guide</a>
+                                        </h4>
+                                        <p class="blog-excerpt">
+                                            Expert advice on treating different types of acne, from mild breakouts to severe cystic acne, with proven treatments and tips.
+                                        </p>
+                                        <a href="blog-post.html?id=acne-treatment" class="read-more-link">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blog Post 4 -->
+                            <div class="col-md-6">
+                                <div class="blog-card">
+                                    <div class="blog-image">
+                                        <img src="images/blog/anti-aging.jpg" alt="Anti-Aging Tips" class="img-fluid">
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <span class="blog-category">Anti-Aging</span>
+                                            <span class="blog-date">December 5, 2024</span>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-post.html?id=anti-aging">10 Anti-Aging Ingredients That Actually Work</a>
+                                        </h4>
+                                        <p class="blog-excerpt">
+                                            Learn about the most effective anti-aging ingredients backed by science and how to use them for maximum results.
+                                        </p>
+                                        <a href="blog-post.html?id=anti-aging" class="read-more-link">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blog Post 5 -->
+                            <div class="col-md-6">
+                                <div class="blog-card">
+                                    <div class="blog-image">
+                                        <img src="images/blog/sensitive-skin.jpg" alt="Sensitive Skin Care" class="img-fluid">
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <span class="blog-category">Sensitive Skin</span>
+                                            <span class="blog-date">December 3, 2024</span>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-post.html?id=sensitive-skin">Caring for Sensitive Skin: Do's and Don'ts</a>
+                                        </h4>
+                                        <p class="blog-excerpt">
+                                            If you have sensitive skin, learn what ingredients to avoid and which gentle products can help soothe and protect your skin.
+                                        </p>
+                                        <a href="blog-post.html?id=sensitive-skin" class="read-more-link">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Blog Post 6 -->
+                            <div class="col-md-6">
+                                <div class="blog-card">
+                                    <div class="blog-image">
+                                        <img src="images/blog/sunscreen-guide.jpg" alt="Sunscreen Guide" class="img-fluid">
+                                    </div>
+                                    <div class="blog-content">
+                                        <div class="blog-meta">
+                                            <span class="blog-category">Sun Protection</span>
+                                            <span class="blog-date">December 1, 2024</span>
+                                        </div>
+                                        <h4 class="blog-title">
+                                            <a href="blog-post.html?id=sunscreen-guide">Sunscreen 101: Everything You Need to Know</a>
+                                        </h4>
+                                        <p class="blog-excerpt">
+                                            Master the art of sun protection with our comprehensive guide to choosing and using sunscreen effectively every day.
+                                        </p>
+                                        <a href="blog-post.html?id=sunscreen-guide" class="read-more-link">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Blog pagination" class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <span class="page-link">Previous</span>
+                            </li>
+                            <li class="page-item active">
+                                <span class="page-link">1</span>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#page2">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#page3">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#page2">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="blog-sidebar">
+                        <!-- Search Widget -->
+                        <div class="sidebar-widget">
+                            <h5 class="widget-title">Search Articles</h5>
+                            <div class="search-widget">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search blog...">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categories Widget -->
+                        <div class="sidebar-widget">
+                            <h5 class="widget-title">Categories</h5>
+                            <ul class="category-list">
+                                <li><a href="#skincare">Skincare <span>(15)</span></a></li>
+                                <li><a href="#ingredients">Ingredients <span>(8)</span></a></li>
+                                <li><a href="#routine">Routine <span>(12)</span></a></li>
+                                <li><a href="#treatment">Treatment <span>(6)</span></a></li>
+                                <li><a href="#anti-aging">Anti-Aging <span>(10)</span></a></li>
+                                <li><a href="#sun-protection">Sun Protection <span>(4)</span></a></li>
+                                <li><a href="#sensitive-skin">Sensitive Skin <span>(7)</span></a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Popular Posts Widget -->
+                        <div class="sidebar-widget">
+                            <h5 class="widget-title">Popular Posts</h5>
+                            <div class="popular-posts">
+                                <div class="popular-post">
+                                    <div class="post-image">
+                                        <img src="images/blog/popular-1.jpg" alt="Popular Post 1" class="img-fluid">
+                                    </div>
+                                    <div class="post-content">
+                                        <h6><a href="#">Complete Guide to Double Cleansing</a></h6>
+                                        <small class="text-muted">December 15, 2024</small>
+                                    </div>
+                                </div>
+                                <div class="popular-post">
+                                    <div class="post-image">
+                                        <img src="images/blog/popular-2.jpg" alt="Popular Post 2" class="img-fluid">
+                                    </div>
+                                    <div class="post-content">
+                                        <h6><a href="#">Best Serums for Every Skin Type</a></h6>
+                                        <small class="text-muted">December 12, 2024</small>
+                                    </div>
+                                </div>
+                                <div class="popular-post">
+                                    <div class="post-image">
+                                        <img src="images/blog/popular-3.jpg" alt="Popular Post 3" class="img-fluid">
+                                    </div>
+                                    <div class="post-content">
+                                        <h6><a href="#">How to Build a Skincare Routine</a></h6>
+                                        <small class="text-muted">December 10, 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter Widget -->
+                        <div class="sidebar-widget">
+                            <h5 class="widget-title">Beauty Newsletter</h5>
+                            <div class="newsletter-widget">
+                                <p>Get the latest beauty tips and product updates delivered to your inbox.</p>
+                                <div class="newsletter-form">
+                                    <input type="email" class="form-control mb-2" placeholder="Your email address">
+                                    <button class="btn btn-primary w-100">Subscribe</button>
+                                </div>
+                                <small class="text-muted">No spam, unsubscribe anytime.</small>
+                            </div>
+                        </div>
+
+                        <!-- Tags Widget -->
+                        <div class="sidebar-widget">
+                            <h5 class="widget-title">Popular Tags</h5>
+                            <div class="tags-widget">
+                                <a href="#" class="tag">Skincare</a>
+                                <a href="#" class="tag">Vitamin C</a>
+                                <a href="#" class="tag">Anti-Aging</a>
+                                <a href="#" class="tag">Acne</a>
+                                <a href="#" class="tag">Moisturizer</a>
+                                <a href="#" class="tag">Serum</a>
+                                <a href="#" class="tag">Cleanser</a>
+                                <a href="#" class="tag">Sunscreen</a>
+                                <a href="#" class="tag">Sensitive Skin</a>
+                                <a href="#" class="tag">Routine</a>
+                            </div>
+                        </div>
+
+                        <!-- Social Media Widget -->
+                        <div class="sidebar-widget">
+                            <h5 class="widget-title">Follow Us</h5>
+                            <div class="social-media-widget">
+                                <a href="#" class="social-btn facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span>Facebook</span>
+                                </a>
+                                <a href="#" class="social-btn instagram">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="#" class="social-btn tiktok">
+                                    <i class="fab fa-tiktok"></i>
+                                    <span>TikTok</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">
+                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                            <div class="footer-brand-container">
+                                <span class="footer-brand-text">Sanoria.pk</span>
+                                <div class="footer-brand-tagline">The Essence Of TimeLess Glow</div>
+                            </div>
+                        </div>
+                        <p class="footer-description">Your trusted partner for premium beauty and skincare products.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=skincare">Skincare</a></li>
+                            <li><a href="category.html?cat=tools">Beauty Tools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Contact Info</h6>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</p>
+                            <p><i class="fas fa-phone me-2"></i>+92 300 1234567</p>
+                            <p><i class="fas fa-envelope me-2"></i>info@sanoria.pk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="text-center">
+                <p class="copyright-text mb-0">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
