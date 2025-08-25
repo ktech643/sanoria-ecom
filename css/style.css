@@ -3,13 +3,13 @@
    ===================== */
 
 :root {
-    /* Color Palette - Warm Rose Tones */
-    --primary-color: #A87676;
-    --primary-dark: #8B5A5A;
-    --primary-light: #CA8787;
-    --secondary-color: #E1ACAC;
-    --tertiary-color: #FFD0D0;
-    --accent-color: #e74c3c;
+    /* Color Palette - Soft Blue-Gray Tones */
+    --primary-color: #C4DFDF;
+    --primary-dark: #9FC5C5;
+    --primary-light: #D2E9E9;
+    --secondary-color: #E3F4F4;
+    --tertiary-color: #F8F6F4;
+    --accent-color: #7ABCBC;
     --success-color: #27ae60;
     --warning-color: #f39c12;
     --info-color: #3498db;
@@ -22,15 +22,15 @@
     --black: #212529;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #A87676 0%, #CA8787 100%);
-    --gradient-secondary: linear-gradient(135deg, #CA8787 0%, #E1ACAC 100%);
-    --gradient-accent: linear-gradient(135deg, #E1ACAC 0%, #FFD0D0 100%);
+    --gradient-primary: linear-gradient(135deg, #C4DFDF 0%, #D2E9E9 100%);
+    --gradient-secondary: linear-gradient(135deg, #D2E9E9 0%, #E3F4F4 100%);
+    --gradient-accent: linear-gradient(135deg, #E3F4F4 0%, #F8F6F4 100%);
     
     /* Text Colors for Better Contrast */
-    --primary-text-color: #4A2B2B;
-    --secondary-text-color: #6B3E3E;
-    --button-text-color: #FFFFFF;
-    --light-text-color: #FFD0D0;
+    --primary-text-color: #2C3E50;
+    --secondary-text-color: #34495E;
+    --button-text-color: #2C3E50;
+    --light-text-color: #7ABCBC;
     
     /* Typography */
     --font-primary: 'Playfair Display', serif;
@@ -87,7 +87,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -613,7 +613,7 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     overflow: hidden;
 }
 
