@@ -180,7 +180,7 @@
                     <div class="dropdown me-3">
                         <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fas fa-bell"></i>
-                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle notification-count">3</span>
+                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle notification-count" style="display: none;">0</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end fancy-dropdown notifications-dropdown">
                             <div class="dropdown-header fancy-header">
@@ -837,6 +837,33 @@
     <!-- Custom JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/notification-system-fix.js"></script>
+    <script src="js/bell-icon-fix.js"></script>
     <script src="js/link-verification.js"></script>
+    
+    <!-- Bell Icon Immediate Fix -->
+    <script>
+        $(document).ready(function() {
+            // Ensure bell icon functionality works immediately
+            setTimeout(function() {
+                // Force update notification count
+                if (window.bellIconFix && window.bellIconFix.updateNotificationCount) {
+                    window.bellIconFix.updateNotificationCount();
+                }
+                
+                // Force load notification content
+                if (window.bellIconFix && window.bellIconFix.loadNotificationContent) {
+                    window.bellIconFix.loadNotificationContent();
+                }
+                
+                // Ensure dropdown is clickable
+                $('.fa-bell').closest('a').each(function() {
+                    $(this).attr('data-bs-toggle', 'dropdown');
+                    $(this).attr('aria-expanded', 'false');
+                });
+                
+                console.log('🔔 Bell icon immediate fix applied');
+            }, 500);
+        });
+    </script>
 </body>
 </html>
