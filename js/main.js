@@ -42,6 +42,9 @@ $(document).ready(function() {
     
     // Initialize notifications
     initNotifications();
+    
+    // Initialize notification tracking
+    initNotificationTracking();
 
     // =====================
     // LOADING SCREEN
@@ -1293,27 +1296,57 @@ function initNotifications() {
 }
 
 function updateNotificationCount() {
-    const stored = localStorage.getItem('sanoria_notifications');
-    let unreadCount = 0;
-    
-    if (stored) {
-        const notifications = JSON.parse(stored);
-        unreadCount = notifications.filter(n => !n.read).length;
-    } else {
-        // Default notifications count
-        unreadCount = 3;
+    try {
+        const stored = localStorage.getItem('sanoria_notifications');
+        let unreadCount = 0;
+        
+        if (stored) {
+            const notifications = JSON.parse(stored);
+            unreadCount = notifications.filter(n => !n.read).length;
+        }
+        
+        // Update all notification count elements
+        const countElements = $('.notification-count, .notification-badge, [data-notification-count]');
+        countElements.text(unreadCount);
+        
+        if (unreadCount === 0) {
+            countElements.hide();
+            // Remove animation classes when no notifications
+            $('.fa-bell').removeClass('notification-alert');
+        } else {
+            countElements.show();
+            // Add subtle animation to bell icon
+            $('.fa-bell').addClass('notification-alert');
+        }
+        
+        // Update document title with count
+        updateDocumentTitle(unreadCount);
+        
+        // Load quick notifications in dropdown
+        loadQuickNotifications();
+        
+        // Update notification stats if on notifications page
+        if (typeof updateNotificationStats === 'function') {
+            updateNotificationStats();
+        }
+        
+        console.log(`📊 Notification count updated: ${unreadCount} unread`);
+        
+    } catch (error) {
+        console.error('❌ Error updating notification count:', error);
+        // Fallback: hide count if there's an error
+        $('.notification-count, .notification-badge').hide();
     }
+}
+
+function updateDocumentTitle(unreadCount) {
+    const baseTitle = 'Sanoria.pk - Premium Beauty & Skincare';
     
-    $('.notification-count').text(unreadCount);
-    
-    if (unreadCount === 0) {
-        $('.notification-count').hide();
+    if (unreadCount > 0) {
+        document.title = `(${unreadCount}) ${baseTitle}`;
     } else {
-        $('.notification-count').show();
+        document.title = baseTitle;
     }
-    
-    // Load quick notifications in dropdown
-    loadQuickNotifications();
 }
 
 function loadQuickNotifications() {
@@ -1428,8 +1461,166 @@ function markNotificationRead(notificationId) {
             notification.read = true;
             localStorage.setItem('sanoria_notifications', JSON.stringify(notifications));
             updateNotificationCount();
+            
+            // Trigger custom event for cross-page updates
+            window.dispatchEvent(new CustomEvent('notificationUpdated', {
+                detail: { notificationId, action: 'read' }
+            }));
         }
     }
+}
+
+// =====================
+// NOTIFICATION TRACKING SYSTEM
+// =====================
+
+function initNotificationTracking() {
+    // Initialize default notifications if none exist
+    initializeDefaultNotifications();
+    
+    // Update count on page load
+    updateNotificationCount();
+    
+    // Listen for storage changes from other tabs/pages
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'sanoria_notifications') {
+            updateNotificationCount();
+        }
+    });
+    
+    // Listen for custom notification events
+    window.addEventListener('notificationUpdated', function(e) {
+        updateNotificationCount();
+    });
+    
+    // Periodically check for notification updates
+    setInterval(updateNotificationCount, 30000); // Check every 30 seconds
+    
+    console.log('✅ Notification tracking system initialized');
+}
+
+function initializeDefaultNotifications() {
+    const stored = localStorage.getItem('sanoria_notifications');
+    if (!stored) {
+        const defaultNotifications = [
+            {
+                id: 1,
+                type: 'promotion',
+                title: 'Welcome to Sanoria!',
+                message: 'Get 25% off on your first order with code WELCOME25',
+                time: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(), // 1 hour ago
+                read: false,
+                priority: 'high',
+                category: 'promotion'
+            },
+            {
+                id: 2,
+                type: 'system',
+                title: 'Complete Your Profile',
+                message: 'Add your skin type and preferences for personalized recommendations',
+                time: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(), // 2 hours ago
+                read: false,
+                priority: 'medium',
+                category: 'system'
+            },
+            {
+                id: 3,
+                type: 'promotion',
+                title: 'Free Shipping Available',
+                message: 'Enjoy free shipping on orders over Rs. 2000. No code needed!',
+                time: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(), // 6 hours ago
+                read: false,
+                priority: 'low',
+                category: 'promotion'
+            }
+        ];
+        
+        localStorage.setItem('sanoria_notifications', JSON.stringify(defaultNotifications));
+        console.log('✅ Default notifications initialized');
+    }
+}
+
+function addNotification(notification) {
+    const stored = localStorage.getItem('sanoria_notifications');
+    const notifications = stored ? JSON.parse(stored) : [];
+    
+    // Add timestamp and ID if not provided
+    const newNotification = {
+        id: notification.id || Date.now(),
+        type: notification.type || 'system',
+        title: notification.title,
+        message: notification.message,
+        time: notification.time || new Date().toISOString(),
+        read: false,
+        priority: notification.priority || 'medium',
+        category: notification.category || notification.type || 'system',
+        actions: notification.actions || []
+    };
+    
+    // Add to beginning of array (newest first)
+    notifications.unshift(newNotification);
+    
+    // Keep only last 50 notifications
+    if (notifications.length > 50) {
+        notifications.splice(50);
+    }
+    
+    localStorage.setItem('sanoria_notifications', JSON.stringify(notifications));
+    updateNotificationCount();
+    
+    // Trigger custom event
+    window.dispatchEvent(new CustomEvent('notificationAdded', {
+        detail: newNotification
+    }));
+    
+    console.log('✅ New notification added:', newNotification.title);
+    return newNotification;
+}
+
+function markAllNotificationsRead() {
+    const stored = localStorage.getItem('sanoria_notifications');
+    if (stored) {
+        const notifications = JSON.parse(stored);
+        notifications.forEach(n => n.read = true);
+        localStorage.setItem('sanoria_notifications', JSON.stringify(notifications));
+        updateNotificationCount();
+        
+        // Trigger custom event
+        window.dispatchEvent(new CustomEvent('notificationUpdated', {
+            detail: { action: 'markAllRead' }
+        }));
+        
+        console.log('✅ All notifications marked as read');
+    }
+}
+
+function clearAllNotifications() {
+    localStorage.removeItem('sanoria_notifications');
+    updateNotificationCount();
+    
+    // Trigger custom event
+    window.dispatchEvent(new CustomEvent('notificationUpdated', {
+        detail: { action: 'clearAll' }
+    }));
+    
+    console.log('✅ All notifications cleared');
+}
+
+function getNotificationStats() {
+    const stored = localStorage.getItem('sanoria_notifications');
+    if (!stored) return { total: 0, unread: 0, today: 0 };
+    
+    const notifications = JSON.parse(stored);
+    const today = new Date().toDateString();
+    
+    return {
+        total: notifications.length,
+        unread: notifications.filter(n => !n.read).length,
+        today: notifications.filter(n => {
+            const notificationDate = new Date(n.time).toDateString();
+            return notificationDate === today;
+        }).length
+    };
 }
 
 // Initialize notifications when page loads
