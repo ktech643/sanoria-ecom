@@ -3,9 +3,10 @@
    ===================== */
 
 .auth-page {
-    background: linear-gradient(135deg, #FF0066 0%, #FF3385 100%);
+    background: linear-gradient(135deg, #FF0066 0%, #FF1A75 50%, #FF3385 100%);
     min-height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 
 .auth-page::before {

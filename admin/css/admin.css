@@ -5,17 +5,24 @@
 :root {
     --admin-sidebar-width: 280px;
     --admin-header-height: 70px;
+    /* Enhanced Pink Admin Theme (#FF0066) */
     --admin-primary: #FF0066;
     --admin-primary-dark: #CC0052;
+    --admin-primary-light: #FF1A75;
     --admin-secondary: #FF3385;
     --admin-tertiary: #FF66B3;
     --admin-light: #FFB3D9;
+    --admin-accent: #E6005C;
     --admin-sidebar-bg: #2C3E50;
     --admin-content-bg: #f8f9fa;
     --admin-card-bg: #ffffff;
     --admin-border: #e9ecef;
     --admin-text: #495057;
     --admin-text-muted: #6c757d;
+    /* Enhanced Admin Gradients */
+    --admin-gradient-primary: linear-gradient(135deg, #FF0066 0%, #FF1A75 50%, #FF3385 100%);
+    --admin-gradient-secondary: linear-gradient(135deg, #FF0066 0%, #FF3385 100%);
+    --admin-gradient-accent: linear-gradient(135deg, #CC0052 0%, #FF0066 100%);
 }
 
 /* =====================

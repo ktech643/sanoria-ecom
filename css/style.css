@@ -3,12 +3,12 @@
    ===================== */
 
 :root {
-    /* Color Palette - Bright Pink Theme */
+    /* Color Palette - Enhanced Pink Theme (#FF0066) */
     --primary-color: #FF0066;
     --primary-dark: #CC0052;
-    --primary-light: #FF3385;
-    --secondary-color: #FF66B3;
-    --tertiary-color: #FFB3D9;
+    --primary-light: #FF1A75;
+    --secondary-color: #FF3385;
+    --tertiary-color: #FF66B3;
     --accent-color: #E6005C;
     --success-color: #27ae60;
     --warning-color: #f39c12;
@@ -21,10 +21,11 @@
     --dark-gray: #6c757d;
     --black: #212529;
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #FF0066 0%, #FF3385 100%);
-    --gradient-secondary: linear-gradient(135deg, #FF3385 0%, #FF66B3 100%);
-    --gradient-accent: linear-gradient(135deg, #FF66B3 0%, #FFB3D9 100%);
+    /* Enhanced Pink Gradients */
+    --gradient-primary: linear-gradient(135deg, #FF0066 0%, #FF1A75 50%, #FF3385 100%);
+    --gradient-secondary: linear-gradient(135deg, #FF0066 0%, #FF3385 100%);
+    --gradient-accent: linear-gradient(135deg, #CC0052 0%, #FF0066 100%);
+    --gradient-light: linear-gradient(135deg, #FF3385 0%, #FF66B3 100%);
     
     /* Text Colors for Better Contrast */
     --primary-text-color: #2C3E50;
