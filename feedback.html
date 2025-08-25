@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback & Suggestions - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Share your feedback and suggestions to help us improve Sanoria.pk. Your opinion matters to us.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/feedback.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner bg-gradient-primary text-white py-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0 text-center text-md-start">
+                        <i class="fas fa-comments me-2"></i>
+                        <strong>YOUR FEEDBACK MATTERS</strong> - Help us improve your shopping experience
+                    </p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <span class="me-3"><i class="fas fa-phone me-1"></i>+92 300 1234567</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand me-auto" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                    <div class="brand-container">
+                        <span class="brand-text">Sanoria.pk</span>
+                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                    </div>
+                </a>
+
+                <div class="header-actions d-flex align-items-center">
+                    <a href="index.html" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-home me-2"></i>Back to Home
+                    </a>
+                    
+                    <a href="cart.html" class="header-icon position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav bg-light py-3">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Feedback & Suggestions</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="feedback-main py-5">
+        <div class="container">
+            <!-- Header Section -->
+            <div class="feedback-header text-center mb-5">
+                <h1 class="display-4 mb-3">
+                    <i class="fas fa-comment-dots text-primary me-3"></i>
+                    Share Your Feedback
+                </h1>
+                <p class="lead text-muted mb-4">
+                    Your opinion helps us improve our products and services. We value every suggestion and review.
+                </p>
+                <div class="feedback-stats">
+                    <div class="row justify-content-center">
+                        <div class="col-md-2 col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-number">1,250+</h3>
+                                <p class="stat-label">Reviews</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-number">4.8</h3>
+                                <p class="stat-label">Avg Rating</p>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-number">98%</h3>
+                                <p class="stat-label">Satisfaction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Feedback Form -->
+                <div class="col-lg-8">
+                    <div class="feedback-form-section">
+                        <!-- Feedback Type Selection -->
+                        <div class="feedback-types mb-4">
+                            <h4 class="section-title">What would you like to share?</h4>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="feedback-type-card" data-type="general">
+                                        <div class="feedback-type-icon">
+                                            <i class="fas fa-comment"></i>
+                                        </div>
+                                        <h6>General Feedback</h6>
+                                        <p>Share your overall experience with our website and services</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="feedback-type-card" data-type="product">
+                                        <div class="feedback-type-icon">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <h6>Product Review</h6>
+                                        <p>Rate and review a specific product you've purchased</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="feedback-type-card" data-type="suggestion">
+                                        <div class="feedback-type-icon">
+                                            <i class="fas fa-lightbulb"></i>
+                                        </div>
+                                        <h6>Suggestion</h6>
+                                        <p>Suggest improvements or new features for our website</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="feedback-type-card" data-type="complaint">
+                                        <div class="feedback-type-icon">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <h6>Complaint</h6>
+                                        <p>Report an issue or problem you've experienced</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feedback Form -->
+                        <div class="feedback-form">
+                            <form id="feedbackForm">
+                                <input type="hidden" id="feedbackType" value="general">
+                                
+                                <!-- Personal Information -->
+                                <div class="form-section mb-4">
+                                    <h5 class="form-section-title">
+                                        <i class="fas fa-user me-2"></i>Your Information
+                                    </h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Name *</label>
+                                            <input type="text" class="form-control" id="customerName" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Email Address *</label>
+                                            <input type="email" class="form-control" id="customerEmail" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Phone Number (Optional)</label>
+                                            <input type="tel" class="form-control" id="customerPhone" placeholder="+92 300 1234567">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Are you a customer?</label>
+                                            <select class="form-select" id="customerStatus">
+                                                <option value="existing">Existing Customer</option>
+                                                <option value="new">New Customer</option>
+                                                <option value="potential">Potential Customer</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Rating Section -->
+                                <div class="form-section mb-4" id="ratingSection">
+                                    <h5 class="form-section-title">
+                                        <i class="fas fa-star me-2"></i>Overall Rating
+                                    </h5>
+                                    <div class="rating-input-large">
+                                        <input type="radio" name="overallRating" value="5" id="rating5">
+                                        <label for="rating5" class="star-label-large">★</label>
+                                        <input type="radio" name="overallRating" value="4" id="rating4">
+                                        <label for="rating4" class="star-label-large">★</label>
+                                        <input type="radio" name="overallRating" value="3" id="rating3">
+                                        <label for="rating3" class="star-label-large">★</label>
+                                        <input type="radio" name="overallRating" value="2" id="rating2">
+                                        <label for="rating2" class="star-label-large">★</label>
+                                        <input type="radio" name="overallRating" value="1" id="rating1">
+                                        <label for="rating1" class="star-label-large">★</label>
+                                    </div>
+                                    <div class="rating-description-large mt-2">
+                                        <small class="text-muted">Click to rate your overall experience</small>
+                                    </div>
+                                </div>
+
+                                <!-- Product Selection (for product reviews) -->
+                                <div class="form-section mb-4 d-none" id="productSection">
+                                    <h5 class="form-section-title">
+                                        <i class="fas fa-box me-2"></i>Product Information
+                                    </h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-8">
+                                            <label class="form-label">Product Name</label>
+                                            <select class="form-select" id="productSelect">
+                                                <option value="">Select a product...</option>
+                                                <option value="1">Hydrating Facial Serum</option>
+                                                <option value="2">Vitamin C Brightening Serum</option>
+                                                <option value="3">Gentle Daily Cleanser</option>
+                                                <option value="4">Anti-Aging Night Cream</option>
+                                                <option value="other">Other (specify below)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Purchase Date</label>
+                                            <input type="date" class="form-control" id="purchaseDate">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Feedback Content -->
+                                <div class="form-section mb-4">
+                                    <h5 class="form-section-title">
+                                        <i class="fas fa-comment-dots me-2"></i>Your Feedback
+                                    </h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">Subject *</label>
+                                        <input type="text" class="form-control" id="feedbackSubject" placeholder="Brief summary of your feedback" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Message *</label>
+                                        <textarea class="form-control" id="feedbackMessage" rows="6" 
+                                            placeholder="Please share your detailed feedback, suggestions, or concerns..." required></textarea>
+                                        <div class="character-count">
+                                            <small class="text-muted"><span id="messageCharCount">0</span>/1000 characters</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Categories (for suggestions and complaints) -->
+                                <div class="form-section mb-4 d-none" id="categorySection">
+                                    <h5 class="form-section-title">
+                                        <i class="fas fa-tags me-2"></i>Category
+                                    </h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Category</label>
+                                            <select class="form-select" id="feedbackCategory">
+                                                <option value="">Select category...</option>
+                                                <option value="website">Website Design/Navigation</option>
+                                                <option value="products">Product Selection</option>
+                                                <option value="pricing">Pricing</option>
+                                                <option value="shipping">Shipping & Delivery</option>
+                                                <option value="payment">Payment Process</option>
+                                                <option value="customer-service">Customer Service</option>
+                                                <option value="mobile-app">Mobile Experience</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Priority</label>
+                                            <select class="form-select" id="feedbackPriority">
+                                                <option value="low">Low</option>
+                                                <option value="medium" selected>Medium</option>
+                                                <option value="high">High</option>
+                                                <option value="urgent">Urgent</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- File Upload -->
+                                <div class="form-section mb-4">
+                                    <h5 class="form-section-title">
+                                        <i class="fas fa-paperclip me-2"></i>Attachments (Optional)
+                                    </h5>
+                                    <div class="file-upload-area">
+                                        <input type="file" class="form-control" id="feedbackFiles" multiple accept="image/*,.pdf,.doc,.docx">
+                                        <small class="text-muted">You can upload images, PDFs, or documents (max 5MB each)</small>
+                                    </div>
+                                </div>
+
+                                <!-- Privacy Agreement -->
+                                <div class="form-section mb-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="privacyAgreement" required>
+                                        <label class="form-check-label" for="privacyAgreement">
+                                            I agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a> and consent to Sanoria.pk using my feedback to improve their services. I understand that my personal information will be handled according to their privacy policy.
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="fas fa-paper-plane me-2"></i>Submit Feedback
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="feedback-sidebar">
+                        <!-- Contact Information -->
+                        <div class="sidebar-section">
+                            <h5 class="sidebar-title">
+                                <i class="fas fa-headset me-2"></i>Need Immediate Help?
+                            </h5>
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <div class="contact-icon whatsapp-icon">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h6>WhatsApp Support</h6>
+                                        <p>+92 300 1234567</p>
+                                        <a href="#" onclick="openWhatsApp()" class="btn btn-sm btn-outline-success">Chat Now</a>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <div class="contact-icon email-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h6>Email Support</h6>
+                                        <p>support@sanoria.pk</p>
+                                        <a href="mailto:support@sanoria.pk" class="btn btn-sm btn-outline-primary">Send Email</a>
+                                    </div>
+                                </div>
+                                <div class="contact-method">
+                                    <div class="contact-icon phone-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h6>Phone Support</h6>
+                                        <p>Mon-Sat: 9AM-8PM</p>
+                                        <a href="tel:+923001234567" class="btn btn-sm btn-outline-info">Call Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Section -->
+                        <div class="sidebar-section">
+                            <h5 class="sidebar-title">
+                                <i class="fas fa-question-circle me-2"></i>Frequently Asked
+                            </h5>
+                            <div class="faq-items">
+                                <div class="faq-item">
+                                    <h6>How long does shipping take?</h6>
+                                    <p>Standard delivery takes 3-5 business days. Express delivery is available in 1-2 days.</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h6>What is your return policy?</h6>
+                                    <p>We offer a 14-day easy return policy for unopened products in original packaging.</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h6>How can I track my order?</h6>
+                                    <p>You'll receive a tracking number via email once your order ships. Use it to track on our website.</p>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="btn btn-outline-primary w-100 mt-3">View All FAQs</a>
+                        </div>
+
+                        <!-- Recent Reviews -->
+                        <div class="sidebar-section">
+                            <h5 class="sidebar-title">
+                                <i class="fas fa-star me-2"></i>Recent Reviews
+                            </h5>
+                            <div class="recent-reviews">
+                                <div class="review-snippet">
+                                    <div class="review-rating">★★★★★</div>
+                                    <p>"Amazing products and excellent customer service!"</p>
+                                    <small>- Ayesha K.</small>
+                                </div>
+                                <div class="review-snippet">
+                                    <div class="review-rating">★★★★☆</div>
+                                    <p>"Great quality skincare, will definitely order again."</p>
+                                    <small>- Fatima A.</small>
+                                </div>
+                                <div class="review-snippet">
+                                    <div class="review-rating">★★★★★</div>
+                                    <p>"Fast delivery and products work as advertised."</p>
+                                    <small>- Sana M.</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="feedbackSuccessModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-5">
+                    <div class="success-animation">
+                        <i class="fas fa-check-circle text-success mb-4" style="font-size: 4rem;"></i>
+                        <h4>Thank You for Your Feedback!</h4>
+                        <p class="mb-4">Your feedback has been submitted successfully. We appreciate you taking the time to help us improve.</p>
+                        <div class="feedback-reference">
+                            <p><strong>Reference ID:</strong> <span id="feedbackReference">#FB20241215001</span></p>
+                            <p><strong>Response Time:</strong> We'll respond within 24-48 hours</p>
+                        </div>
+                        <button class="btn btn-primary mt-3" onclick="window.location.href='index.html'">
+                            Continue Shopping
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">
+                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                            <div class="footer-brand-container">
+                                <span class="footer-brand-text">Sanoria.pk</span>
+                                <div class="footer-brand-tagline">The Essence Of TimeLess Glow</div>
+                            </div>
+                        </div>
+                        <p class="footer-description">Your trusted partner for premium beauty and skincare products.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                            <li><a href="feedback.html">Feedback</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=skincare">Skincare</a></li>
+                            <li><a href="category.html?cat=tools">Beauty Tools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Contact Info</h6>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</p>
+                            <p><i class="fas fa-phone me-2"></i>+92 300 1234567</p>
+                            <p><i class="fas fa-envelope me-2"></i>info@sanoria.pk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="text-center">
+                <p class="copyright-text mb-0">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/feedback.js"></script>
+</body>
+</html>

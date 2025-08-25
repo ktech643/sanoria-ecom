@@ -504,44 +504,252 @@ $(document).ready(function() {
     // =====================
     
     function loadProductReviews() {
-        // Sample reviews
+        // Enhanced sample reviews
         const reviews = [
             {
+                id: 1,
                 name: 'Ayesha Khan',
                 rating: 5,
                 date: '2024-12-10',
-                text: 'Amazing product! My skin feels so much more hydrated and looks brighter. Definitely recommend!'
+                title: 'Amazing hydrating serum!',
+                text: 'This serum has completely transformed my skin! I\'ve been using it for 3 weeks now and the difference is incredible. My skin feels softer, looks brighter, and fine lines are less visible. The texture is perfect - not too thick or thin, and it absorbs quickly without leaving any residue.',
+                verified: true,
+                recommend: true,
+                skinType: 'Dry',
+                helpful: 15,
+                userHelpful: false
             },
             {
+                id: 2,
                 name: 'Fatima Ali',
                 rating: 4,
                 date: '2024-12-08',
-                text: 'Great serum, noticed improvements in my skin texture after just one week of use.'
+                title: 'Great results after one week',
+                text: 'Really impressed with this serum. I have combination skin and was worried it might be too heavy, but it\'s perfect. Noticed improvements in my skin texture after just one week of use. The only reason I\'m not giving 5 stars is the price point, but the quality justifies it.',
+                verified: true,
+                recommend: true,
+                skinType: 'Combination',
+                helpful: 12,
+                userHelpful: false
             },
             {
+                id: 3,
                 name: 'Sana Ahmed',
                 rating: 5,
                 date: '2024-12-05',
-                text: 'Love this product! It absorbs quickly and doesn\'t leave any sticky residue. Will buy again.'
+                title: 'Perfect for sensitive skin',
+                text: 'I have very sensitive skin and most products cause irritation, but this serum is gentle and effective. No breakouts, no redness, just healthy, glowing skin. Love that it\'s fragrance-free. Will definitely repurchase!',
+                verified: false,
+                recommend: true,
+                skinType: 'Sensitive',
+                helpful: 8,
+                userHelpful: false
+            },
+            {
+                id: 4,
+                name: 'Maria Hussain',
+                rating: 4,
+                date: '2024-12-03',
+                title: 'Good product, slow shipping',
+                text: 'The serum itself is excellent - lightweight, hydrating, and doesn\'t clog pores. I\'ve been using it for 2 weeks and already see improvements. Only complaint is the shipping took longer than expected, but the product quality makes up for it.',
+                verified: true,
+                recommend: true,
+                skinType: 'Oily',
+                helpful: 6,
+                userHelpful: false
+            },
+            {
+                id: 5,
+                name: 'Zara Sheikh',
+                rating: 3,
+                date: '2024-11-28',
+                title: 'Okay but not amazing',
+                text: 'It\'s a decent serum but didn\'t see the dramatic results I was expecting based on other reviews. My skin feels more moisturized but no significant improvement in fine lines or brightness. Might work better for others.',
+                verified: false,
+                recommend: false,
+                skinType: 'Normal',
+                helpful: 3,
+                userHelpful: false
             }
         ];
 
+        // Store reviews globally for filtering
+        window.allReviews = reviews;
+        window.displayedReviews = reviews.slice(0, 3); // Show first 3 initially
+
+        displayReviews(window.displayedReviews);
+        updateReviewsSummary();
+        initReviewFilters();
+    }
+
+    function displayReviews(reviews) {
         const reviewsHtml = reviews.map(review => `
-            <div class="review-item">
+            <div class="review-item" data-rating="${review.rating}" data-verified="${review.verified}">
                 <div class="review-header">
-                    <span class="reviewer-name">${review.name}</span>
-                    <span class="review-date">${formatDate(review.date)}</span>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">
+                            ${review.name.charAt(0).toUpperCase()}
+                        </div>
+                        <div class="reviewer-details">
+                            <h6>${review.name}</h6>
+                            <div class="reviewer-meta">
+                                <span>${review.skinType} Skin</span>
+                                ${review.verified ? '<span class="verified-badge">Verified Purchase</span>' : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-meta">
+                        <div class="review-date">${formatDate(review.date)}</div>
+                        <div class="review-rating">
+                            ${generateStars(review.rating)}
+                        </div>
+                    </div>
                 </div>
-                <div class="review-rating">
-                    ${generateStars(review.rating)}
-                </div>
-                <div class="review-text">
-                    ${review.text}
+                
+                <div class="review-title">${review.title}</div>
+                <div class="review-text">${review.text}</div>
+                
+                <div class="review-footer">
+                    <div class="review-recommendation ${review.recommend ? 'recommendation-yes' : 'recommendation-no'}">
+                        <i class="fas fa-thumbs-${review.recommend ? 'up' : 'down'}"></i>
+                        <span>${review.recommend ? 'Recommends this product' : 'Does not recommend'}</span>
+                    </div>
+                    <div class="review-actions">
+                        <div class="review-action ${review.userHelpful ? 'active' : ''}" onclick="markHelpful(${review.id})">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span>Helpful (${review.helpful})</span>
+                        </div>
+                        <div class="review-action" onclick="reportReview(${review.id})">
+                            <i class="fas fa-flag"></i>
+                            <span>Report</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         `).join('');
 
         $('#reviewsSection').html(reviewsHtml);
+    }
+
+    function updateReviewsSummary() {
+        const reviews = window.allReviews || [];
+        const totalReviews = reviews.length;
+        const avgRating = reviews.length > 0 ? 
+            (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1) : 0;
+
+        $('#overallRating').text(avgRating);
+        $('#totalReviews').text(totalReviews);
+        $('#reviewCount').text(totalReviews);
+        $('#overallStars').html(generateStars(parseFloat(avgRating)));
+
+        // Update rating breakdown
+        const ratingCounts = [0, 0, 0, 0, 0]; // Index 0 = 1 star, Index 4 = 5 stars
+        reviews.forEach(review => {
+            ratingCounts[review.rating - 1]++;
+        });
+
+        $('.rating-bar-item').each(function(index) {
+            const starLevel = 5 - index; // 5 stars, 4 stars, etc.
+            const count = ratingCounts[starLevel - 1];
+            const percentage = totalReviews > 0 ? (count / totalReviews) * 100 : 0;
+            
+            $(this).find('.rating-fill').css('width', `${percentage}%`);
+            $(this).find('.rating-count').text(count);
+        });
+    }
+
+    function initReviewFilters() {
+        // Filter buttons
+        $('.filter-buttons .btn').on('click', function() {
+            $('.filter-buttons .btn').removeClass('active');
+            $(this).addClass('active');
+            
+            const filter = $(this).data('filter');
+            filterReviews(filter);
+        });
+
+        // Sort dropdown
+        $('.review-sort select').on('change', function() {
+            const sortBy = $(this).val();
+            sortReviews(sortBy);
+        });
+
+        // Load more button
+        $('#loadMoreReviews').on('click', function() {
+            loadMoreReviews();
+        });
+
+        // Initialize load more button visibility
+        updateLoadMoreButton();
+    }
+
+    function filterReviews(filter) {
+        let filteredReviews = [...window.allReviews];
+
+        if (filter === 'verified') {
+            filteredReviews = filteredReviews.filter(review => review.verified);
+        } else if (filter !== 'all') {
+            const rating = parseInt(filter);
+            filteredReviews = filteredReviews.filter(review => review.rating === rating);
+        }
+
+        window.displayedReviews = filteredReviews.slice(0, 3);
+        displayReviews(window.displayedReviews);
+        updateLoadMoreButton(filteredReviews.length);
+    }
+
+    function sortReviews(sortBy) {
+        let sortedReviews = [...window.displayedReviews];
+
+        switch(sortBy) {
+            case 'newest':
+                sortedReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+                break;
+            case 'oldest':
+                sortedReviews.sort((a, b) => new Date(a.date) - new Date(b.date));
+                break;
+            case 'highest':
+                sortedReviews.sort((a, b) => b.rating - a.rating);
+                break;
+            case 'lowest':
+                sortedReviews.sort((a, b) => a.rating - b.rating);
+                break;
+            case 'helpful':
+                sortedReviews.sort((a, b) => b.helpful - a.helpful);
+                break;
+        }
+
+        displayReviews(sortedReviews);
+    }
+
+    function loadMoreReviews() {
+        const currentFilter = $('.filter-buttons .btn.active').data('filter');
+        let allFilteredReviews = [...window.allReviews];
+
+        if (currentFilter === 'verified') {
+            allFilteredReviews = allFilteredReviews.filter(review => review.verified);
+        } else if (currentFilter !== 'all') {
+            const rating = parseInt(currentFilter);
+            allFilteredReviews = allFilteredReviews.filter(review => review.rating === rating);
+        }
+
+        const currentCount = window.displayedReviews.length;
+        const newReviews = allFilteredReviews.slice(currentCount, currentCount + 3);
+        
+        window.displayedReviews = [...window.displayedReviews, ...newReviews];
+        displayReviews(window.displayedReviews);
+        updateLoadMoreButton(allFilteredReviews.length);
+    }
+
+    function updateLoadMoreButton(totalAvailable = null) {
+        const total = totalAvailable || window.allReviews.length;
+        const displayed = window.displayedReviews.length;
+        
+        if (displayed >= total) {
+            $('#loadMoreReviews').hide();
+        } else {
+            $('#loadMoreReviews').show().text(`Load More Reviews (${total - displayed} remaining)`);
+        }
     }
 
     // =====================
@@ -600,3 +808,171 @@ $(document).ready(function() {
 
     console.log('✅ Product page loaded successfully');
 });
+
+// =====================
+// REVIEW MODAL FUNCTIONS
+// =====================
+
+window.openReviewModal = function() {
+    if (!currentProduct) return;
+    
+    // Populate product info in modal
+    $('#reviewProductImage').attr('src', currentProduct.images[0]).attr('alt', currentProduct.name);
+    $('#reviewProductName').text(currentProduct.name);
+    
+    // Reset form
+    $('#reviewForm')[0].reset();
+    $('.star-label').removeClass('active');
+    $('#charCount').text('0');
+    $('.rating-description').text('Click to rate this product');
+    
+    // Show modal
+    $('#reviewModal').modal('show');
+};
+
+// Initialize review modal functionality
+$(document).ready(function() {
+    // Character count for review text
+    $('#reviewText').on('input', function() {
+        const length = $(this).val().length;
+        $('#charCount').text(length);
+        
+        if (length > 500) {
+            $(this).addClass('is-invalid');
+            $('#charCount').parent().addClass('text-danger');
+        } else {
+            $(this).removeClass('is-invalid');
+            $('#charCount').parent().removeClass('text-danger');
+        }
+    });
+
+    // Rating input functionality
+    $('.rating-input input[type="radio"]').on('change', function() {
+        const rating = $(this).val();
+        const descriptions = {
+            '1': 'Poor - I do not recommend this product',
+            '2': 'Fair - Below average, has some issues',
+            '3': 'Good - Average product, meets expectations',
+            '4': 'Very Good - Above average, would recommend',
+            '5': 'Excellent - Outstanding product, highly recommend!'
+        };
+        $('.rating-description').text(descriptions[rating]);
+    });
+
+    // Submit review
+    $('#submitReview').on('click', function() {
+        submitProductReview();
+    });
+});
+
+function submitProductReview() {
+    // Validate form
+    const rating = $('input[name="rating"]:checked').val();
+    const title = $('#reviewTitle').val().trim();
+    const text = $('#reviewText').val().trim();
+    const name = $('#reviewerName').val().trim();
+    const recommend = $('input[name="recommend"]:checked').val();
+    const agreeTerms = $('#agreeTerms').is(':checked');
+
+    if (!rating || !title || !text || !name || !recommend || !agreeTerms) {
+        alert('Please fill in all required fields and accept the terms.');
+        return;
+    }
+
+    if (text.length > 500) {
+        alert('Review text must be 500 characters or less.');
+        return;
+    }
+
+    // Create review object
+    const newReview = {
+        id: Date.now(),
+        name: name,
+        rating: parseInt(rating),
+        date: new Date().toISOString().split('T')[0],
+        title: title,
+        text: text,
+        verified: false, // Would be true for actual purchases
+        recommend: recommend === 'yes',
+        skinType: $('#skinType').val() || 'Not specified',
+        helpful: 0,
+        userHelpful: false,
+        email: $('#reviewerEmail').val().trim()
+    };
+
+    // Add to reviews (in real app, this would be sent to server)
+    if (window.allReviews) {
+        window.allReviews.unshift(newReview);
+        window.displayedReviews.unshift(newReview);
+        
+        // Update display
+        displayReviews(window.displayedReviews);
+        updateReviewsSummary();
+        updateLoadMoreButton();
+        
+        // Update product rating count
+        $('#reviewCount').text(window.allReviews.length);
+        
+        // Show success message
+        $('#reviewModal').modal('hide');
+        showReviewSuccessMessage();
+        
+        // Scroll to reviews section
+        setTimeout(() => {
+            $('button[data-bs-target="#reviews-tab"]').click();
+            $('html, body').animate({
+                scrollTop: $('#reviews-tab').offset().top - 100
+            }, 500);
+        }, 1000);
+        
+        console.log('Review submitted:', newReview);
+    }
+}
+
+function showReviewSuccessMessage() {
+    const message = $(`
+        <div class="alert alert-success alert-dismissible fade show position-fixed" 
+             style="top: 100px; right: 20px; z-index: 10000; min-width: 350px;">
+            <h6><i class="fas fa-check-circle me-2"></i>Review Submitted Successfully!</h6>
+            <p class="mb-0">Thank you for sharing your experience. Your review helps other customers make informed decisions.</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `);
+    
+    $('body').append(message);
+    
+    setTimeout(() => {
+        message.alert('close');
+    }, 5000);
+}
+
+// =====================
+// REVIEW INTERACTION FUNCTIONS
+// =====================
+
+window.markHelpful = function(reviewId) {
+    const review = window.allReviews.find(r => r.id === reviewId);
+    if (review) {
+        if (!review.userHelpful) {
+            review.helpful++;
+            review.userHelpful = true;
+            
+            // Update display
+            const reviewElement = $(`.review-item`).filter(function() {
+                return $(this).find('.review-action').first().attr('onclick').includes(reviewId);
+            });
+            
+            reviewElement.find('.review-action').first()
+                .addClass('active')
+                .find('span').text(`Helpful (${review.helpful})`);
+        }
+    }
+};
+
+window.reportReview = function(reviewId) {
+    if (confirm('Are you sure you want to report this review as inappropriate?')) {
+        // In real app, this would send a report to the server
+        alert('Thank you for reporting. We will review this feedback.');
+        console.log('Review reported:', reviewId);
+    }
+};

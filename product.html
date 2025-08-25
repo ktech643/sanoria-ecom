@@ -415,8 +415,107 @@
                     <!-- Reviews Tab -->
                     <div class="tab-pane fade" id="reviews-tab">
                         <div class="tab-content-area">
+                            <!-- Reviews Summary -->
+                            <div class="reviews-summary mb-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="rating-overview">
+                                            <div class="overall-rating">
+                                                <span class="rating-number" id="overallRating">4.8</span>
+                                                <div class="rating-stars" id="overallStars">
+                                                    <!-- Stars will be loaded here -->
+                                                </div>
+                                                <p class="rating-text">Based on <span id="totalReviews">127</span> reviews</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="rating-breakdown">
+                                            <div class="rating-bar-item">
+                                                <span class="stars-label">5 stars</span>
+                                                <div class="rating-bar">
+                                                    <div class="rating-fill" style="width: 78%"></div>
+                                                </div>
+                                                <span class="rating-count">99</span>
+                                            </div>
+                                            <div class="rating-bar-item">
+                                                <span class="stars-label">4 stars</span>
+                                                <div class="rating-bar">
+                                                    <div class="rating-fill" style="width: 15%"></div>
+                                                </div>
+                                                <span class="rating-count">19</span>
+                                            </div>
+                                            <div class="rating-bar-item">
+                                                <span class="stars-label">3 stars</span>
+                                                <div class="rating-bar">
+                                                    <div class="rating-fill" style="width: 5%"></div>
+                                                </div>
+                                                <span class="rating-count">6</span>
+                                            </div>
+                                            <div class="rating-bar-item">
+                                                <span class="stars-label">2 stars</span>
+                                                <div class="rating-bar">
+                                                    <div class="rating-fill" style="width: 2%"></div>
+                                                </div>
+                                                <span class="rating-count">2</span>
+                                            </div>
+                                            <div class="rating-bar-item">
+                                                <span class="stars-label">1 star</span>
+                                                <div class="rating-bar">
+                                                    <div class="rating-fill" style="width: 1%"></div>
+                                                </div>
+                                                <span class="rating-count">1</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Review Filters -->
+                            <div class="review-filters mb-4">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <div class="filter-buttons">
+                                            <button class="btn btn-sm btn-outline-primary active" data-filter="all">All Reviews</button>
+                                            <button class="btn btn-sm btn-outline-primary" data-filter="5">5 Stars</button>
+                                            <button class="btn btn-sm btn-outline-primary" data-filter="4">4 Stars</button>
+                                            <button class="btn btn-sm btn-outline-primary" data-filter="3">3 Stars</button>
+                                            <button class="btn btn-sm btn-outline-primary" data-filter="verified">Verified</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-md-end">
+                                        <div class="review-sort">
+                                            <label class="form-label me-2">Sort by:</label>
+                                            <select class="form-select form-select-sm d-inline-block w-auto">
+                                                <option value="newest">Newest First</option>
+                                                <option value="oldest">Oldest First</option>
+                                                <option value="highest">Highest Rating</option>
+                                                <option value="lowest">Lowest Rating</option>
+                                                <option value="helpful">Most Helpful</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Write Review Button -->
+                            <div class="write-review-section mb-4">
+                                <button class="btn btn-primary" onclick="openReviewModal()">
+                                    <i class="fas fa-star me-2"></i>Write a Review
+                                </button>
+                                <small class="text-muted ms-3">Share your experience with this product</small>
+                            </div>
+
+                            <!-- Reviews List -->
                             <div class="reviews-section" id="reviewsSection">
                                 <!-- Reviews will be loaded here -->
+                            </div>
+
+                            <!-- Load More Reviews -->
+                            <div class="text-center mt-4">
+                                <button class="btn btn-outline-primary" id="loadMoreReviews">
+                                    Load More Reviews
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -443,6 +542,126 @@
                 </div>
                 <div class="modal-body text-center">
                     <img id="zoomedImage" src="" alt="Zoomed Product Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Write Review Modal -->
+    <div class="modal fade" id="reviewModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-star me-2"></i>Write a Review
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reviewForm">
+                        <!-- Product Info -->
+                        <div class="review-product-info mb-4">
+                            <div class="d-flex align-items-center">
+                                <img id="reviewProductImage" src="" alt="Product" class="review-product-thumb me-3">
+                                <div>
+                                    <h6 id="reviewProductName" class="mb-1">Product Name</h6>
+                                    <small class="text-muted">Share your experience with this product</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rating Selection -->
+                        <div class="mb-4">
+                            <label class="form-label">Your Rating *</label>
+                            <div class="rating-input">
+                                <input type="radio" name="rating" value="5" id="star5">
+                                <label for="star5" class="star-label">★</label>
+                                <input type="radio" name="rating" value="4" id="star4">
+                                <label for="star4" class="star-label">★</label>
+                                <input type="radio" name="rating" value="3" id="star3">
+                                <label for="star3" class="star-label">★</label>
+                                <input type="radio" name="rating" value="2" id="star2">
+                                <label for="star2" class="star-label">★</label>
+                                <input type="radio" name="rating" value="1" id="star1">
+                                <label for="star1" class="star-label">★</label>
+                            </div>
+                            <small class="rating-description text-muted">Click to rate this product</small>
+                        </div>
+
+                        <!-- Review Title -->
+                        <div class="mb-3">
+                            <label class="form-label">Review Title *</label>
+                            <input type="text" class="form-control" id="reviewTitle" placeholder="Summarize your experience" required>
+                        </div>
+
+                        <!-- Review Text -->
+                        <div class="mb-3">
+                            <label class="form-label">Your Review *</label>
+                            <textarea class="form-control" id="reviewText" rows="5" 
+                                placeholder="Tell others about your experience with this product. What did you like or dislike? How did it work for you?" required></textarea>
+                            <div class="character-count">
+                                <small class="text-muted"><span id="charCount">0</span>/500 characters</small>
+                            </div>
+                        </div>
+
+                        <!-- Reviewer Info -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Your Name *</label>
+                                <input type="text" class="form-control" id="reviewerName" placeholder="Your name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email (optional)</label>
+                                <input type="email" class="form-control" id="reviewerEmail" placeholder="your.email@example.com">
+                            </div>
+                        </div>
+
+                        <!-- Skin Type -->
+                        <div class="mb-3">
+                            <label class="form-label">Your Skin Type (optional)</label>
+                            <select class="form-select" id="skinType">
+                                <option value="">Select your skin type</option>
+                                <option value="dry">Dry</option>
+                                <option value="oily">Oily</option>
+                                <option value="combination">Combination</option>
+                                <option value="sensitive">Sensitive</option>
+                                <option value="normal">Normal</option>
+                            </select>
+                        </div>
+
+                        <!-- Recommendation -->
+                        <div class="mb-4">
+                            <label class="form-label">Would you recommend this product? *</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="recommend" id="recommendYes" value="yes" required>
+                                <label class="form-check-label" for="recommendYes">
+                                    <i class="fas fa-thumbs-up me-1"></i>Yes, I recommend it
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="recommend" id="recommendNo" value="no" required>
+                                <label class="form-check-label" for="recommendNo">
+                                    <i class="fas fa-thumbs-down me-1"></i>No, I don't recommend it
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Terms Agreement -->
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                <label class="form-check-label" for="agreeTerms">
+                                    I agree that my review is based on my own experience and is my genuine opinion of this product, and that I have no personal or business relationship with the company.
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitReview">
+                        <i class="fas fa-paper-plane me-2"></i>Submit Review
+                    </button>
                 </div>
             </div>
         </div>
