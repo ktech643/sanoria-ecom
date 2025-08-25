@@ -838,32 +838,50 @@
     <script src="js/main.js"></script>
     <script src="js/notification-system-fix.js"></script>
     <script src="js/bell-icon-fix.js"></script>
+    <script src="js/notification-types-fix.js"></script>
     <script src="js/link-verification.js"></script>
     
-    <!-- Bell Icon Immediate Fix -->
+    <!-- Enhanced Notification System Immediate Fix -->
     <script>
         $(document).ready(function() {
-            // Ensure bell icon functionality works immediately
+            // Ensure enhanced notification system works immediately
             setTimeout(function() {
-                // Force update notification count
-                if (window.bellIconFix && window.bellIconFix.updateNotificationCount) {
-                    window.bellIconFix.updateNotificationCount();
+                // Load enhanced notifications
+                if (window.notificationTypes && window.notificationTypes.loadEnhancedNotifications) {
+                    window.notificationTypes.loadEnhancedNotifications();
                 }
                 
-                // Force load notification content
+                // Fallback to basic fix
                 if (window.bellIconFix && window.bellIconFix.loadNotificationContent) {
                     window.bellIconFix.loadNotificationContent();
                 }
                 
-                // Ensure dropdown is clickable
+                // Ensure dropdown is properly configured
                 $('.fa-bell').closest('a').each(function() {
                     $(this).attr('data-bs-toggle', 'dropdown');
                     $(this).attr('aria-expanded', 'false');
+                    $(this).attr('role', 'button');
                 });
                 
-                console.log('🔔 Bell icon immediate fix applied');
-            }, 500);
+                // Add enhanced styling
+                $('.notifications-dropdown').css({
+                    'min-width': '400px',
+                    'max-height': '500px',
+                    'border': 'none',
+                    'box-shadow': '0 15px 35px rgba(255, 0, 102, 0.15)',
+                    'border-radius': '15px'
+                });
+                
+                console.log('🔔 Enhanced notification system immediate fix applied');
+            }, 1000);
         });
+        
+        // Global function for mark all as read
+        function markAllNotificationsAsRead() {
+            if (window.notificationTypes && window.notificationTypes.markAllNotificationsAsRead) {
+                window.notificationTypes.markAllNotificationsAsRead();
+            }
+        }
     </script>
 </body>
 </html>
