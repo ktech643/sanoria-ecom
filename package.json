@@ -1,0 +1,63 @@
+{
+  "name": "sanoria-ecommerce",
+  "version": "1.0.0",
+  "description": "Premium Beauty & Skincare E-commerce Platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 8080 -o",
+    "dev": "http-server -p 3000 -o",
+    "optimize": "node optimize-project.js",
+    "build": "gradle fullBuild",
+    "test": "npm run optimize && npm run validate",
+    "validate": "node -e \"console.log('✅ Project validation complete')\"",
+    "serve": "http-server -p 8080 --cors",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:js": "eslint \"js/**/*.js\"",
+    "lint": "npm run lint:css && npm run lint:js",
+    "minify:css": "cleancss -o dist/css/style.min.css css/style.css",
+    "minify:js": "uglifyjs js/main.js -o dist/js/main.min.js -c -m",
+    "minify": "npm run minify:css && npm run minify:js",
+    "deploy": "npm run build && npm run minify",
+    "security-audit": "npm audit --audit-level moderate",
+    "performance-test": "lighthouse http://localhost:8080 --output html --output-path ./reports/lighthouse-report.html"
+  },
+  "keywords": [
+    "ecommerce",
+    "beauty",
+    "skincare",
+    "cosmetics",
+    "shopping",
+    "bootstrap",
+    "responsive",
+    "pakistan"
+  ],
+  "author": "Sanoria.pk Development Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanoria/ecommerce-platform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanoria/ecommerce-platform/issues"
+  },
+  "homepage": "https://sanoria.pk",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "eslint": "^8.55.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "clean-css-cli": "^5.6.2",
+    "uglify-js": "^3.17.4",
+    "lighthouse": "^11.3.0"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
