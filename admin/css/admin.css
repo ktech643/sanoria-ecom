@@ -5,11 +5,11 @@
 :root {
     --admin-sidebar-width: 280px;
     --admin-header-height: 70px;
-    --admin-primary: #C4DFDF;
-    --admin-primary-dark: #9FC5C5;
-    --admin-secondary: #D2E9E9;
-    --admin-tertiary: #E3F4F4;
-    --admin-light: #F8F6F4;
+    --admin-primary: #FF0066;
+    --admin-primary-dark: #CC0052;
+    --admin-secondary: #FF3385;
+    --admin-tertiary: #FF66B3;
+    --admin-light: #FFB3D9;
     --admin-sidebar-bg: #2C3E50;
     --admin-content-bg: #f8f9fa;
     --admin-card-bg: #ffffff;

@@ -3,13 +3,13 @@
    ===================== */
 
 :root {
-    /* Color Palette - Soft Blue-Gray Tones */
-    --primary-color: #C4DFDF;
-    --primary-dark: #9FC5C5;
-    --primary-light: #D2E9E9;
-    --secondary-color: #E3F4F4;
-    --tertiary-color: #F8F6F4;
-    --accent-color: #7ABCBC;
+    /* Color Palette - Bright Pink Theme */
+    --primary-color: #FF0066;
+    --primary-dark: #CC0052;
+    --primary-light: #FF3385;
+    --secondary-color: #FF66B3;
+    --tertiary-color: #FFB3D9;
+    --accent-color: #E6005C;
     --success-color: #27ae60;
     --warning-color: #f39c12;
     --info-color: #3498db;
@@ -22,15 +22,15 @@
     --black: #212529;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #C4DFDF 0%, #D2E9E9 100%);
-    --gradient-secondary: linear-gradient(135deg, #D2E9E9 0%, #E3F4F4 100%);
-    --gradient-accent: linear-gradient(135deg, #E3F4F4 0%, #F8F6F4 100%);
+    --gradient-primary: linear-gradient(135deg, #FF0066 0%, #FF3385 100%);
+    --gradient-secondary: linear-gradient(135deg, #FF3385 0%, #FF66B3 100%);
+    --gradient-accent: linear-gradient(135deg, #FF66B3 0%, #FFB3D9 100%);
     
     /* Text Colors for Better Contrast */
     --primary-text-color: #2C3E50;
     --secondary-text-color: #34495E;
-    --button-text-color: #2C3E50;
-    --light-text-color: #7ABCBC;
+    --button-text-color: #ffffff;
+    --light-text-color: #FF0066;
     
     /* Typography */
     --font-primary: 'Playfair Display', serif;

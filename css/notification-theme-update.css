@@ -5,7 +5,7 @@
 /* Notification Bell Animations with new theme */
 .fa-bell.notification-alert {
     animation: bellShake 0.8s ease-in-out infinite;
-    color: #7ABCBC !important;
+    color: #FF0066 !important;
 }
 
 @keyframes bellShake {
@@ -16,7 +16,7 @@
 
 .notification-count {
     animation: countPulse 2s infinite;
-    background: linear-gradient(135deg, #7ABCBC, #9FC5C5) !important;
+    background: linear-gradient(135deg, #FF0066, #CC0052) !important;
     color: white !important;
     font-size: 0.7rem !important;
     font-weight: 700 !important;
@@ -97,13 +97,13 @@
 }
 
 .notification-icon-small.promotion-icon {
-    background: linear-gradient(135deg, #C4DFDF, #D2E9E9);
-    color: var(--primary-text-color);
+    background: linear-gradient(135deg, #FF0066, #FF3385);
+    color: white;
 }
 
 .notification-icon-small.order-icon {
-    background: linear-gradient(135deg, #D2E9E9, #E3F4F4);
-    color: var(--primary-text-color);
+    background: linear-gradient(135deg, #FF3385, #FF66B3);
+    color: white;
 }
 
 .notification-icon-small.system-icon {
@@ -175,7 +175,7 @@
 
 /* Badge improvements with new theme */
 .badge.bg-danger {
-    background: linear-gradient(135deg, #7ABCBC, #9FC5C5) !important;
+    background: linear-gradient(135deg, #FF0066, #CC0052) !important;
 }
 
 .badge.bg-primary {
@@ -185,11 +185,11 @@
 
 /* Floating WhatsApp button theme update */
 .floating-whatsapp {
-    background: linear-gradient(135deg, #C4DFDF, #7ABCBC) !important;
+    background: linear-gradient(135deg, #FF0066, #E6005C) !important;
 }
 
 .floating-whatsapp:hover {
-    background: linear-gradient(135deg, #9FC5C5, #7ABCBC) !important;
+    background: linear-gradient(135deg, #CC0052, #E6005C) !important;
     transform: translateY(-2px) scale(1.05);
 }
 
