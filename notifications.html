@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/account.css">
+    
+    <style>
+        .notifications-main {
+            background: var(--light-gray);
+            min-height: 70vh;
+            padding: 2rem 0;
+        }
+        
+        .notifications-header {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .notification-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-card {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary-light);
+            border-radius: var(--border-radius-md);
+            color: var(--button-text-color);
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .notifications-content {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+        
+        .notifications-toolbar {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--medium-gray);
+            background: var(--light-gray);
+        }
+        
+        .notification-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--medium-gray);
+            background: var(--white);
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--button-text-color);
+            border-color: var(--primary-color);
+        }
+        
+        .notification-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .notification-item:hover {
+            background: var(--light-gray);
+        }
+        
+        .notification-item.unread {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .notification-item.unread:hover {
+            background: rgba(212, 175, 55, 0.15);
+        }
+        
+        .notification-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .promotion-icon {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+        }
+        
+        .shipping-icon {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+        }
+        
+        .welcome-icon {
+            background: linear-gradient(135deg, #feca57, #ff9ff3);
+            color: white;
+        }
+        
+        .order-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .system-icon {
+            background: linear-gradient(135deg, #a8e6cf, #7fcdcd);
+            color: white;
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .notification-message {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .notification-time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .notification-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .notification-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .unread-badge {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 0.5rem;
+        }
+        
+        .empty-notifications {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+        
+        .empty-notifications i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        @media (max-width: 768px) {
+            .notifications-main {
+                padding: 1rem 0;
+            }
+            
+            .notifications-header {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .notification-stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .notifications-toolbar {
+                padding: 1rem;
+            }
+            
+            .notification-filters {
+                justify-content: center;
+            }
+            
+            .filter-btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .notification-item {
+                padding: 1rem;
+                gap: 0.75rem;
+            }
+            
+            .notification-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .notification-actions {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="top-banner">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone me-1"></i> +92 300 1234567</span>
+                        <span class="ms-3"><i class="fas fa-envelope me-1"></i> info@sanoria.pk</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img" onerror="this.style.display='none'">
+                    <span class="logo-text">Sanoria.pk</span>
+                    <small class="logo-tagline">The Essence Of TimeLess Glow</small>
+                </a>
+
+                <div class="header-actions d-flex align-items-center">
+                    <!-- Search -->
+                    <div class="search-container me-3 d-none d-lg-block">
+                        <div class="input-group search-box">
+                            <input type="text" class="form-control search-input" placeholder="Search for beauty products..." id="searchInput">
+                            <button class="btn btn-search" type="button" id="searchBtn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="search-results d-none" id="searchResults">
+                            <div class="search-loading d-none">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                                    <span>Searching...</span>
+                                </div>
+                            </div>
+                            <div class="search-items"></div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon fancy-dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle notification-count">0</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end fancy-dropdown notifications-dropdown">
+                            <div class="dropdown-header fancy-header">
+                                <i class="fas fa-bell me-2"></i>
+                                <span>Notifications</span>
+                                <a href="notifications.html" class="btn btn-sm btn-outline-primary ms-auto">
+                                    View All
+                                </a>
+                            </div>
+                            <div class="notification-quick-list">
+                                <!-- Quick notifications will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account -->
+                    <div class="dropdown">
+                        <a href="#" class="header-icon fancy-dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end fancy-dropdown account-dropdown">
+                            <div class="dropdown-header fancy-header">
+                                <i class="fas fa-user-circle me-2"></i>
+                                <span>My Account</span>
+                            </div>
+                            <a class="dropdown-item" href="profile.html">
+                                <i class="fas fa-user me-2"></i>Profile
+                            </a>
+                            <a class="dropdown-item" href="order-history.html">
+                                <i class="fas fa-box me-2"></i>Orders
+                            </a>
+                            <a class="dropdown-item" href="wishlist.html">
+                                <i class="fas fa-heart me-2"></i>Wishlist
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="login.html">
+                                <i class="fas fa-sign-in-alt me-2"></i>Login
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="notifications-main">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Notifications</li>
+                </ol>
+            </nav>
+
+            <!-- Page Header -->
+            <div class="notifications-header">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="h2 mb-2">
+                            <i class="fas fa-bell me-3 text-primary"></i>
+                            Notifications
+                        </h1>
+                        <p class="text-muted mb-0">Stay updated with your orders, promotions, and important updates</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <button class="btn btn-outline-primary me-2" onclick="markAllAsRead()">
+                            <i class="fas fa-check-double me-2"></i>Mark All Read
+                        </button>
+                        <button class="btn btn-outline-secondary" onclick="clearAllNotifications()">
+                            <i class="fas fa-trash me-2"></i>Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="notification-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalNotifications">0</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="unreadNotifications">0</div>
+                        <div class="stat-label">Unread</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="todayNotifications">0</div>
+                        <div class="stat-label">Today</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Content -->
+            <div class="notifications-content">
+                <!-- Toolbar -->
+                <div class="notifications-toolbar">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                        <div class="notification-filters">
+                            <button class="filter-btn active" data-filter="all">
+                                <i class="fas fa-list me-1"></i>All
+                            </button>
+                            <button class="filter-btn" data-filter="unread">
+                                <i class="fas fa-circle me-1"></i>Unread
+                            </button>
+                            <button class="filter-btn" data-filter="orders">
+                                <i class="fas fa-box me-1"></i>Orders
+                            </button>
+                            <button class="filter-btn" data-filter="promotions">
+                                <i class="fas fa-tag me-1"></i>Promotions
+                            </button>
+                            <button class="filter-btn" data-filter="system">
+                                <i class="fas fa-cog me-1"></i>System
+                            </button>
+                        </div>
+                        
+                        <div class="d-flex align-items-center gap-3">
+                            <select class="form-select form-select-sm" id="sortOrder" style="width: auto;">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications List -->
+                <div class="notifications-list" id="notificationsList">
+                    <!-- Notifications will be loaded here -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-notifications d-none" id="emptyState">
+                    <i class="fas fa-bell-slash"></i>
+                    <h5>No notifications</h5>
+                    <p>You're all caught up! Check back later for updates.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">
+                            <img src="images/logo.png" alt="Sanoria.pk" onerror="this.style.display='none'">
+                            <span class="logo-text">Sanoria.pk</span>
+                            <small class="logo-tagline d-block">The Essence Of TimeLess Glow</small>
+                        </div>
+                        <p class="footer-desc">Your trusted beauty partner for premium skincare and cosmetic products in Pakistan.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h5 class="footer-title">Quick Links</h5>
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="category.html">Shop by Categories</a></li>
+                            <li><a href="skin-type.html">Shop by Skin Type</a></li>
+                            <li><a href="new-arrivals.html">New Arrivals</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-section">
+                        <h5 class="footer-title">Support</h5>
+                        <ul class="footer-links">
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h5 class="footer-title">We Accept</h5>
+                        <div class="payment-methods mb-3">
+                            <img src="images/payments/jazzcash.svg" alt="JazzCash" class="payment-icon">
+                            <img src="images/payments/easypaisa.svg" alt="EasyPaisa" class="payment-icon">
+                            <span class="payment-text">Bank Transfer</span>
+                            <span class="payment-text">Cash on Delivery</span>
+                        </div>
+                        
+                        <div class="newsletter">
+                            <h6>Subscribe to our newsletter</h6>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Your email">
+                                <button class="btn btn-primary">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Notification Management JavaScript
+        $(document).ready(function() {
+            initNotificationsPage();
+            loadNotifications();
+        });
+
+        let notifications = [
+            {
+                id: 1,
+                type: 'promotion',
+                title: 'New Year Special!',
+                message: 'Get 30% off on all skincare products. Limited time offer!',
+                time: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+                read: false,
+                actions: [
+                    { text: 'Shop Now', class: 'btn-primary', action: 'redirect', url: 'category.html' }
+                ]
+            },
+            {
+                id: 2,
+                type: 'order',
+                title: 'Order Shipped!',
+                message: 'Your order #SAN20241215001 has been shipped and is on the way.',
+                time: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 hours ago
+                read: false,
+                actions: [
+                    { text: 'Track Order', class: 'btn-outline-primary', action: 'track', orderId: 'SAN20241215001' }
+                ]
+            },
+            {
+                id: 3,
+                type: 'system',
+                title: 'Welcome to Sanoria!',
+                message: 'Complete your profile to get personalized product recommendations.',
+                time: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
+                read: true,
+                actions: [
+                    { text: 'Complete Profile', class: 'btn-outline-secondary', action: 'redirect', url: 'profile.html' }
+                ]
+            },
+            {
+                id: 4,
+                type: 'promotion',
+                title: 'Free Shipping Alert!',
+                message: 'Enjoy free shipping on all orders over Rs. 2000. No code needed!',
+                time: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
+                read: true,
+                actions: []
+            },
+            {
+                id: 5,
+                type: 'order',
+                title: 'Order Delivered',
+                message: 'Your order #SAN20241210002 has been successfully delivered.',
+                time: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // 5 days ago
+                read: true,
+                actions: [
+                    { text: 'Leave Review', class: 'btn-outline-primary', action: 'review', orderId: 'SAN20241210002' }
+                ]
+            }
+        ];
+
+        function initNotificationsPage() {
+            // Filter buttons
+            $('.filter-btn').on('click', function() {
+                $('.filter-btn').removeClass('active');
+                $(this).addClass('active');
+                
+                const filter = $(this).data('filter');
+                filterNotifications(filter);
+            });
+
+            // Sort order
+            $('#sortOrder').on('change', function() {
+                const order = $(this).val();
+                sortNotifications(order);
+            });
+
+            // Update stats
+            updateNotificationStats();
+        }
+
+        function loadNotifications() {
+            // Load from localStorage if available
+            const stored = localStorage.getItem('sanoria_notifications');
+            if (stored) {
+                const parsedNotifications = JSON.parse(stored);
+                // Convert time strings back to Date objects
+                notifications = parsedNotifications.map(n => ({
+                    ...n,
+                    time: new Date(n.time)
+                }));
+            }
+            
+            displayNotifications(notifications);
+            updateNotificationStats();
+        }
+
+        function displayNotifications(notificationsToShow) {
+            const container = $('#notificationsList');
+            container.empty();
+
+            if (notificationsToShow.length === 0) {
+                $('#emptyState').removeClass('d-none');
+                return;
+            }
+
+            $('#emptyState').addClass('d-none');
+
+            notificationsToShow.forEach(notification => {
+                const notificationHtml = createNotificationHTML(notification);
+                container.append(notificationHtml);
+            });
+
+            // Add click handlers
+            $('.notification-item').on('click', function() {
+                const notificationId = parseInt($(this).data('id'));
+                markAsRead(notificationId);
+            });
+        }
+
+        function createNotificationHTML(notification) {
+            const timeAgo = getTimeAgo(notification.time);
+            const iconClass = getNotificationIcon(notification.type);
+            const unreadBadge = notification.read ? '' : '<div class="unread-badge"></div>';
+            
+            let actionsHTML = '';
+            if (notification.actions && notification.actions.length > 0) {
+                actionsHTML = '<div class="notification-actions">';
+                notification.actions.forEach(action => {
+                    actionsHTML += `<button class="btn btn-sm ${action.class}" onclick="handleNotificationAction('${action.action}', '${action.url || action.orderId || ''}', ${notification.id})">${action.text}</button>`;
+                });
+                actionsHTML += '</div>';
+            }
+
+            return `
+                <div class="notification-item ${notification.read ? 'read' : 'unread'}" data-id="${notification.id}" data-type="${notification.type}">
+                    <div class="notification-icon ${notification.type}-icon">
+                        <i class="${iconClass}"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-title">${notification.title}</div>
+                        <div class="notification-message">${notification.message}</div>
+                        <div class="notification-time">${timeAgo}</div>
+                        ${actionsHTML}
+                    </div>
+                    ${unreadBadge}
+                </div>
+            `;
+        }
+
+        function getNotificationIcon(type) {
+            const icons = {
+                promotion: 'fas fa-tag',
+                order: 'fas fa-box',
+                system: 'fas fa-cog',
+                shipping: 'fas fa-truck',
+                welcome: 'fas fa-star'
+            };
+            return icons[type] || 'fas fa-bell';
+        }
+
+        function getTimeAgo(time) {
+            const now = new Date();
+            const diff = now - time;
+            const minutes = Math.floor(diff / (1000 * 60));
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            if (minutes < 1) return 'Just now';
+            if (minutes < 60) return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
+            if (hours < 24) return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
+            return `${days} day${days !== 1 ? 's' : ''} ago`;
+        }
+
+        function filterNotifications(filter) {
+            let filtered = notifications;
+            
+            if (filter !== 'all') {
+                if (filter === 'unread') {
+                    filtered = notifications.filter(n => !n.read);
+                } else {
+                    filtered = notifications.filter(n => n.type === filter);
+                }
+            }
+            
+            displayNotifications(filtered);
+        }
+
+        function sortNotifications(order) {
+            const sorted = [...notifications].sort((a, b) => {
+                if (order === 'newest') {
+                    return new Date(b.time) - new Date(a.time);
+                } else {
+                    return new Date(a.time) - new Date(b.time);
+                }
+            });
+            
+            displayNotifications(sorted);
+        }
+
+        function updateNotificationStats() {
+            const total = notifications.length;
+            const unread = notifications.filter(n => !n.read).length;
+            const today = notifications.filter(n => {
+                const notificationDate = new Date(n.time);
+                const todayDate = new Date();
+                return notificationDate.toDateString() === todayDate.toDateString();
+            }).length;
+
+            $('#totalNotifications').text(total);
+            $('#unreadNotifications').text(unread);
+            $('#todayNotifications').text(today);
+
+            // Update header notification count
+            $('.notification-count').text(unread);
+            if (unread === 0) {
+                $('.notification-count').hide();
+            } else {
+                $('.notification-count').show();
+            }
+        }
+
+        function markAsRead(notificationId) {
+            const notification = notifications.find(n => n.id === notificationId);
+            if (notification && !notification.read) {
+                notification.read = true;
+                saveNotifications();
+                updateNotificationStats();
+                
+                // Update visual state
+                $(`.notification-item[data-id="${notificationId}"]`)
+                    .removeClass('unread')
+                    .addClass('read')
+                    .find('.unread-badge')
+                    .remove();
+            }
+        }
+
+        function markAllAsRead() {
+            notifications.forEach(n => n.read = true);
+            saveNotifications();
+            updateNotificationStats();
+            
+            // Update visual state
+            $('.notification-item.unread')
+                .removeClass('unread')
+                .addClass('read')
+                .find('.unread-badge')
+                .remove();
+                
+            showNotification('All notifications marked as read', 'success');
+        }
+
+        function clearAllNotifications() {
+            if (confirm('Are you sure you want to clear all notifications? This action cannot be undone.')) {
+                notifications = [];
+                saveNotifications();
+                updateNotificationStats();
+                displayNotifications([]);
+                showNotification('All notifications cleared', 'info');
+            }
+        }
+
+        function handleNotificationAction(action, data, notificationId) {
+            markAsRead(notificationId);
+            
+            switch (action) {
+                case 'redirect':
+                    window.location.href = data;
+                    break;
+                case 'track':
+                    window.open(`track-order.html?order=${data}`, '_blank');
+                    break;
+                case 'review':
+                    window.location.href = `order-history.html#order-${data}`;
+                    break;
+                default:
+                    console.log('Unknown action:', action);
+            }
+        }
+
+        function saveNotifications() {
+            localStorage.setItem('sanoria_notifications', JSON.stringify(notifications));
+        }
+
+        function showNotification(message, type) {
+            const alertClass = type === 'success' ? 'alert-success' : 
+                             type === 'error' ? 'alert-danger' : 'alert-info';
+            
+            const alert = $(`
+                <div class="alert ${alertClass} alert-dismissible fade show position-fixed" 
+                     style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `);
+            
+            $('body').append(alert);
+            
+            setTimeout(() => {
+                alert.alert('close');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

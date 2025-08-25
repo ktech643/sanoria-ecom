@@ -1293,13 +1293,142 @@ function initNotifications() {
 }
 
 function updateNotificationCount() {
-    const unreadCount = $('.notification-item.unread').length;
+    const stored = localStorage.getItem('sanoria_notifications');
+    let unreadCount = 0;
+    
+    if (stored) {
+        const notifications = JSON.parse(stored);
+        unreadCount = notifications.filter(n => !n.read).length;
+    } else {
+        // Default notifications count
+        unreadCount = 3;
+    }
+    
     $('.notification-count').text(unreadCount);
     
     if (unreadCount === 0) {
         $('.notification-count').hide();
     } else {
         $('.notification-count').show();
+    }
+    
+    // Load quick notifications in dropdown
+    loadQuickNotifications();
+}
+
+function loadQuickNotifications() {
+    const stored = localStorage.getItem('sanoria_notifications');
+    let notifications = [];
+    
+    if (stored) {
+        notifications = JSON.parse(stored);
+    } else {
+        // Default notifications
+        notifications = [
+            {
+                id: 1,
+                type: 'promotion',
+                title: 'New Year Special!',
+                message: 'Get 30% off on all skincare products',
+                time: new Date(Date.now() - 2 * 60 * 60 * 1000),
+                read: false
+            },
+            {
+                id: 2,
+                type: 'order',
+                title: 'Order Shipped!',
+                message: 'Your order #SAN20241215001 is on the way',
+                time: new Date(Date.now() - 5 * 60 * 60 * 1000),
+                read: false
+            },
+            {
+                id: 3,
+                type: 'system',
+                title: 'Welcome to Sanoria!',
+                message: 'Complete your profile for recommendations',
+                time: new Date(Date.now() - 24 * 60 * 60 * 1000),
+                read: false
+            }
+        ];
+        localStorage.setItem('sanoria_notifications', JSON.stringify(notifications));
+    }
+    
+    // Show only latest 3 unread notifications
+    const quickNotifications = notifications
+        .filter(n => !n.read)
+        .slice(0, 3)
+        .map(n => ({
+            ...n,
+            time: new Date(n.time)
+        }));
+    
+    const container = $('.notification-quick-list');
+    container.empty();
+    
+    if (quickNotifications.length === 0) {
+        container.html(`
+            <div class="dropdown-item text-center text-muted">
+                <i class="fas fa-check-circle me-2"></i>
+                All caught up!
+            </div>
+        `);
+    } else {
+        quickNotifications.forEach(notification => {
+            const timeAgo = getTimeAgoShort(notification.time);
+            const iconClass = getNotificationIconClass(notification.type);
+            
+            container.append(`
+                <div class="dropdown-item notification-item-quick" onclick="markNotificationRead(${notification.id})">
+                    <div class="d-flex align-items-start">
+                        <div class="notification-icon-small ${notification.type}-icon me-2">
+                            <i class="${iconClass}"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="mb-1 fs-6">${notification.title}</h6>
+                            <p class="mb-1 small text-muted">${notification.message}</p>
+                            <small class="text-muted">${timeAgo}</small>
+                        </div>
+                    </div>
+                </div>
+            `);
+        });
+    }
+}
+
+function getTimeAgoShort(time) {
+    const now = new Date();
+    const diff = now - time;
+    const minutes = Math.floor(diff / (1000 * 60));
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    if (minutes < 1) return 'now';
+    if (minutes < 60) return `${minutes}m`;
+    if (hours < 24) return `${hours}h`;
+    return `${days}d`;
+}
+
+function getNotificationIconClass(type) {
+    const icons = {
+        promotion: 'fas fa-tag',
+        order: 'fas fa-box',
+        system: 'fas fa-cog',
+        shipping: 'fas fa-truck',
+        welcome: 'fas fa-star'
+    };
+    return icons[type] || 'fas fa-bell';
+}
+
+function markNotificationRead(notificationId) {
+    const stored = localStorage.getItem('sanoria_notifications');
+    if (stored) {
+        const notifications = JSON.parse(stored);
+        const notification = notifications.find(n => n.id === notificationId);
+        if (notification) {
+            notification.read = true;
+            localStorage.setItem('sanoria_notifications', JSON.stringify(notifications));
+            updateNotificationCount();
+        }
     }
 }
 
