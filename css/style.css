@@ -1068,8 +1068,21 @@ h1, h2, h3, h4, h5, h6 {
    ===================== */
 
 .main-footer {
-    background: var(--secondary-color);
-    color: var(--white);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--secondary-color) 100%);
+    color: var(--primary-text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(196, 223, 223, 0.1) 0%, rgba(210, 233, 233, 0.05) 50%, rgba(227, 244, 244, 0.1) 100%);
+    pointer-events: none;
 }
 
 .footer-logo {

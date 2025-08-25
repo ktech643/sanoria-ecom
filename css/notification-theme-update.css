@@ -248,3 +248,174 @@
     outline-offset: 2px;
     border-radius: 3px;
 }
+/* =====================
+   FOOTER THEME UPDATE - BLUE-GRAY PALETTE
+   ===================== */
+
+/* Updated footer with blue-gray gradient */
+.main-footer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--secondary-color) 100%) !important;
+    color: var(--primary-text-color) !important;
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid var(--primary-dark);
+}
+
+.main-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(196, 223, 223, 0.1) 0%, rgba(210, 233, 233, 0.05) 50%, rgba(227, 244, 244, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Footer content with proper z-index */
+.main-footer > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer brand text updates */
+.footer-brand-text {
+    color: var(--primary-text-color) !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.footer-brand-tagline {
+    color: var(--secondary-text-color) !important;
+    opacity: 0.9;
+}
+
+/* Footer titles */
+.footer-title {
+    color: var(--primary-text-color) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-dark);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Footer description */
+.footer-description {
+    color: var(--secondary-text-color) !important;
+    opacity: 0.9;
+}
+
+/* Footer links */
+.footer-links a {
+    color: var(--secondary-text-color) !important;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color) !important;
+    transform: translateX(5px);
+}
+
+/* Social links */
+.social-links a {
+    background: rgba(196, 223, 223, 0.2) !important;
+    color: var(--primary-text-color) !important;
+    border: 1px solid var(--primary-dark) !important;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--primary-dark) !important;
+    color: white !important;
+    transform: translateY(-2px) scale(1.1);
+}
+
+/* Footer divider */
+.footer-divider {
+    border-color: var(--primary-dark) !important;
+    opacity: 0.5;
+}
+
+/* Copyright and footer bottom */
+.copyright {
+    color: var(--secondary-text-color) !important;
+    opacity: 0.8;
+}
+
+.footer-links-inline a {
+    color: var(--secondary-text-color) !important;
+    transition: all 0.3s ease;
+}
+
+.footer-links-inline a:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Payment methods styling */
+.payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.payment-icon {
+    height: 30px;
+    width: auto;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-dark);
+    transition: all 0.3s ease;
+}
+
+.payment-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(196, 223, 223, 0.3);
+}
+
+.payment-text {
+    background: rgba(196, 223, 223, 0.2);
+    color: var(--primary-text-color);
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-dark);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Newsletter section */
+.newsletter {
+    background: rgba(196, 223, 223, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--primary-dark);
+}
+
+.newsletter h6 {
+    color: var(--primary-text-color) !important;
+    margin-bottom: 0.75rem;
+}
+
+.newsletter .input-group .form-control {
+    border: 1px solid var(--primary-dark);
+    background: white;
+    color: var(--primary-text-color);
+}
+
+.newsletter .input-group .form-control:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(122, 188, 188, 0.25);
+}
+
+.newsletter .btn-primary {
+    background: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+    color: white !important;
+}
+
+.newsletter .btn-primary:hover {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    transform: translateY(-1px);
+}
