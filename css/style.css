@@ -1068,8 +1068,8 @@ h1, h2, h3, h4, h5, h6 {
    ===================== */
 
 .main-footer {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--secondary-color) 100%);
-    color: var(--primary-text-color);
+    background: #FF0066;
+    color: #ffffff;
     position: relative;
     overflow: hidden;
 }
@@ -1081,7 +1081,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(196, 223, 223, 0.1) 0%, rgba(210, 233, 233, 0.05) 50%, rgba(227, 244, 244, 0.1) 100%);
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%);
     pointer-events: none;
 }
 

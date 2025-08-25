@@ -248,6 +248,196 @@
     outline-offset: 2px;
     border-radius: 3px;
 }
+
+/* =====================
+   FOOTER THEME UPDATE - BRIGHT PINK (#FF0066)
+   ===================== */
+
+/* Updated footer with bright pink background */
+.main-footer {
+    background: #FF0066 !important;
+    color: #ffffff !important;
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid #CC0052;
+}
+
+.main-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%);
+    pointer-events: none;
+}
+
+/* Footer content with proper z-index */
+.main-footer > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer brand text updates */
+.footer-brand-text {
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.footer-brand-tagline {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 1;
+}
+
+/* Footer titles */
+.footer-title {
+    color: #ffffff !important;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Footer description */
+.footer-description {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 1;
+}
+
+/* Footer links */
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff !important;
+    transform: translateX(5px);
+}
+
+/* Social links */
+.social-links a {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) scale(1.1);
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Footer divider */
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    opacity: 1;
+}
+
+/* Copyright and footer bottom */
+.copyright {
+    color: rgba(255, 255, 255, 0.8) !important;
+    opacity: 1;
+}
+
+.footer-links-inline a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: all 0.3s ease;
+}
+
+.footer-links-inline a:hover {
+    color: #ffffff !important;
+}
+
+/* Payment methods styling for pink theme */
+.payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.payment-icon {
+    height: 30px;
+    width: auto;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.payment-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.payment-text {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Newsletter section for pink theme */
+.newsletter {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.newsletter h6 {
+    color: #ffffff !important;
+    margin-bottom: 0.75rem;
+}
+
+.newsletter .input-group .form-control {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.newsletter .input-group .form-control:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+    background: #ffffff;
+}
+
+.newsletter .btn-primary {
+    background: #CC0052 !important;
+    border-color: #CC0052 !important;
+    color: white !important;
+}
+
+.newsletter .btn-primary:hover {
+    background: #990040 !important;
+    border-color: #990040 !important;
+    transform: translateY(-1px);
+}
+
+/* We Accept section for pink theme */
+.we-accept-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 1rem;
+}
+
+.we-accept-section h6 {
+    color: #ffffff !important;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
 /* =====================
    FOOTER THEME UPDATE - BLUE-GRAY PALETTE
    ===================== */
