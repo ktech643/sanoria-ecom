@@ -5,10 +5,12 @@
 :root {
     --admin-sidebar-width: 280px;
     --admin-header-height: 70px;
-    --admin-primary: #d4af37;
-    --admin-primary-dark: #b8941f;
-    --admin-secondary: #2c3e50;
-    --admin-sidebar-bg: #1a1a1a;
+    --admin-primary: #A87676;
+    --admin-primary-dark: #8B5A5A;
+    --admin-secondary: #CA8787;
+    --admin-tertiary: #E1ACAC;
+    --admin-light: #FFD0D0;
+    --admin-sidebar-bg: #2D1B1B;
     --admin-content-bg: #f8f9fa;
     --admin-card-bg: #ffffff;
     --admin-border: #e9ecef;

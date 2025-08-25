@@ -3,11 +3,12 @@
    ===================== */
 
 :root {
-    /* Color Palette - Soft & Elegant */
-    --primary-color: #FFEECC;
-    --primary-dark: #FFDDCC;
-    --primary-light: #FFCCCC;
-    --secondary-color: #FEBBCC;
+    /* Color Palette - Warm Rose Tones */
+    --primary-color: #A87676;
+    --primary-dark: #8B5A5A;
+    --primary-light: #CA8787;
+    --secondary-color: #E1ACAC;
+    --tertiary-color: #FFD0D0;
     --accent-color: #e74c3c;
     --success-color: #27ae60;
     --warning-color: #f39c12;
@@ -21,14 +22,15 @@
     --black: #212529;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #FFEECC 0%, #FFDDCC 100%);
-    --gradient-secondary: linear-gradient(135deg, #FFCCCC 0%, #FEBBCC 100%);
-    --gradient-accent: linear-gradient(135deg, #FEBBCC 0%, #FFCCCC 100%);
+    --gradient-primary: linear-gradient(135deg, #A87676 0%, #CA8787 100%);
+    --gradient-secondary: linear-gradient(135deg, #CA8787 0%, #E1ACAC 100%);
+    --gradient-accent: linear-gradient(135deg, #E1ACAC 0%, #FFD0D0 100%);
     
     /* Text Colors for Better Contrast */
-    --primary-text-color: #8B4513;
-    --secondary-text-color: #CD853F;
-    --button-text-color: #654321;
+    --primary-text-color: #4A2B2B;
+    --secondary-text-color: #6B3E3E;
+    --button-text-color: #FFFFFF;
+    --light-text-color: #FFD0D0;
     
     /* Typography */
     --font-primary: 'Playfair Display', serif;
