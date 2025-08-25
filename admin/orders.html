@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Management - Sanoria.pk Admin</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+    <!-- Sidebar -->
+    <nav class="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Sanoria.pk" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">Sanoria.pk</span>
+            </div>
+            <button class="sidebar-toggle d-lg-none" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="admin-info">
+                <div class="admin-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="admin-details">
+                    <h6 class="admin-name">Admin User</h6>
+                    <span class="admin-role">Super Administrator</span>
+                </div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="dashboard.html" class="menu-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">E-commerce</li>
+                
+                <li class="menu-item">
+                    <a href="products.html" class="menu-link">
+                        <i class="fas fa-box"></i>
+                        <span>Products</span>
+                        <span class="badge bg-primary">245</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item active">
+                    <a href="orders.html" class="menu-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Orders</span>
+                        <span class="badge bg-warning" id="orderCount">12</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="customers.html" class="menu-link">
+                        <i class="fas fa-users"></i>
+                        <span>Customers</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="categories.html" class="menu-link">
+                        <i class="fas fa-tags"></i>
+                        <span>Categories</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="inventory.html" class="menu-link">
+                        <i class="fas fa-warehouse"></i>
+                        <span>Inventory</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">Marketing</li>
+                
+                <li class="menu-item">
+                    <a href="coupons.html" class="menu-link">
+                        <i class="fas fa-percent"></i>
+                        <span>Coupons</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="reviews.html" class="menu-link">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="blog.html" class="menu-link">
+                        <i class="fas fa-blog"></i>
+                        <span>Blog Posts</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">Analytics</li>
+                
+                <li class="menu-item">
+                    <a href="analytics.html" class="menu-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="reports.html" class="menu-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">System</li>
+                
+                <li class="menu-item">
+                    <a href="settings.html" class="menu-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="users.html" class="menu-link">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="../index.html" class="menu-link text-muted">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>View Website</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="../login.html" class="menu-link text-danger">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="sidebar-toggle d-lg-none" id="mobileSidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">
+                    <i class="fas fa-shopping-cart me-2"></i>
+                    Orders Management
+                </h1>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="refreshOrders()">
+                        <i class="fas fa-sync-alt me-2"></i>Refresh
+                    </button>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-download me-2"></i>Export
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="exportOrders('csv')">
+                                <i class="fas fa-file-csv me-2"></i>Export as CSV
+                            </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="exportOrders('pdf')">
+                                <i class="fas fa-file-pdf me-2"></i>Export as PDF
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="printOrders()">
+                                <i class="fas fa-print me-2"></i>Print Orders
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="admin-content">
+            <!-- Stats Cards -->
+            <div class="row mb-4">
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="stats-card">
+                        <div class="stats-icon bg-primary">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 id="totalOrders">127</h3>
+                            <p>Total Orders</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="stats-card">
+                        <div class="stats-icon bg-warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 id="pendingOrders">12</h3>
+                            <p>Pending Orders</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="stats-card">
+                        <div class="stats-icon bg-info">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 id="shippedOrders">8</h3>
+                            <p>Shipped Orders</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="stats-card">
+                        <div class="stats-icon bg-success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 id="completedOrders">107</h3>
+                            <p>Completed Orders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Search Orders</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchOrders" placeholder="Search by order ID, customer name, or email...">
+                                <button class="btn btn-outline-secondary" type="button" onclick="searchOrders()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="filterStatus">
+                                <option value="">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Payment Status</label>
+                            <select class="form-select" id="filterPayment">
+                                <option value="">All Payments</option>
+                                <option value="paid">Paid</option>
+                                <option value="pending">Pending</option>
+                                <option value="failed">Failed</option>
+                                <option value="refunded">Refunded</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Date Range</label>
+                            <select class="form-select" id="filterDate">
+                                <option value="">All Time</option>
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">&nbsp;</label>
+                            <div class="d-grid">
+                                <button class="btn btn-primary" onclick="applyFilters()">
+                                    <i class="fas fa-filter me-2"></i>Filter
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Orders List</h5>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-muted">Show:</span>
+                        <select class="form-select form-select-sm" style="width: auto;" id="entriesPerPage">
+                            <option value="10">10</option>
+                            <option value="25" selected>25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span class="text-muted">entries</span>
+                    </div>
+                </div>
+                
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="ordersTable">
+                            <thead class="table-light">
+                                <tr>
+                                    <th width="40">
+                                        <input type="checkbox" class="form-check-input" id="selectAll">
+                                    </th>
+                                    <th width="120">Order ID</th>
+                                    <th>Customer</th>
+                                    <th width="120">Date</th>
+                                    <th width="100">Items</th>
+                                    <th width="120">Total</th>
+                                    <th width="120">Payment</th>
+                                    <th width="120">Status</th>
+                                    <th width="140">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <!-- Orders will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="text-muted">
+                            Showing <span id="showingStart">1</span> to <span id="showingEnd">25</span> of <span id="totalEntries">127</span> entries
+                        </div>
+                        <nav>
+                            <ul class="pagination pagination-sm mb-0" id="pagination">
+                                <!-- Pagination will be generated here -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Order Details Modal -->
+    <div class="modal fade" id="orderDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-receipt me-2"></i>Order Details
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="orderDetailsContent">
+                        <!-- Order details will be loaded here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="printOrder()">
+                        <i class="fas fa-print me-2"></i>Print Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Status Modal -->
+    <div class="modal fade" id="updateStatusModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-edit me-2"></i>Update Order Status
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateStatusForm">
+                        <input type="hidden" id="updateOrderId">
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Order Status</label>
+                            <select class="form-select" id="newOrderStatus">
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Tracking Number (if shipped)</label>
+                            <input type="text" class="form-control" id="trackingNumber" placeholder="Enter tracking number">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" id="statusNotes" rows="3" placeholder="Add any notes about this status update..."></textarea>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="notifyCustomer" checked>
+                            <label class="form-check-label" for="notifyCustomer">
+                                Send email notification to customer
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveStatusUpdate()">
+                        <i class="fas fa-save me-2"></i>Update Status
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+        // Orders Management JavaScript
+        let orders = [];
+        let currentPage = 1;
+        let entriesPerPage = 25;
+        
+        // Initialize page
+        $(document).ready(function() {
+            loadOrders();
+            initializeEventListeners();
+        });
+        
+        function loadOrders() {
+            // Sample orders data
+            orders = [
+                {
+                    id: "ORD001",
+                    customer: {
+                        name: "Sarah Ahmed",
+                        email: "sarah@example.com",
+                        phone: "+92 300 1234567"
+                    },
+                    date: "2024-01-15",
+                    items: [
+                        { name: "Hydrating Facial Serum", quantity: 2, price: 1199 },
+                        { name: "Vitamin C Serum", quantity: 1, price: 1599 }
+                    ],
+                    total: 3997,
+                    paymentStatus: "paid",
+                    paymentMethod: "JazzCash",
+                    orderStatus: "delivered",
+                    shippingAddress: "123 Main St, Karachi, Pakistan"
+                },
+                {
+                    id: "ORD002",
+                    customer: {
+                        name: "Ahmed Khan",
+                        email: "ahmed@example.com",
+                        phone: "+92 301 2345678"
+                    },
+                    date: "2024-01-14",
+                    items: [
+                        { name: "Gentle Daily Cleanser", quantity: 1, price: 799 }
+                    ],
+                    total: 799,
+                    paymentStatus: "pending",
+                    paymentMethod: "COD",
+                    orderStatus: "processing",
+                    shippingAddress: "456 Street, Lahore, Pakistan"
+                },
+                {
+                    id: "ORD003",
+                    customer: {
+                        name: "Fatima Ali",
+                        email: "fatima@example.com",
+                        phone: "+92 302 3456789"
+                    },
+                    date: "2024-01-13",
+                    items: [
+                        { name: "Anti-Aging Night Cream", quantity: 1, price: 1899 },
+                        { name: "Face Mask", quantity: 2, price: 699 }
+                    ],
+                    total: 3297,
+                    paymentStatus: "paid",
+                    paymentMethod: "EasyPaisa",
+                    orderStatus: "shipped",
+                    trackingNumber: "EP123456789",
+                    shippingAddress: "789 Road, Islamabad, Pakistan"
+                }
+            ];
+            
+            renderOrdersTable();
+            updateStats();
+        }
+        
+        function renderOrdersTable() {
+            const tbody = document.getElementById('ordersTableBody');
+            tbody.innerHTML = '';
+            
+            orders.forEach(order => {
+                const row = createOrderRow(order);
+                tbody.appendChild(row);
+            });
+            
+            updatePagination();
+        }
+        
+        function createOrderRow(order) {
+            const row = document.createElement('tr');
+            
+            const paymentBadge = getPaymentBadge(order.paymentStatus);
+            const statusBadge = getStatusBadge(order.orderStatus);
+            const itemsCount = order.items.reduce((sum, item) => sum + item.quantity, 0);
+            
+            row.innerHTML = `
+                <td>
+                    <input type="checkbox" class="form-check-input order-checkbox" value="${order.id}">
+                </td>
+                <td>
+                    <strong class="text-primary">#${order.id}</strong>
+                </td>
+                <td>
+                    <div class="customer-info">
+                        <h6 class="mb-1">${order.customer.name}</h6>
+                        <small class="text-muted">${order.customer.email}</small>
+                    </div>
+                </td>
+                <td>
+                    <span class="text-nowrap">${formatDate(order.date)}</span>
+                </td>
+                <td>
+                    <span class="badge bg-light text-dark">${itemsCount} item${itemsCount > 1 ? 's' : ''}</span>
+                </td>
+                <td>
+                    <strong>Rs. ${order.total.toLocaleString()}</strong>
+                    <br><small class="text-muted">${order.paymentMethod}</small>
+                </td>
+                <td>${paymentBadge}</td>
+                <td>${statusBadge}</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrder('${order.id}')" 
+                                title="View Order">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-info" onclick="updateOrderStatus('${order.id}')" 
+                                title="Update Status">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="printOrderInvoice('${order.id}')" 
+                                title="Print Invoice">
+                            <i class="fas fa-print"></i>
+                        </button>
+                    </div>
+                </td>
+            `;
+            
+            return row;
+        }
+        
+        function getPaymentBadge(status) {
+            const badges = {
+                paid: '<span class="badge bg-success">Paid</span>',
+                pending: '<span class="badge bg-warning">Pending</span>',
+                failed: '<span class="badge bg-danger">Failed</span>',
+                refunded: '<span class="badge bg-info">Refunded</span>'
+            };
+            return badges[status] || badges.pending;
+        }
+        
+        function getStatusBadge(status) {
+            const badges = {
+                pending: '<span class="badge bg-warning">Pending</span>',
+                processing: '<span class="badge bg-info">Processing</span>',
+                shipped: '<span class="badge bg-primary">Shipped</span>',
+                delivered: '<span class="badge bg-success">Delivered</span>',
+                cancelled: '<span class="badge bg-danger">Cancelled</span>'
+            };
+            return badges[status] || badges.pending;
+        }
+        
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+        }
+        
+        function updateStats() {
+            const total = orders.length;
+            const pending = orders.filter(o => o.orderStatus === 'pending').length;
+            const shipped = orders.filter(o => o.orderStatus === 'shipped').length;
+            const delivered = orders.filter(o => o.orderStatus === 'delivered').length;
+            
+            document.getElementById('totalOrders').textContent = total;
+            document.getElementById('pendingOrders').textContent = pending;
+            document.getElementById('shippedOrders').textContent = shipped;
+            document.getElementById('completedOrders').textContent = delivered;
+            document.getElementById('orderCount').textContent = pending;
+        }
+        
+        function updatePagination() {
+            // Simple pagination implementation
+            const totalPages = Math.ceil(orders.length / entriesPerPage);
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            // Previous button
+            const prevLi = document.createElement('li');
+            prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLi.innerHTML = '<a class="page-link" href="#" onclick="changePage(' + (currentPage - 1) + ')">Previous</a>';
+            pagination.appendChild(prevLi);
+            
+            // Page numbers
+            for (let i = 1; i <= Math.min(totalPages, 5); i++) {
+                const li = document.createElement('li');
+                li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                li.innerHTML = '<a class="page-link" href="#" onclick="changePage(' + i + ')">' + i + '</a>';
+                pagination.appendChild(li);
+            }
+            
+            // Next button
+            const nextLi = document.createElement('li');
+            nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextLi.innerHTML = '<a class="page-link" href="#" onclick="changePage(' + (currentPage + 1) + ')">Next</a>';
+            pagination.appendChild(nextLi);
+            
+            // Update showing info
+            const start = (currentPage - 1) * entriesPerPage + 1;
+            const end = Math.min(currentPage * entriesPerPage, orders.length);
+            document.getElementById('showingStart').textContent = start;
+            document.getElementById('showingEnd').textContent = end;
+            document.getElementById('totalEntries').textContent = orders.length;
+        }
+        
+        function changePage(page) {
+            if (page >= 1 && page <= Math.ceil(orders.length / entriesPerPage)) {
+                currentPage = page;
+                renderOrdersTable();
+            }
+        }
+        
+        function initializeEventListeners() {
+            // Select all checkbox
+            document.getElementById('selectAll').addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.order-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+            });
+            
+            // Entries per page
+            document.getElementById('entriesPerPage').addEventListener('change', function() {
+                entriesPerPage = parseInt(this.value);
+                currentPage = 1;
+                renderOrdersTable();
+            });
+        }
+        
+        function searchOrders() {
+            const query = document.getElementById('searchOrders').value.toLowerCase();
+            console.log('Searching for:', query);
+        }
+        
+        function applyFilters() {
+            console.log('Applying filters...');
+        }
+        
+        function viewOrder(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                showOrderDetails(order);
+            }
+        }
+        
+        function showOrderDetails(order) {
+            const content = document.getElementById('orderDetailsContent');
+            const itemsTotal = order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            content.innerHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Order Information</h6>
+                        <p><strong>Order ID:</strong> #${order.id}</p>
+                        <p><strong>Date:</strong> ${formatDate(order.date)}</p>
+                        <p><strong>Status:</strong> ${getStatusBadge(order.orderStatus)}</p>
+                        <p><strong>Payment:</strong> ${getPaymentBadge(order.paymentStatus)}</p>
+                        <p><strong>Payment Method:</strong> ${order.paymentMethod}</p>
+                        ${order.trackingNumber ? `<p><strong>Tracking:</strong> ${order.trackingNumber}</p>` : ''}
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Customer Information</h6>
+                        <p><strong>Name:</strong> ${order.customer.name}</p>
+                        <p><strong>Email:</strong> ${order.customer.email}</p>
+                        <p><strong>Phone:</strong> ${order.customer.phone}</p>
+                        <p><strong>Address:</strong> ${order.shippingAddress}</p>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <h6>Order Items</h6>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${order.items.map(item => `
+                                <tr>
+                                    <td>${item.name}</td>
+                                    <td>${item.quantity}</td>
+                                    <td>Rs. ${item.price.toLocaleString()}</td>
+                                    <td>Rs. ${(item.price * item.quantity).toLocaleString()}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3">Total</th>
+                                <th>Rs. ${order.total.toLocaleString()}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            `;
+            
+            new bootstrap.Modal(document.getElementById('orderDetailsModal')).show();
+        }
+        
+        function updateOrderStatus(orderId) {
+            document.getElementById('updateOrderId').value = orderId;
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                document.getElementById('newOrderStatus').value = order.orderStatus;
+                document.getElementById('trackingNumber').value = order.trackingNumber || '';
+            }
+            new bootstrap.Modal(document.getElementById('updateStatusModal')).show();
+        }
+        
+        function saveStatusUpdate() {
+            const orderId = document.getElementById('updateOrderId').value;
+            const newStatus = document.getElementById('newOrderStatus').value;
+            const trackingNumber = document.getElementById('trackingNumber').value;
+            const notes = document.getElementById('statusNotes').value;
+            const notifyCustomer = document.getElementById('notifyCustomer').checked;
+            
+            // Update order in data
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                order.orderStatus = newStatus;
+                if (trackingNumber) {
+                    order.trackingNumber = trackingNumber;
+                }
+                
+                renderOrdersTable();
+                updateStats();
+                
+                bootstrap.Modal.getInstance(document.getElementById('updateStatusModal')).hide();
+                
+                if (notifyCustomer) {
+                    alert(`Order ${orderId} status updated to ${newStatus}. Customer notification sent.`);
+                } else {
+                    alert(`Order ${orderId} status updated to ${newStatus}.`);
+                }
+            }
+        }
+        
+        function printOrderInvoice(orderId) {
+            console.log('Printing invoice for order:', orderId);
+        }
+        
+        function printOrder() {
+            window.print();
+        }
+        
+        function refreshOrders() {
+            loadOrders();
+            console.log('Orders refreshed');
+        }
+        
+        function exportOrders(format) {
+            console.log('Exporting orders as:', format);
+        }
+        
+        function printOrders() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

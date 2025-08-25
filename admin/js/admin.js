@@ -85,15 +85,24 @@ $(document).ready(function() {
     function highlightActiveMenuItem() {
         const currentPage = window.location.pathname.split('/').pop() || 'dashboard.html';
         
+        // Remove all active states first
+        $('.menu-item').removeClass('active');
+        
+        // Find and highlight the current page
         $('.menu-link').each(function() {
             const $this = $(this);
             const href = $this.attr('href');
             
             if (href === currentPage) {
-                $('.menu-item').removeClass('active');
                 $this.closest('.menu-item').addClass('active');
+                return false; // Break the loop
             }
         });
+        
+        // Default to dashboard if no match found
+        if ($('.menu-item.active').length === 0) {
+            $('a[href="dashboard.html"]').closest('.menu-item').addClass('active');
+        }
     }
 
     // =====================
@@ -565,19 +574,47 @@ $(document).ready(function() {
     // AUTH STATUS CHECK
     // =====================
     function checkAuthStatus() {
-        // Check if user is logged in and has admin privileges
-        const userSession = getUserSession();
+        // Check if admin is logged in
+        const isLoggedIn = localStorage.getItem('admin_logged_in');
+        const currentPage = window.location.pathname.split('/').pop();
         
-        if (!userSession || userSession.role !== 'admin') {
-            // Redirect to login
-            window.location.href = '../login.html?redirect=' + encodeURIComponent(window.location.pathname);
+        // If not logged in and not on login page, redirect to login
+        if (isLoggedIn !== 'true' && currentPage !== 'login.html') {
+            window.location.href = 'login.html';
             return;
         }
         
-        // Update admin info
-        $('.admin-name').text(userSession.firstName + ' ' + userSession.lastName);
-        $('.profile-name').text(userSession.firstName);
+        // If logged in and on login page, redirect to dashboard
+        if (isLoggedIn === 'true' && currentPage === 'login.html') {
+            window.location.href = 'dashboard.html';
+            return;
+        }
+        
+        // Update admin info if logged in
+        if (isLoggedIn === 'true') {
+            const adminUser = JSON.parse(localStorage.getItem('admin_user') || '{}');
+            if (adminUser.name) {
+                $('.admin-name').text(adminUser.name);
+                $('.admin-role').text(adminUser.role || 'Administrator');
+            }
+        }
+        
+        console.log('Authentication status checked');
     }
+
+    // Add logout functionality
+    $(document).on('click', 'a[href="../login.html"]', function(e) {
+        e.preventDefault();
+        
+        if (confirm('Are you sure you want to logout?')) {
+            // Clear admin session
+            localStorage.removeItem('admin_logged_in');
+            localStorage.removeItem('admin_user');
+            
+            // Redirect to login
+            window.location.href = 'login.html';
+        }
+    });
 
     function getUserSession() {
         try {

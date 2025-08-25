@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers Management - Sanoria.pk Admin</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+    <!-- Sidebar -->
+    <nav class="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Sanoria.pk" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">Sanoria.pk</span>
+            </div>
+            <button class="sidebar-toggle d-lg-none" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="admin-info">
+                <div class="admin-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="admin-details">
+                    <h6 class="admin-name">Admin User</h6>
+                    <span class="admin-role">Super Administrator</span>
+                </div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="dashboard.html" class="menu-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">E-commerce</li>
+                
+                <li class="menu-item">
+                    <a href="products.html" class="menu-link">
+                        <i class="fas fa-box"></i>
+                        <span>Products</span>
+                        <span class="badge bg-primary">245</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="orders.html" class="menu-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Orders</span>
+                        <span class="badge bg-warning">12</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item active">
+                    <a href="customers.html" class="menu-link">
+                        <i class="fas fa-users"></i>
+                        <span>Customers</span>
+                        <span class="badge bg-info" id="customerCount">156</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="categories.html" class="menu-link">
+                        <i class="fas fa-tags"></i>
+                        <span>Categories</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="inventory.html" class="menu-link">
+                        <i class="fas fa-warehouse"></i>
+                        <span>Inventory</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">Marketing</li>
+                
+                <li class="menu-item">
+                    <a href="coupons.html" class="menu-link">
+                        <i class="fas fa-percent"></i>
+                        <span>Coupons</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="reviews.html" class="menu-link">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="blog.html" class="menu-link">
+                        <i class="fas fa-blog"></i>
+                        <span>Blog Posts</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">Analytics</li>
+                
+                <li class="menu-item">
+                    <a href="analytics.html" class="menu-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="reports.html" class="menu-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">System</li>
+                
+                <li class="menu-item">
+                    <a href="settings.html" class="menu-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="users.html" class="menu-link">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="../index.html" class="menu-link text-muted">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>View Website</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="../login.html" class="menu-link text-danger">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="sidebar-toggle d-lg-none" id="mobileSidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">
+                    <i class="fas fa-users me-2"></i>
+                    Customers Management
+                </h1>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+                        <i class="fas fa-plus me-2"></i>Add Customer
+                    </button>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-cog me-2"></i>Actions
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="exportCustomers()">
+                                <i class="fas fa-download me-2"></i>Export CSV
+                            </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="sendNewsletter()">
+                                <i class="fas fa-envelope me-2"></i>Send Newsletter
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="bulkActions()">
+                                <i class="fas fa-tasks me-2"></i>Bulk Actions
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="admin-content">
+            <!-- Stats Cards -->
+            <div class="row mb-4">
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="stats-card">
+                        <div class="stats-icon bg-primary">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 id="totalCustomers">156</h3>
+                            <p>Total Customers</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="stats-card">
+                        <div class="stats-icon bg-success">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 id="activeCustomers">142</h3>
+                            <p>Active Customers</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="stats-card">
+                        <div class="stats-icon bg-info">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 id="newCustomers">23</h3>
+                            <p>New This Month</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6 mb-3">
+                    <div class="stats-card">
+                        <div class="stats-icon bg-warning">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3 id="vipCustomers">18</h3>
+                            <p>VIP Customers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Search Customers</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchCustomers" placeholder="Search by name, email, or phone...">
+                                <button class="btn btn-outline-secondary" type="button" onclick="searchCustomers()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="filterStatus">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="blocked">Blocked</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Customer Type</label>
+                            <select class="form-select" id="filterType">
+                                <option value="">All Types</option>
+                                <option value="regular">Regular</option>
+                                <option value="vip">VIP</option>
+                                <option value="wholesale">Wholesale</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">Registration</label>
+                            <select class="form-select" id="filterDate">
+                                <option value="">All Time</option>
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label class="form-label">&nbsp;</label>
+                            <div class="d-grid">
+                                <button class="btn btn-primary" onclick="applyFilters()">
+                                    <i class="fas fa-filter me-2"></i>Filter
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Table -->
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Customers List</h5>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-muted">Show:</span>
+                        <select class="form-select form-select-sm" style="width: auto;" id="entriesPerPage">
+                            <option value="10">10</option>
+                            <option value="25" selected>25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span class="text-muted">entries</span>
+                    </div>
+                </div>
+                
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="customersTable">
+                            <thead class="table-light">
+                                <tr>
+                                    <th width="40">
+                                        <input type="checkbox" class="form-check-input" id="selectAll">
+                                    </th>
+                                    <th width="80">Avatar</th>
+                                    <th>Customer</th>
+                                    <th width="150">Phone</th>
+                                    <th width="120">Registration</th>
+                                    <th width="100">Orders</th>
+                                    <th width="120">Total Spent</th>
+                                    <th width="100">Status</th>
+                                    <th width="140">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customersTableBody">
+                                <!-- Customers will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="text-muted">
+                            Showing <span id="showingStart">1</span> to <span id="showingEnd">25</span> of <span id="totalEntries">156</span> entries
+                        </div>
+                        <nav>
+                            <ul class="pagination pagination-sm mb-0" id="pagination">
+                                <!-- Pagination will be generated here -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+        // Customers Management JavaScript
+        let customers = [];
+        let currentPage = 1;
+        let entriesPerPage = 25;
+        
+        // Initialize
+        $(document).ready(function() {
+            loadCustomers();
+            initializeEventListeners();
+        });
+        
+        function loadCustomers() {
+            // Sample customers data
+            customers = [
+                {
+                    id: 1,
+                    name: "Sarah Ahmed",
+                    email: "sarah@example.com",
+                    phone: "+92 300 1234567",
+                    registrationDate: "2024-01-10",
+                    orders: 5,
+                    totalSpent: 15500,
+                    status: "active",
+                    type: "vip",
+                    avatar: "../images/user-avatar.svg"
+                },
+                {
+                    id: 2,
+                    name: "Ahmed Khan",
+                    email: "ahmed@example.com", 
+                    phone: "+92 301 2345678",
+                    registrationDate: "2024-01-08",
+                    orders: 2,
+                    totalSpent: 3200,
+                    status: "active",
+                    type: "regular",
+                    avatar: "../images/user-avatar.svg"
+                },
+                {
+                    id: 3,
+                    name: "Fatima Ali",
+                    email: "fatima@example.com",
+                    phone: "+92 302 3456789",
+                    registrationDate: "2024-01-05",
+                    orders: 8,
+                    totalSpent: 22100,
+                    status: "active",
+                    type: "vip",
+                    avatar: "../images/user-avatar.svg"
+                }
+            ];
+            
+            renderCustomersTable();
+            updateStats();
+        }
+        
+        function renderCustomersTable() {
+            const tbody = document.getElementById('customersTableBody');
+            tbody.innerHTML = '';
+            
+            customers.forEach(customer => {
+                const row = createCustomerRow(customer);
+                tbody.appendChild(row);
+            });
+            
+            updatePagination();
+        }
+        
+        function createCustomerRow(customer) {
+            const row = document.createElement('tr');
+            
+            const statusBadge = getStatusBadge(customer.status);
+            const typeBadge = getTypeBadge(customer.type);
+            
+            row.innerHTML = `
+                <td>
+                    <input type="checkbox" class="form-check-input customer-checkbox" value="${customer.id}">
+                </td>
+                <td>
+                    <img src="${customer.avatar}" alt="${customer.name}" class="customer-avatar" 
+                         onerror="this.src='../images/user-avatar.svg'">
+                </td>
+                <td>
+                    <div class="customer-info">
+                        <h6 class="mb-1">${customer.name} ${typeBadge}</h6>
+                        <small class="text-muted">${customer.email}</small>
+                    </div>
+                </td>
+                <td>
+                    <span class="text-nowrap">${customer.phone}</span>
+                </td>
+                <td>
+                    <span class="text-nowrap">${formatDate(customer.registrationDate)}</span>
+                </td>
+                <td>
+                    <span class="badge bg-light text-dark">${customer.orders} orders</span>
+                </td>
+                <td>
+                    <strong>Rs. ${customer.totalSpent.toLocaleString()}</strong>
+                </td>
+                <td>${statusBadge}</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-sm btn-outline-primary" onclick="viewCustomer(${customer.id})" 
+                                title="View Customer">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-info" onclick="editCustomer(${customer.id})" 
+                                title="Edit Customer">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" onclick="sendEmail(${customer.id})" 
+                                title="Send Email">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </div>
+                </td>
+            `;
+            
+            return row;
+        }
+        
+        function getStatusBadge(status) {
+            const badges = {
+                active: '<span class="badge bg-success">Active</span>',
+                inactive: '<span class="badge bg-secondary">Inactive</span>',
+                blocked: '<span class="badge bg-danger">Blocked</span>'
+            };
+            return badges[status] || badges.active;
+        }
+        
+        function getTypeBadge(type) {
+            const badges = {
+                vip: '<span class="badge bg-warning ms-1"><i class="fas fa-crown"></i></span>',
+                wholesale: '<span class="badge bg-info ms-1">W</span>',
+                regular: ''
+            };
+            return badges[type] || '';
+        }
+        
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+        }
+        
+        function updateStats() {
+            const total = customers.length;
+            const active = customers.filter(c => c.status === 'active').length;
+            const newThisMonth = customers.filter(c => {
+                const regDate = new Date(c.registrationDate);
+                const now = new Date();
+                return regDate.getMonth() === now.getMonth() && regDate.getFullYear() === now.getFullYear();
+            }).length;
+            const vip = customers.filter(c => c.type === 'vip').length;
+            
+            document.getElementById('totalCustomers').textContent = total;
+            document.getElementById('activeCustomers').textContent = active;
+            document.getElementById('newCustomers').textContent = newThisMonth;
+            document.getElementById('vipCustomers').textContent = vip;
+            document.getElementById('customerCount').textContent = total;
+        }
+        
+        function updatePagination() {
+            // Simple pagination
+            const totalPages = Math.ceil(customers.length / entriesPerPage);
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            // Update showing info
+            const start = (currentPage - 1) * entriesPerPage + 1;
+            const end = Math.min(currentPage * entriesPerPage, customers.length);
+            document.getElementById('showingStart').textContent = start;
+            document.getElementById('showingEnd').textContent = end;
+            document.getElementById('totalEntries').textContent = customers.length;
+        }
+        
+        function initializeEventListeners() {
+            // Select all checkbox
+            document.getElementById('selectAll').addEventListener('change', function() {
+                const checkboxes = document.querySelectorAll('.customer-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+            });
+        }
+        
+        function searchCustomers() {
+            const query = document.getElementById('searchCustomers').value.toLowerCase();
+            console.log('Searching for:', query);
+        }
+        
+        function applyFilters() {
+            console.log('Applying filters...');
+        }
+        
+        function viewCustomer(id) {
+            console.log('Viewing customer:', id);
+        }
+        
+        function editCustomer(id) {
+            console.log('Editing customer:', id);
+        }
+        
+        function sendEmail(id) {
+            console.log('Sending email to customer:', id);
+        }
+        
+        function exportCustomers() {
+            console.log('Exporting customers...');
+        }
+        
+        function sendNewsletter() {
+            console.log('Sending newsletter...');
+        }
+        
+        function bulkActions() {
+            console.log('Bulk actions...');
+        }
+    </script>
+</body>
+</html>

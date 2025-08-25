@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    
+    <style>
+        .admin-login-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #FFEECC 0%, #FFDDCC 50%, #FFCCCC 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-logo img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+        
+        .login-logo h4 {
+            color: var(--primary-color);
+            font-family: var(--font-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-logo p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .form-control {
+            border-radius: 12px;
+            border: 2px solid #f0f0f0;
+            padding: 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(255, 238, 204, 0.25);
+        }
+        
+        .btn-login {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 12px;
+            padding: 1rem;
+            font-weight: 600;
+            color: white;
+            width: 100%;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            color: white;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password:hover {
+            color: var(--secondary-color);
+        }
+        
+        .alert {
+            border-radius: 12px;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .admin-login-page {
+                padding: 1rem;
+            }
+            
+            .login-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="admin-login-page">
+    <div class="login-card">
+        <div class="login-logo">
+            <img src="../images/logo.png" alt="Sanoria.pk" onerror="this.style.display='none'">
+            <h4>Sanoria.pk Admin</h4>
+            <p>Sign in to your admin account</p>
+        </div>
+        
+        <!-- Login Form -->
+        <form id="adminLoginForm">
+            <div class="mb-3">
+                <label class="form-label">Email Address</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                        <i class="fas fa-user text-muted"></i>
+                    </span>
+                    <input type="email" class="form-control border-start-0" id="adminEmail" 
+                           placeholder="Enter your email" required value="abcd@gmail.com">
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                        <i class="fas fa-lock text-muted"></i>
+                    </span>
+                    <input type="password" class="form-control border-start-0" id="adminPassword" 
+                           placeholder="Enter your password" required value="11223344">
+                    <button class="btn btn-outline-secondary border-start-0" type="button" onclick="togglePassword()">
+                        <i class="fas fa-eye" id="passwordToggleIcon"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">
+                        Remember me
+                    </label>
+                </div>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="btn btn-login">
+                <i class="fas fa-sign-in-alt me-2"></i>
+                Sign In
+            </button>
+        </form>
+        
+        <!-- Demo Credentials -->
+        <div class="alert alert-info mt-3">
+            <small>
+                <strong>Demo Credentials:</strong><br>
+                Email: abcd@gmail.com<br>
+                Password: 11223344
+            </small>
+        </div>
+        
+        <!-- Footer -->
+        <div class="text-center mt-4">
+            <small class="text-muted">
+                <a href="../index.html" class="text-decoration-none">
+                    <i class="fas fa-arrow-left me-1"></i>Back to Website
+                </a>
+            </small>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Handle login form submission
+            $('#adminLoginForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                const email = $('#adminEmail').val();
+                const password = $('#adminPassword').val();
+                
+                // Show loading state
+                const submitBtn = $(this).find('button[type="submit"]');
+                const originalText = submitBtn.html();
+                submitBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>Signing In...');
+                submitBtn.prop('disabled', true);
+                
+                // Simulate login process
+                setTimeout(() => {
+                    // Demo credentials check
+                    if (email === 'abcd@gmail.com' && password === '11223344') {
+                        // Success - redirect to dashboard
+                        localStorage.setItem('admin_logged_in', 'true');
+                        localStorage.setItem('admin_user', JSON.stringify({
+                            email: email,
+                            name: 'Admin User',
+                            role: 'Super Administrator',
+                            loginTime: new Date().toISOString()
+                        }));
+                        
+                        submitBtn.html('<i class="fas fa-check me-2"></i>Success!');
+                        submitBtn.removeClass('btn-login').addClass('btn-success');
+                        
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 1000);
+                    } else {
+                        // Error
+                        submitBtn.html('<i class="fas fa-times me-2"></i>Invalid Credentials');
+                        submitBtn.removeClass('btn-login').addClass('btn-danger');
+                        
+                        setTimeout(() => {
+                            submitBtn.html(originalText);
+                            submitBtn.removeClass('btn-danger').addClass('btn-login');
+                            submitBtn.prop('disabled', false);
+                        }, 2000);
+                    }
+                }, 1500);
+            });
+            
+            // Check if already logged in
+            if (localStorage.getItem('admin_logged_in') === 'true') {
+                window.location.href = 'dashboard.html';
+            }
+        });
+        
+        function togglePassword() {
+            const passwordInput = document.getElementById('adminPassword');
+            const toggleIcon = document.getElementById('passwordToggleIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+        
+        // Handle enter key on form fields
+        $('#adminEmail, #adminPassword').on('keypress', function(e) {
+            if (e.which === 13) {
+                $('#adminLoginForm').submit();
+            }
+        });
+    </script>
+</body>
+</html>
