@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile - Sanoria.pk Admin</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    
+    <style>
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 2rem;
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin: 0 auto 1rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-avatar:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .avatar-upload {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 35px;
+            height: 35px;
+            background: var(--white);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .profile-info h2 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-meta {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .profile-stats {
+            margin-top: 1.5rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-md);
+            margin: 0.5rem;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: block;
+        }
+        
+        .profile-tabs .nav-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-tabs .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .form-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+        }
+        
+        .form-section h5 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-left: 3px solid var(--primary-color);
+            background: var(--light-gray);
+            border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+            margin-bottom: 1rem;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .activity-content h6 {
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+        
+        .activity-time {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        
+        .password-strength {
+            height: 4px;
+            border-radius: 2px;
+            margin-top: 0.5rem;
+            background: var(--light-gray);
+            overflow: hidden;
+        }
+        
+        .password-strength .strength-bar {
+            height: 100%;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .strength-weak { background: #dc3545; width: 25%; }
+        .strength-fair { background: #ffc107; width: 50%; }
+        .strength-good { background: #17a2b8; width: 75%; }
+        .strength-strong { background: #28a745; width: 100%; }
+        
+        .notification-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius-md);
+            margin-bottom: 1rem;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .notification-icon {
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .profile-header {
+                padding: 1.5rem 0;
+                text-align: center;
+            }
+            
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+            
+            .stat-item {
+                margin: 0.25rem;
+                padding: 0.75rem;
+            }
+            
+            .form-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="admin-body">
+    <!-- Sidebar -->
+    <nav class="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Sanoria.pk" class="logo-img" onerror="this.style.display='none'">
+                <span class="logo-text">Sanoria.pk</span>
+            </div>
+            <button class="sidebar-toggle d-lg-none" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="admin-info">
+                <div class="admin-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="admin-details">
+                    <h6 class="admin-name">Admin User</h6>
+                    <span class="admin-role">Super Administrator</span>
+                </div>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="menu-item">
+                    <a href="dashboard.html" class="menu-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">E-commerce</li>
+                
+                <li class="menu-item">
+                    <a href="products.html" class="menu-link">
+                        <i class="fas fa-box"></i>
+                        <span>Products</span>
+                        <span class="badge bg-primary">245</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="orders.html" class="menu-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Orders</span>
+                        <span class="badge bg-warning">12</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="customers.html" class="menu-link">
+                        <i class="fas fa-users"></i>
+                        <span>Customers</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="categories.html" class="menu-link">
+                        <i class="fas fa-tags"></i>
+                        <span>Categories</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="inventory.html" class="menu-link">
+                        <i class="fas fa-warehouse"></i>
+                        <span>Inventory</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">Marketing</li>
+                
+                <li class="menu-item">
+                    <a href="coupons.html" class="menu-link">
+                        <i class="fas fa-percent"></i>
+                        <span>Coupons</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="reviews.html" class="menu-link">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="blog.html" class="menu-link">
+                        <i class="fas fa-blog"></i>
+                        <span>Blog Posts</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">Analytics</li>
+                
+                <li class="menu-item">
+                    <a href="analytics.html" class="menu-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="reports.html" class="menu-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                
+                <li class="menu-header">System</li>
+                
+                <li class="menu-item">
+                    <a href="settings.html" class="menu-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="users.html" class="menu-link">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item active">
+                    <a href="profile.html" class="menu-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="../index.html" class="menu-link text-muted">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>View Website</span>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="../login.html" class="menu-link text-danger">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="sidebar-toggle d-lg-none" id="mobileSidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">
+                    <i class="fas fa-user-circle me-2"></i>
+                    My Profile
+                </h1>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="btn btn-outline-secondary" onclick="exportProfile()">
+                        <i class="fas fa-download me-2"></i>Export Data
+                    </button>
+                    
+                    <button class="btn btn-success" onclick="saveAllChanges()">
+                        <i class="fas fa-save me-2"></i>Save Changes
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="admin-content">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center">
+                            <div class="profile-avatar" onclick="document.getElementById('avatarUpload').click()">
+                                <i class="fas fa-user-shield" id="profileAvatarIcon"></i>
+                                <div class="avatar-upload">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="profile-info">
+                                <h2 id="profileDisplayName">Admin User</h2>
+                                <div class="profile-meta">
+                                    <p class="mb-1">
+                                        <i class="fas fa-shield-alt me-2"></i>
+                                        <span id="profileDisplayRole">Super Administrator</span>
+                                    </p>
+                                    <p class="mb-1">
+                                        <i class="fas fa-envelope me-2"></i>
+                                        <span id="profileDisplayEmail">abcd@gmail.com</span>
+                                    </p>
+                                    <p class="mb-0">
+                                        <i class="fas fa-clock me-2"></i>
+                                        Last login: <span id="profileLastLogin">Today at 10:30 AM</span>
+                                    </p>
+                                </div>
+                                
+                                <div class="profile-stats">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="stat-item">
+                                                <span class="stat-number">127</span>
+                                                <span>Sessions</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="stat-item">
+                                                <span class="stat-number">45d</span>
+                                                <span>Active</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="stat-item">
+                                                <span class="stat-number">99.8%</span>
+                                                <span>Uptime</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tabs -->
+            <ul class="nav nav-pills profile-tabs mb-4" id="profileTabs">
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#personalInfo">
+                        <i class="fas fa-user me-2"></i>Personal Information
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#security">
+                        <i class="fas fa-shield-alt me-2"></i>Security
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#preferences">
+                        <i class="fas fa-cog me-2"></i>Preferences
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#activity">
+                        <i class="fas fa-history me-2"></i>Recent Activity
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Personal Information Tab -->
+                <div class="tab-pane fade show active" id="personalInfo">
+                    <div class="form-section">
+                        <h5><i class="fas fa-user me-2"></i>Basic Information</h5>
+                        
+                        <form id="personalInfoForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" value="Admin" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" value="User" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" value="abcd@gmail.com" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" value="+92 300 1234567">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Job Title</label>
+                                        <input type="text" class="form-control" id="jobTitle" value="System Administrator">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Department</label>
+                                        <select class="form-select" id="department">
+                                            <option value="administration" selected>Administration</option>
+                                            <option value="sales">Sales</option>
+                                            <option value="marketing">Marketing</option>
+                                            <option value="support">Support</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Bio</label>
+                                <textarea class="form-control" id="bio" rows="3" placeholder="Tell us about yourself...">Experienced administrator managing the Sanoria.pk e-commerce platform. Focused on delivering exceptional customer experiences and driving business growth.</textarea>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" id="location" value="Karachi, Pakistan">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Timezone</label>
+                                        <select class="form-select" id="timezone">
+                                            <option value="Asia/Karachi" selected>Asia/Karachi (PKT)</option>
+                                            <option value="UTC">UTC</option>
+                                            <option value="America/New_York">America/New_York (EST)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Security Tab -->
+                <div class="tab-pane fade" id="security">
+                    <div class="form-section">
+                        <h5><i class="fas fa-key me-2"></i>Change Password</h5>
+                        
+                        <form id="passwordForm">
+                            <div class="mb-3">
+                                <label class="form-label">Current Password *</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="currentPassword" required>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('currentPassword')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">New Password *</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="newPassword" required>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('newPassword')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="password-strength">
+                                    <div class="strength-bar" id="strengthBar"></div>
+                                </div>
+                                <small class="text-muted" id="strengthText">Password strength: Not set</small>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Confirm New Password *</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="confirmPassword" required>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('confirmPassword')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div id="passwordMatch" class="mt-1"></div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-key me-2"></i>Update Password
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h5><i class="fas fa-shield-alt me-2"></i>Two-Factor Authentication</h5>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h6 class="mb-1">Enable 2FA</h6>
+                                <small class="text-muted">Add an extra layer of security to your account</small>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="enable2FA">
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Two-factor authentication adds an extra layer of security to your account. When enabled, you'll need both your password and a verification code from your phone to sign in.
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h5><i class="fas fa-clock me-2"></i>Session Management</h5>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Session Timeout</label>
+                            <select class="form-select" id="sessionTimeout">
+                                <option value="30">30 minutes</option>
+                                <option value="60" selected>1 hour</option>
+                                <option value="120">2 hours</option>
+                                <option value="480">8 hours</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn btn-outline-danger" onclick="logoutAllSessions()">
+                            <i class="fas fa-sign-out-alt me-2"></i>Logout All Sessions
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preferences Tab -->
+                <div class="tab-pane fade" id="preferences">
+                    <div class="form-section">
+                        <h5><i class="fas fa-palette me-2"></i>Appearance</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Theme</label>
+                                    <select class="form-select" id="theme">
+                                        <option value="light" selected>Light</option>
+                                        <option value="dark">Dark</option>
+                                        <option value="auto">Auto (System)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Language</label>
+                                    <select class="form-select" id="language">
+                                        <option value="en" selected>English</option>
+                                        <option value="ur">Urdu</option>
+                                        <option value="hi">Hindi</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h5><i class="fas fa-bell me-2"></i>Notifications</h5>
+                        
+                        <div class="notification-item">
+                            <div class="notification-content">
+                                <i class="fas fa-shopping-cart notification-icon"></i>
+                                <div>
+                                    <h6>New Orders</h6>
+                                    <small class="text-muted">Get notified when new orders are placed</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" checked>
+                            </div>
+                        </div>
+                        
+                        <div class="notification-item">
+                            <div class="notification-content">
+                                <i class="fas fa-exclamation-triangle notification-icon"></i>
+                                <div>
+                                    <h6>Low Stock Alerts</h6>
+                                    <small class="text-muted">Alert when inventory is running low</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" checked>
+                            </div>
+                        </div>
+                        
+                        <div class="notification-item">
+                            <div class="notification-content">
+                                <i class="fas fa-users notification-icon"></i>
+                                <div>
+                                    <h6>New Customers</h6>
+                                    <small class="text-muted">Notify when new customers register</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox">
+                            </div>
+                        </div>
+                        
+                        <div class="notification-item">
+                            <div class="notification-content">
+                                <i class="fas fa-star notification-icon"></i>
+                                <div>
+                                    <h6>New Reviews</h6>
+                                    <small class="text-muted">Alert when customers leave reviews</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" checked>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h5><i class="fas fa-chart-line me-2"></i>Dashboard Preferences</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Default Date Range</label>
+                                    <select class="form-select" id="defaultDateRange">
+                                        <option value="7">Last 7 days</option>
+                                        <option value="30" selected>Last 30 days</option>
+                                        <option value="90">Last 90 days</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Items Per Page</label>
+                                    <select class="form-select" id="itemsPerPage">
+                                        <option value="10">10</option>
+                                        <option value="25" selected>25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Tab -->
+                <div class="tab-pane fade" id="activity">
+                    <div class="form-section">
+                        <h5><i class="fas fa-history me-2"></i>Recent Activity</h5>
+                        
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h6>Logged in</h6>
+                                    <div class="activity-time">Today at 10:30 AM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-edit"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h6>Updated product "Hydrating Facial Serum"</h6>
+                                    <div class="activity-time">Yesterday at 3:45 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h6>Processed order #ORD003</h6>
+                                    <div class="activity-time">Yesterday at 1:20 PM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h6>Reviewed customer account for Sarah Ahmed</h6>
+                                    <div class="activity-time">2 days ago at 11:15 AM</div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h6>Updated system settings</h6>
+                                    <div class="activity-time">3 days ago at 9:30 AM</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <button class="btn btn-outline-primary" onclick="loadMoreActivity()">
+                                <i class="fas fa-plus me-2"></i>Load More Activity
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h5><i class="fas fa-download me-2"></i>Data Export</h5>
+                        
+                        <p class="text-muted mb-3">Export your account data and activity history</p>
+                        
+                        <div class="d-grid gap-2 d-md-block">
+                            <button class="btn btn-outline-primary" onclick="exportActivityLog()">
+                                <i class="fas fa-file-csv me-2"></i>Export Activity Log
+                            </button>
+                            <button class="btn btn-outline-info" onclick="exportProfileData()">
+                                <i class="fas fa-user-circle me-2"></i>Export Profile Data
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/admin.js"></script>
+    
+    <script>
+        // Profile Management JavaScript
+        $(document).ready(function() {
+            initializeProfile();
+            initializePasswordValidation();
+            initializeFormHandlers();
+            loadProfileData();
+        });
+        
+        function initializeProfile() {
+            // Load admin user data
+            const adminUser = JSON.parse(localStorage.getItem('admin_user') || '{}');
+            
+            if (adminUser.name) {
+                $('#profileDisplayName').text(adminUser.name);
+                $('#profileDisplayRole').text(adminUser.role || 'Administrator');
+                $('#profileDisplayEmail').text(adminUser.email || 'admin@sanoria.pk');
+                
+                // Split name into first and last
+                const nameParts = adminUser.name.split(' ');
+                $('#firstName').val(nameParts[0] || 'Admin');
+                $('#lastName').val(nameParts.slice(1).join(' ') || 'User');
+                $('#email').val(adminUser.email || 'abcd@gmail.com');
+            }
+            
+            // Set last login time
+            const loginTime = adminUser.loginTime;
+            if (loginTime) {
+                const date = new Date(loginTime);
+                $('#profileLastLogin').text(date.toLocaleDateString() + ' at ' + date.toLocaleTimeString());
+            }
+        }
+        
+        function loadProfileData() {
+            // Load saved preferences from localStorage
+            const preferences = JSON.parse(localStorage.getItem('admin_preferences') || '{}');
+            
+            if (preferences.theme) $('#theme').val(preferences.theme);
+            if (preferences.language) $('#language').val(preferences.language);
+            if (preferences.sessionTimeout) $('#sessionTimeout').val(preferences.sessionTimeout);
+            if (preferences.defaultDateRange) $('#defaultDateRange').val(preferences.defaultDateRange);
+            if (preferences.itemsPerPage) $('#itemsPerPage').val(preferences.itemsPerPage);
+        }
+        
+        function initializePasswordValidation() {
+            $('#newPassword').on('input', function() {
+                const password = $(this).val();
+                const strength = calculatePasswordStrength(password);
+                updatePasswordStrengthUI(strength);
+            });
+            
+            $('#confirmPassword').on('input', function() {
+                const newPassword = $('#newPassword').val();
+                const confirmPassword = $(this).val();
+                
+                if (confirmPassword === '') {
+                    $('#passwordMatch').html('');
+                } else if (newPassword === confirmPassword) {
+                    $('#passwordMatch').html('<small class="text-success"><i class="fas fa-check me-1"></i>Passwords match</small>');
+                } else {
+                    $('#passwordMatch').html('<small class="text-danger"><i class="fas fa-times me-1"></i>Passwords do not match</small>');
+                }
+            });
+        }
+        
+        function calculatePasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (/[a-z]/.test(password)) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            return strength;
+        }
+        
+        function updatePasswordStrengthUI(strength) {
+            const strengthBar = $('#strengthBar');
+            const strengthText = $('#strengthText');
+            
+            strengthBar.removeClass('strength-weak strength-fair strength-good strength-strong');
+            
+            switch (strength) {
+                case 0:
+                case 1:
+                    strengthBar.addClass('strength-weak');
+                    strengthText.text('Password strength: Weak');
+                    break;
+                case 2:
+                    strengthBar.addClass('strength-fair');
+                    strengthText.text('Password strength: Fair');
+                    break;
+                case 3:
+                case 4:
+                    strengthBar.addClass('strength-good');
+                    strengthText.text('Password strength: Good');
+                    break;
+                case 5:
+                    strengthBar.addClass('strength-strong');
+                    strengthText.text('Password strength: Strong');
+                    break;
+            }
+        }
+        
+        function initializeFormHandlers() {
+            // Personal Info Form
+            $('#personalInfoForm').on('submit', function(e) {
+                e.preventDefault();
+                savePersonalInfo();
+            });
+            
+            // Password Form
+            $('#passwordForm').on('submit', function(e) {
+                e.preventDefault();
+                changePassword();
+            });
+            
+            // Avatar Upload
+            $('#avatarUpload').on('change', function(e) {
+                handleAvatarUpload(e);
+            });
+        }
+        
+        function savePersonalInfo() {
+            const formData = {
+                firstName: $('#firstName').val(),
+                lastName: $('#lastName').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val(),
+                jobTitle: $('#jobTitle').val(),
+                department: $('#department').val(),
+                bio: $('#bio').val(),
+                location: $('#location').val(),
+                timezone: $('#timezone').val()
+            };
+            
+            // Update admin user data
+            const adminUser = JSON.parse(localStorage.getItem('admin_user') || '{}');
+            adminUser.name = formData.firstName + ' ' + formData.lastName;
+            adminUser.email = formData.email;
+            adminUser.phone = formData.phone;
+            adminUser.jobTitle = formData.jobTitle;
+            adminUser.department = formData.department;
+            adminUser.bio = formData.bio;
+            adminUser.location = formData.location;
+            adminUser.timezone = formData.timezone;
+            
+            localStorage.setItem('admin_user', JSON.stringify(adminUser));
+            
+            // Update display
+            $('#profileDisplayName').text(adminUser.name);
+            $('#profileDisplayEmail').text(adminUser.email);
+            $('.admin-name').text(adminUser.name);
+            
+            showNotification('Personal information updated successfully!', 'success');
+        }
+        
+        function changePassword() {
+            const currentPassword = $('#currentPassword').val();
+            const newPassword = $('#newPassword').val();
+            const confirmPassword = $('#confirmPassword').val();
+            
+            // Validate current password (demo - in real app, validate against server)
+            if (currentPassword !== '11223344') {
+                showNotification('Current password is incorrect!', 'error');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                showNotification('New passwords do not match!', 'error');
+                return;
+            }
+            
+            if (newPassword.length < 8) {
+                showNotification('New password must be at least 8 characters long!', 'error');
+                return;
+            }
+            
+            // In real app, send to server
+            showNotification('Password updated successfully!', 'success');
+            $('#passwordForm')[0].reset();
+            $('#strengthBar').removeClass('strength-weak strength-fair strength-good strength-strong');
+            $('#strengthText').text('Password strength: Not set');
+            $('#passwordMatch').html('');
+        }
+        
+        function handleAvatarUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        // In real app, upload to server
+                        $('#profileAvatarIcon').replaceWith(`<img src="${e.target.result}" alt="Avatar" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">`);
+                        showNotification('Profile picture updated successfully!', 'success');
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    showNotification('Please select a valid image file!', 'error');
+                }
+            }
+        }
+        
+        function togglePasswordVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            const button = input.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        
+        function saveAllChanges() {
+            // Save preferences
+            const preferences = {
+                theme: $('#theme').val(),
+                language: $('#language').val(),
+                sessionTimeout: $('#sessionTimeout').val(),
+                defaultDateRange: $('#defaultDateRange').val(),
+                itemsPerPage: $('#itemsPerPage').val()
+            };
+            
+            localStorage.setItem('admin_preferences', JSON.stringify(preferences));
+            
+            // Save personal info
+            savePersonalInfo();
+            
+            showNotification('All changes saved successfully!', 'success');
+        }
+        
+        function logoutAllSessions() {
+            if (confirm('Are you sure you want to logout all sessions? You will need to login again.')) {
+                localStorage.removeItem('admin_logged_in');
+                localStorage.removeItem('admin_user');
+                window.location.href = 'login.html';
+            }
+        }
+        
+        function loadMoreActivity() {
+            showNotification('Loading more activity...', 'info');
+            // In real app, load more activity from server
+        }
+        
+        function exportProfile() {
+            showNotification('Exporting profile data...', 'info');
+            // In real app, generate and download export file
+        }
+        
+        function exportActivityLog() {
+            showNotification('Exporting activity log...', 'info');
+            // In real app, generate and download activity log
+        }
+        
+        function exportProfileData() {
+            showNotification('Exporting profile data...', 'info');
+            // In real app, generate and download profile data
+        }
+        
+        function showNotification(message, type) {
+            const alertClass = type === 'success' ? 'alert-success' : 
+                              type === 'error' ? 'alert-danger' : 'alert-info';
+            
+            const alert = $(`
+                <div class="alert ${alertClass} alert-dismissible fade show position-fixed" 
+                     style="top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `);
+            
+            $('body').append(alert);
+            
+            setTimeout(() => {
+                alert.alert('close');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

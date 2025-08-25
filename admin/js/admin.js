@@ -602,6 +602,13 @@ $(document).ready(function() {
         console.log('Authentication status checked');
     }
 
+    // Make admin info clickable to go to profile
+    $(document).on('click', '.admin-info', function(e) {
+        if (window.location.pathname.includes('admin/')) {
+            window.location.href = 'profile.html';
+        }
+    });
+
     // Add logout functionality
     $(document).on('click', 'a[href="../login.html"]', function(e) {
         e.preventDefault();
