@@ -1431,13 +1431,122 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+    /* Header Mobile Optimizations */
+    .main-header {
+        padding: 0;
+    }
+    
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .navbar-brand {
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+    
+    .brand-text {
+        font-size: 1.1rem;
+    }
+    
+    .brand-tagline {
+        font-size: 0.65rem;
+        margin-top: 0;
+    }
+    
+    .logo-img {
+        height: 35px;
+        width: 35px;
+    }
+    
+    /* Hide desktop search, show mobile search */
+    .search-container.d-none.d-lg-flex {
+        display: none !important;
+    }
+    
+    /* Mobile Header Actions */
+    .header-actions {
+        gap: 0.5rem;
+    }
+    
+    .header-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .fancy-dropdown-toggle {
+        width: 35px;
+        height: 35px;
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .hamburger-menu {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .hamburger-line {
+        height: 2px;
+        margin: 4px 0;
+    }
+    
+    /* Top Banner Mobile */
+    .top-banner {
+        padding: 0.5rem 0;
+    }
+    
+    .top-banner p {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+    
+    .top-banner .col-md-4 {
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+    
+    /* Hero Section Mobile */
+    .hero-section {
+        padding: 3rem 0;
+        min-height: 60vh;
+    }
+    
     .hero-title {
         font-size: 2rem;
         text-align: center;
+        line-height: 1.2;
+        margin-bottom: 1rem;
     }
     
     .hero-content {
         text-align: center;
+        padding: 2rem 1rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        min-height: 44px;
     }
     
     .promotion-title {
@@ -1446,18 +1555,257 @@ h1, h2, h3, h4, h5, h6 {
     
     .section-title {
         font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 2rem;
     }
     
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
+    /* Navigation Mobile */
+    .navbar-nav {
+        text-align: center;
+        padding: 1rem 0;
     }
     
-    .hero-buttons .btn {
+    .nav-link {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    /* Mobile Search Bar */
+    .mobile-search {
+        border-bottom: 1px solid var(--medium-gray);
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+        background: var(--light-gray) !important;
+    }
+    
+    .mobile-search .search-container {
+        position: relative;
         width: 100%;
-        max-width: 250px;
+        margin: 0;
+        padding: 0;
     }
     
+    .mobile-search .search-box {
+        width: 100%;
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+    }
+    
+    .mobile-search .search-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 0.75rem 1rem;
+        min-height: 48px;
+        border: 2px solid var(--primary-color);
+        border-right: none;
+        background: var(--white);
+    }
+    
+    .mobile-search .search-input:focus {
+        border-color: var(--secondary-color);
+        box-shadow: none;
+        outline: none;
+    }
+    
+    .mobile-search .btn-search {
+        min-width: 48px;
+        min-height: 48px;
+        background: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        color: var(--button-text-color);
+        transition: var(--transition-normal);
+    }
+    
+    .mobile-search .btn-search:hover {
+        background: var(--secondary-color);
+        border-color: var(--secondary-color);
+    }
+    
+    .mobile-search .search-results {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border: 1px solid var(--medium-gray);
+        border-top: none;
+        border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+        z-index: 1000;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    
+    /* Desktop Search Mobile */
+    .search-container {
+        width: 100%;
+        margin: 1rem 0;
+        padding: 0 1rem;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
+    .search-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 0.75rem 1rem;
+        min-height: 44px;
+    }
+    
+    .btn-search {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    /* Sections Mobile */
+    .section {
+        padding: 3rem 0;
+    }
+    
+    /* Grid Layouts Mobile */
+    .products-grid,
+    .features-grid,
+    .testimonial-grid {
+        display: grid;
+        gap: 1rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Product Cards Mobile */
+    .product-card {
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    .product-image {
+        height: 150px;
+        margin-bottom: 0.75rem;
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+    }
+    
+    .product-card h6 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        height: 2.6rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    
+    .product-price {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+    
+    .product-rating {
+        font-size: 0.8rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .product-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.7);
+    }
+    
+    .product-overlay .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+    
+    /* Feature Cards Mobile */
+    .feature-card {
+        padding: 2rem 1rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 1rem;
+    }
+    
+    .feature-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .feature-card h5 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    /* Testimonial Cards Mobile */
+    .testimonial-card {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .testimonial-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+    
+    .testimonial-author h6 {
+        font-size: 0.9rem;
+    }
+    
+    .testimonial-author small {
+        font-size: 0.8rem;
+    }
+    
+    /* Footer Mobile */
+    .main-footer {
+        padding: 3rem 0 2rem;
+    }
+    
+    .footer-section {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-brand-text {
+        font-size: 1.1rem;
+    }
+    
+    .footer-brand-tagline {
+        font-size: 0.7rem;
+    }
+    
+    /* Chatbot Mobile */
     .chatbot-container {
         bottom: 20px;
         right: 20px;
@@ -1467,6 +1815,57 @@ h1, h2, h3, h4, h5, h6 {
         width: 280px;
         height: 350px;
         bottom: 70px;
+    }
+    
+    /* Floating WhatsApp Mobile */
+    .floating-whatsapp {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.5rem;
+    }
+    
+    /* Newsletter Mobile */
+    .newsletter-form {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .newsletter-form .form-control {
+        width: 100%;
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-height: 44px;
+    }
+    
+    .newsletter-form .btn {
+        width: 100%;
+        min-height: 44px;
+    }
+    
+    /* Form Controls Mobile */
+    .form-control {
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-height: 44px;
+        padding: 0.75rem 1rem;
+    }
+    
+    .btn {
+        min-height: 44px;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .btn-sm {
+        min-height: 36px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-lg {
+        min-height: 52px;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -1515,6 +1914,245 @@ h1, h2, h3, h4, h5, h6 {
     
     .footer-brand-tagline {
         font-size: 0.6rem;
+    }
+    
+    /* Container Ultra Mobile */
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    /* Header Ultra Mobile */
+    .navbar-brand {
+        font-size: 0.9rem;
+    }
+    
+    .logo-img {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .header-actions {
+        gap: 0.25rem;
+    }
+    
+    .header-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Top Banner Ultra Mobile */
+    .top-banner {
+        padding: 0.25rem 0;
+    }
+    
+    .top-banner p {
+        font-size: 0.7rem;
+    }
+    
+    .top-banner .row {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    /* Hero Ultra Mobile */
+    .hero-content {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    /* Sections Ultra Mobile */
+    .section {
+        padding: 2rem 0;
+    }
+    
+    .section-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Navigation Ultra Mobile */
+    .offcanvas {
+        width: 90% !important;
+        max-width: 300px;
+    }
+    
+    /* Forms Ultra Mobile */
+    .form-control {
+        padding: 0.75rem;
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-height: 44px;
+    }
+    
+    .form-label {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+        min-height: 44px;
+        border-radius: 6px;
+    }
+    
+    .btn-sm {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+        min-height: 36px;
+    }
+    
+    .btn-lg {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        min-height: 52px;
+    }
+    
+    /* Modal Ultra Mobile */
+    .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 1rem;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .modal-footer .btn {
+        width: 100%;
+        margin: 0;
+    }
+    
+    /* Chatbot Ultra Mobile */
+    .chatbot-window {
+        width: calc(100% - 20px);
+        max-width: 280px;
+        height: 350px;
+        bottom: 80px;
+        right: 10px;
+        left: 10px;
+        margin: 0 auto;
+    }
+    
+    /* Floating Elements */
+    .floating-whatsapp {
+        width: 45px;
+        height: 45px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 1.3rem;
+    }
+    
+    /* Tables Ultra Mobile */
+    .table-responsive {
+        font-size: 0.8rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.5rem 0.25rem;
+        vertical-align: middle;
+    }
+    
+    /* Cards Ultra Mobile */
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .card-text {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+/* Landscape Mobile Devices */
+@media (max-width: 767px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 70vh;
+        padding: 1.5rem 0;
+    }
+    
+    .hero-content {
+        padding: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .section {
+        padding: 2rem 0;
+    }
+    
+    .modal-dialog {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects for touch devices */
+    .btn:hover,
+    .card:hover,
+    .nav-link:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    /* Ensure minimum touch targets */
+    .btn,
+    .header-icon,
+    .nav-link,
+    .hamburger-menu,
+    .floating-whatsapp,
+    .form-control {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Better touch feedback */
+    .btn:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Optimize form controls for touch */
+    .form-control {
+        font-size: 16px; /* Prevents zoom on iOS */
+        border-radius: 8px;
+    }
+    
+    select.form-control,
+    select.form-select {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* High DPI Display Support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-img,
+    .footer-logo-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
     }
 }
 

@@ -108,6 +108,23 @@
                             </div>
                         </div>
 
+                        <!-- Mobile Responsiveness Testing -->
+                        <div class="test-section mb-4">
+                            <h5><i class="fas fa-mobile-alt me-2"></i>Mobile Responsiveness</h5>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <a href="mobile-test.html" class="btn btn-outline-info w-100">
+                                        <i class="fas fa-mobile-alt me-1"></i>Mobile Test
+                                    </a>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-outline-warning w-100" onclick="toggleMobileView()">
+                                        <i class="fas fa-expand-arrows-alt me-1"></i>Toggle View
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Clear Testing -->
                         <div class="test-section">
                             <h5><i class="fas fa-trash me-2"></i>Clear Test Data</h5>
@@ -227,6 +244,26 @@
             
             localStorage.setItem('sanoria_reviews', JSON.stringify(testReviews));
             alert('✅ Test reviews added! Visit a product page to see them.');
+        }
+
+        // Toggle mobile view simulation
+        function toggleMobileView() {
+            const body = document.body;
+            const currentWidth = body.style.maxWidth;
+            
+            if (currentWidth === '375px') {
+                // Reset to desktop view
+                body.style.maxWidth = '';
+                body.style.margin = '';
+                body.style.border = '';
+                alert('📱 Switched to Desktop View');
+            } else {
+                // Set to mobile view
+                body.style.maxWidth = '375px';
+                body.style.margin = '0 auto';
+                body.style.border = '2px solid #333';
+                alert('📱 Switched to Mobile View (375px)');
+            }
         }
 
         // Clear all test data

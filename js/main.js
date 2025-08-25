@@ -34,6 +34,7 @@ $(document).ready(function() {
     
     // Initialize search functionality
     initSearch();
+    initMobileSearch();
     
     // Initialize cart and wishlist
     updateCartDisplay();
@@ -1306,5 +1307,150 @@ function updateNotificationCount() {
 $(document).ready(function() {
     initNotifications();
 });
+
+// =====================
+// MOBILE SEARCH FUNCTIONALITY
+// =====================
+
+function initMobileSearch() {
+    const $mobileSearchInput = $('#mobileSearchInput');
+    const $mobileSearchResults = $('#mobileSearchResults');
+    const $mobileSearchBtn = $('#mobileSearchBtn');
+    
+    if ($mobileSearchInput.length === 0) return;
+    
+    let mobileSearchTimeout;
+    
+    // Mobile search input handler
+    $mobileSearchInput.on('input', function() {
+        const query = $(this).val().trim();
+        
+        clearTimeout(mobileSearchTimeout);
+        
+        if (query.length === 0) {
+            hideMobileSearchResults();
+            return;
+        }
+        
+        if (query.length >= 2) {
+            showMobileSearchLoading();
+            
+            mobileSearchTimeout = setTimeout(() => {
+                performMobileSearch(query);
+            }, 300);
+        }
+    });
+    
+    // Mobile search button handler
+    $mobileSearchBtn.on('click', function() {
+        const query = $mobileSearchInput.val().trim();
+        if (query.length >= 2) {
+            window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+        }
+    });
+    
+    // Mobile search enter key handler
+    $mobileSearchInput.on('keypress', function(e) {
+        if (e.which === 13) {
+            const query = $(this).val().trim();
+            if (query.length >= 2) {
+                window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+            }
+        }
+    });
+    
+    // Hide mobile search results when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.mobile-search').length) {
+            hideMobileSearchResults();
+        }
+    });
+    
+    console.log('✅ Mobile search functionality initialized');
+}
+
+function performMobileSearch(query) {
+    // Use the same search data as desktop search
+    const allProducts = [
+        { id: 1, name: 'Hydrating Facial Serum', price: 1299, category: 'Serum', image: 'images/products/product-1.svg' },
+        { id: 2, name: 'Vitamin C Brightening Serum', price: 1599, category: 'Serum', image: 'images/products/product-2.svg' },
+        { id: 3, name: 'Gentle Daily Cleanser', price: 899, category: 'Cleanser', image: 'images/products/product-3.svg' },
+        { id: 4, name: 'Anti-Aging Night Cream', price: 1899, category: 'Cream', image: 'images/products/product-4.svg' },
+        { id: 5, name: 'Nourishing Face Mask', price: 799, category: 'Mask', image: 'images/placeholder.svg' },
+        { id: 6, name: 'Exfoliating Scrub', price: 699, category: 'Scrub', image: 'images/placeholder.svg' },
+        { id: 7, name: 'Hydrating Toner', price: 599, category: 'Toner', image: 'images/placeholder.svg' },
+        { id: 8, name: 'Eye Repair Cream', price: 1199, category: 'Eye Care', image: 'images/placeholder.svg' }
+    ];
+    
+    const lowerQuery = query.toLowerCase();
+    const results = allProducts.filter(product => 
+        product.name.toLowerCase().includes(lowerQuery) || 
+        product.category.toLowerCase().includes(lowerQuery)
+    );
+    
+    displayMobileSearchResults(results, query);
+}
+
+function showMobileSearchLoading() {
+    const $results = $('#mobileSearchResults');
+    const $loading = $results.find('.search-loading');
+    
+    $results.removeClass('d-none');
+    $loading.removeClass('d-none');
+    $results.find('.search-items').empty();
+}
+
+function displayMobileSearchResults(results, query) {
+    const $results = $('#mobileSearchResults');
+    const $loading = $results.find('.search-loading');
+    const $items = $results.find('.search-items');
+    
+    $loading.addClass('d-none');
+    
+    if (results.length === 0) {
+        $items.html(`
+            <div class="search-no-results p-3 text-center">
+                <i class="fas fa-search text-muted mb-2" style="font-size: 2rem;"></i>
+                <p class="mb-1">No products found for "${query}"</p>
+                <small class="text-muted">Try different keywords or browse our categories</small>
+            </div>
+        `);
+        return;
+    }
+    
+    // Limit mobile results to 4 items for better mobile UX
+    const limitedResults = results.slice(0, 4);
+    
+    const resultsHtml = limitedResults.map(product => `
+        <div class="search-result-item" onclick="window.location.href='product.html?id=${product.id}'">
+            <img src="${product.image}" alt="${product.name}" class="search-result-image" onerror="this.src='images/placeholder.svg'">
+            <div class="search-result-details">
+                <h6 class="search-result-title">${highlightQuery(product.name, query)}</h6>
+                <div class="search-result-meta">
+                    <span class="search-result-category">${product.category}</span>
+                    <span class="search-result-price">Rs. ${product.price.toLocaleString()}</span>
+                </div>
+            </div>
+            <i class="fas fa-chevron-right search-result-arrow"></i>
+        </div>
+    `).join('');
+    
+    let viewAllButton = '';
+    if (results.length > 4) {
+        viewAllButton = `
+            <div class="search-view-all" onclick="window.location.href='search.html?q=${encodeURIComponent(query)}'">
+                <span>View all ${results.length} results</span>
+                <i class="fas fa-arrow-right ms-2"></i>
+            </div>
+        `;
+    }
+    
+    $items.html(resultsHtml + viewAllButton);
+    $results.removeClass('d-none');
+}
+
+function hideMobileSearchResults() {
+    $('#mobileSearchResults').addClass('d-none');
+}
 
 console.log('🎉 Enhanced contact system loaded successfully');
