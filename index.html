@@ -93,37 +93,208 @@
 
                 <!-- Header Actions -->
                 <div class="header-actions d-flex align-items-center">
+                    <!-- Contact & Chat -->
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-comments"></i>
+                            <span class="pulse-ring"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end fancy-dropdown contact-dropdown">
+                            <div class="dropdown-header fancy-header">
+                                <i class="fas fa-headset me-2"></i>
+                                <span>Get in Touch</span>
+                            </div>
+                            
+                            <!-- WhatsApp Contact -->
+                            <div class="dropdown-item fancy-item whatsapp-contact" onclick="openWhatsApp()">
+                                <div class="contact-icon whatsapp-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <strong>WhatsApp Support</strong>
+                                    <small>Chat with our experts</small>
+                                </div>
+                                <div class="contact-action">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                            </div>
+
+                            <!-- Live Chatbot -->
+                            <div class="dropdown-item fancy-item chatbot-contact" onclick="toggleChatbot()">
+                                <div class="contact-icon chatbot-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <strong>AI Assistant</strong>
+                                    <small>Instant help & support</small>
+                                </div>
+                                <div class="contact-action">
+                                    <span class="online-indicator"></span>
+                                </div>
+                            </div>
+
+                            <!-- Phone Contact -->
+                            <div class="dropdown-item fancy-item phone-contact" onclick="callSupport()">
+                                <div class="contact-icon phone-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <strong>Call Support</strong>
+                                    <small>+92 300 1234567</small>
+                                </div>
+                                <div class="contact-action">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                            </div>
+
+                            <!-- Email Contact -->
+                            <div class="dropdown-item fancy-item email-contact" onclick="emailSupport()">
+                                <div class="contact-icon email-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <strong>Email Us</strong>
+                                    <small>info@sanoria.pk</small>
+                                </div>
+                                <div class="contact-action">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Business Hours -->
+                            <div class="dropdown-item-text business-hours">
+                                <small>
+                                    <i class="fas fa-clock me-2"></i>
+                                    <strong>Business Hours:</strong><br>
+                                    Mon-Sat: 9:00 AM - 8:00 PM<br>
+                                    Sunday: 10:00 AM - 6:00 PM
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Notifications -->
-                    <div class="notification-icon me-3">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle notification-count">3</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end fancy-dropdown notifications-dropdown">
+                            <div class="dropdown-header fancy-header">
+                                <i class="fas fa-bell me-2"></i>
+                                <span>Notifications</span>
+                                <button class="btn btn-sm btn-outline-secondary ms-auto mark-all-read">
+                                    Mark All Read
+                                </button>
+                            </div>
+                            
+                            <div class="notification-item unread">
+                                <div class="notification-icon promotion-icon">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <strong>New Promotion!</strong>
+                                    <p>Get 25% off on all skincare products</p>
+                                    <small class="text-muted">2 hours ago</small>
+                                </div>
+                                <div class="notification-actions">
+                                    <button class="btn btn-sm btn-primary">View</button>
+                                </div>
+                            </div>
+
+                            <div class="notification-item unread">
+                                <div class="notification-icon shipping-icon">
+                                    <i class="fas fa-truck"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <strong>Order Shipped!</strong>
+                                    <p>Your order #SAN20241215001 is on the way</p>
+                                    <small class="text-muted">5 hours ago</small>
+                                </div>
+                                <div class="notification-actions">
+                                    <button class="btn btn-sm btn-outline-primary">Track</button>
+                                </div>
+                            </div>
+
+                            <div class="notification-item read">
+                                <div class="notification-icon welcome-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <strong>Welcome to Sanoria!</strong>
+                                    <p>Complete your profile to get personalized recommendations</p>
+                                    <small class="text-muted">1 day ago</small>
+                                </div>
+                                <div class="notification-actions">
+                                    <button class="btn btn-sm btn-outline-secondary">Complete</button>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item text-center">
+                                <a href="#" class="btn btn-link">View All Notifications</a>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- User Account -->
                     <div class="dropdown me-3">
-                        <a href="#" class="header-icon dropdown-toggle" data-bs-toggle="dropdown">
+                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fas fa-user"></i>
                             <span class="d-none d-md-inline ms-1">Account</span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-in-alt me-2"></i>Login</a></li>
-                            <li><a class="dropdown-item" href="register.html"><i class="fas fa-user-plus me-2"></i>Register</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user-circle me-2"></i>My Profile</a></li>
-                            <li><a class="dropdown-item" href="order-history.html"><i class="fas fa-box me-2"></i>Order History</a></li>
-                            <li><a class="dropdown-item" href="wishlist.html"><i class="fas fa-heart me-2"></i>Wishlist</a></li>
-                        </ul>
+                        <div class="dropdown-menu dropdown-menu-end fancy-dropdown user-dropdown">
+                            <div class="dropdown-header fancy-header user-header">
+                                <img src="images/user-avatar.svg" alt="User" class="user-avatar-small">
+                                <div class="user-info">
+                                    <strong>Sarah Ahmed</strong>
+                                    <small>Premium Member</small>
+                                </div>
+                            </div>
+                            
+                            <a class="dropdown-item fancy-item" href="login.html">
+                                <i class="fas fa-sign-in-alt me-3"></i>Login
+                            </a>
+                            <a class="dropdown-item fancy-item" href="register.html">
+                                <i class="fas fa-user-plus me-3"></i>Register
+                            </a>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <a class="dropdown-item fancy-item" href="profile.html">
+                                <i class="fas fa-user-circle me-3"></i>My Profile
+                            </a>
+                            <a class="dropdown-item fancy-item" href="order-history.html">
+                                <i class="fas fa-box me-3"></i>Order History
+                            </a>
+                            <a class="dropdown-item fancy-item" href="wishlist.html">
+                                <i class="fas fa-heart me-3"></i>Wishlist
+                                <span class="badge bg-danger ms-auto">2</span>
+                            </a>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <a class="dropdown-item fancy-item" href="rewards.html">
+                                <i class="fas fa-star me-3"></i>Rewards Points
+                                <span class="badge bg-warning ms-auto">150</span>
+                            </a>
+                            <a class="dropdown-item fancy-item" href="#" onclick="logout()">
+                                <i class="fas fa-sign-out-alt me-3"></i>Logout
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Wishlist -->
-                    <a href="wishlist.html" class="header-icon me-3 position-relative">
+                    <a href="wishlist.html" class="header-icon me-3 position-relative fancy-icon">
                         <i class="fas fa-heart"></i>
-                        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">2</span>
+                        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle wishlist-count">2</span>
                         <span class="d-none d-md-inline ms-1">Wishlist</span>
                     </a>
 
                     <!-- Cart -->
-                    <a href="cart.html" class="header-icon me-3 position-relative">
+                    <a href="cart.html" class="header-icon me-3 position-relative fancy-icon">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
                         <span class="d-none d-md-inline ms-1">Cart</span>
@@ -622,6 +793,11 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp" onclick="openWhatsApp()" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
     <!-- QR Code Scanner -->
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     

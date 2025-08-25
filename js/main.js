@@ -997,3 +997,314 @@ window.SanoriaAnalytics = {
         console.log('Add to cart tracked:', productData);
     }
 };
+
+// =====================
+// CONTACT & COMMUNICATION
+// =====================
+
+// WhatsApp Contact Function
+function openWhatsApp() {
+    const phoneNumber = '+923001234567'; // Pakistan number format
+    const message = encodeURIComponent('Hi! I need help with Sanoria.pk products. Can you assist me?');
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+    
+    // Add success animation
+    const whatsappBtn = document.querySelector('.whatsapp-contact');
+    if (whatsappBtn) {
+        whatsappBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            whatsappBtn.style.transform = 'scale(1)';
+        }, 150);
+    }
+    
+    window.open(whatsappURL, '_blank');
+    
+    // Track analytics
+    console.log('WhatsApp contact opened');
+}
+
+// Enhanced Chatbot Toggle
+function toggleChatbot() {
+    const chatWidget = document.getElementById('chatWidget');
+    const chatbotBtn = document.querySelector('.chatbot-contact');
+    
+    if (chatWidget && chatWidget.style.display === 'block') {
+        // Hide chatbot
+        chatWidget.style.display = 'none';
+        if (chatbotBtn) {
+            chatbotBtn.querySelector('.contact-info strong').textContent = 'AI Assistant';
+            chatbotBtn.querySelector('.contact-info small').textContent = 'Instant help & support';
+        }
+    } else {
+        // Show chatbot
+        if (!chatWidget) {
+            createChatWidget();
+        } else {
+            chatWidget.style.display = 'block';
+        }
+        if (chatbotBtn) {
+            chatbotBtn.querySelector('.contact-info strong').textContent = 'Hide Assistant';
+            chatbotBtn.querySelector('.contact-info small').textContent = 'Click to close chat';
+        }
+    }
+    
+    // Add button animation
+    if (chatbotBtn) {
+        chatbotBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            chatbotBtn.style.transform = 'scale(1)';
+        }, 150);
+    }
+}
+
+// Create Enhanced Chat Widget
+function createChatWidget() {
+    const chatHTML = `
+        <div id="chatWidget" class="chat-widget">
+            <div class="chat-header">
+                <div class="chat-avatar">
+                    <img src="images/chatbot-avatar.svg" alt="AI Assistant">
+                </div>
+                <div class="chat-info">
+                    <h6>Sanoria AI Assistant</h6>
+                    <span class="chat-status online">Online</span>
+                </div>
+                <button class="chat-close" onclick="toggleChatbot()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot-message">
+                    <div class="message-avatar">
+                        <img src="images/chatbot-avatar.svg" alt="Bot">
+                    </div>
+                    <div class="message-content">
+                        <p>Hi! I'm Sanoria's AI assistant. How can I help you today? 😊</p>
+                        <div class="quick-actions">
+                            <button class="quick-btn" onclick="askAboutProducts()">
+                                <i class="fas fa-box me-1"></i>Products
+                            </button>
+                            <button class="quick-btn" onclick="askAboutOrders()">
+                                <i class="fas fa-truck me-1"></i>Orders
+                            </button>
+                            <button class="quick-btn" onclick="askAboutSkincare()">
+                                <i class="fas fa-spa me-1"></i>Skincare Tips
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+                    <button onclick="sendChatMessage()" class="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', chatHTML);
+}
+
+// Enhanced Chat Functions
+function sendChatMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    // Add user message
+    addChatMessage(message, 'user');
+    input.value = '';
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Generate AI response
+    setTimeout(() => {
+        hideTypingIndicator();
+        const response = generateAIResponse(message);
+        addChatMessage(response, 'bot');
+    }, 1500 + Math.random() * 1000); // Realistic typing delay
+}
+
+function addChatMessage(message, sender) {
+    const messagesContainer = document.getElementById('chatMessages');
+    const messageHTML = `
+        <div class="chat-message ${sender}-message">
+            <div class="message-avatar">
+                <img src="${sender === 'user' ? 'images/user-avatar.svg' : 'images/chatbot-avatar.svg'}" alt="${sender}">
+            </div>
+            <div class="message-content">
+                <p>${message}</p>
+                <span class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+            </div>
+        </div>
+    `;
+    
+    messagesContainer.insertAdjacentHTML('beforeend', messageHTML);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function generateAIResponse(message) {
+    const responses = {
+        'products': [
+            "We have amazing skincare products! Our best sellers include hydrating serums, vitamin C treatments, and anti-aging creams. Which skin concern would you like to address?",
+            "Our product range includes cleansers, serums, moisturizers, and beauty tools. Would you like recommendations based on your skin type?",
+            "I'd love to help you find the perfect products! Are you looking for skincare, beauty tools, or specific treatments?"
+        ],
+        'orders': [
+            "I can help with order tracking! Please provide your order number (format: SAN20241215001) and I'll check the status for you.",
+            "For order assistance, you can also visit your Order History page or contact our WhatsApp support for immediate help.",
+            "Having trouble with an order? I can help with tracking, returns, or order modifications. What do you need assistance with?"
+        ],
+        'skincare': [
+            "Great question! For healthy skin, I recommend: 1) Cleanse daily 2) Use vitamin C serum in the morning 3) Apply moisturizer 4) Always use sunscreen. What's your current routine?",
+            "Skincare tips: Start with basics (cleanser, moisturizer, sunscreen), introduce new products gradually, and be consistent. What's your skin type?",
+            "For best results: Use products consistently for 4-6 weeks, patch test new products, and adjust routine based on seasons. Need specific product recommendations?"
+        ],
+        'price': [
+            "Our products range from Rs. 599 for tools to Rs. 2,199 for premium serums. We often have promotions - check our current offers!",
+            "Pricing varies by product category. Would you like to know about specific items? I can also tell you about our current discounts!"
+        ],
+        'shipping': [
+            "We offer fast shipping via TCS, Leopard, and PkDex couriers. Delivery takes 2-5 business days depending on your location. Free shipping on orders over Rs. 3,000!",
+            "Shipping is Rs. 200 nationwide, or free on orders over Rs. 3,000. We ship Monday-Saturday and provide tracking numbers."
+        ],
+        'return': [
+            "We have a 14-day easy return policy! Items must be unused and in original packaging. Contact support to initiate a return.",
+            "Returns are hassle-free within 14 days. Keep your receipt and original packaging. Need help with a specific return?"
+        ]
+    };
+    
+    const lowerMessage = message.toLowerCase();
+    
+    // Smart keyword matching
+    if (lowerMessage.includes('product') || lowerMessage.includes('serum') || lowerMessage.includes('cream')) {
+        return responses.products[Math.floor(Math.random() * responses.products.length)];
+    } else if (lowerMessage.includes('order') || lowerMessage.includes('track') || lowerMessage.includes('delivery')) {
+        return responses.orders[Math.floor(Math.random() * responses.orders.length)];
+    } else if (lowerMessage.includes('skin') || lowerMessage.includes('routine') || lowerMessage.includes('care')) {
+        return responses.skincare[Math.floor(Math.random() * responses.skincare.length)];
+    } else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('expensive')) {
+        return responses.price[Math.floor(Math.random() * responses.price.length)];
+    } else if (lowerMessage.includes('ship') || lowerMessage.includes('deliver')) {
+        return responses.shipping[Math.floor(Math.random() * responses.shipping.length)];
+    } else if (lowerMessage.includes('return') || lowerMessage.includes('refund')) {
+        return responses.return[Math.floor(Math.random() * responses.return.length)];
+    } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+        return "Hello! I'm here to help with any questions about Sanoria products, orders, or skincare advice. What would you like to know?";
+    } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+        return "You're very welcome! Is there anything else I can help you with today? 😊";
+    } else {
+        return "I'd be happy to help! You can ask me about our products, order tracking, skincare tips, shipping, or returns. What would you like to know more about?";
+    }
+}
+
+// Quick Action Functions
+function askAboutProducts() {
+    addChatMessage("Tell me about your products", 'user');
+    setTimeout(() => {
+        const response = generateAIResponse('products');
+        addChatMessage(response, 'bot');
+    }, 800);
+}
+
+function askAboutOrders() {
+    addChatMessage("I need help with my order", 'user');
+    setTimeout(() => {
+        const response = generateAIResponse('orders');
+        addChatMessage(response, 'bot');
+    }, 800);
+}
+
+function askAboutSkincare() {
+    addChatMessage("Give me skincare tips", 'user');
+    setTimeout(() => {
+        const response = generateAIResponse('skincare');
+        addChatMessage(response, 'bot');
+    }, 800);
+}
+
+function handleChatKeyPress(event) {
+    if (event.key === 'Enter') {
+        sendChatMessage();
+    }
+}
+
+function showTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) {
+        indicator.style.display = 'block';
+        const messagesContainer = document.getElementById('chatMessages');
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    }
+}
+
+function hideTypingIndicator() {
+    const indicator = document.getElementById('typingIndicator');
+    if (indicator) {
+        indicator.style.display = 'none';
+    }
+}
+
+// Other Contact Functions
+function callSupport() {
+    const phoneNumber = '+92-300-1234567';
+    if (confirm(`Call ${phoneNumber}?`)) {
+        window.location.href = `tel:${phoneNumber}`;
+    }
+}
+
+function emailSupport() {
+    const email = 'info@sanoria.pk';
+    const subject = encodeURIComponent('Support Request - Sanoria.pk');
+    const body = encodeURIComponent('Hi Sanoria Team,\\n\\nI need assistance with:\\n\\n[Please describe your question or concern]\\n\\nThank you!');
+    
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+}
+
+// =====================
+// NOTIFICATION SYSTEM
+// =====================
+
+function initNotifications() {
+    // Mark all read functionality
+    $('.mark-all-read').on('click', function() {
+        $('.notification-item.unread').removeClass('unread').addClass('read');
+        updateNotificationCount();
+    });
+    
+    // Notification click handlers
+    $('.notification-item').on('click', function() {
+        if ($(this).hasClass('unread')) {
+            $(this).removeClass('unread').addClass('read');
+            updateNotificationCount();
+        }
+    });
+}
+
+function updateNotificationCount() {
+    const unreadCount = $('.notification-item.unread').length;
+    $('.notification-count').text(unreadCount);
+    
+    if (unreadCount === 0) {
+        $('.notification-count').hide();
+    } else {
+        $('.notification-count').show();
+    }
+}
+
+// Initialize notifications when page loads
+$(document).ready(function() {
+    initNotifications();
+});
+
+console.log('🎉 Enhanced contact system loaded successfully');
