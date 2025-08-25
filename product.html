@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="productTitle">Product Details - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="View detailed information about our premium beauty and skincare products at Sanoria.pk.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner bg-gradient-primary text-white py-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0 text-center text-md-start">
+                        <i class="fas fa-gift me-2"></i>
+                        <strong>FREE SHIPPING</strong> on orders over Rs. 2000 | Free samples with every order
+                    </p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <span class="me-3"><i class="fas fa-phone me-1"></i>+92 300 1234567</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand me-auto" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                    <div class="brand-container">
+                        <span class="brand-text">Sanoria.pk</span>
+                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                    </div>
+                </a>
+
+                <!-- Search Bar (Desktop) -->
+                <div class="search-container d-none d-lg-flex mx-4 flex-grow-1">
+                    <div class="input-group search-box">
+                        <input type="text" class="form-control search-input" placeholder="Search for beauty products...">
+                        <button class="btn btn-search" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="header-actions d-flex align-items-center">
+                    <!-- Contact & Chat -->
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-comments"></i>
+                            <span class="pulse-ring"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end fancy-dropdown contact-dropdown">
+                            <div class="dropdown-header fancy-header">
+                                <i class="fas fa-headset me-2"></i>
+                                <span>Get in Touch</span>
+                            </div>
+                            
+                            <!-- WhatsApp Contact -->
+                            <div class="dropdown-item fancy-item whatsapp-contact" onclick="openWhatsApp()">
+                                <div class="contact-icon whatsapp-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <strong>WhatsApp Support</strong>
+                                    <small>Chat with our experts</small>
+                                </div>
+                                <div class="contact-action">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                            </div>
+
+                            <!-- Live Chatbot -->
+                            <div class="dropdown-item fancy-item chatbot-contact" onclick="toggleChatbot()">
+                                <div class="contact-icon chatbot-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <strong>AI Assistant</strong>
+                                    <small>Instant help & support</small>
+                                </div>
+                                <div class="contact-action">
+                                    <span class="online-indicator"></span>
+                                </div>
+                            </div>
+
+                            <!-- Phone Contact -->
+                            <div class="dropdown-item fancy-item phone-contact" onclick="callSupport()">
+                                <div class="contact-icon phone-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <strong>Call Support</strong>
+                                    <small>+92 300 1234567</small>
+                                </div>
+                                <div class="contact-action">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                            </div>
+
+                            <!-- Email Contact -->
+                            <div class="dropdown-item fancy-item email-contact" onclick="emailSupport()">
+                                <div class="contact-icon email-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <strong>Email Us</strong>
+                                    <small>info@sanoria.pk</small>
+                                </div>
+                                <div class="contact-action">
+                                    <i class="fas fa-paper-plane"></i>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-divider"></div>
+                            
+                            <!-- Business Hours -->
+                            <div class="dropdown-item-text business-hours">
+                                <small>
+                                    <i class="fas fa-clock me-2"></i>
+                                    <strong>Business Hours:</strong><br>
+                                    Mon-Sat: 9:00 AM - 8:00 PM<br>
+                                    Sunday: 10:00 AM - 6:00 PM
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Account -->
+                    <div class="dropdown me-3">
+                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end fancy-dropdown user-dropdown">
+                            <div class="dropdown-header fancy-header user-header">
+                                <img src="images/user-avatar.svg" alt="User" class="user-avatar-small">
+                                <div class="user-info">
+                                    <strong>Sarah Ahmed</strong>
+                                    <small>Premium Member</small>
+                                </div>
+                            </div>
+                            
+                            <a class="dropdown-item fancy-item" href="login.html">
+                                <i class="fas fa-sign-in-alt me-3"></i>Login
+                            </a>
+                            <a class="dropdown-item fancy-item" href="register.html">
+                                <i class="fas fa-user-plus me-3"></i>Register
+                            </a>
+                            
+                            <div class="dropdown-divider"></div>
+                            
+                            <a class="dropdown-item fancy-item" href="profile.html">
+                                <i class="fas fa-user-circle me-3"></i>My Profile
+                            </a>
+                            <a class="dropdown-item fancy-item" href="order-history.html">
+                                <i class="fas fa-box me-3"></i>Order History
+                            </a>
+                            <a class="dropdown-item fancy-item" href="wishlist.html">
+                                <i class="fas fa-heart me-3"></i>Wishlist
+                                <span class="badge bg-danger ms-auto">2</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Wishlist -->
+                    <a href="wishlist.html" class="header-icon me-3 position-relative fancy-icon">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle wishlist-count">2</span>
+                    </a>
+
+                    <!-- Shopping Cart -->
+                    <a href="cart.html" class="header-icon me-3 position-relative fancy-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
+                    </a>
+
+                    <!-- Hamburger Menu -->
+                    <button class="btn btn-outline-primary hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigationMenu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-nav bg-light py-3">
+        <div class="container">
+            <ol class="breadcrumb mb-0" id="breadcrumbNav">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="category.html">Skincare</a></li>
+                <li class="breadcrumb-item active">Product Details</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Product Details -->
+    <main class="product-main py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Product Images -->
+                <div class="col-lg-6">
+                    <div class="product-images">
+                        <!-- Main Image -->
+                        <div class="main-image-container">
+                            <img id="mainImage" src="images/placeholder.svg" alt="Product Image" class="main-image">
+                            <button class="zoom-btn" onclick="openImageZoom()">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                            <div class="image-badges">
+                                <span class="badge bg-success">NEW</span>
+                                <span class="badge bg-danger">25% OFF</span>
+                            </div>
+                        </div>
+
+                        <!-- Thumbnail Images -->
+                        <div class="thumbnail-container mt-3">
+                            <div class="row g-2" id="thumbnailImages">
+                                <!-- Thumbnails will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="col-lg-6">
+                    <div class="product-info">
+                        <!-- Product Title & Rating -->
+                        <div class="product-header">
+                            <h1 id="productName" class="product-title">Loading...</h1>
+                            <div class="product-rating">
+                                <div class="stars" id="productRating">
+                                    <!-- Stars will be loaded here -->
+                                </div>
+                                <span class="rating-count" id="ratingCount">(0 reviews)</span>
+                                <a href="#reviews" class="rating-link">View Reviews</a>
+                            </div>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="product-pricing">
+                            <span class="current-price" id="currentPrice">Rs. 0</span>
+                            <span class="original-price" id="originalPrice" style="display: none;">Rs. 0</span>
+                            <span class="discount-badge" id="discountBadge" style="display: none;">0% OFF</span>
+                        </div>
+
+                        <!-- Product Description -->
+                        <div class="product-description">
+                            <p id="productDescription">Loading product description...</p>
+                        </div>
+
+                        <!-- Key Benefits -->
+                        <div class="product-benefits">
+                            <h6>Key Benefits:</h6>
+                            <ul id="productBenefits">
+                                <!-- Benefits will be loaded here -->
+                            </ul>
+                        </div>
+
+                        <!-- Product Options -->
+                        <div class="product-options">
+                            <!-- Size/Volume -->
+                            <div class="option-group" id="sizeOptions" style="display: none;">
+                                <label class="option-label">Size:</label>
+                                <div class="size-buttons">
+                                    <!-- Size options will be loaded here -->
+                                </div>
+                            </div>
+
+                            <!-- Quantity -->
+                            <div class="option-group">
+                                <label class="option-label">Quantity:</label>
+                                <div class="quantity-selector">
+                                    <button type="button" class="quantity-btn minus" onclick="decreaseQuantity()">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="number" id="quantity" value="1" min="1" max="10" readonly>
+                                    <button type="button" class="quantity-btn plus" onclick="increaseQuantity()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="product-actions">
+                            <button class="btn btn-primary add-to-cart-btn" onclick="addToCart()">
+                                <i class="fas fa-shopping-cart me-2"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-outline-primary add-to-wishlist-btn" onclick="addToWishlist()">
+                                <i class="fas fa-heart me-2"></i>
+                                Add to Wishlist
+                            </button>
+                            <button class="btn btn-success buy-now-btn" onclick="buyNow()">
+                                <i class="fas fa-bolt me-2"></i>
+                                Buy Now
+                            </button>
+                        </div>
+
+                        <!-- Product Meta -->
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <strong>SKU:</strong> <span id="productSku">N/A</span>
+                            </div>
+                            <div class="meta-item">
+                                <strong>Category:</strong> <span id="productCategory">Skincare</span>
+                            </div>
+                            <div class="meta-item">
+                                <strong>Tags:</strong> <span id="productTags">Beauty, Skincare</span>
+                            </div>
+                            <div class="meta-item">
+                                <strong>Availability:</strong> 
+                                <span id="productStock" class="in-stock">In Stock</span>
+                            </div>
+                        </div>
+
+                        <!-- Shipping Info -->
+                        <div class="shipping-info">
+                            <div class="shipping-item">
+                                <i class="fas fa-truck"></i>
+                                <span>Free shipping on orders over Rs. 2000</span>
+                            </div>
+                            <div class="shipping-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Delivery in 2-5 business days</span>
+                            </div>
+                            <div class="shipping-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>14-day easy return policy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="product-tabs mt-5">
+                <ul class="nav nav-tabs" id="productTabs">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#description-tab">
+                            Description
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#ingredients-tab">
+                            Ingredients
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#usage-tab">
+                            How to Use
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#reviews-tab">
+                            Reviews (<span id="reviewCount">0</span>)
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content mt-4">
+                    <!-- Description Tab -->
+                    <div class="tab-pane fade show active" id="description-tab">
+                        <div class="tab-content-area">
+                            <h5>Product Description</h5>
+                            <div id="fullDescription">
+                                <!-- Full description will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ingredients Tab -->
+                    <div class="tab-pane fade" id="ingredients-tab">
+                        <div class="tab-content-area">
+                            <h5>Ingredients</h5>
+                            <div id="productIngredients">
+                                <!-- Ingredients will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Usage Tab -->
+                    <div class="tab-pane fade" id="usage-tab">
+                        <div class="tab-content-area">
+                            <h5>How to Use</h5>
+                            <div id="usageInstructions">
+                                <!-- Usage instructions will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Tab -->
+                    <div class="tab-pane fade" id="reviews-tab">
+                        <div class="tab-content-area">
+                            <div class="reviews-section" id="reviewsSection">
+                                <!-- Reviews will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="related-products mt-5">
+                <h3>Related Products</h3>
+                <div class="row g-4" id="relatedProducts">
+                    <!-- Related products will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Image Zoom Modal -->
+    <div class="modal fade" id="imageZoomModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Product Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="zoomedImage" src="" alt="Zoomed Product Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <div class="footer-logo mb-3">
+                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                            <div class="footer-brand-container">
+                                <span class="footer-brand-text">Sanoria.pk</span>
+                                <div class="footer-brand-tagline">The Essence Of TimeLess Glow</div>
+                            </div>
+                        </div>
+                        <p class="footer-description">Your trusted partner for premium beauty and skincare products.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Quick Links</h6>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="return-policy.html">Return Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Categories</h6>
+                        <ul class="footer-links">
+                            <li><a href="category.html?cat=skincare">Skincare</a></li>
+                            <li><a href="category.html?cat=tools">Beauty Tools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-section">
+                        <h6 class="footer-title">Contact Info</h6>
+                        <div class="contact-info">
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</p>
+                            <p><i class="fas fa-phone me-2"></i>+92 300 1234567</p>
+                            <p><i class="fas fa-envelope me-2"></i>info@sanoria.pk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="text-center">
+                <p class="copyright-text mb-0">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp" onclick="openWhatsApp()" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>

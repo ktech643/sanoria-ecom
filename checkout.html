@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Sanoria.pk</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Complete your order securely at Sanoria.pk. Multiple payment options and fast delivery available.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner bg-gradient-primary text-white py-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0 text-center text-md-start">
+                        <i class="fas fa-shield-alt me-2"></i>
+                        <strong>SECURE CHECKOUT</strong> - Your payment information is protected with SSL encryption
+                    </p>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <span class="me-3"><i class="fas fa-phone me-1"></i>+92 300 1234567</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand me-auto" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                    <div class="brand-container">
+                        <span class="brand-text">Sanoria.pk</span>
+                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                    </div>
+                </a>
+
+                <div class="header-actions d-flex align-items-center">
+                    <a href="cart.html" class="btn btn-outline-primary me-3">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Cart
+                    </a>
+                    
+                    <a href="cart.html" class="header-icon position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Checkout Progress -->
+    <div class="checkout-progress">
+        <div class="container">
+            <div class="progress-steps">
+                <div class="step completed">
+                    <div class="step-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="step-label">Cart</div>
+                </div>
+                <div class="step active">
+                    <div class="step-icon"><i class="fas fa-truck"></i></div>
+                    <div class="step-label">Shipping</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-credit-card"></i></div>
+                    <div class="step-label">Payment</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-check"></i></div>
+                    <div class="step-label">Confirmation</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Checkout -->
+    <main class="checkout-main py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Checkout Form -->
+                <div class="col-lg-8">
+                    <div class="checkout-form">
+                        <!-- Step 1: Contact Information -->
+                        <div class="checkout-section" id="contactSection">
+                            <div class="section-header">
+                                <h4><i class="fas fa-user me-2"></i>Contact Information</h4>
+                                <p class="text-muted">We'll use this information to contact you about your order</p>
+                            </div>
+                            
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="phone" placeholder="+92 300 1234567" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Step 2: Shipping Address -->
+                        <div class="checkout-section" id="shippingSection">
+                            <div class="section-header">
+                                <h4><i class="fas fa-map-marker-alt me-2"></i>Shipping Address</h4>
+                                <p class="text-muted">Where should we deliver your order?</p>
+                            </div>
+                            
+                            <form id="shippingForm">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label class="form-label">Street Address *</label>
+                                        <input type="text" class="form-control" id="address" placeholder="House/Flat No, Street Name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">City *</label>
+                                        <select class="form-select" id="city" required>
+                                            <option value="">Select City</option>
+                                            <option value="karachi">Karachi</option>
+                                            <option value="lahore">Lahore</option>
+                                            <option value="islamabad">Islamabad</option>
+                                            <option value="rawalpindi">Rawalpindi</option>
+                                            <option value="faisalabad">Faisalabad</option>
+                                            <option value="multan">Multan</option>
+                                            <option value="peshawar">Peshawar</option>
+                                            <option value="quetta">Quetta</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Postal Code</label>
+                                        <input type="text" class="form-control" id="postalCode" placeholder="75000">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Delivery Instructions (Optional)</label>
+                                        <textarea class="form-control" id="deliveryInstructions" rows="2" placeholder="Special delivery instructions..."></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Step 3: Shipping Method -->
+                        <div class="checkout-section" id="shippingMethodSection">
+                            <div class="section-header">
+                                <h4><i class="fas fa-truck me-2"></i>Shipping Method</h4>
+                                <p class="text-muted">Choose your preferred delivery option</p>
+                            </div>
+                            
+                            <div class="shipping-options">
+                                <div class="shipping-option" data-method="standard" data-price="200">
+                                    <div class="option-radio">
+                                        <input type="radio" name="shipping" id="standard" value="standard" checked>
+                                        <label for="standard"></label>
+                                    </div>
+                                    <div class="option-details">
+                                        <div class="option-header">
+                                            <h6>Standard Delivery</h6>
+                                            <span class="option-price">Rs. 200</span>
+                                        </div>
+                                        <p class="option-description">3-5 business days delivery via TCS/Leopard</p>
+                                    </div>
+                                </div>
+
+                                <div class="shipping-option" data-method="express" data-price="400">
+                                    <div class="option-radio">
+                                        <input type="radio" name="shipping" id="express" value="express">
+                                        <label for="express"></label>
+                                    </div>
+                                    <div class="option-details">
+                                        <div class="option-header">
+                                            <h6>Express Delivery</h6>
+                                            <span class="option-price">Rs. 400</span>
+                                        </div>
+                                        <p class="option-description">1-2 business days delivery</p>
+                                    </div>
+                                </div>
+
+                                <div class="shipping-option" data-method="overnight" data-price="800">
+                                    <div class="option-radio">
+                                        <input type="radio" name="shipping" id="overnight" value="overnight">
+                                        <label for="overnight"></label>
+                                    </div>
+                                    <div class="option-details">
+                                        <div class="option-header">
+                                            <h6>Overnight Delivery</h6>
+                                            <span class="option-price">Rs. 800</span>
+                                        </div>
+                                        <p class="option-description">Next business day delivery (select cities only)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Payment Method -->
+                        <div class="checkout-section" id="paymentSection">
+                            <div class="section-header">
+                                <h4><i class="fas fa-credit-card me-2"></i>Payment Method</h4>
+                                <p class="text-muted">Choose how you'd like to pay for your order</p>
+                            </div>
+                            
+                            <div class="payment-options">
+                                <!-- Cash on Delivery -->
+                                <div class="payment-option active" data-method="cod">
+                                    <div class="option-radio">
+                                        <input type="radio" name="payment" id="cod" value="cod" checked>
+                                        <label for="cod"></label>
+                                    </div>
+                                    <div class="option-details">
+                                        <div class="option-header">
+                                            <i class="fas fa-money-bill-wave me-2"></i>
+                                            <h6>Cash on Delivery</h6>
+                                        </div>
+                                        <p class="option-description">Pay when your order arrives at your doorstep</p>
+                                    </div>
+                                </div>
+
+                                <!-- JazzCash -->
+                                <div class="payment-option" data-method="jazzcash">
+                                    <div class="option-radio">
+                                        <input type="radio" name="payment" id="jazzcash" value="jazzcash">
+                                        <label for="jazzcash"></label>
+                                    </div>
+                                    <div class="option-details">
+                                        <div class="option-header">
+                                            <img src="images/payments/jazzcash.svg" alt="JazzCash" class="payment-logo">
+                                            <h6>JazzCash</h6>
+                                        </div>
+                                        <p class="option-description">Pay instantly with your JazzCash wallet</p>
+                                    </div>
+                                </div>
+
+                                <!-- EasyPaisa -->
+                                <div class="payment-option" data-method="easypaisa">
+                                    <div class="option-radio">
+                                        <input type="radio" name="payment" id="easypaisa" value="easypaisa">
+                                        <label for="easypaisa"></label>
+                                    </div>
+                                    <div class="option-details">
+                                        <div class="option-header">
+                                            <img src="images/payments/easypaisa.svg" alt="EasyPaisa" class="payment-logo">
+                                            <h6>EasyPaisa</h6>
+                                        </div>
+                                        <p class="option-description">Pay instantly with your EasyPaisa account</p>
+                                    </div>
+                                </div>
+
+                                <!-- Bank Transfer -->
+                                <div class="payment-option" data-method="bank">
+                                    <div class="option-radio">
+                                        <input type="radio" name="payment" id="bank" value="bank">
+                                        <label for="bank"></label>
+                                    </div>
+                                    <div class="option-details">
+                                        <div class="option-header">
+                                            <i class="fas fa-university me-2"></i>
+                                            <h6>Bank Transfer</h6>
+                                        </div>
+                                        <p class="option-description">Transfer directly to our bank account</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payment Details Forms -->
+                            <div class="payment-details">
+                                <!-- JazzCash Form -->
+                                <div class="payment-form d-none" id="jazzcashForm">
+                                    <h6>JazzCash Payment Details</h6>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label">JazzCash Mobile Number</label>
+                                            <input type="tel" class="form-control" placeholder="03XX-XXXXXXX">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- EasyPaisa Form -->
+                                <div class="payment-form d-none" id="easypaisaForm">
+                                    <h6>EasyPaisa Payment Details</h6>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label">EasyPaisa Mobile Number</label>
+                                            <input type="tel" class="form-control" placeholder="03XX-XXXXXXX">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bank Transfer Form -->
+                                <div class="payment-form d-none" id="bankForm">
+                                    <h6>Bank Transfer Information</h6>
+                                    <div class="bank-details">
+                                        <p><strong>Account Title:</strong> Sanoria Pakistan</p>
+                                        <p><strong>Account Number:</strong> 12345678901234</p>
+                                        <p><strong>Bank:</strong> HBL Bank</p>
+                                        <p><strong>Branch Code:</strong> 1234</p>
+                                        <small class="text-muted">Please include your order number in the transfer description</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="checkout-actions">
+                            <button type="button" class="btn btn-outline-secondary me-3" onclick="window.history.back()">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </button>
+                            <button type="button" class="btn btn-primary" id="proceedToPayment">
+                                Proceed to Payment
+                                <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="order-summary">
+                        <h4>Order Summary</h4>
+                        
+                        <!-- Cart Items -->
+                        <div class="summary-items" id="summaryItems">
+                            <!-- Items will be loaded here -->
+                        </div>
+
+                        <!-- Promo Code -->
+                        <div class="promo-section">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="promoCode" placeholder="Enter promo code">
+                                <button class="btn btn-outline-primary" id="applyPromo">Apply</button>
+                            </div>
+                            <div class="promo-message mt-2" id="promoMessage"></div>
+                        </div>
+
+                        <!-- Order Totals -->
+                        <div class="order-totals">
+                            <div class="total-row">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">Rs. 0</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Shipping:</span>
+                                <span id="shippingCost">Rs. 200</span>
+                            </div>
+                            <div class="total-row discount-row d-none">
+                                <span>Discount:</span>
+                                <span id="discountAmount">-Rs. 0</span>
+                            </div>
+                            <div class="total-row grand-total">
+                                <span>Total:</span>
+                                <span id="grandTotal">Rs. 0</span>
+                            </div>
+                        </div>
+
+                        <!-- Security Info -->
+                        <div class="security-info">
+                            <div class="security-item">
+                                <i class="fas fa-shield-alt text-success"></i>
+                                <span>SSL Encrypted Checkout</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-truck text-primary"></i>
+                                <span>Free shipping over Rs. 2000</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-undo text-info"></i>
+                                <span>14-day return policy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Payment Processing Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-5">
+                    <div class="payment-processing">
+                        <div class="spinner-border text-primary mb-3" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <h5>Processing Your Order...</h5>
+                        <p class="text-muted">Please wait while we confirm your order details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-5">
+                    <div class="confirmation-success">
+                        <i class="fas fa-check-circle text-success mb-3" style="font-size: 4rem;"></i>
+                        <h4>Order Placed Successfully!</h4>
+                        <p class="mb-4">Thank you for your order. We'll send you a confirmation email shortly.</p>
+                        <div class="order-info">
+                            <p><strong>Order Number:</strong> <span id="orderNumber">#SAN20241215001</span></p>
+                            <p><strong>Estimated Delivery:</strong> <span id="estimatedDelivery">3-5 business days</span></p>
+                        </div>
+                        <div class="confirmation-actions mt-4">
+                            <button class="btn btn-primary me-3" onclick="trackOrder()">Track Order</button>
+                            <button class="btn btn-outline-primary" onclick="window.location.href='index.html'">Continue Shopping</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="footer-logo">
+                        <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                        <span class="footer-brand-text">Sanoria.pk</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="payment-methods">
+                        <span class="me-3">We Accept:</span>
+                        <img src="images/payments/jazzcash.svg" alt="JazzCash" class="payment-method-img">
+                        <img src="images/payments/easypaisa.svg" alt="EasyPaisa" class="payment-method-img">
+                        <i class="fas fa-money-bill-wave text-success fs-4 ms-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

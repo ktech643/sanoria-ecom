@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Checkout Flow - Sanoria.pk</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🧪 Test E-commerce Flow</h3>
+                        <p class="mb-0">Click the buttons below to test different parts of the e-commerce system</p>
+                    </div>
+                    <div class="card-body">
+                        <!-- Product Testing -->
+                        <div class="test-section mb-4">
+                            <h5><i class="fas fa-box me-2"></i>Product Pages</h5>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <a href="product.html?id=1" class="btn btn-outline-primary w-100">
+                                        <i class="fas fa-tint me-2"></i>Hydrating Serum
+                                    </a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="product.html?id=2" class="btn btn-outline-warning w-100">
+                                        <i class="fas fa-sun me-2"></i>Vitamin C Serum
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cart Testing -->
+                        <div class="test-section mb-4">
+                            <h5><i class="fas fa-shopping-cart me-2"></i>Shopping Cart</h5>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button class="btn btn-success w-100" onclick="addTestProduct()">
+                                        <i class="fas fa-plus me-2"></i>Add Test Product
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <a href="cart.html" class="btn btn-info w-100">
+                                        <i class="fas fa-eye me-2"></i>View Cart
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Checkout Testing -->
+                        <div class="test-section mb-4">
+                            <h5><i class="fas fa-credit-card me-2"></i>Checkout Process</h5>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button class="btn btn-primary w-100" onclick="startCheckoutTest()">
+                                        <i class="fas fa-play me-2"></i>Start Checkout
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <a href="checkout.html" class="btn btn-secondary w-100">
+                                        <i class="fas fa-external-link-alt me-2"></i>Direct Checkout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Account Testing -->
+                        <div class="test-section mb-4">
+                            <h5><i class="fas fa-user me-2"></i>Account Pages</h5>
+                            <div class="row g-2">
+                                <div class="col-4">
+                                    <a href="profile.html" class="btn btn-outline-info w-100">
+                                        <i class="fas fa-user-circle me-1"></i>Profile
+                                    </a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="order-history.html" class="btn btn-outline-warning w-100">
+                                        <i class="fas fa-history me-1"></i>Orders
+                                    </a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="wishlist.html" class="btn btn-outline-danger w-100">
+                                        <i class="fas fa-heart me-1"></i>Wishlist
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Clear Testing -->
+                        <div class="test-section">
+                            <h5><i class="fas fa-trash me-2"></i>Clear Test Data</h5>
+                            <button class="btn btn-danger w-100" onclick="clearTestData()">
+                                <i class="fas fa-broom me-2"></i>Clear All Cart & Session Data
+                            </button>
+                        </div>
+
+                        <!-- Status Display -->
+                        <div class="mt-4">
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-info-circle me-2"></i>Current Status:</h6>
+                                <p class="mb-1">Cart Items: <span id="cartCount">0</span></p>
+                                <p class="mb-1">Wishlist Items: <span id="wishlistCount">0</span></p>
+                                <p class="mb-0">Orders: <span id="orderCount">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        // Update status display
+        function updateStatus() {
+            const cart = JSON.parse(localStorage.getItem('sanoria_cart')) || [];
+            const wishlist = JSON.parse(localStorage.getItem('sanoria_wishlist')) || [];
+            const orders = JSON.parse(localStorage.getItem('sanoria_orders')) || [];
+            
+            $('#cartCount').text(cart.length);
+            $('#wishlistCount').text(wishlist.length);
+            $('#orderCount').text(orders.length);
+        }
+
+        // Add test product to cart
+        function addTestProduct() {
+            const testProduct = {
+                id: 1,
+                name: 'Test Hydrating Serum',
+                price: 1299,
+                quantity: 1,
+                image: 'images/products/product-1.svg'
+            };
+
+            let cart = JSON.parse(localStorage.getItem('sanoria_cart')) || [];
+            cart.push(testProduct);
+            localStorage.setItem('sanoria_cart', JSON.stringify(cart));
+            
+            updateStatus();
+            alert('✅ Test product added to cart!');
+        }
+
+        // Start checkout test with sample data
+        function startCheckoutTest() {
+            // Add test products if cart is empty
+            let cart = JSON.parse(localStorage.getItem('sanoria_cart')) || [];
+            if (cart.length === 0) {
+                cart = [
+                    {
+                        id: 1,
+                        name: 'Hydrating Facial Serum',
+                        price: 1299,
+                        quantity: 2,
+                        image: 'images/products/product-1.svg'
+                    },
+                    {
+                        id: 2,
+                        name: 'Vitamin C Serum',
+                        price: 1599,
+                        quantity: 1,
+                        image: 'images/products/product-2.svg'
+                    }
+                ];
+                localStorage.setItem('sanoria_cart', JSON.stringify(cart));
+            }
+            
+            updateStatus();
+            alert('✅ Test cart created! Redirecting to checkout...');
+            setTimeout(() => {
+                window.location.href = 'checkout.html';
+            }, 1000);
+        }
+
+        // Clear all test data
+        function clearTestData() {
+            if (confirm('Are you sure you want to clear all test data?')) {
+                localStorage.removeItem('sanoria_cart');
+                localStorage.removeItem('sanoria_wishlist');
+                localStorage.removeItem('sanoria_orders');
+                localStorage.removeItem('sanoria_customer');
+                localStorage.removeItem('sanoria_applied_promo');
+                
+                updateStatus();
+                alert('✅ All test data cleared!');
+            }
+        }
+
+        // Initialize
+        $(document).ready(function() {
+            updateStatus();
+            
+            // Auto-refresh status every 2 seconds
+            setInterval(updateStatus, 2000);
+        });
+    </script>
+</body>
+</html>
