@@ -3,35 +3,35 @@
    ===================== */
 
 :root {
-    /* Color Palette - Enhanced Pink Theme (#FF0066) */
-    --primary-color: #FF0066;
-    --primary-dark: #CC0052;
-    --primary-light: #FF1A75;
-    --secondary-color: #FF3385;
-    --tertiary-color: #FF66B3;
-    --accent-color: #E6005C;
+    /* Custom Color Palette */
+    --primary-color: #EFB7B7;
+    --primary-dark: #C97B63;
+    --primary-light: #F3F9F5;
+    --secondary-color: #F3F9F5;
+    --tertiary-color: #EFB7B7;
+    --accent-color: #C97B63;
     --success-color: #27ae60;
     --warning-color: #f39c12;
     --info-color: #3498db;
     
     /* Neutral Colors */
-    --white: #ffffff;
-    --light-gray: #f8f9fa;
-    --medium-gray: #dee2e6;
-    --dark-gray: #6c757d;
-    --black: #212529;
+    --white: #FFFFFF;
+    --light-gray: #F3F9F5;
+    --medium-gray: #EFB7B7;
+    --dark-gray: #C97B63;
+    --black: #2D2D2D;
     
-    /* Enhanced Pink Gradients */
-    --gradient-primary: linear-gradient(135deg, #FF0066 0%, #FF1A75 50%, #FF3385 100%);
-    --gradient-secondary: linear-gradient(135deg, #FF0066 0%, #FF3385 100%);
-    --gradient-accent: linear-gradient(135deg, #CC0052 0%, #FF0066 100%);
-    --gradient-light: linear-gradient(135deg, #FF3385 0%, #FF66B3 100%);
+    /* Custom Theme Gradients */
+    --gradient-primary: linear-gradient(135deg, #EFB7B7 0%, #C97B63 50%, #F3F9F5 100%);
+    --gradient-secondary: linear-gradient(135deg, #F3F9F5 0%, #EFB7B7 100%);
+    --gradient-accent: linear-gradient(135deg, #C97B63 0%, #EFB7B7 100%);
+    --gradient-light: linear-gradient(135deg, #F3F9F5 0%, #FFFFFF 100%);
     
     /* Text Colors for Better Contrast */
-    --primary-text-color: #2C3E50;
-    --secondary-text-color: #34495E;
-    --button-text-color: #ffffff;
-    --light-text-color: #FF0066;
+    --primary-text-color: #2D2D2D;
+    --secondary-text-color: #2D2D2D;
+    --button-text-color: #FFFFFF;
+    --light-text-color: #C97B63;
     
     /* Typography */
     --font-primary: 'Playfair Display', serif;
