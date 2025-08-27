@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Test - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <style>
+        .test-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+        .animation-demo {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #FF0066;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Test Header -->
+    <header class="main-header sticky-top parallax-header gpu-accelerated">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand me-auto animate-on-scroll delay-1" href="#">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img gpu-accelerated floating-logo" style="width: 50px; height: 50px;">
+                    <div class="brand-container">
+                        <span class="brand-text gpu-accelerated neon-glow">Sanoria.pk</span>
+                        <div class="brand-tagline gpu-accelerated">Animation Test</div>
+                    </div>
+                </a>
+                
+                <div class="header-actions d-flex align-items-center animate-on-scroll delay-3">
+                    <a href="#" class="header-icon me-3 scale-hover bounce-click">
+                        <i class="fas fa-heart rotate-icon"></i>
+                    </a>
+                    <a href="#" class="header-icon me-3 scale-hover bounce-click">
+                        <i class="fas fa-shopping-cart rotate-icon cart-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Test Content -->
+    <main class="test-section">
+        <div class="container">
+            <h1 class="animate-on-scroll">Animation Test Page</h1>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="animation-demo animate-on-scroll delay-1">
+                        <h3>Header Animations</h3>
+                        <p>Logo floating, brand text glow, icon rotations</p>
+                        <button class="btn btn-primary morph-button scale-hover bounce-click">
+                            <i class="fas fa-search rotate-icon"></i> Test Button
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="animation-demo animate-on-scroll delay-2">
+                        <h3>Social Icons</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link gpu-accelerated scale-hover bounce-click">
+                                <i class="fab fa-facebook-f rotate-icon"></i>
+                            </a>
+                            <a href="#" class="social-link gpu-accelerated scale-hover bounce-click">
+                                <i class="fab fa-instagram rotate-icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="animation-demo animate-on-scroll delay-3">
+                        <h3>Sparkle Effects</h3>
+                        <div class="sparkle-effect">
+                            <i class="fas fa-star" style="font-size: 2rem; color: #FF0066;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Test Footer -->
+    <footer class="main-footer bg-dark text-white py-5 animate-on-scroll gpu-accelerated">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-section animate-on-scroll delay-1">
+                        <h5 class="footer-brand-text gpu-accelerated gradient-bg-animation">Sanoria.pk</h5>
+                        <p>Animation test footer with gradient text and floating effects.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="footer-section animate-on-scroll delay-2">
+                        <div class="payment-methods">
+                            <div class="payment-item gpu-accelerated">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Test Payment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/header-footer-animations.js"></script>
+    
+    <script>
+        // Test script to verify animations are working
+        $(document).ready(function() {
+            console.log('Animation test page loaded');
+            
+            // Test animation triggers
+            setTimeout(() => {
+                console.log('Testing cart bounce animation');
+                $('.cart-icon').trigger('click');
+                $(document).trigger('cartUpdated');
+            }, 2000);
+            
+            // Test search glow
+            setTimeout(() => {
+                console.log('Testing search glow effect');
+                if ($('.search-input').length === 0) {
+                    $('<input class="search-input form-control" placeholder="Test search">').appendTo('.test-section .container');
+                }
+                $('.search-input').focus();
+            }, 3000);
+            
+            // Animation status check
+            setTimeout(() => {
+                const animatedElements = $('.animate-on-scroll.in-view').length;
+                const totalElements = $('.animate-on-scroll').length;
+                console.log(`Animated elements: ${animatedElements}/${totalElements}`);
+                
+                if (animatedElements > 0) {
+                    console.log('✅ Animations are working!');
+                } else {
+                    console.log('⚠️ No animations detected, adding fallback classes');
+                    $('.animate-on-scroll').addClass('in-view');
+                }
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
