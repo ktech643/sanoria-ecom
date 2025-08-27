@@ -1,11 +1,11 @@
 /* =====================
-   NOTIFICATION SYSTEM - BLUE-GRAY THEME UPDATE
+   NOTIFICATION SYSTEM - THEME SYNC (PASTEL)
    ===================== */
 
 /* Notification Bell Animations with new theme */
 .fa-bell.notification-alert {
     animation: bellShake 0.8s ease-in-out infinite;
-    color: #FF0066 !important;
+    color: var(--primary-color) !important;
 }
 
 @keyframes bellShake {
@@ -16,8 +16,8 @@
 
 .notification-count {
     animation: countPulse 2s infinite;
-    background: linear-gradient(135deg, #FF0066, #CC0052) !important;
-    color: white !important;
+    background: var(--gradient-primary) !important;
+    color: var(--button-text-color) !important;
     font-size: 0.7rem !important;
     font-weight: 700 !important;
     min-width: 18px !important;
@@ -47,7 +47,7 @@
     width: 400px !important;
     max-height: 500px;
     border: none;
-    box-shadow: 0 15px 35px rgba(255, 0, 102, 0.15);
+    box-shadow: 0 15px 35px rgba(58, 58, 58, 0.12);
     border-radius: 15px;
     overflow: hidden;
 }
@@ -97,13 +97,13 @@
 }
 
 .notification-icon-small.promotion-icon {
-    background: linear-gradient(135deg, #FF0066, #FF3385);
-    color: white;
+    background: var(--gradient-primary);
+    color: var(--button-text-color);
 }
 
 .notification-icon-small.order-icon {
-    background: linear-gradient(135deg, #FF3385, #FF66B3);
-    color: white;
+    background: var(--gradient-accent);
+    color: var(--primary-text-color);
 }
 
 .notification-icon-small.system-icon {
@@ -175,7 +175,7 @@
 
 /* Badge improvements with new theme */
 .badge.bg-danger {
-    background: linear-gradient(135deg, #FF0066, #CC0052) !important;
+    background: var(--gradient-primary) !important;
 }
 
 .badge.bg-primary {
@@ -185,11 +185,11 @@
 
 /* Floating WhatsApp button theme update */
 .floating-whatsapp {
-    background: linear-gradient(135deg, #FF0066, #E6005C) !important;
+    background: var(--gradient-primary) !important;
 }
 
 .floating-whatsapp:hover {
-    background: linear-gradient(135deg, #CC0052, #E6005C) !important;
+    background: var(--gradient-primary) !important;
     transform: translateY(-2px) scale(1.05);
 }
 
@@ -250,16 +250,16 @@
 }
 
 /* =====================
-   FOOTER THEME UPDATE - BRIGHT PINK (#FF0066)
+   FOOTER THEME UPDATE - THEME SYNC
    ===================== */
 
 /* Updated footer with bright pink background */
 .main-footer {
-    background: #FF0066 !important;
+    background: var(--gradient-secondary) !important;
     color: #ffffff !important;
     position: relative;
     overflow: hidden;
-    border-top: 3px solid #CC0052;
+    border-top: 3px solid var(--primary-dark);
 }
 
 .main-footer::before {
@@ -413,14 +413,14 @@
 }
 
 .newsletter .btn-primary {
-    background: #CC0052 !important;
-    border-color: #CC0052 !important;
-    color: white !important;
+    background: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+    color: var(--button-text-color) !important;
 }
 
 .newsletter .btn-primary:hover {
-    background: #990040 !important;
-    border-color: #990040 !important;
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
     transform: translateY(-1px);
 }
 
@@ -470,13 +470,13 @@
 }
 
 .btn-gradient {
-    background: linear-gradient(135deg, #FF0066, #FF3385) !important;
+    background: var(--gradient-primary) !important;
     border: none !important;
     color: white !important;
 }
 
 .btn-gradient:hover {
-    background: linear-gradient(135deg, #CC0052, #FF0066) !important;
+    background: var(--gradient-primary) !important;
     transform: translateY(-1px) !important;
     box-shadow: 0 4px 8px rgba(255, 0, 102, 0.3) !important;
 }
@@ -503,13 +503,13 @@
 }
 
 .notification-item-enhanced.border-light {
-    border-left-color: #FF0066 !important;
+    border-left-color: var(--primary-color) !important;
     border-left-width: 4px !important;
 }
 
 /* Dropdown header enhancement */
 .dropdown-header.fancy-header {
-    background: linear-gradient(135deg, #FF0066, #FF3385) !important;
+    background: var(--gradient-primary) !important;
     color: white !important;
     padding: 1rem !important;
     border-bottom: none !important;
@@ -543,12 +543,12 @@
 }
 
 .notification-quick-list::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #FF0066, #FF3385);
+    background: var(--gradient-primary);
     border-radius: 2px;
 }
 
 .notification-quick-list::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #CC0052, #FF0066);
+    background: var(--gradient-primary);
 }
 /* =====================
    FOOTER THEME UPDATE - BLUE-GRAY PALETTE

@@ -3,35 +3,35 @@
    ===================== */
 
 :root {
-    /* Color Palette - Enhanced Pink Theme (#FF0066) */
-    --primary-color: #FF0066;
-    --primary-dark: #CC0052;
-    --primary-light: #FF1A75;
-    --secondary-color: #FF3385;
-    --tertiary-color: #FF66B3;
-    --accent-color: #E6005C;
+    /* Color Palette - Soft Pastel Theme */
+    --primary-color: #F7C6D9; /* Primary */
+    --primary-dark: #E7A8C6; /* Slightly darker than primary for borders/hover */
+    --primary-light: #FBE3EE; /* Lighter tint */
+    --secondary-color: #CDB4DB; /* Secondary */
+    --tertiary-color: #B39BC8; /* Complementary lavender */
+    --accent-color: #F7E7CE; /* Accent */
     --success-color: #27ae60;
     --warning-color: #f39c12;
     --info-color: #3498db;
     
     /* Neutral Colors */
-    --white: #ffffff;
-    --light-gray: #f8f9fa;
-    --medium-gray: #dee2e6;
-    --dark-gray: #6c757d;
+    --white: #FFFDF9; /* Background */
+    --light-gray: #f4f2ee;
+    --medium-gray: #dedbd6;
+    --dark-gray: #8a8a8a;
     --black: #212529;
     
-    /* Enhanced Pink Gradients */
-    --gradient-primary: linear-gradient(135deg, #FF0066 0%, #FF1A75 50%, #FF3385 100%);
-    --gradient-secondary: linear-gradient(135deg, #FF0066 0%, #FF3385 100%);
-    --gradient-accent: linear-gradient(135deg, #CC0052 0%, #FF0066 100%);
-    --gradient-light: linear-gradient(135deg, #FF3385 0%, #FF66B3 100%);
+    /* Gradients aligned to new palette */
+    --gradient-primary: linear-gradient(135deg, #F7C6D9 0%, #CDB4DB 100%);
+    --gradient-secondary: linear-gradient(135deg, #F7C6D9 0%, #F7E7CE 100%);
+    --gradient-accent: linear-gradient(135deg, #CDB4DB 0%, #F7E7CE 100%);
+    --gradient-light: linear-gradient(135deg, #F7E7CE 0%, #FFF2E0 100%);
     
-    /* Text Colors for Better Contrast */
-    --primary-text-color: #2C3E50;
-    --secondary-text-color: #34495E;
-    --button-text-color: #ffffff;
-    --light-text-color: #FF0066;
+    /* Text Colors */
+    --primary-text-color: #3A3A3A; /* Text */
+    --secondary-text-color: #5A5A5A;
+    --button-text-color: #3A3A3A; /* Better contrast on light gradients */
+    --light-text-color: #F7C6D9;
     
     /* Typography */
     --font-primary: 'Playfair Display', serif;
@@ -1069,7 +1069,7 @@ h1, h2, h3, h4, h5, h6 {
    ===================== */
 
 .main-footer {
-    background: #FF0066;
+    background: var(--gradient-secondary);
     color: #ffffff;
     position: relative;
     overflow: hidden;
