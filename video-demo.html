@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Animation Demo - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/video-animations.css">
+    
+    <style>
+        body {
+            padding-top: 80px;
+        }
+        .demo-section {
+            padding: 60px 0;
+            min-height: 100vh;
+        }
+        .demo-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 0, 102, 0.2);
+        }
+        .control-panel {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-width: 250px;
+        }
+        .demo-video-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #FF0066, #FF3385);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Demo Control Panel -->
+    <div class="control-panel">
+        <h6><i class="fas fa-video me-2"></i>Video Controls</h6>
+        <div class="mb-3">
+            <button class="btn btn-sm btn-primary w-100 mb-2" onclick="toggleAllVideos(true)">
+                <i class="fas fa-play"></i> Play All
+            </button>
+            <button class="btn btn-sm btn-secondary w-100 mb-2" onclick="toggleAllVideos(false)">
+                <i class="fas fa-pause"></i> Pause All
+            </button>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Performance Mode</label>
+            <select class="form-select form-select-sm" onchange="changePerformanceMode(this.value)">
+                <option value="auto">Auto Detect</option>
+                <option value="high">High Performance</option>
+                <option value="low">Low Performance</option>
+            </select>
+        </div>
+        <div class="text-muted small">
+            <div id="videoStatus">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header sticky-top parallax-header gpu-accelerated">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <span class="brand-text neon-glow">Sanoria.pk</span>
+                    <div class="brand-tagline">Video Demo</div>
+                </a>
+                <div class="header-actions">
+                    <button class="btn btn-outline-primary" onclick="location.href='index.html'">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="demo-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h1 class="animate-on-scroll">🎬 Video Animation Demo</h1>
+                    <p class="lead animate-on-scroll delay-1">Experience our advanced video background and foreground effects</p>
+                </div>
+            </div>
+
+            <!-- Background Video Demo -->
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <div class="demo-card animate-on-scroll delay-1">
+                        <h3><i class="fas fa-desktop me-2"></i>Background Video</h3>
+                        <p>Immersive video background with overlay effects and particle animation.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Animated gradient overlay</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Floating particles</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Responsive design</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Performance optimized</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="demo-card animate-on-scroll delay-2">
+                        <h3><i class="fas fa-layer-group me-2"></i>Foreground Videos</h3>
+                        <p>Interactive floating video elements with beauty-themed effects.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>3D floating animation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Interactive controls</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Sparkle effects</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Beauty-themed overlays</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Features Demo -->
+            <div class="row mb-5">
+                <div class="col-lg-4">
+                    <div class="demo-card animate-on-scroll delay-1">
+                        <h4><i class="fas fa-sparkles me-2"></i>Beauty Effects</h4>
+                        <div class="demo-video-container beauty-sparkle-effect">
+                            <div class="skincare-glow-effect"></div>
+                            <div>
+                                <i class="fas fa-star fa-3x mb-3"></i>
+                                <div>Sparkle & Glow Effects</div>
+                                <small>Beauty-themed animations</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="demo-card animate-on-scroll delay-2">
+                        <h4><i class="fas fa-play-circle me-2"></i>Interactive Video</h4>
+                        <div class="demo-video-container video-foreground" style="height: 200px;">
+                            <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                                <source src="videos/beauty-demo-2.mp4" type="video/mp4">
+                                <source src="videos/beauty-demo-2.webm" type="video/webm">
+                            </video>
+                            <div class="video-control-overlay">
+                                <button class="video-play-btn" onclick="toggleVideo('demo-video-2')">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="video-interactive-overlay">Beauty Tutorial</div>
+                            <div class="video-beauty-effect">💄</div>
+                            <div class="beauty-sparkle-effect"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="demo-card animate-on-scroll delay-3">
+                        <h4><i class="fas fa-palette me-2"></i>Product Showcase</h4>
+                        <div class="demo-video-container product-showcase-video">
+                            <div class="product-video-fallback">
+                                <i class="fas fa-gift fa-3x mb-3"></i>
+                                <div>Product Demo</div>
+                                <small>Skincare Collection</small>
+                            </div>
+                            <div class="product-video-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Features -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="demo-card animate-on-scroll">
+                        <h3><i class="fas fa-cogs me-2"></i>Technical Features</h3>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h5><i class="fas fa-mobile-alt me-2 text-primary"></i>Responsive</h5>
+                                <p class="small text-muted">Adapts to all screen sizes with mobile-optimized performance</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5><i class="fas fa-tachometer-alt me-2 text-success"></i>Performance</h5>
+                                <p class="small text-muted">Auto-detects device capabilities and adjusts quality accordingly</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5><i class="fas fa-shield-alt me-2 text-info"></i>Fallback</h5>
+                                <p class="small text-muted">Graceful degradation with animated gradients when videos fail</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5><i class="fas fa-universal-access me-2 text-warning"></i>Accessible</h5>
+                                <p class="small text-muted">Respects reduced motion preferences and provides alternatives</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/video-animations.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Demo-specific functions
+            updateVideoStatus();
+            
+            // Add sparkle effects to demo elements
+            setTimeout(() => {
+                $('.beauty-sparkle-effect').each(function() {
+                    if (window.videoAnimations && window.videoAnimations.createSparkles) {
+                        window.videoAnimations.createSparkles($(this).parent());
+                    }
+                });
+            }, 1000);
+            
+            // Initialize scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        function toggleAllVideos(play) {
+            if (window.videoAnimations) {
+                window.videoAnimations.toggleAllVideos(play);
+            }
+            
+            // Also control demo videos
+            document.querySelectorAll('video').forEach(video => {
+                if (play) {
+                    video.play().catch(e => console.log('Video play failed:', e));
+                } else {
+                    video.pause();
+                }
+            });
+            
+            updateVideoStatus();
+        }
+        
+        function changePerformanceMode(mode) {
+            console.log('Performance mode changed to:', mode);
+            
+            if (mode === 'low') {
+                $('.video-foreground').hide();
+                $('.video-particle').remove();
+            } else {
+                $('.video-foreground').show();
+            }
+            
+            updateVideoStatus();
+        }
+        
+        function updateVideoStatus() {
+            const statusEl = document.getElementById('videoStatus');
+            if (!statusEl) return;
+            
+            setTimeout(() => {
+                let status = 'Ready';
+                
+                if (window.videoAnimations) {
+                    if (window.videoAnimations.isLowPerformance()) {
+                        status = 'Low Performance Mode';
+                    } else if (window.videoAnimations.isSupported()) {
+                        status = 'Full Video Support';
+                    } else {
+                        status = 'Fallback Mode';
+                    }
+                }
+                
+                statusEl.textContent = status;
+                statusEl.className = 'text-muted small';
+                
+                if (status.includes('Low')) {
+                    statusEl.className = 'text-warning small';
+                } else if (status.includes('Full')) {
+                    statusEl.className = 'text-success small';
+                }
+            }, 500);
+        }
+        
+        // Add demo animations
+        setInterval(() => {
+            if (Math.random() > 0.8) {
+                const sparkles = ['✨', '⭐', '💫', '🌟', '💎'];
+                const randomSparkle = sparkles[Math.floor(Math.random() * sparkles.length)];
+                
+                $('.beauty-sparkle-effect').each(function() {
+                    if ($(this).find('.beauty-sparkle').length < 3) {
+                        const sparkle = $(`<div class="beauty-sparkle">${randomSparkle}</div>`);
+                        sparkle.css({
+                            left: Math.random() * 100 + '%',
+                            top: Math.random() * 100 + '%'
+                        });
+                        $(this).append(sparkle);
+                        
+                        setTimeout(() => sparkle.remove(), 4000);
+                    }
+                });
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

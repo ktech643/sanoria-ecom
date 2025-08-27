@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Video Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="640" height="480" style="border: 1px solid #000;"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Beauty-themed animation
+        function drawBeautyFrame(frame) {
+            // Clear canvas
+            ctx.fillStyle = `hsl(${(frame * 2) % 360}, 70%, 60%)`;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw floating beauty particles
+            for (let i = 0; i < 10; i++) {
+                const x = (Math.sin(frame * 0.01 + i) * 200) + canvas.width / 2;
+                const y = (Math.cos(frame * 0.01 + i * 0.5) * 150) + canvas.height / 2;
+                const size = Math.sin(frame * 0.02 + i) * 10 + 15;
+                
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Add sparkle effect
+                ctx.fillStyle = '#FFD700';
+                ctx.beginPath();
+                ctx.arc(x, y, size / 3, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            // Add text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Sanoria.pk Beauty', canvas.width / 2, 50);
+            ctx.font = '16px Arial';
+            ctx.fillText('Premium Skincare & Cosmetics', canvas.width / 2, 80);
+        }
+        
+        let frame = 0;
+        function animate() {
+            drawBeautyFrame(frame);
+            frame++;
+            if (frame < 300) { // 10 seconds at 30fps
+                requestAnimationFrame(animate);
+            }
+        }
+        
+        animate();
+    </script>
+</body>
+</html>

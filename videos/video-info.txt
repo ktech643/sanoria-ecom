@@ -1,0 +1,28 @@
+Placeholder Video Files for Sanoria.pk Beauty Website
+
+Due to technical limitations, actual video files cannot be generated automatically.
+Please replace these placeholders with actual beauty-themed videos:
+
+Required video files:
+1. beauty-background.mp4 (1920x1080, looping background video)
+2. beauty-background.webm (WebM format for better compression)
+3. beauty-demo-1.mp4 (640x480, skincare routine demo)
+4. beauty-demo-1.webm
+5. beauty-demo-2.mp4 (640x480, makeup tutorial)
+6. beauty-demo-2.webm
+7. beauty-demo-3.mp4 (640x480, product showcase)
+8. beauty-demo-3.webm
+
+Recommended video content:
+- Soft, elegant beauty product shots
+- Skincare routine demonstrations
+- Makeup application tutorials
+- Product texture close-ups
+- Gentle, calming movements
+- Pink/rose color schemes to match website theme
+
+Video specifications:
+- Background video: 1920x1080, 30fps, 10-30 seconds loop
+- Demo videos: 640x480, 30fps, 5-15 seconds each
+- Format: MP4 (H.264) and WebM (VP9) for compatibility
+- Keep file sizes under 5MB each for web performance

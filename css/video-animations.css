@@ -1,0 +1,471 @@
+/* =====================
+   VIDEO ANIMATIONS
+   Background and Foreground Video Effects
+   ===================== */
+
+/* =====================
+   BODY VIDEO BACKGROUND
+   ===================== */
+
+.video-background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #FF0066, #FF3385);
+}
+
+.video-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(2px) brightness(0.7) saturate(1.2);
+    transition: all 0.3s ease;
+}
+
+.video-background:hover {
+    filter: blur(1px) brightness(0.8) saturate(1.3);
+    transform: scale(1.02);
+}
+
+/* Video Overlay Effects */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 0, 102, 0.1) 0%,
+        rgba(255, 51, 133, 0.15) 25%,
+        rgba(255, 102, 179, 0.1) 50%,
+        rgba(255, 0, 102, 0.15) 75%,
+        rgba(255, 0, 102, 0.1) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    mix-blend-mode: overlay;
+}
+
+.video-particles-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.video-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: floatingParticle 15s linear infinite;
+}
+
+@keyframes floatingParticle {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10px) translateX(100px) scale(1);
+        opacity: 0;
+    }
+}
+
+/* =====================
+   FOREGROUND VIDEO ELEMENTS
+   ===================== */
+
+.video-foreground-container {
+    position: relative;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.video-foreground {
+    position: fixed;
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(255, 0, 102, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.video-foreground video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.video-foreground:hover {
+    transform: scale(1.1);
+    box-shadow: 0 30px 60px rgba(255, 0, 102, 0.5);
+}
+
+/* Floating Video Positions */
+.video-floating-1 {
+    top: 20%;
+    right: 5%;
+    animation: floatVideo1 8s ease-in-out infinite;
+}
+
+.video-floating-2 {
+    bottom: 20%;
+    left: 5%;
+    animation: floatVideo2 10s ease-in-out infinite;
+}
+
+.video-floating-3 {
+    top: 50%;
+    right: 15%;
+    animation: floatVideo3 12s ease-in-out infinite;
+    width: 200px;
+    height: 150px;
+}
+
+@keyframes floatVideo1 {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+}
+
+@keyframes floatVideo2 {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(-2deg);
+    }
+}
+
+@keyframes floatVideo3 {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateY(-15px) rotate(1deg);
+    }
+    66% {
+        transform: translateY(15px) rotate(-1deg);
+    }
+}
+
+/* Video Control Overlay */
+.video-control-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 18px;
+}
+
+.video-foreground:hover .video-control-overlay {
+    opacity: 1;
+}
+
+.video-play-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 0, 102, 0.9);
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-play-btn:hover {
+    background: rgba(255, 0, 102, 1);
+    transform: scale(1.1);
+}
+
+/* =====================
+   RESPONSIVE VIDEO EFFECTS
+   ===================== */
+
+@media (max-width: 768px) {
+    .video-background {
+        filter: blur(3px) brightness(0.6) saturate(1.1);
+    }
+    
+    .video-foreground {
+        width: 200px;
+        height: 130px;
+        display: none; /* Hide floating videos on mobile */
+    }
+    
+    .video-floating-3 {
+        width: 150px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-background-container {
+        display: none; /* Disable video background on very small screens */
+    }
+    
+    body {
+        background: linear-gradient(135deg, #FF0066, #FF3385);
+    }
+}
+
+/* =====================
+   VIDEO LOADING ANIMATIONS
+   ===================== */
+
+.video-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 0, 102, 0.3);
+    border-top: 4px solid #FF0066;
+    border-radius: 50%;
+    animation: videoLoader 1s linear infinite;
+}
+
+@keyframes videoLoader {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.video-loaded .video-loading {
+    display: none;
+}
+
+/* =====================
+   INTERACTIVE VIDEO ELEMENTS
+   ===================== */
+
+.video-interactive-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 0, 102, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+.video-beauty-effect {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF0066;
+    font-size: 14px;
+    animation: beautyPulse 3s ease-in-out infinite;
+}
+
+@keyframes beautyPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 0, 102, 0.4);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(255, 0, 102, 0);
+    }
+}
+
+/* =====================
+   CANVAS VIDEO EFFECTS
+   ===================== */
+
+.canvas-video-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.3;
+}
+
+/* =====================
+   VIDEO MESH BACKGROUND
+   ===================== */
+
+.video-mesh-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 0, 102, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 51, 133, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 102, 179, 0.2) 0%, transparent 50%);
+    animation: meshMove 20s ease-in-out infinite;
+}
+
+@keyframes meshMove {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(180deg);
+    }
+}
+
+/* =====================
+   BEAUTY PRODUCT SHOWCASE VIDEOS
+   ===================== */
+
+.product-showcase-video {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(255, 0, 102, 0.2);
+    transition: all 0.3s ease;
+}
+
+.product-showcase-video:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(255, 0, 102, 0.3);
+}
+
+.product-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 0%, rgba(255, 0, 102, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-showcase-video:hover .product-video-overlay {
+    opacity: 1;
+}
+
+/* =====================
+   PERFORMANCE OPTIMIZATIONS
+   ===================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .video-background,
+    .video-foreground,
+    .video-particle,
+    .floating-particle {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* GPU Acceleration */
+.video-background,
+.video-foreground,
+.video-overlay,
+.video-particle {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+/* =====================
+   BEAUTY-SPECIFIC ANIMATIONS
+   ===================== */
+
+.beauty-sparkle-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.beauty-sparkle {
+    position: absolute;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    animation: beautySparkle 4s ease-in-out infinite;
+}
+
+@keyframes beautySparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+}
+
+.skincare-glow-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 102, 0.1) 0%, transparent 70%);
+    animation: skincareGlow 6s ease-in-out infinite;
+}
+
+@keyframes skincareGlow {
+    0%, 100% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.6;
+    }
+}
