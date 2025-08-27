@@ -22,6 +22,8 @@ $(document).ready(function() {
     
     // Initialize navigation
     initNavigation();
+    // Initialize header scroll/parallax and interactions
+    initHeaderAnimations();
     
     // Initialize product functionality
     initProductFunctionality();
@@ -35,6 +37,9 @@ $(document).ready(function() {
     // Initialize search functionality
     initSearch();
     initMobileSearch();
+    // Initialize global fade-ins and image lazy-load effects
+    initRevealAnimations();
+    initLazyImages();
     
     // Initialize cart and wishlist
     updateCartDisplay();
@@ -45,6 +50,10 @@ $(document).ready(function() {
     
     // Initialize notification tracking
     initNotificationTracking();
+
+    // Initialize footer animations and scroll-to-top
+    initFooterAnimations();
+    initScrollToTop();
 
     // =====================
     // LOADING SCREEN
@@ -63,6 +72,11 @@ $(document).ready(function() {
                         mirror: false
                     });
                 }
+                // After loading screen, reveal elements with fade-in class
+                $('.fade-in').each(function(index) {
+                    const element = $(this);
+                    setTimeout(() => element.addClass('is-visible'), 80 * index);
+                });
             });
         }, 2000);
     }
@@ -77,13 +91,10 @@ $(document).ready(function() {
         });
 
         // Navbar scroll effect
-        $(window).scroll(function() {
-            if ($(window).scrollTop() > 100) {
-                $('.main-header').addClass('scrolled');
-            } else {
-                $('.main-header').removeClass('scrolled');
-            }
-        });
+        $(window).on('scroll', throttle(function() {
+            const scrolled = $(window).scrollTop() > 100;
+            $('.main-header').toggleClass('scrolled', scrolled);
+        }, 100));
 
         // Smooth scrolling for anchor links
         $('a[href^="#"]').on('click', function(e) {
@@ -99,6 +110,154 @@ $(document).ready(function() {
 
         // Active navigation highlighting
         highlightActiveNavigation();
+    }
+
+    // =====================
+    // HEADER PARALLAX & INTERACTIONS
+    // =====================
+    function initHeaderAnimations() {
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced) return;
+
+        const $hero = $('.hero-section');
+        if ($hero.length === 0) return;
+
+        const $slides = $hero.find('.hero-slide');
+        const $image = $hero.find('.hero-image img');
+        const $content = $hero.find('.hero-content');
+
+        $(window).on('scroll', throttle(function() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            const parallaxY = Math.min(scrollY * 0.25, 120);
+            const imageY = Math.min(scrollY * 0.15, 80);
+
+            // Background parallax
+            $slides.css('background-position', `center calc(50% + ${parallaxY}px)`);
+            // Foreground image slight parallax
+            $image.css('transform', `translateY(${imageY}px) scale(1.02)`);
+            // Content easing upward slightly
+            $content.css('transform', `translateY(${Math.max(0, 40 - scrollY * 0.1)}px)`);
+        }, 16));
+    }
+
+    // =====================
+    // REVEAL ON VIEWPORT & LAZY IMAGES
+    // =====================
+    function initRevealAnimations() {
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const $elements = $('.fade-in');
+        if ($elements.length === 0) return;
+
+        if (prefersReduced || !('IntersectionObserver' in window)) {
+            $elements.addClass('is-visible');
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    $(entry.target).addClass('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.15 });
+
+        $elements.each(function() { observer.observe(this); });
+    }
+
+    function initLazyImages() {
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const $lazy = $('img.lazy-image');
+        if ($lazy.length === 0) return;
+
+        if (!('IntersectionObserver' in window)) {
+            $lazy.each(function() { $(this).addClass('is-loaded'); });
+            return;
+        }
+
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const $img = $(img);
+                    const src = $img.data('src');
+                    if (src) {
+                        $img.attr('src', src);
+                    }
+                    $img.on('load', function() { $img.addClass('is-loaded'); });
+                    if (prefersReduced) $img.addClass('is-loaded');
+                    io.unobserve(img);
+                }
+            });
+        }, { rootMargin: '100px' });
+
+        $lazy.each(function() { io.observe(this); });
+    }
+
+    // =====================
+    // FOOTER REVEAL & SCROLL TO TOP
+    // =====================
+    function initFooterAnimations() {
+        const $targets = $('.main-footer .footer-section, .main-footer .footer-links-inline, .main-footer .payment-item');
+        if ($targets.length === 0) return;
+
+        if (!('IntersectionObserver' in window)) {
+            $targets.addClass('is-visible');
+            return;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    $(entry.target).addClass('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        $targets.each(function() { observer.observe(this); });
+    }
+
+    function initScrollToTop() {
+        if ($('#scrollToTopBtn').length === 0) {
+            $('body').append('<button id="scrollToTopBtn" aria-label="Scroll to top" title="Scroll to top"><i class="fas fa-arrow-up"></i></button>');
+        }
+        const $btn = $('#scrollToTopBtn');
+
+        $(window).on('scroll', throttle(function() {
+            const show = window.scrollY > 400;
+            $btn.toggleClass('show', show);
+        }, 100));
+
+        $btn.on('click', function() {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) {
+                window.scrollTo(0, 0);
+            } else {
+                $('html, body').animate({ scrollTop: 0 }, 500);
+            }
+        });
+    }
+
+    // =====================
+    // UTILITIES (throttle/debounce)
+    // =====================
+    function throttle(fn, wait) {
+        let previous = 0; let timeout = null; let storedArgs = null; let storedThis = null;
+        return function throttled() {
+            const now = Date.now();
+            storedArgs = arguments; storedThis = this;
+            const remaining = wait - (now - previous);
+            if (remaining <= 0) {
+                clearTimeout(timeout); timeout = null; previous = now;
+                fn.apply(storedThis, storedArgs);
+            } else if (!timeout) {
+                timeout = setTimeout(() => {
+                    previous = Date.now(); timeout = null;
+                    fn.apply(storedThis, storedArgs);
+                }, remaining);
+            }
+        };
     }
 
     function highlightActiveNavigation() {
