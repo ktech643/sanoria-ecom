@@ -1,0 +1,421 @@
+/* =====================
+   ANIMATION DISABLE STYLESHEET
+   Removes all animations while keeping styling
+   ===================== */
+
+/* =====================
+   GLOBAL ANIMATION DISABLE
+   ===================== */
+
+/* Disable all animations globally */
+*,
+*::before,
+*::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    animation-fill-mode: none !important;
+    animation-play-state: paused !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    transform: none !important;
+}
+
+/* =====================
+   SPECIFIC ANIMATION OVERRIDES
+   ===================== */
+
+/* Header animations disabled */
+.top-banner,
+.navbar-brand,
+.search-container,
+.header-actions,
+.logo-img,
+.brand-text,
+.brand-tagline {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Footer animations disabled */
+.main-footer,
+.footer-section,
+.footer-logo-img,
+.footer-brand-text,
+.social-link,
+.payment-item {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Container animations disabled */
+.container-animated,
+.container-float,
+.container-pulse,
+.container-rotate,
+.container-glow,
+.container-sparkle,
+.container-beauty,
+.container-video,
+.container-product,
+.container-testimonial,
+.container-newsletter,
+.container-premium {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Video animations disabled */
+.video-background,
+.video-foreground,
+.enhanced-video-foreground,
+.video-overlay,
+.video-particle,
+.floating-particle,
+.beauty-particle,
+.explosion-particle,
+.mouse-trail {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Scroll animations disabled */
+.animate-on-scroll,
+.scroll-animate,
+.fade-in,
+.slide-in,
+.zoom-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Hover effects simplified */
+.scale-hover:hover,
+.rotate-icon:hover,
+.bounce-click:active {
+    transform: none !important;
+    animation: none !important;
+}
+
+/* Remove floating effects */
+.float,
+.floating-logo,
+.wobble {
+    animation: none !important;
+    transform: none !important;
+}
+
+/* Remove particle effects */
+.sparkle-effect::before,
+.sparkle-effect::after,
+.container-sparkle::after {
+    display: none !important;
+}
+
+/* Remove glow effects */
+.neon-glow,
+.container-glow {
+    text-shadow: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
+
+/* Remove morphing effects */
+.morph-button::before,
+.liquid-button::before {
+    display: none !important;
+}
+
+/* Remove gradient animations */
+.gradient-bg-animation,
+.animated-bg-1,
+.animated-bg-2,
+.animated-bg-3 {
+    background-size: 100% 100% !important;
+    animation: none !important;
+}
+
+/* Video controls static */
+.video-controls-enhanced,
+.video-info-overlay,
+.video-progress-bar {
+    opacity: 1 !important;
+    transition: none !important;
+}
+
+/* Remove canvas effects */
+.video-effect-canvas,
+.canvas-video-effect {
+    display: none !important;
+}
+
+/* Remove particle containers */
+.video-particle-container,
+.video-particles-overlay,
+.beauty-sparkle-effect {
+    display: none !important;
+}
+
+/* Static card styles */
+.card,
+.product-card,
+.feature-card,
+.testimonial-card {
+    transform: none !important;
+    transition: none !important;
+}
+
+.card:hover,
+.product-card:hover,
+.feature-card:hover,
+.testimonial-card:hover {
+    transform: none !important;
+    box-shadow: var(--shadow-rose) !important;
+}
+
+/* Remove loading animations */
+.loading-screen,
+.video-loading {
+    display: none !important;
+}
+
+/* Simplified navigation */
+.navbar-nav .nav-link::before {
+    display: none !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #FF0066 !important;
+    transform: none !important;
+}
+
+/* Static footer links */
+.footer-links li::before {
+    display: none !important;
+}
+
+.footer-links li:hover {
+    transform: none !important;
+}
+
+.footer-links a::after {
+    display: none !important;
+}
+
+/* Remove ripple effects */
+.ripple-effect {
+    display: none !important;
+}
+
+/* Static social links */
+.social-link:hover {
+    transform: none !important;
+    background: linear-gradient(135deg, #FF0066, #FF3385) !important;
+}
+
+.social-link::before {
+    display: none !important;
+}
+
+.social-link:hover i {
+    transform: none !important;
+}
+
+/* Remove scene transitions */
+.scene-transition {
+    display: none !important;
+}
+
+/* Static showcase cards */
+.showcase-card {
+    transform: none !important;
+    transition: none !important;
+}
+
+.showcase-card:hover {
+    transform: none !important;
+}
+
+/* Remove theme buttons animations */
+.theme-btn {
+    transition: none !important;
+}
+
+.theme-btn:hover {
+    transform: none !important;
+}
+
+/* Static header */
+.main-header.scrolled {
+    animation: none !important;
+    transition: none !important;
+}
+
+.main-header.hidden {
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Remove video mesh background */
+.video-mesh-bg {
+    animation: none !important;
+    transform: none !important;
+}
+
+/* Remove beauty effects */
+.skincare-glow-effect {
+    animation: none !important;
+    transform: none !important;
+}
+
+/* Static buttons */
+.btn-container {
+    transform: none !important;
+    transition: none !important;
+}
+
+.btn-container:hover {
+    transform: none !important;
+}
+
+/* Remove delay classes effect */
+.delay-1,
+.delay-2,
+.delay-3,
+.delay-4,
+.delay-5 {
+    animation-delay: 0s !important;
+}
+
+/* =====================
+   PRESERVE ESSENTIAL STYLING
+   ===================== */
+
+/* Keep essential hover effects for usability */
+.btn:hover {
+    background-color: #FF0066 !important;
+    color: white !important;
+    transition: none !important;
+}
+
+.header-icon:hover {
+    color: #FF0066 !important;
+    transition: none !important;
+}
+
+/* Keep focus states */
+.search-input:focus {
+    border-color: #FF0066 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(255, 0, 102, 0.2) !important;
+}
+
+/* Keep form interactions */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #FF0066 !important;
+    box-shadow: 0 0 0 2px rgba(255, 0, 102, 0.2) !important;
+    transition: none !important;
+}
+
+/* Keep essential shadows for depth */
+.container {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Keep glass effect but remove animations */
+.glass-container {
+    backdrop-filter: blur(10px) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* =====================
+   MOBILE OPTIMIZATIONS
+   ===================== */
+
+@media (max-width: 768px) {
+    /* Ensure all mobile animations are disabled */
+    * {
+        animation: none !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* =====================
+   ACCESSIBILITY
+   ===================== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* =====================
+   VIDEO SPECIFIC DISABLES
+   ===================== */
+
+/* Stop video autoplay */
+video {
+    autoplay: false !important;
+}
+
+/* Hide video backgrounds */
+.video-background-container {
+    display: none !important;
+}
+
+/* Show fallback backgrounds */
+.animated-gradient-bg {
+    animation: none !important;
+    background: linear-gradient(135deg, #FF0066, #FF3385) !important;
+}
+
+/* Static video containers */
+.video-container-enhanced {
+    transition: none !important;
+}
+
+/* Remove video hover effects */
+.enhanced-video-foreground:hover {
+    transform: none !important;
+    z-index: 1000 !important;
+}
+
+/* Static video controls */
+.video-controls-enhanced button:hover {
+    transform: none !important;
+    background: rgba(255, 0, 102, 0.9) !important;
+}
+
+/* =====================
+   PERFORMANCE OPTIMIZATIONS
+   ===================== */
+
+/* Remove will-change properties that were used for animations */
+* {
+    will-change: auto !important;
+}
+
+/* Remove transform3d optimizations since no animations */
+.gpu-accelerated {
+    transform: none !important;
+    backface-visibility: visible !important;
+    perspective: none !important;
+}
