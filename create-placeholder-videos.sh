@@ -107,12 +107,26 @@ EOF
 # Create empty placeholder files to prevent 404 errors
 touch videos/beauty-background.mp4
 touch videos/beauty-background.webm
+touch videos/beauty-background-layer1.mp4
+touch videos/beauty-background-layer1.webm
+touch videos/beauty-background-layer2.mp4
+touch videos/beauty-background-layer2.webm
 touch videos/beauty-demo-1.mp4
 touch videos/beauty-demo-1.webm
 touch videos/beauty-demo-2.mp4
 touch videos/beauty-demo-2.webm
 touch videos/beauty-demo-3.mp4
 touch videos/beauty-demo-3.webm
+touch videos/beauty-enhanced-1.mp4
+touch videos/beauty-enhanced-1.webm
+touch videos/beauty-enhanced-2.mp4
+touch videos/beauty-enhanced-2.webm
+touch videos/beauty-enhanced-3.mp4
+touch videos/beauty-enhanced-3.webm
+touch videos/beauty-enhanced-4.mp4
+touch videos/beauty-enhanced-4.webm
+touch videos/beauty-enhanced-5.mp4
+touch videos/beauty-enhanced-5.webm
 
 echo "Created placeholder video files"
 echo "Please replace these with actual beauty-themed videos"

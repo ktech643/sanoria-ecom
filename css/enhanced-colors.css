@@ -1,0 +1,454 @@
+/* =====================
+   ENHANCED COLOR SCHEME
+   Dynamic Container Colors & Video Integration
+   ===================== */
+
+:root {
+    /* Enhanced Container Colors */
+    --container-primary: linear-gradient(135deg, #6A11CB 0%, #2575FC 100%);
+    --container-secondary: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+    --container-tertiary: linear-gradient(135deg, #A8E6CF 0%, #DCEDC1 100%);
+    --container-accent: linear-gradient(135deg, #FF8A80 0%, #FF80AB 100%);
+    
+    /* Beauty-themed Container Colors */
+    --beauty-rose: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFE4E1 100%);
+    --beauty-coral: linear-gradient(135deg, #FF7F7F 0%, #FF6B9D 50%, #C44569 100%);
+    --beauty-lavender: linear-gradient(135deg, #E6E6FA 0%, #DDA0DD 50%, #DA70D6 100%);
+    --beauty-mint: linear-gradient(135deg, #98FB98 0%, #90EE90 50%, #00FA9A 100%);
+    --beauty-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+    
+    /* Dynamic Video Container Colors */
+    --video-container-1: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+    --video-container-2: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+    --video-container-3: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+    --video-container-4: linear-gradient(45deg, #43e97b 0%, #38f9d7 100%);
+    
+    /* Animated Background Colors */
+    --animated-bg-1: linear-gradient(270deg, #FFB7B7, #FF6B9D, #C44569, #6A4C93);
+    --animated-bg-2: linear-gradient(270deg, #A8E6CF, #DCEDC1, #C7CEDB, #B19CD9);
+    --animated-bg-3: linear-gradient(270deg, #FF8A80, #FF80AB, #CE93D8, #90CAF9);
+    
+    /* Container Shadow Colors */
+    --shadow-rose: 0 15px 35px rgba(255, 182, 193, 0.3);
+    --shadow-coral: 0 15px 35px rgba(255, 107, 157, 0.3);
+    --shadow-lavender: 0 15px 35px rgba(221, 160, 221, 0.3);
+    --shadow-mint: 0 15px 35px rgba(152, 251, 152, 0.3);
+    --shadow-gold: 0 15px 35px rgba(255, 215, 0, 0.3);
+    
+    /* Glass Effect Colors */
+    --glass-container: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-backdrop: blur(20px);
+}
+
+/* =====================
+   CONTAINER STYLING
+   ===================== */
+
+/* Main Container Updates */
+.container {
+    position: relative;
+    background: var(--glass-container);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--shadow-rose);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--beauty-rose);
+    opacity: 0.05;
+    z-index: -1;
+    animation: containerGlow 4s ease-in-out infinite alternate;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-coral);
+}
+
+/* Specialized Container Types */
+.container-beauty {
+    background: var(--beauty-rose);
+    box-shadow: var(--shadow-rose);
+    color: #2C3E50;
+}
+
+.container-video {
+    background: var(--video-container-1);
+    box-shadow: var(--shadow-lavender);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.container-product {
+    background: var(--beauty-coral);
+    box-shadow: var(--shadow-coral);
+    color: white;
+}
+
+.container-testimonial {
+    background: var(--beauty-lavender);
+    box-shadow: var(--shadow-lavender);
+    color: #2C3E50;
+}
+
+.container-newsletter {
+    background: var(--beauty-mint);
+    box-shadow: var(--shadow-mint);
+    color: #2C3E50;
+}
+
+.container-premium {
+    background: var(--beauty-gold);
+    box-shadow: var(--shadow-gold);
+    color: #2C3E50;
+}
+
+/* =====================
+   ANIMATED CONTAINERS
+   ===================== */
+
+.container-animated {
+    background: var(--animated-bg-1);
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+}
+
+.container-video-animated {
+    background: var(--animated-bg-2);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+}
+
+.container-product-animated {
+    background: var(--animated-bg-3);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes containerGlow {
+    0% {
+        opacity: 0.05;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.15;
+        transform: scale(1.02);
+    }
+}
+
+/* =====================
+   VIDEO CONTAINER COLORS
+   ===================== */
+
+.video-background-container {
+    background: var(--video-container-1);
+}
+
+.video-foreground {
+    background: var(--glass-container);
+    backdrop-filter: var(--glass-backdrop);
+    border: 2px solid var(--glass-border);
+}
+
+.video-foreground.video-floating-1 {
+    background: var(--video-container-2);
+    box-shadow: var(--shadow-coral);
+}
+
+.video-foreground.video-floating-2 {
+    background: var(--video-container-3);
+    box-shadow: var(--shadow-lavender);
+}
+
+.video-foreground.video-floating-3 {
+    background: var(--video-container-4);
+    box-shadow: var(--shadow-mint);
+}
+
+/* =====================
+   SECTION CONTAINER COLORS
+   ===================== */
+
+.hero-section .container {
+    background: var(--container-primary);
+    color: white;
+}
+
+.features-section .container {
+    background: var(--beauty-mint);
+    color: #2C3E50;
+}
+
+.products-section .container {
+    background: var(--beauty-coral);
+    color: white;
+}
+
+.testimonials-section .container {
+    background: var(--beauty-lavender);
+    color: #2C3E50;
+}
+
+.newsletter-section .container {
+    background: var(--beauty-gold);
+    color: #2C3E50;
+}
+
+/* =====================
+   CARD CONTAINER COLORS
+   ===================== */
+
+.card {
+    background: var(--glass-container);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--beauty-rose);
+    opacity: 0.1;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+    opacity: 0.2;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-rose);
+}
+
+/* Product Cards */
+.product-card {
+    background: var(--beauty-coral);
+    color: white;
+}
+
+.product-card::before {
+    background: var(--beauty-gold);
+}
+
+/* Feature Cards */
+.feature-card {
+    background: var(--beauty-mint);
+    color: #2C3E50;
+}
+
+.feature-card::before {
+    background: var(--beauty-lavender);
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+    background: var(--beauty-lavender);
+    color: #2C3E50;
+}
+
+.testimonial-card::before {
+    background: var(--beauty-rose);
+}
+
+/* =====================
+   BUTTON CONTAINER COLORS
+   ===================== */
+
+.btn-container {
+    background: var(--glass-container);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-container:hover {
+    background: var(--beauty-rose);
+    transform: scale(1.05);
+}
+
+/* =====================
+   RESPONSIVE CONTAINER COLORS
+   ===================== */
+
+@media (max-width: 768px) {
+    .container {
+        background: var(--glass-container);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+    }
+    
+    .container::before {
+        opacity: 0.1;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        background: var(--beauty-rose);
+        backdrop-filter: none;
+        border-radius: 10px;
+    }
+    
+    .container::before {
+        display: none;
+    }
+}
+
+/* =====================
+   ANIMATION CONTAINER EFFECTS
+   ===================== */
+
+.container-float {
+    animation: containerFloat 6s ease-in-out infinite;
+}
+
+.container-pulse {
+    animation: containerPulse 4s ease-in-out infinite;
+}
+
+.container-rotate {
+    animation: containerRotate 20s linear infinite;
+}
+
+@keyframes containerFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes containerPulse {
+    0%, 100% {
+        box-shadow: var(--shadow-rose);
+    }
+    50% {
+        box-shadow: var(--shadow-coral);
+    }
+}
+
+@keyframes containerRotate {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 50% 100%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* =====================
+   SPECIAL EFFECT CONTAINERS
+   ===================== */
+
+.container-sparkle {
+    position: relative;
+    overflow: visible;
+}
+
+.container-sparkle::after {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 20px;
+    animation: sparkleRotate 3s ease-in-out infinite;
+}
+
+@keyframes sparkleRotate {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+}
+
+.container-glow {
+    box-shadow: 
+        0 0 20px rgba(255, 182, 193, 0.6),
+        0 0 40px rgba(255, 107, 157, 0.4),
+        0 0 60px rgba(196, 69, 105, 0.2);
+    animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 
+            0 0 20px rgba(255, 182, 193, 0.6),
+            0 0 40px rgba(255, 107, 157, 0.4),
+            0 0 60px rgba(196, 69, 105, 0.2);
+    }
+    100% {
+        box-shadow: 
+            0 0 30px rgba(255, 182, 193, 0.8),
+            0 0 60px rgba(255, 107, 157, 0.6),
+            0 0 90px rgba(196, 69, 105, 0.4);
+    }
+}
+
+/* =====================
+   UTILITY CLASSES
+   ===================== */
+
+.bg-beauty-primary { background: var(--beauty-rose) !important; }
+.bg-beauty-secondary { background: var(--beauty-coral) !important; }
+.bg-beauty-tertiary { background: var(--beauty-lavender) !important; }
+.bg-beauty-accent { background: var(--beauty-mint) !important; }
+.bg-beauty-premium { background: var(--beauty-gold) !important; }
+
+.bg-video-1 { background: var(--video-container-1) !important; }
+.bg-video-2 { background: var(--video-container-2) !important; }
+.bg-video-3 { background: var(--video-container-3) !important; }
+.bg-video-4 { background: var(--video-container-4) !important; }
+
+.shadow-beauty { box-shadow: var(--shadow-rose) !important; }
+.shadow-coral { box-shadow: var(--shadow-coral) !important; }
+.shadow-lavender { box-shadow: var(--shadow-lavender) !important; }
+.shadow-mint { box-shadow: var(--shadow-mint) !important; }
+.shadow-gold { box-shadow: var(--shadow-gold) !important; }

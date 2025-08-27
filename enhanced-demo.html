@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Video & Color Demo - Sanoria.pk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/video-animations.css">
+    <link rel="stylesheet" href="css/enhanced-colors.css">
+    
+    <style>
+        body {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+        .demo-section {
+            padding: 80px 0;
+            min-height: 100vh;
+        }
+        .control-panel {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--glass-container);
+            backdrop-filter: var(--glass-backdrop);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-rose);
+            z-index: 1000;
+            max-width: 280px;
+        }
+        .theme-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .theme-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .theme-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .theme-btn.active {
+            border-color: #FF0066;
+            transform: scale(1.15);
+        }
+        .demo-container-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .showcase-card {
+            height: 200px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .showcase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(20px);
+            transform: scale(1.1);
+            z-index: -1;
+        }
+        .video-stats {
+            background: var(--beauty-mint);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Control Panel -->
+    <div class="control-panel container-sparkle container-glow">
+        <h6><i class="fas fa-palette me-2"></i>Enhanced Controls</h6>
+        
+        <div class="mb-3">
+            <label class="form-label">Theme Selector</label>
+            <div class="theme-selector">
+                <div class="theme-btn" data-theme="rose" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);" title="Rose Theme"></div>
+                <div class="theme-btn" data-theme="coral" style="background: linear-gradient(135deg, #FF7F7F, #FF6B9D);" title="Coral Theme"></div>
+                <div class="theme-btn" data-theme="lavender" style="background: linear-gradient(135deg, #E6E6FA, #DDA0DD);" title="Lavender Theme"></div>
+                <div class="theme-btn" data-theme="mint" style="background: linear-gradient(135deg, #98FB98, #90EE90);" title="Mint Theme"></div>
+                <div class="theme-btn" data-theme="gold" style="background: linear-gradient(135deg, #FFD700, #FFA500);" title="Gold Theme"></div>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <button class="btn btn-sm btn-primary w-100 mb-2" onclick="toggleEnhancedEffects()">
+                <i class="fas fa-magic"></i> Toggle Effects
+            </button>
+            <button class="btn btn-sm btn-secondary w-100 mb-2" onclick="createColorExplosion()">
+                <i class="fas fa-star"></i> Color Explosion
+            </button>
+            <button class="btn btn-sm btn-success w-100" onclick="syncAllContainers()">
+                <i class="fas fa-sync"></i> Sync Colors
+            </button>
+        </div>
+        
+        <div class="video-stats">
+            <small>
+                <div><strong>Videos:</strong> <span id="videoCount">0</span></div>
+                <div><strong>Theme:</strong> <span id="currentTheme">Rose</span></div>
+                <div><strong>Particles:</strong> <span id="particleCount">0</span></div>
+            </small>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header sticky-top parallax-header gpu-accelerated">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container container-beauty container-float">
+                <a class="navbar-brand" href="#">
+                    <span class="brand-text neon-glow">Sanoria.pk</span>
+                    <div class="brand-tagline">Enhanced Demo</div>
+                </a>
+                <div class="header-actions">
+                    <button class="btn btn-outline-primary" onclick="location.href='index.html'">
+                        <i class="fas fa-home"></i> Home
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="demo-section">
+        <div class="container container-video-animated container-sparkle">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h1 class="animate-on-scroll">🎨 Enhanced Video & Color System</h1>
+                    <p class="lead animate-on-scroll delay-1">Experience dynamic container colors synchronized with video animations</p>
+                </div>
+            </div>
+
+            <!-- Container Color Showcase -->
+            <div class="demo-container-showcase">
+                <div class="showcase-card container-beauty container-float">
+                    <div>
+                        <i class="fas fa-heart fa-2x mb-2"></i>
+                        <div>Beauty Container</div>
+                        <small>Rose Gradient</small>
+                    </div>
+                </div>
+                
+                <div class="showcase-card container-video container-pulse">
+                    <div>
+                        <i class="fas fa-video fa-2x mb-2"></i>
+                        <div>Video Container</div>
+                        <small>Purple-Blue Gradient</small>
+                    </div>
+                </div>
+                
+                <div class="showcase-card container-product container-rotate">
+                    <div>
+                        <i class="fas fa-shopping-bag fa-2x mb-2"></i>
+                        <div>Product Container</div>
+                        <small>Coral Gradient</small>
+                    </div>
+                </div>
+                
+                <div class="showcase-card container-testimonial container-glow">
+                    <div>
+                        <i class="fas fa-quote-left fa-2x mb-2"></i>
+                        <div>Testimonial Container</div>
+                        <small>Lavender Gradient</small>
+                    </div>
+                </div>
+                
+                <div class="showcase-card container-newsletter container-sparkle">
+                    <div>
+                        <i class="fas fa-envelope fa-2x mb-2"></i>
+                        <div>Newsletter Container</div>
+                        <small>Mint Gradient</small>
+                    </div>
+                </div>
+                
+                <div class="showcase-card container-premium">
+                    <div>
+                        <i class="fas fa-crown fa-2x mb-2"></i>
+                        <div>Premium Container</div>
+                        <small>Gold Gradient</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Integration Demo -->
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <div class="card container-animated container-glow p-4">
+                        <h3><i class="fas fa-play-circle me-2"></i>Enhanced Video System</h3>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>5 Floating video windows</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Layer-blended backgrounds</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Theme synchronization</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Interactive controls</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Canvas-based effects</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card container-product-animated container-sparkle p-4">
+                        <h3><i class="fas fa-palette me-2"></i>Dynamic Color System</h3>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>5 Beauty-themed color palettes</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Glass morphism effects</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Animated gradients</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Container synchronization</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Responsive design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Features -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card container-testimonial container-float p-4">
+                        <h3><i class="fas fa-magic me-2"></i>Interactive Features</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5><i class="fas fa-mouse-pointer me-2 text-primary"></i>Hover Effects</h5>
+                                <p class="small text-muted">Containers respond to mouse interactions with color changes and particle effects</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5><i class="fas fa-scroll me-2 text-success"></i>Scroll Sync</h5>
+                                <p class="small text-muted">Colors automatically change based on scroll position through different themes</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h5><i class="fas fa-mobile-alt me-2 text-info"></i>Responsive</h5>
+                                <p class="small text-muted">Optimized animations and effects for mobile devices with performance detection</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/video-animations.js"></script>
+    <script src="js/enhanced-video-animations.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Initialize enhanced demo
+            initEnhancedDemo();
+            updateStats();
+            
+            // Theme selector functionality
+            $('.theme-btn').on('click', function() {
+                const themeName = $(this).data('theme');
+                $('.theme-btn').removeClass('active');
+                $(this).addClass('active');
+                changeToTheme(themeName);
+            });
+            
+            // Set default active theme
+            $('.theme-btn[data-theme="rose"]').addClass('active');
+            
+            // Auto-update stats
+            setInterval(updateStats, 2000);
+            
+            // Scroll-based theme changes
+            let lastScrollTop = 0;
+            $(window).scroll(function() {
+                const scrollTop = $(this).scrollTop();
+                const scrollPercent = scrollTop / ($(document).height() - $(window).height());
+                
+                if (Math.abs(scrollTop - lastScrollTop) > 100) {
+                    const themes = ['rose', 'coral', 'lavender', 'mint', 'gold'];
+                    const themeIndex = Math.floor(scrollPercent * themes.length);
+                    
+                    if (themeIndex < themes.length) {
+                        changeToTheme(themes[themeIndex]);
+                        $(`.theme-btn[data-theme="${themes[themeIndex]}"]`).click();
+                    }
+                    
+                    lastScrollTop = scrollTop;
+                }
+            });
+        });
+        
+        function initEnhancedDemo() {
+            console.log('🎨 Enhanced Demo Initialized');
+            
+            // Add scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Initialize container interactions
+            $('.showcase-card').hover(
+                function() {
+                    $(this).css({
+                        transform: 'scale(1.05) translateY(-10px)',
+                        zIndex: 10
+                    });
+                    createHoverParticles($(this));
+                },
+                function() {
+                    $(this).css({
+                        transform: 'scale(1) translateY(0)',
+                        zIndex: 1
+                    });
+                }
+            );
+        }
+        
+        function changeToTheme(themeName) {
+            console.log('Changing to theme:', themeName);
+            
+            if (window.enhancedVideoAnimations) {
+                const themes = window.enhancedVideoAnimations.getThemes();
+                const theme = themes.find(t => t.name === themeName);
+                
+                if (theme) {
+                    window.enhancedVideoAnimations.changeTheme(theme);
+                    updateThemeDisplay(themeName);
+                }
+            }
+            
+            // Update container colors based on theme
+            updateContainerTheme(themeName);
+        }
+        
+        function updateContainerTheme(themeName) {
+            const themeColors = {
+                rose: ['#FFB6C1', '#FFC0CB', '#FFE4E1'],
+                coral: ['#FF7F7F', '#FF6B9D', '#C44569'],
+                lavender: ['#E6E6FA', '#DDA0DD', '#DA70D6'],
+                mint: ['#98FB98', '#90EE90', '#00FA9A'],
+                gold: ['#FFD700', '#FFA500', '#FF8C00']
+            };
+            
+            const colors = themeColors[themeName];
+            if (!colors) return;
+            
+            // Update showcase cards
+            $('.showcase-card').each(function(index) {
+                const colorIndex = index % colors.length;
+                $(this).css({
+                    background: `linear-gradient(135deg, ${colors[colorIndex]}, ${colors[(colorIndex + 1) % colors.length]})`
+                });
+            });
+            
+            // Update control panel
+            $('.control-panel').css({
+                borderColor: colors[1] + '60',
+                boxShadow: `0 15px 35px ${colors[0]}40`
+            });
+        }
+        
+        function toggleEnhancedEffects() {
+            $('body').toggleClass('enhanced-effects-disabled');
+            
+            if ($('body').hasClass('enhanced-effects-disabled')) {
+                $('.container-animated, .container-float, .container-pulse, .container-rotate, .container-glow, .container-sparkle').css({
+                    animation: 'none',
+                    transform: 'none'
+                });
+            } else {
+                location.reload(); // Restart animations
+            }
+        }
+        
+        function createColorExplosion() {
+            const colors = ['#FFB6C1', '#FF7F7F', '#E6E6FA', '#98FB98', '#FFD700'];
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = $('<div class="explosion-particle"></div>');
+                
+                particle.css({
+                    position: 'fixed',
+                    left: Math.random() * window.innerWidth + 'px',
+                    top: Math.random() * window.innerHeight + 'px',
+                    width: '10px',
+                    height: '10px',
+                    background: colors[Math.floor(Math.random() * colors.length)],
+                    borderRadius: '50%',
+                    pointerEvents: 'none',
+                    zIndex: 9999,
+                    animation: 'explosionParticle 2s ease-out forwards'
+                });
+                
+                $('body').append(particle);
+                
+                setTimeout(() => particle.remove(), 2000);
+            }
+        }
+        
+        function syncAllContainers() {
+            $('.showcase-card').each(function(index) {
+                const delay = index * 100;
+                
+                setTimeout(() => {
+                    $(this).css({
+                        transform: 'scale(1.1)',
+                        filter: 'brightness(1.2)'
+                    });
+                    
+                    setTimeout(() => {
+                        $(this).css({
+                            transform: 'scale(1)',
+                            filter: 'brightness(1)'
+                        });
+                    }, 500);
+                }, delay);
+            });
+        }
+        
+        function createHoverParticles(element) {
+            for (let i = 0; i < 5; i++) {
+                const particle = $('<div>✨</div>');
+                
+                particle.css({
+                    position: 'absolute',
+                    left: Math.random() * 100 + '%',
+                    top: Math.random() * 100 + '%',
+                    fontSize: '16px',
+                    pointerEvents: 'none',
+                    zIndex: 20,
+                    animation: 'beautySparkle 2s ease-out forwards'
+                });
+                
+                element.css('position', 'relative').append(particle);
+                
+                setTimeout(() => particle.remove(), 2000);
+            }
+        }
+        
+        function updateStats() {
+            $('#videoCount').text($('.enhanced-video-foreground, .video-foreground').length);
+            $('#particleCount').text($('.beauty-particle, .floating-particle').length);
+        }
+        
+        function updateThemeDisplay(themeName) {
+            $('#currentTheme').text(themeName.charAt(0).toUpperCase() + themeName.slice(1));
+        }
+        
+        // Add explosion particle animation
+        $('<style>').text(`
+            @keyframes explosionParticle {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(3) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes beautySparkle {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1.5) rotate(180deg);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: scale(0) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `).appendTo('head');
+    </script>
+</body>
+</html>
