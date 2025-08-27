@@ -2898,6 +2898,161 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* =====================
+   ADVANCED UI ANIMATIONS
+   ===================== */
+
+/* Smooth native scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Sticky header transitions */
+.main-header {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.main-header.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    backdrop-filter: saturate(180%) blur(10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.main-header .logo-img {
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.main-header.scrolled .logo-img {
+    transform: scale(0.9);
+}
+
+/* Navigation link underline hover */
+.nav-link {
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* Parallax performance hints */
+.hero-image img,
+.hero-content {
+    will-change: transform;
+}
+
+/* Reveal-on-scroll utility (used for footer) */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Skeleton overlay + image fade-in */
+.skeleton-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--border-radius-md);
+    background: linear-gradient(90deg, var(--light-gray) 25%, #eeeeee 37%, var(--light-gray) 63%);
+    background-size: 400% 100%;
+    animation: skeleton-shimmer 1.25s linear infinite;
+    pointer-events: none;
+}
+
+.skeleton-overlay.is-hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes skeleton-shimmer {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+}
+
+.lazy-fade {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.lazy-fade.is-visible.is-loaded {
+    opacity: 1;
+    transform: none;
+}
+
+/* Social links hover enhancement */
+.social-link {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Scroll-to-top button */
+#scrollToTop {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 22px;
+    background: var(--gradient-primary);
+    color: var(--button-text-color);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s, box-shadow 0.25s ease;
+    box-shadow: var(--shadow-md);
+    z-index: 9999;
+}
+
+#scrollToTop.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+}
+
+#scrollToTop:focus {
+    outline: 2px solid var(--primary-dark);
+    outline-offset: 2px;
+}
+
+/* Reduced motion extras */
+@media (prefers-reduced-motion: reduce) {
+    .nav-link::after { display: none; }
+    .reveal-on-scroll { opacity: 1 !important; transform: none !important; }
+    .skeleton-overlay { animation: none !important; }
+}
+
 /* Reduced motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {

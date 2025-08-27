@@ -22,6 +22,16 @@ $(document).ready(function() {
     
     // Initialize navigation
     initNavigation();
+
+    // Image fade-ins and skeleton overlays
+    initImageFadeInAndSkeletons();
+
+    // Parallax for hero section
+    initParallaxHero();
+
+    // Footer entrance animations and scroll-to-top button
+    initFooterRevealAnimations();
+    initScrollToTopButton();
     
     // Initialize product functionality
     initProductFunctionality();
@@ -1771,6 +1781,168 @@ function displayMobileSearchResults(results, query) {
 
 function hideMobileSearchResults() {
     $('#mobileSearchResults').addClass('d-none');
+}
+
+// =====================
+// ADVANCED ANIMATIONS
+// =====================
+
+const __reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function initImageFadeInAndSkeletons() {
+    const selector = '.product-image img, .main-image, .thumbnail-image, .hero-image img, img.search-result-image';
+    const images = Array.from(document.querySelectorAll(selector));
+    if (images.length === 0) return;
+
+    const supportsIO = 'IntersectionObserver' in window;
+    let io = null;
+    if (supportsIO && !__reducedMotion) {
+        io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+    }
+
+    images.forEach((img) => {
+        // Fade-in setup
+        img.classList.add('lazy-fade');
+
+        // Skeleton overlay on parent container
+        const parent = img.closest('.product-image') || img.parentElement;
+        let overlay = null;
+        if (parent) {
+            const computedPos = window.getComputedStyle(parent).position;
+            if (computedPos === 'static') {
+                parent.style.position = 'relative';
+            }
+            overlay = document.createElement('div');
+            overlay.className = 'skeleton-overlay';
+            overlay.setAttribute('aria-hidden', 'true');
+            parent.appendChild(overlay);
+        }
+
+        const markLoaded = () => {
+            img.classList.add('is-loaded');
+            if (overlay) {
+                overlay.classList.add('is-hidden');
+                setTimeout(() => overlay && overlay.remove(), 350);
+            }
+        };
+
+        if (img.complete && img.naturalWidth > 0) {
+            markLoaded();
+        } else {
+            img.addEventListener('load', markLoaded, { once: true });
+            img.addEventListener('error', markLoaded, { once: true });
+        }
+
+        if (io) {
+            io.observe(img);
+        } else {
+            // Immediate visibility if no IO or reduced motion
+            requestAnimationFrame(() => img.classList.add('is-visible'));
+        }
+    });
+}
+
+function initParallaxHero() {
+    if (__reducedMotion) return;
+    const hero = document.querySelector('.hero-section');
+    if (!hero) return;
+
+    const heroImg = hero.querySelector('.hero-image img');
+    const heroContent = hero.querySelector('.hero-content');
+    if (!heroImg && !heroContent) return;
+
+    let ticking = false;
+    let lastY = window.scrollY;
+
+    const update = () => {
+        ticking = false;
+        const rect = hero.getBoundingClientRect();
+        const offset = Math.max(0, -rect.top);
+        const translateImg = Math.min(offset * 0.15, 40); // cap movement
+        const translateContent = -Math.min(offset * 0.08, 20);
+
+        if (heroImg) {
+            heroImg.style.transform = `translate3d(0, ${translateImg}px, 0)`;
+        }
+        if (heroContent) {
+            heroContent.style.transform = `translate3d(0, ${translateContent}px, 0)`;
+        }
+    };
+
+    const onScroll = () => {
+        lastY = window.scrollY;
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+        }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => requestAnimationFrame(update), { passive: true });
+    requestAnimationFrame(update);
+}
+
+function initFooterRevealAnimations() {
+    const sections = Array.from(document.querySelectorAll('.main-footer .footer-section'));
+    if (sections.length === 0) return;
+
+    sections.forEach((el) => el.classList.add('reveal-on-scroll'));
+
+    if (__reducedMotion) {
+        sections.forEach((el) => el.classList.add('is-visible'));
+        return;
+    }
+
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        sections.forEach((el) => io.observe(el));
+    } else {
+        sections.forEach((el) => el.classList.add('is-visible'));
+    }
+}
+
+function initScrollToTopButton() {
+    if (document.getElementById('scrollToTop')) return;
+    const btn = document.createElement('button');
+    btn.id = 'scrollToTop';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Scroll to top');
+    btn.innerHTML = '<i class="fas fa-arrow-up" aria-hidden="true"></i>';
+    document.body.appendChild(btn);
+
+    const revealAt = 300;
+    const onScroll = () => {
+        if (window.scrollY > revealAt) btn.classList.add('is-visible');
+        else btn.classList.remove('is-visible');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const canNativeSmooth = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('scroll-behavior', 'smooth');
+        if (__reducedMotion || !canNativeSmooth) {
+            $('html, body').stop().animate({ scrollTop: 0 }, 300);
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        btn.blur();
+    });
+
+    onScroll();
 }
 
 console.log('🎉 Enhanced contact system loaded successfully');
