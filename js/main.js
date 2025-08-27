@@ -54,6 +54,7 @@ $(document).ready(function() {
     // Initialize footer animations and scroll-to-top
     initFooterAnimations();
     initScrollToTop();
+    injectTechBadges();
 
     // =====================
     // LOADING SCREEN
@@ -258,6 +259,61 @@ $(document).ready(function() {
                 }, remaining);
             }
         };
+    }
+
+    // =====================
+    // INJECT ANIMATED TECH BADGES IN FOOTER
+    // =====================
+    function injectTechBadges() {
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const $footer = $('.main-footer .container');
+        if ($footer.length === 0) return;
+
+        if ($('.tech-badges').length) return; // prevent duplicates
+
+        const badgesHtml = `
+            <div class="tech-badges" aria-label="Built with technologies">
+                <div class="tech-badge js" tabindex="0" title="JavaScript">
+                    <img class="icon" alt="JS" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f7df1e'/%3E%3Cpath fill='%233A3A3A' d='M20.4 24.7c.6 1 1.3 1.8 2.7 1.8 1.1 0 1.8-.6 1.8-1.5 0-1-.7-1.4-2-2l-.7-.3c-2-.9-3.3-2-3.3-4.3 0-2.1 1.6-3.7 4.1-3.7 1.8 0 3.1.6 4 2.2l-2.2 1.4c-.5-.9-1-1.2-1.8-1.2-.8 0-1.3.5-1.3 1.2 0 .9.5 1.3 1.7 1.9l.7.3c2.3 1 3.6 2.1 3.6 4.5 0 2.6-2 4-4.7 4-2.6 0-4.2-1.2-5-2.8l2.4-1.5ZM11.3 25c.4.7.8 1.2 1.7 1.2.9 0 1.4-.3 1.4-1.6v-8.8h2.7v8.9c0 2.8-1.6 4-3.9 4-2.1 0-3.3-1-3.9-2.3l2-1.4Z'/%3E%3C/svg%3E"/>
+                    <span>JavaScript</span>
+                </div>
+                <div class="tech-badge jquery" tabindex="0" title="jQuery">
+                    <img class="icon" alt="jQuery" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%230769ad' d='M52 64c12 36 38 64 74 82c-24-14-42-35-52-62c-9-24-7-47 3-68C64 28 58 45 52 64Zm57-36c9 36 27 64 57 82c-21-14-36-35-45-62c-8-24-7-47 2-68c-7 14-11 31-14 48Zm54-36c6 35 20 63 44 82c-16-14-28-34-35-61c-6-24-5-47 2-68c-5 14-8 30-11 47Z'/%3E%3C/svg%3E"/>
+                    <span>jQuery</span>
+                </div>
+                <div class="tech-badge css" tabindex="0" title="CSS3">
+                    <img class="icon" alt="CSS" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cpath fill='%23264de4' d='M19 0l9 100l36 10l36-10l9-100H19Zm73 26l-1 8l-36 15l1 9l34-14l-2 19l-24 7l-23-7l-1-12l9 3l-1-10l-9-3l-1-8h54Z'/%3E%3C/svg%3E"/>
+                    <span>CSS3</span>
+                </div>
+            </div>`;
+
+        const $row = $('<div class="row mt-3"><div class="col-12 text-center"></div></div>');
+        $row.find('.col-12').append(badgesHtml);
+
+        // Append near bottom above copyright
+        const $footerRows = $footer.find('.row');
+        if ($footerRows.length) {
+            $($footerRows[$footerRows.length - 1]).before($row);
+        } else {
+            $footer.append($row);
+        }
+
+        // Stagger in
+        const $badges = $row.find('.tech-badge');
+        $badges.each(function(index) {
+            const el = $(this);
+            setTimeout(() => el.addClass('show'), prefersReduced ? 0 : 100 * index);
+        });
+
+        // Hover/Focus lift
+        $footer.on('mouseenter focusin', '.tech-badge', function() {
+            if (prefersReduced) return;
+            $(this).css('transform', 'translateY(-3px)');
+        });
+        $footer.on('mouseleave focusout', '.tech-badge', function() {
+            if (prefersReduced) return;
+            $(this).css('transform', 'translateY(0)');
+        });
     }
 
     function highlightActiveNavigation() {

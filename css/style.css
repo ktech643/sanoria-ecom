@@ -3096,3 +3096,49 @@ h1, h2, h3, h4, h5, h6 {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* =====================
+   TECH BADGES (JS / jQuery / CSS) ANIMATIONS
+   ===================== */
+
+.tech-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--primary-text-color);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    border: 1px solid var(--primary-light);
+    transform: translateY(6px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease;
+    will-change: transform, opacity;
+}
+
+.tech-badge.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tech-badge .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.tech-badge.js { background: linear-gradient(135deg, #f7df1e33, #ffffff); }
+.tech-badge.jquery { background: linear-gradient(135deg, #0769ad22, #ffffff); }
+.tech-badge.css { background: linear-gradient(135deg, #264de422, #ffffff); }
+
+.tech-badge:hover {
+    box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
