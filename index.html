@@ -28,6 +28,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/notification-theme-update.css">
+    <link rel="stylesheet" href="css/animations.css">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -52,7 +53,7 @@
     </div>
 
     <!-- Top Banner -->
-    <div class="top-banner bg-gradient-primary text-white py-2">
+    <div class="top-banner bg-gradient-primary text-white py-2 animate-on-scroll gradient-bg-animation">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-8">
@@ -70,34 +71,34 @@
     </div>
 
     <!-- Main Header -->
-    <header class="main-header sticky-top">
+    <header class="main-header sticky-top parallax-header gpu-accelerated">
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container">
                 <!-- Logo -->
-                <a class="navbar-brand me-auto" href="index.html">
-                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img">
+                <a class="navbar-brand me-auto animate-on-scroll delay-1" href="index.html">
+                    <img src="images/logo.png" alt="Sanoria.pk" class="logo-img gpu-accelerated">
                     <div class="brand-container">
-                        <span class="brand-text">Sanoria.pk</span>
-                        <div class="brand-tagline">The Essence Of TimeLess Glow</div>
+                        <span class="brand-text gpu-accelerated neon-glow">Sanoria.pk</span>
+                        <div class="brand-tagline gpu-accelerated">The Essence Of TimeLess Glow</div>
                     </div>
                 </a>
 
                 <!-- Search Bar (Desktop) -->
-                <div class="search-container d-none d-lg-flex mx-4 flex-grow-1">
-                    <div class="input-group search-box">
+                <div class="search-container d-none d-lg-flex mx-4 flex-grow-1 animate-on-scroll delay-2">
+                    <div class="input-group search-box gpu-accelerated">
                         <input type="text" class="form-control search-input" placeholder="Search for beauty products...">
-                        <button class="btn btn-search" type="button">
-                            <i class="fas fa-search"></i>
+                        <button class="btn btn-search gpu-accelerated morph-button scale-hover bounce-click" type="button">
+                            <i class="fas fa-search rotate-icon"></i>
                         </button>
                     </div>
                 </div>
 
                 <!-- Header Actions -->
-                <div class="header-actions d-flex align-items-center">
+                <div class="header-actions d-flex align-items-center animate-on-scroll delay-3">
                     <!-- Contact & Chat -->
                     <div class="dropdown me-3">
-                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fas fa-comments"></i>
+                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle scale-hover bounce-click" data-bs-toggle="dropdown">
+                            <i class="fas fa-comments rotate-icon"></i>
                             <span class="pulse-ring"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end fancy-dropdown contact-dropdown">
@@ -178,8 +179,8 @@
 
                     <!-- Notifications -->
                     <div class="dropdown me-3">
-                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fas fa-bell"></i>
+                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle scale-hover bounce-click sparkle-effect" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell rotate-icon"></i>
                             <span class="badge bg-danger position-absolute top-0 start-100 translate-middle notification-count" style="display: none;">0</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end fancy-dropdown notifications-dropdown">
@@ -245,8 +246,8 @@
 
                     <!-- User Account -->
                     <div class="dropdown me-3">
-                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fas fa-user"></i>
+                        <a href="#" class="header-icon fancy-dropdown-toggle dropdown-toggle scale-hover bounce-click" data-bs-toggle="dropdown">
+                            <i class="fas fa-user rotate-icon"></i>
                             <span class="d-none d-md-inline ms-1">Account</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end fancy-dropdown user-dropdown">
@@ -291,15 +292,15 @@
                     </div>
 
                     <!-- Wishlist -->
-                    <a href="wishlist.html" class="header-icon me-3 position-relative fancy-icon">
-                        <i class="fas fa-heart"></i>
+                    <a href="wishlist.html" class="header-icon me-3 position-relative fancy-icon scale-hover bounce-click">
+                        <i class="fas fa-heart rotate-icon"></i>
                         <span class="badge bg-danger position-absolute top-0 start-100 translate-middle wishlist-count">2</span>
                         <span class="d-none d-md-inline ms-1">Wishlist</span>
                     </a>
 
                     <!-- Cart -->
-                    <a href="cart.html" class="header-icon me-3 position-relative fancy-icon">
-                        <i class="fas fa-shopping-cart"></i>
+                    <a href="cart.html" class="header-icon me-3 position-relative fancy-icon scale-hover bounce-click">
+                        <i class="fas fa-shopping-cart rotate-icon cart-icon"></i>
                         <span class="badge bg-primary position-absolute top-0 start-100 translate-middle cart-count">0</span>
                         <span class="d-none d-md-inline ms-1">Cart</span>
                     </a>
@@ -686,29 +687,28 @@
     </main>
 
     <!-- Footer -->
-    <footer class="main-footer bg-dark text-white py-5">
+    <footer class="main-footer bg-dark text-white py-5 animate-on-scroll gpu-accelerated">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="footer-section">
+                    <div class="footer-section animate-on-scroll delay-1">
                         <div class="footer-logo mb-3">
-                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img">
+                            <img src="images/logo-white.png" alt="Sanoria.pk" class="footer-logo-img gpu-accelerated sparkle-effect">
                             <div class="footer-brand-container">
-                                <span class="footer-brand-text">Sanoria.pk</span>
-                                <div class="footer-brand-tagline">The Essence Of TimeLess Glow</div>
+                                <span class="footer-brand-text gpu-accelerated gradient-bg-animation">Sanoria.pk</span>
+                                <div class="footer-brand-tagline text-reveal">The Essence Of TimeLess Glow</div>
                             </div>
                         </div>
-                        <p class="footer-description">Your trusted partner for premium beauty and skincare products. Discover the perfect match for your skin type with our curated collection.</p>
-                        <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-
-                            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <p class="footer-description animate-on-scroll delay-2">Your trusted partner for premium beauty and skincare products. Discover the perfect match for your skin type with our curated collection.</p>
+                        <div class="social-links animate-on-scroll delay-3">
+                            <a href="#" class="social-link gpu-accelerated scale-hover bounce-click"><i class="fab fa-facebook-f rotate-icon"></i></a>
+                            <a href="#" class="social-link gpu-accelerated scale-hover bounce-click"><i class="fab fa-instagram rotate-icon"></i></a>
+                            <a href="#" class="social-link gpu-accelerated scale-hover bounce-click"><i class="fab fa-tiktok rotate-icon"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
-                    <div class="footer-section">
+                    <div class="footer-section animate-on-scroll delay-2">
                         <h6 class="footer-title">Quick Links</h6>
                         <ul class="footer-links">
                             <li><a href="about.html">About Us</a></li>
@@ -720,7 +720,7 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
-                    <div class="footer-section">
+                    <div class="footer-section animate-on-scroll delay-3">
                         <h6 class="footer-title">Categories</h6>
                         <ul class="footer-links">
                             <li><a href="category.html?cat=skincare">Skincare</a></li>
@@ -732,29 +732,29 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="footer-section">
+                    <div class="footer-section animate-on-scroll delay-4">
                         <h6 class="footer-title">Contact Info</h6>
                         <div class="contact-info">
                             <p><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</p>
                             <p><i class="fas fa-phone me-2"></i>+92 300 1234567</p>
                             <p><i class="fas fa-envelope me-2"></i>info@sanoria.pk</p>
                         </div>
-                        <div class="payment-methods">
+                        <div class="payment-methods animate-on-scroll delay-5">
                             <h6 class="payment-title">We Accept</h6>
                             <div class="payment-icons">
-                                <div class="payment-item">
+                                <div class="payment-item gpu-accelerated">
                                     <img src="images/jazzcash.png" alt="JazzCash" class="payment-icon">
                                     <span>JazzCash</span>
                                 </div>
-                                <div class="payment-item">
+                                <div class="payment-item gpu-accelerated">
                                     <img src="images/easypaisa.png" alt="EasyPaisa" class="payment-icon">
                                     <span>EasyPaisa</span>
                                 </div>
-                                <div class="payment-item">
+                                <div class="payment-item gpu-accelerated">
                                     <i class="fas fa-university payment-icon-alt"></i>
                                     <span>Banks</span>
                                 </div>
-                                <div class="payment-item">
+                                <div class="payment-item gpu-accelerated">
                                     <img src="images/cod.png" alt="Cash on Delivery" class="payment-icon">
                                     <span>COD</span>
                                 </div>
@@ -766,12 +766,12 @@
             <hr class="footer-divider">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="copyright-text mb-0">&copy; 2024 Sanoria.pk. All rights reserved.</p>
+                    <p class="copyright-text mb-0 animate-on-scroll delay-1 gpu-accelerated">&copy; 2024 Sanoria.pk. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <div class="footer-links-inline">
-                        <a href="privacy-policy.html">Privacy Policy</a>
-                        <a href="terms.html">Terms & Conditions</a>
+                    <div class="footer-links-inline animate-on-scroll delay-2">
+                        <a href="privacy-policy.html" class="gpu-accelerated">Privacy Policy</a>
+                        <a href="terms.html" class="gpu-accelerated">Terms & Conditions</a>
                     </div>
                 </div>
             </div>
@@ -836,6 +836,7 @@
     
     <!-- Custom JavaScript -->
     <script src="js/main.js"></script>
+    <script src="js/header-footer-animations.js"></script>
     <script src="js/notification-system-fix.js"></script>
     <script src="js/bell-icon-fix.js"></script>
     <script src="js/notification-types-fix.js"></script>
