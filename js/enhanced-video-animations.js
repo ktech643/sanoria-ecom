@@ -14,11 +14,11 @@ $(document).ready(function() {
         containers: [],
         activeVideo: null,
         colorThemes: [
-            { name: 'rose', colors: ['#FFB6C1', '#FFC0CB', '#FFE4E1'] },
-            { name: 'coral', colors: ['#FF7F7F', '#FF6B9D', '#C44569'] },
-            { name: 'lavender', colors: ['#E6E6FA', '#DDA0DD', '#DA70D6'] },
-            { name: 'mint', colors: ['#98FB98', '#90EE90', '#00FA9A'] },
-            { name: 'gold', colors: ['#FFD700', '#FFA500', '#FF8C00'] }
+            { name: 'neon-orange', colors: ['#FF6B35', '#F7931E', '#FF8C00'] },
+            { name: 'neon-blue', colors: ['#00D2FF', '#3A7BD5', '#00F5FF'] },
+            { name: 'electric-pink', colors: ['#FF0080', '#FF8C00', '#FF1493'] },
+            { name: 'cyber-green', colors: ['#32CD32', '#00FF7F', '#00E676'] },
+            { name: 'neon-purple', colors: ['#8360C3', '#2EBAB0', '#8A2BE2'] }
         ],
         currentTheme: 0
     };
@@ -242,42 +242,42 @@ $(document).ready(function() {
             { 
                 id: 'beauty-tutorial-1', 
                 title: 'Skincare Routine', 
-                icon: '✨',
+                icon: '🔥',
                 position: { top: '15%', right: '5%' },
                 size: { width: '320px', height: '240px' },
-                theme: 'rose'
+                theme: 'neon-orange'
             },
             { 
                 id: 'beauty-tutorial-2', 
                 title: 'Makeup Application', 
-                icon: '💄',
+                icon: '💧',
                 position: { bottom: '15%', left: '5%' },
                 size: { width: '280px', height: '210px' },
-                theme: 'coral'
+                theme: 'neon-blue'
             },
             { 
                 id: 'beauty-tutorial-3', 
                 title: 'Product Showcase', 
-                icon: '🌟',
+                icon: '⚡',
                 position: { top: '45%', right: '10%' },
                 size: { width: '240px', height: '180px' },
-                theme: 'lavender'
+                theme: 'electric-pink'
             },
             { 
                 id: 'beauty-tutorial-4', 
                 title: 'Beauty Tips', 
-                icon: '💎',
+                icon: '🌿',
                 position: { bottom: '45%', left: '10%' },
                 size: { width: '200px', height: '150px' },
-                theme: 'mint'
+                theme: 'cyber-green'
             },
             { 
                 id: 'beauty-tutorial-5', 
                 title: 'Trending Looks', 
-                icon: '🎀',
+                icon: '🔮',
                 position: { top: '25%', left: '50%' },
                 size: { width: '260px', height: '195px' },
-                theme: 'gold'
+                theme: 'neon-purple'
             }
         ];
         

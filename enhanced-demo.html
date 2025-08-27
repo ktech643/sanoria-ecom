@@ -110,11 +110,11 @@
         <div class="mb-3">
             <label class="form-label">Theme Selector</label>
             <div class="theme-selector">
-                <div class="theme-btn" data-theme="rose" style="background: linear-gradient(135deg, #FFB6C1, #FFC0CB);" title="Rose Theme"></div>
-                <div class="theme-btn" data-theme="coral" style="background: linear-gradient(135deg, #FF7F7F, #FF6B9D);" title="Coral Theme"></div>
-                <div class="theme-btn" data-theme="lavender" style="background: linear-gradient(135deg, #E6E6FA, #DDA0DD);" title="Lavender Theme"></div>
-                <div class="theme-btn" data-theme="mint" style="background: linear-gradient(135deg, #98FB98, #90EE90);" title="Mint Theme"></div>
-                <div class="theme-btn" data-theme="gold" style="background: linear-gradient(135deg, #FFD700, #FFA500);" title="Gold Theme"></div>
+                <div class="theme-btn" data-theme="neon-orange" style="background: linear-gradient(135deg, #FF6B35, #F7931E);" title="Neon Orange"></div>
+                <div class="theme-btn" data-theme="neon-blue" style="background: linear-gradient(135deg, #00D2FF, #3A7BD5);" title="Neon Blue"></div>
+                <div class="theme-btn" data-theme="electric-pink" style="background: linear-gradient(135deg, #FF0080, #FF8C00);" title="Electric Pink"></div>
+                <div class="theme-btn" data-theme="cyber-green" style="background: linear-gradient(135deg, #32CD32, #00FF7F);" title="Cyber Green"></div>
+                <div class="theme-btn" data-theme="neon-purple" style="background: linear-gradient(135deg, #8360C3, #2EBAB0);" title="Neon Purple"></div>
             </div>
         </div>
         
@@ -168,51 +168,51 @@
 
             <!-- Container Color Showcase -->
             <div class="demo-container-showcase">
-                <div class="showcase-card container-beauty container-float">
+                <div class="showcase-card bg-neon-orange container-float shadow-coral">
                     <div>
-                        <i class="fas fa-heart fa-2x mb-2"></i>
-                        <div>Beauty Container</div>
-                        <small>Rose Gradient</small>
+                        <i class="fas fa-fire fa-2x mb-2"></i>
+                        <div>Neon Orange</div>
+                        <small>Vibrant Orange Gradient</small>
                     </div>
                 </div>
                 
-                <div class="showcase-card container-video container-pulse">
+                <div class="showcase-card bg-neon-blue container-pulse shadow-neon-blue">
                     <div>
-                        <i class="fas fa-video fa-2x mb-2"></i>
-                        <div>Video Container</div>
-                        <small>Purple-Blue Gradient</small>
+                        <i class="fas fa-bolt fa-2x mb-2"></i>
+                        <div>Neon Blue</div>
+                        <small>Electric Blue Gradient</small>
                     </div>
                 </div>
                 
-                <div class="showcase-card container-product container-rotate">
+                <div class="showcase-card bg-electric-pink container-rotate shadow-neon-pink">
                     <div>
-                        <i class="fas fa-shopping-bag fa-2x mb-2"></i>
-                        <div>Product Container</div>
-                        <small>Coral Gradient</small>
+                        <i class="fas fa-magic fa-2x mb-2"></i>
+                        <div>Electric Pink</div>
+                        <small>Hot Pink Gradient</small>
                     </div>
                 </div>
                 
-                <div class="showcase-card container-testimonial container-glow">
+                <div class="showcase-card bg-cyber-green container-glow shadow-neon-green">
                     <div>
-                        <i class="fas fa-quote-left fa-2x mb-2"></i>
-                        <div>Testimonial Container</div>
-                        <small>Lavender Gradient</small>
+                        <i class="fas fa-leaf fa-2x mb-2"></i>
+                        <div>Cyber Green</div>
+                        <small>Matrix Green Gradient</small>
                     </div>
                 </div>
                 
-                <div class="showcase-card container-newsletter container-sparkle">
+                <div class="showcase-card bg-neon-purple container-sparkle shadow-neon-purple">
                     <div>
-                        <i class="fas fa-envelope fa-2x mb-2"></i>
-                        <div>Newsletter Container</div>
-                        <small>Mint Gradient</small>
+                        <i class="fas fa-gem fa-2x mb-2"></i>
+                        <div>Neon Purple</div>
+                        <small>Purple-Teal Gradient</small>
                     </div>
                 </div>
                 
-                <div class="showcase-card container-premium">
+                <div class="showcase-card bg-neon-coral container-float shadow-lavender">
                     <div>
-                        <i class="fas fa-crown fa-2x mb-2"></i>
-                        <div>Premium Container</div>
-                        <small>Gold Gradient</small>
+                        <i class="fas fa-star fa-2x mb-2"></i>
+                        <div>Neon Coral</div>
+                        <small>Coral-Mint Gradient</small>
                     </div>
                 </div>
             </div>
@@ -291,7 +291,7 @@
             });
             
             // Set default active theme
-            $('.theme-btn[data-theme="rose"]').addClass('active');
+            $('.theme-btn[data-theme="neon-orange"]').addClass('active');
             
             // Auto-update stats
             setInterval(updateStats, 2000);
@@ -303,7 +303,7 @@
                 const scrollPercent = scrollTop / ($(document).height() - $(window).height());
                 
                 if (Math.abs(scrollTop - lastScrollTop) > 100) {
-                    const themes = ['rose', 'coral', 'lavender', 'mint', 'gold'];
+                    const themes = ['neon-orange', 'neon-blue', 'electric-pink', 'cyber-green', 'neon-purple'];
                     const themeIndex = Math.floor(scrollPercent * themes.length);
                     
                     if (themeIndex < themes.length) {
@@ -369,11 +369,11 @@
         
         function updateContainerTheme(themeName) {
             const themeColors = {
-                rose: ['#FFB6C1', '#FFC0CB', '#FFE4E1'],
-                coral: ['#FF7F7F', '#FF6B9D', '#C44569'],
-                lavender: ['#E6E6FA', '#DDA0DD', '#DA70D6'],
-                mint: ['#98FB98', '#90EE90', '#00FA9A'],
-                gold: ['#FFD700', '#FFA500', '#FF8C00']
+                'neon-orange': ['#FF6B35', '#F7931E', '#FF8C00'],
+                'neon-blue': ['#00D2FF', '#3A7BD5', '#00F5FF'],
+                'electric-pink': ['#FF0080', '#FF8C00', '#FF1493'],
+                'cyber-green': ['#32CD32', '#00FF7F', '#00E676'],
+                'neon-purple': ['#8360C3', '#2EBAB0', '#8A2BE2']
             };
             
             const colors = themeColors[themeName];

@@ -4,41 +4,45 @@
    ===================== */
 
 :root {
-    /* Enhanced Container Colors */
-    --container-primary: linear-gradient(135deg, #6A11CB 0%, #2575FC 100%);
-    --container-secondary: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
-    --container-tertiary: linear-gradient(135deg, #A8E6CF 0%, #DCEDC1 100%);
-    --container-accent: linear-gradient(135deg, #FF8A80 0%, #FF80AB 100%);
+    /* Enhanced Container Colors - New Vibrant Scheme */
+    --container-primary: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+    --container-secondary: linear-gradient(135deg, #00D2FF 0%, #3A7BD5 100%);
+    --container-tertiary: linear-gradient(135deg, #8360C3 0%, #2EBAB0 100%);
+    --container-accent: linear-gradient(135deg, #FF9A8B 0%, #A8E6CF 100%);
     
-    /* Beauty-themed Container Colors */
-    --beauty-rose: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFE4E1 100%);
-    --beauty-coral: linear-gradient(135deg, #FF7F7F 0%, #FF6B9D 50%, #C44569 100%);
-    --beauty-lavender: linear-gradient(135deg, #E6E6FA 0%, #DDA0DD 50%, #DA70D6 100%);
-    --beauty-mint: linear-gradient(135deg, #98FB98 0%, #90EE90 50%, #00FA9A 100%);
-    --beauty-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+    /* Beauty-themed Container Colors - Updated Vibrant Palette */
+    --beauty-rose: linear-gradient(135deg, #FF6B9D 0%, #C44569 50%, #8E44AD 100%);
+    --beauty-coral: linear-gradient(135deg, #FF5722 0%, #FF9800 50%, #FFC107 100%);
+    --beauty-lavender: linear-gradient(135deg, #9C27B0 0%, #E91E63 50%, #FF5722 100%);
+    --beauty-mint: linear-gradient(135deg, #00E676 0%, #1DE9B6 50%, #00BCD4 100%);
+    --beauty-gold: linear-gradient(135deg, #FFD54F 0%, #FF9800 50%, #FF5722 100%);
     
-    /* Dynamic Video Container Colors */
-    --video-container-1: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-    --video-container-2: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
-    --video-container-3: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
-    --video-container-4: linear-gradient(45deg, #43e97b 0%, #38f9d7 100%);
+    /* Dynamic Video Container Colors - Neon Theme */
+    --video-container-1: linear-gradient(45deg, #00F5FF 0%, #00D4AA 100%);
+    --video-container-2: linear-gradient(45deg, #FF0080 0%, #FF8C00 100%);
+    --video-container-3: linear-gradient(45deg, #8A2BE2 0%, #FF1493 100%);
+    --video-container-4: linear-gradient(45deg, #32CD32 0%, #00FF7F 100%);
     
-    /* Animated Background Colors */
-    --animated-bg-1: linear-gradient(270deg, #FFB7B7, #FF6B9D, #C44569, #6A4C93);
-    --animated-bg-2: linear-gradient(270deg, #A8E6CF, #DCEDC1, #C7CEDB, #B19CD9);
-    --animated-bg-3: linear-gradient(270deg, #FF8A80, #FF80AB, #CE93D8, #90CAF9);
+    /* Animated Background Colors - Dynamic Neon */
+    --animated-bg-1: linear-gradient(270deg, #FF0080, #FF4500, #FFD700, #00FF7F);
+    --animated-bg-2: linear-gradient(270deg, #00F5FF, #8A2BE2, #FF1493, #32CD32);
+    --animated-bg-3: linear-gradient(270deg, #FF6B35, #F7931E, #FFD54F, #00E676);
     
-    /* Container Shadow Colors */
-    --shadow-rose: 0 15px 35px rgba(255, 182, 193, 0.3);
-    --shadow-coral: 0 15px 35px rgba(255, 107, 157, 0.3);
-    --shadow-lavender: 0 15px 35px rgba(221, 160, 221, 0.3);
-    --shadow-mint: 0 15px 35px rgba(152, 251, 152, 0.3);
-    --shadow-gold: 0 15px 35px rgba(255, 215, 0, 0.3);
+    /* Container Shadow Colors - Updated for Vibrant Theme */
+    --shadow-rose: 0 15px 35px rgba(255, 107, 157, 0.4);
+    --shadow-coral: 0 15px 35px rgba(255, 87, 34, 0.4);
+    --shadow-lavender: 0 15px 35px rgba(156, 39, 176, 0.4);
+    --shadow-mint: 0 15px 35px rgba(0, 230, 118, 0.4);
+    --shadow-gold: 0 15px 35px rgba(255, 213, 79, 0.4);
+    --shadow-neon-blue: 0 15px 35px rgba(0, 245, 255, 0.4);
+    --shadow-neon-pink: 0 15px 35px rgba(255, 0, 128, 0.4);
+    --shadow-neon-purple: 0 15px 35px rgba(138, 43, 226, 0.4);
+    --shadow-neon-green: 0 15px 35px rgba(50, 205, 50, 0.4);
     
-    /* Glass Effect Colors */
-    --glass-container: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --glass-backdrop: blur(20px);
+    /* Glass Effect Colors - Enhanced for New Theme */
+    --glass-container: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --glass-backdrop: blur(25px);
 }
 
 /* =====================
@@ -447,8 +451,20 @@
 .bg-video-3 { background: var(--video-container-3) !important; }
 .bg-video-4 { background: var(--video-container-4) !important; }
 
+/* New Vibrant Background Classes */
+.bg-neon-orange { background: linear-gradient(135deg, #FF6B35, #F7931E) !important; }
+.bg-neon-blue { background: linear-gradient(135deg, #00D2FF, #3A7BD5) !important; }
+.bg-neon-purple { background: linear-gradient(135deg, #8360C3, #2EBAB0) !important; }
+.bg-neon-coral { background: linear-gradient(135deg, #FF9A8B, #A8E6CF) !important; }
+.bg-electric-pink { background: linear-gradient(135deg, #FF0080, #FF8C00) !important; }
+.bg-cyber-green { background: linear-gradient(135deg, #32CD32, #00FF7F) !important; }
+
 .shadow-beauty { box-shadow: var(--shadow-rose) !important; }
 .shadow-coral { box-shadow: var(--shadow-coral) !important; }
 .shadow-lavender { box-shadow: var(--shadow-lavender) !important; }
 .shadow-mint { box-shadow: var(--shadow-mint) !important; }
 .shadow-gold { box-shadow: var(--shadow-gold) !important; }
+.shadow-neon-blue { box-shadow: var(--shadow-neon-blue) !important; }
+.shadow-neon-pink { box-shadow: var(--shadow-neon-pink) !important; }
+.shadow-neon-purple { box-shadow: var(--shadow-neon-purple) !important; }
+.shadow-neon-green { box-shadow: var(--shadow-neon-green) !important; }
