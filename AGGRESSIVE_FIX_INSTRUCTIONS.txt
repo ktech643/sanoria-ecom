@@ -1,0 +1,69 @@
+Samsung S21 FE 4G Fix - AGGRESSIVE VERSION
+==========================================
+
+FILE: s21fe_4g_fix_aggressive.zip
+
+This is an aggressive version that continuously monitors and forces 4G connectivity.
+
+WHAT'S NEW IN AGGRESSIVE VERSION:
+- Continuous monitoring loop that checks network every 30 seconds
+- Automatically switches back to 4G when it detects IWLAN
+- Disables IMS service completely
+- Forces airplane mode toggle to reset connection
+- Kills IWLAN/VoWiFi processes
+- Creates logs at /data/local/tmp/s21fe_4g_fix.log
+
+INSTALLATION:
+1. FIRST uninstall any previous version of the module
+2. Reboot after uninstalling old version
+3. Install s21fe_4g_fix_aggressive.zip via Magisk
+4. Reboot
+5. Wait 2-3 minutes after boot
+
+MONITORING:
+After installation, you can monitor the fix:
+```
+adb shell sh /data/adb/modules/s21fe_4g_fix/common/network_monitor.sh
+```
+
+Or check logs:
+```
+adb shell cat /data/local/tmp/s21fe_4g_fix.log
+```
+
+ADDITIONAL MANUAL STEPS:
+If it still switches to E after showing 4G:
+
+1. Go to Phone app and dial: *#*#4636#*#*
+2. Tap "Phone information"  
+3. Set "Preferred network type" to "LTE/GSM/WCDMA"
+4. Turn OFF "VoLTE provisioned"
+5. Turn OFF "Video Calling Provisioned"
+6. Turn OFF "EAB/Presence Provisioned"
+
+2. In Settings:
+- Settings → Connections → Mobile networks
+- Turn OFF "VoLTE calls"
+- Turn OFF "WiFi Calling"
+- Network mode: LTE/3G/2G (auto)
+
+3. Reset network:
+- Settings → General management → Reset
+- Reset network settings
+- Reboot
+
+NUCLEAR OPTION:
+If nothing works, try this sequence:
+```
+adb shell
+su
+# Stop all telephony
+stop
+# Clear all telephony data
+rm -rf /data/data/com.android.phone/*
+rm -rf /data/data/com.sec.imsservice/*
+# Start system
+start
+```
+
+The aggressive module will keep trying to maintain 4G connection even if system tries to switch back.
