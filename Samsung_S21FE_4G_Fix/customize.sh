@@ -40,13 +40,12 @@ REPLACE_EXAMPLE="
 "
 
 # Construct your own list here
-REPLACE="
-"
+REPLACE=""
 
 ##########################################################################################
-#
 # Function Callbacks
-#
+##########################################################################################
+
 # The following functions will be called by the installation framework.
 # You do not have the ability to modify update-binary, the only way you can customize
 # installation is through implementing these functions.
@@ -54,8 +53,6 @@ REPLACE="
 # When running your callbacks, the installation framework will make sure the Magisk
 # internal busybox path is *PREPENDED* to PATH, so all common commands shall exist.
 # Also, it will make sure /data, /system, and /vendor is properly mounted.
-#
-##########################################################################################
 
 ##########################################################################################
 # The installation framework will export some variables and functions.
@@ -77,7 +74,7 @@ REPLACE="
 # IS64BIT (bool): true if $ARCH is either arm64 or x64
 # API (int): the API level (Android version) of the device
 #
-# Availible functions:
+# Available functions:
 #
 # ui_print <msg>
 #     print <msg> to console
@@ -110,59 +107,77 @@ REPLACE="
 # Enable boot scripts by setting the flags in the config section above.
 ##########################################################################################
 
-# Set what you want to display when installing your module
-
 print_modname() {
   ui_print "*******************************"
   ui_print " Samsung S21 FE 4G Fix Module  "
   ui_print "*******************************"
 }
 
-# Copy/extract your module files into $MODPATH in on_install.
-
 on_install() {
-  # The following is the default implementation: extract $ZIPFILE to $MODPATH
-  # Extend/change the logic to whatever you want
-  ui_print "- Extracting module files..."
-  unzip -o "$ZIPFILE" -d $MODPATH >&2
-}
+  # Device check
+  ui_print "- Checking device compatibility..."
 
-# Only some special files require specific permissions
-# This function will be called after on_install is done
-# The default permissions should be good enough for most cases
+  # Check if this is a Samsung device
+  MANUFACTURER=$(getprop ro.product.manufacturer)
+  MODEL=$(getprop ro.product.model)
+
+  if [ "$MANUFACTURER" != "samsung" ]; then
+    ui_print "! Warning: This module is designed for Samsung devices"
+    ui_print "! Current device: $MANUFACTURER $MODEL"
+    ui_print "! Proceeding anyway, but module may not work correctly"
+  fi
+
+  # Check for Samsung S21 FE specifically
+  if echo "$MODEL" | grep -q "SM-G990"; then
+    ui_print "✓ Samsung S21 FE detected: $MODEL"
+  elif echo "$MODEL" | grep -q "Galaxy S21 FE"; then
+    ui_print "✓ Samsung S21 FE detected: $MODEL"
+  else
+    ui_print "! Warning: This module is optimized for Samsung S21 FE"
+    ui_print "! Current device: $MODEL"
+    ui_print "! Module may work on other Samsung devices but is untested"
+  fi
+
+  ui_print "- Installing Samsung S21 FE 4G Connectivity Fix..."
+  ui_print "- This module will:"
+  ui_print "  • Disable IWLAN preference"
+  ui_print "  • Force LTE/GSM network mode"
+  ui_print "  • Fix 4G registration issues"
+  ui_print "  • Keep WiFi calling as backup"
+
+  # Create system.prop for persistent properties
+  ui_print "- Creating system properties..."
+  cat > $MODPATH/system.prop << 'EOF'
+# Samsung S21 FE 4G Connectivity Fix Properties
+# Disable IWLAN preference
+persist.vendor.radio.enable_iwlan=false
+persist.vendor.radio.iwlan_enable=false
+ro.telephony.iwlan_operation_mode=legacy
+
+# Network mode preferences
+ro.telephony.default_network=22,22
+persist.vendor.radio.rat_on=primary,1
+persist.vendor.radio.sib16_support=0
+
+# IMS and VoWiFi settings
+persist.vendor.radio.calls.on.ims=0
+persist.vendor.radio.domain.ps=0
+
+# Force cellular data preference
+persist.vendor.radio.data_ltd_sys_ind=1
+persist.vendor.radio.data_con_rprt=1
+EOF
+
+  ui_print "- Installation completed!"
+  ui_print "- Please reboot your device to apply the fix"
+  ui_print "- Check /data/local/tmp/s21fe_4g_fix.log for detailed logs"
+}
 
 set_permissions() {
   # The following is the default rule, DO NOT remove
   set_perm_recursive $MODPATH 0 0 0755 0644
 
-  # Here are some examples:
-  # set_perm_recursive  $MODPATH/system/lib       0     0       0755      0644
-  # set_perm  $MODPATH/system/bin/app_process32   0     2000    0755      u:object_r:zygote_exec:s0
-  # set_perm  $MODPATH/system/bin/dex2oat         0     2000    0755      u:object_r:dex2oat_exec:s0
-  # set_perm  $MODPATH/system/lib/libart.so       0     0       0644
-
   # Set executable permissions for our scripts
   set_perm $MODPATH/service.sh 0 0 0755
   set_perm $MODPATH/post-fs-data.sh 0 0 0755
 }
-
-##########################################################################################
-# NOTE: This script will be executed in recovery environment
-# You may NOT have access to the following variables: $MODPATH, $MAGISK_VER_CODE
-# You may NOT have access to Magisk internal busybox
-# You may NOT have write access to /system (even with proper permissions)
-# The only thing you can do is to install your module files to $MODPATH
-##########################################################################################
-
-SKIPUNZIP=1
-unzip -o "$ZIPFILE" customize.sh -d $TMPDIR >&2
-if ! grep -q '^SKIPUNZIP=1$' $TMPDIR/customize.sh 2>/dev/null; then
-    ui_print "! Unable to extract zip file!"
-    exit 1
-fi
-
-SKIPUNZIP=1
-unzip -o "$ZIPFILE" -d $TMPDIR >&2
-
-# Load customization script
-[ -f $TMPDIR/customize.sh ] && . $TMPDIR/customize.sh

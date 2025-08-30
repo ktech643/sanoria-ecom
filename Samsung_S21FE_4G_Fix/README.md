@@ -27,13 +27,6 @@ This module converts IWLAN preference to GSM/LTE mode and forces proper cellular
 6. Wait for installation to complete
 7. **Reboot your device**
 
-### Method 2: Custom Recovery (TWRP/OrangeFox)
-1. Boot into recovery mode
-2. Go to **Install** section
-3. Select the ZIP file
-4. Swipe to confirm flash
-5. Reboot to system
-
 ## What the Module Does
 
 ### Boot-time Actions
@@ -118,74 +111,6 @@ persist.vendor.radio.data_con_rprt=1
    adb shell "getprop | grep network_mode"
    ```
 
-### Still No 4G After Installation
-1. **Try Different Network Mode**:
-   - Open Phone app, dial `*#*#4636#*#*`
-   - Go to Phone Information
-   - Set network type to "LTE/WCDMA/GSM"
-
-2. **Manual Network Selection**:
-   - Settings → Connections → Mobile networks → Network operators
-   - Turn off "Select automatically"
-   - Manually select your carrier
-
-3. **Reset Network Settings**:
-   - Settings → General management → Reset → Reset network settings
-   - **Note**: This will reset WiFi passwords
-
-### Emergency Restore
-If the module causes issues:
-
-1. **Disable Module**:
-   - Boot into safe mode or recovery
-   - Open Magisk Manager
-   - Disable the module
-   - Reboot
-
-2. **Remove Module Completely**:
-   ```bash
-   adb shell "rm -rf /data/adb/modules/samsung_s21fe_4g_fix"
-   adb reboot
-   ```
-
-## Network Mode Reference
-- `0` = GSM only
-- `1` = GSM/WCDMA (WCDMA preferred)
-- `2` = WCDMA only
-- `9` = LTE/GSM/WCDMA
-- `10` = LTE only
-- `11` = LTE/WCDMA
-- `22` = LTE/GSM/WCDMA (Global) - **Used by this module**
-- `23` = LTE/WCDMA/GSM (LTE preferred)
-
-## Compatibility
-- **Tested on**: Samsung S21 FE (SM-G990B, SM-G990E)
-- **Android Version**: 11, 12, 13, 14
-- **One UI Version**: 3.1, 4.0, 4.1, 5.0, 5.1, 6.0+
-- **Magisk Version**: 20.4+
-
-**Note**: While optimized for S21 FE, this module may work on other Samsung Galaxy devices experiencing similar IWLAN connectivity issues.
-
-## File Structure
-```
-samsung_s21fe_4g_fix/
-├── META-INF/
-│   └── com/google/android/
-│       ├── update-binary
-│       └── updater-script
-├── module.prop
-├── customize.sh
-├── post-fs-data.sh
-├── service.sh
-├── system.prop (created during installation)
-└── README.md
-```
-
-## Logs and Debugging
-- **Module logs**: `/data/local/tmp/s21fe_4g_fix.log`
-- **Magisk logs**: Magisk Manager → Logs
-- **System logs**: `adb logcat | grep -E 'telephony|radio|iwlan'`
-
 ## Uninstallation
 1. Open Magisk Manager
 2. Go to Modules tab
@@ -203,11 +128,6 @@ This module modifies system-level telephony settings. While tested on Samsung S2
 - Reset telephony services on boot
 - Keep WiFi calling as backup option
 - Comprehensive logging for troubleshooting
-
-## Credits
-- Original ADB fix script analysis and testing
-- Magisk module template by topjohnwu
-- Samsung telephony property research by Android community
 
 ## Support
 If you encounter issues:
