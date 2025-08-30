@@ -1,0 +1,106 @@
+Samsung S21 FE - 4G Data Connection Fix
+========================================
+
+FILE: s21fe_4g_data_fix.zip
+
+This module fixes the data connection issue when 4G shows but internet doesn't work.
+
+WHAT IT DOES:
+1. Resets APN to carrier defaults
+2. Fixes data authentication and routing
+3. Enables mobile data services
+4. Monitors and auto-fixes data connection
+5. Sets proper DNS servers (Google DNS)
+
+INSTALLATION:
+1. Keep the IWLAN to GSM module installed
+2. Install s21fe_4g_data_fix.zip via Magisk
+3. Reboot
+4. Wait 2-3 minutes for data to connect
+
+IMPORTANT MANUAL STEPS:
+
+1. CHECK/SET APN:
+   - Settings → Connections → Mobile networks → Access Point Names
+   - Make sure your carrier's APN is selected
+   - If not present, tap + to add new APN
+   - Get correct APN settings from your carrier's website
+
+2. COMMON APN SETTINGS TO CHECK:
+   - APN Protocol: IPv4/IPv6
+   - APN Roaming Protocol: IPv4/IPv6
+   - Bearer: Unspecified
+   - MVNO Type: None
+
+3. DIAL *#*#4636#*#*:
+   - Check "Data Network Type" shows LTE
+   - Check "Data Connection" shows CONNECTED
+   - Try toggling "Mobile Radio Power"
+
+4. RESET NETWORK (if needed):
+   ```
+   adb shell
+   su
+   # Clear telephony database
+   rm -rf /data/data/com.android.providers.telephony/databases/*
+   # Clear network settings
+   settings delete global mobile_data
+   settings delete global preferred_network_mode
+   reboot
+   ```
+
+VERIFICATION:
+Check data status:
+```
+adb shell sh /data/adb/modules/s21fe_4g_data_fix/common/check_data.sh
+```
+
+Check logs:
+```
+adb shell cat /data/local/tmp/4g_data_fix.log
+```
+
+Test connection:
+```
+adb shell ping -c 3 google.com
+```
+
+TROUBLESHOOTING:
+
+If data still not working:
+
+1. TOGGLE AIRPLANE MODE:
+   - Turn on airplane mode for 30 seconds
+   - Turn it off
+   - Wait for network registration
+
+2. CHECK SIM CARD:
+   - Remove SIM, clean contacts, reinsert
+   - Try SIM in another phone
+   - Ensure SIM has active data plan
+
+3. CARRIER SETTINGS:
+   - Some carriers require specific authentication
+   - Contact carrier to verify:
+     * APN settings
+     * Data plan is active
+     * No data restrictions
+
+4. TRY DIFFERENT NETWORK MODES:
+   In *#*#4636#*#*:
+   - LTE only
+   - WCDMA only
+   - GSM only
+   Then back to LTE/GSM/WCDMA
+
+5. LAST RESORT:
+   ```
+   adb shell
+   su
+   # Full radio reset
+   setprop persist.radio.multisim.config none
+   setprop persist.radio.multisim.config dsds
+   setprop ctl.restart rild
+   ```
+
+The module will continuously monitor and try to maintain data connection.

@@ -1,0 +1,6 @@
+id=s21fe_4g_data_fix
+name=Samsung S21 FE 4G Data Fix
+version=v6.0
+versionCode=6
+author=XDA
+description=Fixes 4G data connectivity after disabling IWLAN - enables data authentication and APN
