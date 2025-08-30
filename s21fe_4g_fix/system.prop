@@ -1,0 +1,8 @@
+# This file will be read by resetprop
+# Example: Change dpi
+# ro.sf.lcd_density=320
+
+# 4G Fix properties
+persist.vendor.radio.enable_iwlan=false
+persist.vendor.radio.iwlan_enable=false
+persist.vendor.radio.rat_on=lte,gsm,wcdma

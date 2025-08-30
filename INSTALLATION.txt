@@ -1,0 +1,33 @@
+Samsung S21 FE 4G Fix - Magisk Module
+=====================================
+
+FILE: s21fe_4g_fix.zip (2.7 KB)
+
+This is a minimal Magisk module that should work properly.
+
+INSTALLATION:
+1. Copy s21fe_4g_fix.zip to your phone
+2. Open Magisk app (not Manager, the newer Magisk app)
+3. Go to Modules section
+4. Tap "Install from storage"
+5. Select s21fe_4g_fix.zip
+6. Reboot when prompted
+
+WHAT IT DOES:
+- Disables IWLAN preference
+- Forces LTE/GSM network mode
+- Fixes 4G connectivity issues
+
+MODULE STRUCTURE:
+- Uses official Magisk module installer
+- Minimal configuration
+- No custom installer scripts
+
+TROUBLESHOOTING:
+If it still shows error, try:
+1. Update Magisk to latest version (v24.0+)
+2. Check Magisk logs for specific errors
+3. Try installing via TWRP recovery
+
+The module uses the official module_installer.sh from Magisk GitHub.
+All files are at the root level of the ZIP as required.
