@@ -1,0 +1,40 @@
+Samsung S21 FE 4G Connectivity Fix - Magisk Module
+==================================================
+
+FIXED VERSION: samsung_s21fe_4g_fix_v1.0.zip
+
+This is now a proper Magisk module that follows the official Magisk module template.
+
+INSTALLATION:
+1. Copy samsung_s21fe_4g_fix_v1.0.zip to your phone
+2. Open Magisk Manager/App
+3. Go to Modules tab
+4. Tap "Install from storage" (+ icon)
+5. Select samsung_s21fe_4g_fix_v1.0.zip
+6. The module will install and show installation messages
+7. Reboot when prompted
+
+WHAT IT DOES:
+- Disables IWLAN preference that causes 4G issues
+- Forces proper LTE/GSM/WCDMA network registration
+- Fixes "NOT_REG_OR_SEARCHING" error for cellular data
+- Keeps WiFi calling available as backup
+
+AFTER REBOOT:
+- Wait 2-3 minutes for network to fully register
+- Check Settings > About phone > SIM status
+- Should show "Mobile network state: Connected"
+- Should show network type as "LTE" not "IWLAN"
+
+VERIFICATION:
+Run this command after reboot:
+adb shell sh /data/adb/modules/samsung_s21fe_4g_fix/common/verify_fix.sh
+
+UNINSTALL:
+- Open Magisk Manager
+- Go to Modules
+- Find "Samsung S21 FE 4G Connectivity Fix"
+- Tap remove/trash icon
+- Reboot
+
+The module is now properly packaged and should install without any errors!
