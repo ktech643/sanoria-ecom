@@ -1,0 +1,30 @@
+# Samsung S21 FE 4G Connectivity Fix Properties
+# These properties disable IWLAN preference and force cellular data
+
+# Disable IWLAN preference
+persist.vendor.radio.enable_iwlan=false
+persist.vendor.radio.iwlan_enable=false
+ro.telephony.iwlan_operation_mode=legacy
+
+# Disable VoWiFi by default
+persist.vendor.radio.enable_voiwifi=0
+persist.radio.calls.on.ims=0
+
+# Force LTE/GSM/WCDMA mode
+persist.vendor.radio.rat_on=lte,gsm,wcdma
+persist.vendor.radio.data_ltd_sys_ind=1
+persist.vendor.radio.data_con_rprt=1
+
+# Enable cellular data
+persist.vendor.radio.calls.on.ims=1
+persist.vendor.radio.jbims=1
+persist.vendor.radio.vrte_logic=1
+
+# Network mode preferences
+ro.telephony.default_network=22,22
+persist.vendor.radio.enable_data_limit=0
+
+# Additional radio fixes
+persist.vendor.radio.mt_sms_ack=30
+persist.vendor.radio.process_sups_ind=1
+persist.vendor.radio.add_power_save=1
