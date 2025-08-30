@@ -1,0 +1,6 @@
+id=samsung_s21fe_4g_fix
+name=Samsung S21 FE 4G Connectivity Fix
+version=v2.0
+versionCode=2
+author=XDA Community
+description=Fixes 4G connectivity issues on Samsung S21 FE by disabling IWLAN preference and forcing LTE/GSM registration.
