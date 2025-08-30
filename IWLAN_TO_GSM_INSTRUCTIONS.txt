@@ -1,0 +1,86 @@
+IWLAN to GSM/LTE Converter - Samsung S21 FE
+===========================================
+
+FILE: iwlan_to_gsm.zip
+
+This module completely disables IWLAN and forces GSM/LTE only mode.
+
+WHAT IT DOES:
+1. Disables all IWLAN packages (com.sec.epdg, com.samsung.android.iwlan, etc.)
+2. Blocks IMS/VoLTE/VoWiFi services
+3. Forces network mode to LTE/GSM (mode 9)
+4. Continuously monitors and kills IWLAN if it tries to restart
+5. Adds system permissions to disable IWLAN features
+
+INSTALLATION:
+1. Uninstall any previous network fix modules
+2. Reboot
+3. Install iwlan_to_gsm.zip via Magisk
+4. Reboot
+5. Wait 3-5 minutes for full effect
+
+IMPORTANT MANUAL STEPS AFTER INSTALLATION:
+
+1. DIAL *#*#4636#*#*:
+   - Tap "Phone Information"
+   - Set "Preferred Network Type" to:
+     * Try "LTE/GSM auto (PRL)" first
+     * If that doesn't work, try "GSM only"
+     * Then try "LTE only"
+   - Turn OFF all IMS registration options
+   - Turn OFF "VoLTE provisioned"
+
+2. DEVELOPER OPTIONS:
+   - Enable Developer Options
+   - Go to Developer Options
+   - Find "Mobile data always active" - Turn it ON
+
+3. APN SETTINGS:
+   - Settings → Connections → Mobile networks → Access Point Names
+   - Check that your carrier's APN is properly configured
+   - If not, add a new APN with your carrier's settings
+
+4. SIM CARD CHECK:
+   - Try your SIM in another phone to verify 4G works
+   - Try another 4G SIM in your S21 FE
+   - This will confirm if it's a device or SIM issue
+
+NETWORK MODES REFERENCE:
+Mode 0 = GSM only
+Mode 1 = GSM/WCDMA (WCDMA preferred)
+Mode 2 = WCDMA only  
+Mode 9 = LTE/GSM auto (PRL)
+Mode 10 = LTE only
+Mode 11 = LTE/WCDMA
+
+VERIFICATION:
+Check if IWLAN is disabled:
+```
+adb shell dumpsys telephony.registry | grep mDataNetworkType
+```
+Should show: GSM, EDGE, UMTS, HSDPA, HSUPA, HSPA, LTE (NOT IWLAN)
+
+Check disabled packages:
+```
+adb shell pm list packages -d | grep -E "iwlan|epdg|imsservice"
+```
+
+TROUBLESHOOTING:
+If still showing E instead of 4G/LTE:
+
+1. Your area might only have 2G/EDGE coverage
+2. Your SIM might not be provisioned for 4G
+3. Try manual network selection:
+   - Settings → Connections → Mobile networks → Network operators
+   - Turn off automatic and manually select your carrier
+
+4. Last resort - Reset network completely:
+   ```
+   adb shell
+   su
+   rm -rf /data/misc/radio/*
+   rm -rf /data/data/com.android.providers.telephony/databases/*
+   reboot
+   ```
+
+The module will prevent IWLAN from taking over your connection.

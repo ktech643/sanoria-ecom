@@ -1,0 +1,29 @@
+# IWLAN to GSM/LTE Converter Properties
+
+# Completely disable IWLAN
+persist.vendor.radio.enable_iwlan=false
+persist.vendor.radio.iwlan_enable=false
+persist.data.iwlan.enable=false
+persist.data.iwlan=false
+persist.vendor.data.iwlan.enable=false
+
+# Disable IMS/VoLTE/VoWiFi
+persist.radio.calls.on.ims=0
+persist.radio.jbims=0
+persist.radio.vrte_logic=0
+persist.radio.VT_ENABLE=0
+persist.radio.volte.dan_support=false
+persist.vendor.radio.enable_voiwifi=0
+persist.dbg.wfc_avail_ovr=0
+persist.vendor.ims.disableService=true
+
+# Force GSM/LTE mode
+ro.telephony.default_network=9
+persist.vendor.radio.rat_on=lte,gsm
+persist.vendor.radio.prefer_nw=9
+telephony.lteOnGsmDevice=1
+
+# Disable enhanced services
+persist.vendor.radio.enable_sar_standby=false
+persist.vendor.radio.ss_policy=0
+persist.vendor.radio.vdp_on_ims_cap=0

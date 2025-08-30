@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Disable IWLAN features -->
+<permissions>
+    <unavailable-feature name="android.hardware.telephony.ims" />
+    <unavailable-feature name="android.hardware.telephony.iwlan" />
+    <unavailable-feature name="com.sec.feature.vowifi" />
+</permissions>

@@ -1,0 +1,6 @@
+id=iwlan_to_gsm
+name=IWLAN to GSM/LTE Converter
+version=v5.0
+versionCode=5
+author=XDA
+description=Completely disables IWLAN and forces GSM/LTE only mode for Samsung S21 FE
