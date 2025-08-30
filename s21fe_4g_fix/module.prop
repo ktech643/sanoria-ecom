@@ -1,0 +1,6 @@
+id=s21fe_4g_fix
+name=Samsung S21 FE 4G Fix
+version=v1.0
+versionCode=1
+author=AndroidModder
+description=Fixes 4G connectivity on Samsung S21 FE by disabling IWLAN preference
