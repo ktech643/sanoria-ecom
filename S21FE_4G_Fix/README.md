@@ -26,16 +26,27 @@ This module performs a comprehensive conversion from IWLAN to GSM/LTE by:
 
 ### Late Boot (service.sh)
 - **Settings Configuration**: Updates Android settings for network preferences
+- **Data Connection Fix**: Resets and re-establishes cellular data connections
+- **APN Management**: Clears and refreshes APN database
 - **Telephony Reset**: Restarts radio services to apply changes
 - **Carrier Config Reset**: Clears carrier-specific IWLAN preferences
 - **Network Re-registration**: Forces device to register on cellular network
 - **Service Disable**: Disables any remaining IWLAN services
 
+### Data Connection Fix (data_fix.sh)
+- **Connection Reset**: Comprehensive data connection reset and restoration
+- **Interface Management**: Resets network interfaces (rmnet0, rmnet_data0)
+- **DNS Configuration**: Sets reliable DNS servers (8.8.8.8, 8.8.4.4)
+- **APN Database**: Clears and refreshes APN configurations
+- **Connectivity Test**: Verifies data connection with ping tests
+- **Alternative Methods**: Fallback methods if primary fix fails
+
 ## Installation
 1. Download `S21FE_4G_Fix_v1.0.zip`
 2. Install via Magisk Manager
 3. Reboot device
-4. Wait 3-5 minutes for complete conversion
+4. Wait 3-5 minutes for IWLAN to GSM conversion
+5. Wait additional 2-3 minutes for data connection fix
 
 ## Verification
 After reboot, check conversion success:

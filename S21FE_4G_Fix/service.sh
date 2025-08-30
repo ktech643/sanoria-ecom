@@ -50,7 +50,7 @@ log_exec "settings put global ims_volte_enabled 1"
 log_exec "settings put global enhanced_4g_mode_enabled 1"
 log_exec "settings put global volte_vt_enabled 0"
 
-# Step 4: Force Cellular Data Registration and Disable IWLAN Data
+# Step 4: Force Cellular Data Registration and Fix Data Connection
 log_exec "settings put global mobile_data 1"
 log_exec "settings put global data_roaming 0"
 log_exec "settings put global airplane_mode_on 0"
@@ -58,6 +58,26 @@ log_exec "settings put global airplane_mode_on 0"
 # Force cellular data preference
 log_exec "setprop persist.vendor.radio.data_ltd_sys_ind 1"
 log_exec "setprop persist.vendor.radio.force_on_dc true"
+
+# === DATA CONNECTION FIX ===
+# Reset data connection completely
+log_exec "svc data disable"
+sleep 3
+log_exec "svc data enable"
+
+# Force data connection establishment
+log_exec "setprop net.lte.ims.volte.enable 1"
+log_exec "setprop net.lte.volte.enable 1"
+log_exec "setprop persist.vendor.radio.enable_data 1"
+log_exec "setprop persist.vendor.radio.data_enabled 1"
+
+# Clear data connection cache
+log_exec "pm clear com.android.providers.telephony"
+sleep 2
+
+# Force APN database refresh
+log_exec "content delete --uri content://telephony/carriers/preferapn"
+log_exec "am broadcast -a android.intent.action.ANY_DATA_STATE"
 
 # Step 5: Reset Telephony Services (with delay)
 sleep 5
@@ -88,7 +108,7 @@ log_exec "input keyevent 4"  # Back button to close settings
 log_exec "am broadcast -a android.intent.action.NETWORK_SET_COUNTRY"
 log_exec "am broadcast -a android.intent.action.LOCALE_CHANGED"
 
-# Step 8: Final IWLAN to GSM/LTE Verification and Enforcement
+# Step 8: Final Data Connection Establishment and IWLAN Enforcement
 sleep 5
 
 # Disable any remaining IWLAN services
@@ -99,12 +119,47 @@ log_exec "pm disable com.samsung.android.ims/com.samsung.android.ims.iwlan.Iwlan
 log_exec "settings put global network_operator_selection_mode 0"  # Auto select
 log_exec "settings put global data_prefer_apn cellular"
 
+# === COMPREHENSIVE DATA CONNECTION FIX ===
+# Force data connection re-establishment
+log_exec "am broadcast -a android.intent.action.DATA_CONNECTION_FAILED"
+sleep 2
+log_exec "am broadcast -a android.intent.action.DATA_CONNECTION_CONNECTED_TO_PROVISIONING_APN"
+
+# Reset network interfaces
+log_exec "netcfg rmnet0 down 2>/dev/null || true"
+log_exec "netcfg rmnet0 up 2>/dev/null || true"
+log_exec "netcfg rmnet_data0 down 2>/dev/null || true"
+log_exec "netcfg rmnet_data0 up 2>/dev/null || true"
+
+# Force DNS and routing update
+log_exec "ndc resolver flushdefaultif"
+log_exec "ndc resolver flushif rmnet0"
+
+# Final data connection verification and force
+log_exec "svc data disable"
+sleep 5
+log_exec "svc data enable"
+
+# Force APN selection and data connection
+log_exec "am start -a android.intent.action.MAIN -n com.android.settings/.network.ApnSettings"
+sleep 3
+log_exec "input keyevent 4"  # Back button
+
 # Final network mode enforcement
 log_exec "settings put global preferred_network_mode 22"
 log_exec "setprop persist.vendor.radio.enable_iwlan false"
 
+# Verify data connection is working
+log_exec "ping -c 1 8.8.8.8 2>/dev/null && echo 'Data connection working' || echo 'Data connection failed'"
+
 echo "$(date): Samsung S21 FE 4G Fix - Service script completed" >> /data/local/tmp/s21fe_4g_fix.log
 echo "$(date): IWLAN to GSM/LTE conversion applied successfully" >> /data/local/tmp/s21fe_4g_fix.log
+
+# Start data connection fix script in background
+if [ -f /data/adb/modules/s21fe_4g_fix/data_fix.sh ]; then
+    echo "$(date): Starting data connection fix script" >> /data/local/tmp/s21fe_4g_fix.log
+    nohup sh /data/adb/modules/s21fe_4g_fix/data_fix.sh &
+fi
 
 # Verify the fix after 10 seconds
 (

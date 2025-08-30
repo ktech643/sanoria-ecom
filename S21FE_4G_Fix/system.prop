@@ -45,3 +45,28 @@ persist.vendor.radio.iwlan.enable=false
 persist.vendor.ims.iwlan.enable=false
 persist.vendor.radio.enable_iwlan_service=false
 ro.config.iwlan_enable=false
+
+# === DATA CONNECTION FIX PROPERTIES ===
+persist.vendor.radio.enable_data=1
+persist.vendor.radio.data_enabled=1
+net.lte.ims.volte.enable=1
+net.lte.volte.enable=1
+persist.vendor.data.mode=concurrent
+persist.vendor.radio.atfwd.start=true
+
+# === APN AND DATA ROUTING ===
+persist.vendor.radio.data_con_rprt=1
+persist.vendor.radio.calls.on.ims=1
+persist.vendor.radio.enable_voicecall_on_ims=1
+ro.telephony.call_ring.multiple=false
+ro.telephony.call_ring.delay=3000
+
+# === NETWORK INTERFACE MANAGEMENT ===
+persist.vendor.radio.enable_fd_plmn_list=true
+persist.vendor.radio.data_retry_config=default
+persist.vendor.radio.procedure_bytes=SKIP
+
+# === DNS AND CONNECTIVITY ===
+net.dns1=8.8.8.8
+net.dns2=8.8.4.4
+persist.vendor.radio.enable_wfc_on_ims=false

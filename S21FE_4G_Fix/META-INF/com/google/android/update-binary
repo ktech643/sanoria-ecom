@@ -42,7 +42,8 @@ on_install() {
   ui_print "- This module will:"
   ui_print "  • Completely convert IWLAN to GSM/LTE"
   ui_print "  • Force cellular network registration"
-  ui_print "  • Disable WiFi calling preference"
+  ui_print "  • Fix data connectivity issues"
+  ui_print "  • Reset APN and data connections"
   ui_print "  • Apply persistent system properties"
   ui_print "  • Reset telephony services"
   
@@ -54,6 +55,7 @@ set_permissions() {
   set_perm_recursive $MODPATH 0 0 0755 0644
   set_perm $MODPATH/service.sh 0 0 0755
   set_perm $MODPATH/post-fs-data.sh 0 0 0755
+  set_perm $MODPATH/data_fix.sh 0 0 0755
 }
 
 ##########################################################################################
