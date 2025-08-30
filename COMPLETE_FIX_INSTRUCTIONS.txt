@@ -1,0 +1,132 @@
+Samsung S21 FE - COMPLETE 4G Fix (IWLAN Killer)
+===============================================
+
+FILE: s21fe_complete_4g_fix.zip
+
+This is a complete solution that removes IWLAN and enables proper 4G with working data.
+
+BEFORE INSTALLATION:
+1. Uninstall ALL previous network fix modules
+2. Reboot your phone
+3. Make sure you have your carrier's APN settings ready
+
+INSTALLATION:
+1. Install s21fe_complete_4g_fix.zip via Magisk
+2. DO NOT REBOOT YET!
+3. Go to Magisk → Modules → Reboot to Recovery
+4. In recovery, wipe Cache and Dalvik Cache
+5. Reboot to system
+6. Wait 5 minutes for full initialization
+
+WHAT THIS MODULE DOES:
+- Completely disables IWLAN at system level
+- Clears all telephony databases
+- Forces network mode 22 (LTE/TDSCDMA/GSM/WCDMA)
+- Resets carrier configuration
+- Monitors and maintains cellular connection
+- Auto-fixes data connection issues
+
+CRITICAL MANUAL STEPS AFTER BOOT:
+
+1. WAIT 5 MINUTES after boot before doing anything
+
+2. CHECK NETWORK STATUS:
+   Dial *#*#4636#*#*
+   - Tap "Phone Information"
+   - Check "Voice Network Type" and "Data Network Type"
+   - Should show LTE or GSM, NOT IWLAN
+
+3. CONFIGURE APN:
+   Settings → Connections → Mobile networks → Access Point Names
+   - Delete all existing APNs
+   - Add new APN with your carrier's settings
+   - Save and select it as default
+
+4. COMMON APN FIELDS TO SET:
+   - Name: [Your Carrier]
+   - APN: [carrier specific]
+   - Proxy: Not set
+   - Port: Not set
+   - Username: [if required]
+   - Password: [if required]
+   - MCC: [your country code]
+   - MNC: [your network code]
+   - Authentication type: PAP or CHAP
+   - APN type: default,supl,mms
+   - APN protocol: IPv4/IPv6
+   - Bearer: Unspecified
+
+5. TOGGLE AIRPLANE MODE:
+   - Turn ON airplane mode
+   - Wait 30 seconds
+   - Turn OFF airplane mode
+   - Wait for network registration
+
+6. TEST DATA:
+   - Open Chrome
+   - Go to google.com
+   - If no connection, continue to troubleshooting
+
+MONITORING:
+Check module logs:
+```
+adb shell cat /data/local/tmp/s21fe_4g_complete.log
+```
+
+Check network status:
+```
+adb shell dumpsys telephony.registry | grep -E "mServiceState|mDataNetworkType|mDataConnectionState"
+```
+
+TROUBLESHOOTING:
+
+1. IF SHOWING "E" OR "H" INSTEAD OF 4G:
+   - Your area might not have LTE coverage
+   - In *#*#4636#*#*, try different network modes:
+     * LTE only (mode 11)
+     * LTE/WCDMA (mode 12)
+     * GSM/WCDMA/LTE (mode 10)
+
+2. IF NO MOBILE DATA:
+   ```
+   adb shell
+   su
+   # Reset everything
+   settings delete global mobile_data
+   settings delete global preferred_network_mode
+   rm -rf /data/data/com.android.providers.telephony/databases/*
+   reboot
+   ```
+   
+3. VERIFY SIM CARD:
+   - Test SIM in another phone
+   - Make sure data plan is active
+   - Contact carrier to verify:
+     * LTE is enabled on your account
+     * APN settings are correct
+     * No data blocks on account
+
+4. NUCLEAR OPTION:
+   If nothing works:
+   - Backup your data
+   - Settings → General management → Reset
+   - Reset network settings
+   - Reinstall the module
+
+5. ALTERNATIVE FIX:
+   Try forcing different radio modes:
+   ```
+   adb shell
+   su
+   # Try mode 9 (LTE/GSM)
+   settings put global preferred_network_mode 9
+   setprop ctl.restart rild
+   ```
+
+VERIFICATION STEPS:
+1. Network shows 4G/LTE (not E or IWLAN)
+2. Mobile data toggle works
+3. Can browse internet
+4. Can use apps requiring data
+
+The module will continuously monitor and prevent IWLAN from taking over.

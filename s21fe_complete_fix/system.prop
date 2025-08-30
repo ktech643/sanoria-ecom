@@ -1,0 +1,33 @@
+# Complete 4G Fix Properties
+
+# Disable IWLAN completely
+persist.vendor.radio.enable_iwlan=false
+persist.vendor.radio.iwlan_enable=false
+persist.data.iwlan.enable=false
+persist.data.iwlan=false
+persist.radio.vowifi_available=0
+persist.dbg.wfc_avail_ovr=0
+persist.vendor.radio.calls.on.ims=0
+
+# Network selection
+ro.telephony.default_network=22,22
+persist.vendor.radio.prefer_nw=22
+persist.vendor.radio.rat_on=lte,tdscdma,gsm,wcdma
+
+# Data configuration
+persist.vendor.data.mode=concurrent
+persist.data.netmgrd.qos.enable=true
+persist.vendor.radio.data_con_rprt=1
+persist.vendor.radio.data_ltd_sys_ind=1
+persist.vendor.radio.aosp_usr_pref_sel=true
+
+# Radio configuration
+persist.vendor.radio.force_on_dc=true
+persist.radio.multisim.config=dsds
+persist.vendor.radio.manual_nw_rej_ct=1
+persist.vendor.radio.stack_id_0=0
+persist.vendor.radio.stack_id_1=1
+
+# DNS
+net.dns1=8.8.8.8
+net.dns2=8.8.4.4
