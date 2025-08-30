@@ -1,0 +1,18 @@
+# Samsung S21 FE 4G Fix - System Properties
+# Safe properties to disable IWLAN and enable proper 4G connectivity
+
+# Disable IWLAN preference
+persist.vendor.radio.enable_iwlan=false
+persist.vendor.radio.iwlan_enable=false
+ro.telephony.iwlan_operation_mode=legacy
+
+# Set network mode to LTE/GSM/WCDMA Global (22)
+ro.telephony.default_network=22,22
+
+# Enable data and VoLTE
+persist.vendor.radio.enable_data=1
+net.lte.ims.volte.enable=1
+
+# Basic connectivity settings
+persist.vendor.radio.data_enabled=1
+persist.vendor.radio.calls.on.ims=1
