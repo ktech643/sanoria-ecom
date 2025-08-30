@@ -11,7 +11,7 @@
 ##########################################################################################
 
 SKIPMOUNT=false
-PROPFILE=false
+PROPFILE=true
 POSTFSDATA=true
 LATESTARTSERVICE=true
 REPLACE=""
@@ -40,9 +40,11 @@ on_install() {
   fi
   
   ui_print "- This module will:"
-  ui_print "  • Disable IWLAN preference"
-  ui_print "  • Force LTE/GSM network mode"
-  ui_print "  • Fix 4G registration issues"
+  ui_print "  • Completely convert IWLAN to GSM/LTE"
+  ui_print "  • Force cellular network registration"
+  ui_print "  • Disable WiFi calling preference"
+  ui_print "  • Apply persistent system properties"
+  ui_print "  • Reset telephony services"
   
   ui_print "- Installation completed"
   ui_print "- Reboot required to apply changes"

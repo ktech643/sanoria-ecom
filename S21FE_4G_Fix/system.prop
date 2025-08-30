@@ -1,0 +1,47 @@
+# Samsung S21 FE 4G Connectivity Fix - System Properties
+# These properties ensure IWLAN to GSM/LTE conversion is persistent
+
+# === IWLAN COMPLETE DISABLE ===
+persist.vendor.radio.enable_iwlan=false
+persist.vendor.radio.iwlan_enable=false
+persist.vendor.radio.iwlan_operation_mode=false
+ro.telephony.iwlan_operation_mode=legacy
+persist.vendor.radio.enable_wfc=false
+persist.vendor.radio.enable_iwlan_call=false
+persist.vendor.radio.enable_iwlan_sms=false
+
+# === FORCE GSM/LTE PREFERENCE ===
+ro.telephony.default_network=22,22
+persist.vendor.radio.rat_on=primary,1
+persist.vendor.radio.prefer_spn_over_plmn=true
+persist.vendor.radio.data_ltd_sys_ind=1
+persist.vendor.radio.force_on_dc=true
+
+# === DISABLE IMS OVER IWLAN ===
+persist.vendor.radio.calls.on.ims=0
+persist.vendor.radio.domain.ps=0
+persist.vendor.radio.jbims=0
+persist.vendor.radio.enable_voicecall_on_ims=0
+
+# === NETWORK MODE ENFORCEMENT ===
+persist.vendor.radio.sib16_support=0
+persist.vendor.radio.enable_fd_plmn_list=true
+persist.vendor.radio.iwlan_scan_enable=false
+persist.vendor.radio.disable_retry_setup_data_call=true
+
+# === DUAL SIM SUPPORT ===
+persist.vendor.radio.msim.stackid_0=0
+persist.vendor.radio.msim.stackid_1=1
+persist.vendor.radio.primarycard=0
+
+# === CELLULAR DATA PREFERENCE ===
+persist.vendor.radio.data_con_rprt=1
+persist.vendor.radio.add_power_save=0
+persist.vendor.radio.snapshot_enabled=1
+persist.vendor.radio.snapshot_timer=5
+
+# === ADDITIONAL IWLAN BLOCKS ===
+persist.vendor.radio.iwlan.enable=false
+persist.vendor.ims.iwlan.enable=false
+persist.vendor.radio.enable_iwlan_service=false
+ro.config.iwlan_enable=false
